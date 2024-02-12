@@ -281,6 +281,7 @@ ul
     margin-bottom: 20px;
     display: block;
 }
+
 .aside .nav li a
 {
     font-size: 16px;
@@ -289,7 +290,11 @@ ul
     border-bottom: 1px solid var(--bg-black-50);
     color: var(--bg-black-900);
     padding: 5px 15px ;
-
+}
+.aside .nav li a:hover
+{
+    color: var(--text-black-900);
+    transition: all 0.3s ease;
 }
 .aside .nav li a.active
 {
