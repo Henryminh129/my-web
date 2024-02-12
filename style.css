@@ -849,7 +849,9 @@ h3.my-profession
 {
     .portfolio .portfolio-img .img
     {
-        margin-left: 3%;
+        width: 300px;
+        margin-left: 1%;
+        height: 500px;
     }
     .contact .contact-form .col-6,
     .contact .contact-info-item,
@@ -864,3 +866,7 @@ h3.my-profession
         max-width: 100%;
     }
 }
+
+
+
+
