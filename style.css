@@ -824,6 +824,11 @@ h3.my-profession
 }
 @media (max-width:991px)
 {
+    .aside .logo a span
+    {
+        font-family: 'Clicker Script', cursive;
+        font-size: 35px;
+    }
     .portfolio .portfolio-item img
     {
         margin-top: 15px;
