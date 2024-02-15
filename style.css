@@ -4,7 +4,7 @@
 
 {
     --bg-black-900: #fff;
-    --bg-black-100: #d5d5d5;
+    --bg-black-100: #656262;
     --bg-black-50: #c8c8c8;
     --text-black-900: #000000;
     --text-black-700: #000000;
@@ -179,7 +179,7 @@ ul
 }
 .aside .logo a
 {
-    color: var(--text-black-900);
+    color: rgb(0, 242, 255);
     font-weight: 700;
     padding: 15px 20px;
     font-size: 25px;
