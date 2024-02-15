@@ -821,9 +821,11 @@ h3.my-profession
         display: block;
         margin-left:0;
     }
+    
 }
 @media (max-width:991px)
 {
+    
     .aside .logo a span
     {
         font-family: 'Clicker Script', cursive;
@@ -847,7 +849,10 @@ h3.my-profession
     }
     .home .home-img
     {
-        display: none;
+        margin-top: 70px;
+    }
+    .home-img::after{
+        margin-right: -100px;
     }
 }
 @media (max-width:767px)
@@ -883,6 +888,9 @@ h3.my-profession
     {
         flex: 0 0 100%;
         max-width: 100%;
+    }
+    .home-img::after{
+        margin-right: -150px;
     }
 }
 
