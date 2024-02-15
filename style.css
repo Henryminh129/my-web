@@ -890,10 +890,6 @@ h3.my-profession
         max-width: 100%;
     }
     .home-img::after{
-        margin-right: -150px;
+        margin-right: -200px;
     }
 }
-
-
-
-
