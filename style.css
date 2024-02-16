@@ -558,7 +558,7 @@ h3.my-profession
     font-weight: 400;
     font-size: 14px;
     margin-bottom: 12px;
-    color: var(--text-black-700);
+    color: var(--skin-color);
 }
 .about .about-content .timeline .timeline-date .fa
 {
@@ -570,14 +570,14 @@ h3.my-profession
     font-size: 18px;
     margin-bottom: 15px;
     text-transform: capitalize;
-    color: var(--text-bg-black-900);
+    color: #fff;
 }
 .about .about-content .timeline .timeline-text
 {
     line-height: 25px;
     font-size: 16px;
     text-align: justify;
-    color: var(--text-black-700);
+    color: #ebebeb;
 }
 /* service */
 
@@ -631,14 +631,14 @@ h3.my-profession
 {
     font-size: 10px;
     margin-bottom: 15px;
-    color: var(--text-black-900);
+    color: #fff;
     font-weight: 700;
     text-transform: capitalize;
 }
 .service .service-item .service-item-inner p
 {
     font-size: 16px;
-    color: var(--text-black-700);
+    color: #ebebeb;
     line-height: 25px ;
 }
 /* portfolio */
@@ -875,7 +875,7 @@ h3.my-profession
         width: 300px;
         margin-left: 1%;
         height: 500px;
-    }
+    }x
     .contact .contact-form .col-6,
     .contact .contact-info-item,
     .portfolio .portfolio-item,
