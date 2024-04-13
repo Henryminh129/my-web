@@ -285,7 +285,7 @@ ul {
     font-weight: 600;
     display: block;
     border-bottom: 1px solid var(--bg-black-50);
-    color: var(--bg-black-900);
+    color: white;
     padding: 5px 15px;
 }
 
