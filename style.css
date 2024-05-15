@@ -882,12 +882,14 @@ h3.my-profession {
         width: 300px;
         margin-top: 15px;
         height: 500px;
+        margin-left: 1%
     }
 
     .portfolio .portfolio-img .davinci-resolve-img {
         margin-top: 15px;
         margin-left: 0;
         padding-right: 10%;
+        margin-left: 1%;
     }
 
     x .contact .contact-form .col-6,
