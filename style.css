@@ -671,6 +671,15 @@ h3.my-profession {
 .portfolio .portfolio-img .img {
     height: 600px;
     width: 350px;
+    margin-left: 33%;
+    padding-top: 2%;
+    border-radius: 2%;
+    border: 1px solid #000000;
+}
+
+.portfolio .portfolio-img .davinci-resolve-img {
+    height: 250px;
+    width: 400px;
     margin-left: 30%;
     padding-top: 2%;
     border-radius: 2%;
@@ -681,8 +690,9 @@ h3.my-profession {
     font-size: 20px;
     text-transform: capitalize;
     font-weight: 500;
-    color: var(--text-black-900);
+    color: red;
 }
+
 
 /*contact*/
 .service h2 {
@@ -830,6 +840,10 @@ h3.my-profession {
         margin-top: 15px;
     }
 
+    .portfolio .portfolio-item .davinci-resolve-img {
+        margin-top: 15px;
+    }
+
     .contact .contact-info-item,
     .service .service-item {
         flex: 0 0 50%;
@@ -866,8 +880,12 @@ h3.my-profession {
 
     .portfolio .portfolio-img .img {
         width: 300px;
-        margin-left: 1%;
+        margin-top: 15px;
         height: 500px;
+    }
+
+    .portfolio .portfolio-img .davinci-resolve-img {
+        margin-left: 1%;
     }
 
     x .contact .contact-form .col-6,
