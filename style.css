@@ -887,6 +887,7 @@ h3.my-profession {
     .portfolio .portfolio-img .davinci-resolve-img {
         margin-top: 15px;
         margin-left: 0;
+        padding-right: 10%;
     }
 
     x .contact .contact-form .col-6,
