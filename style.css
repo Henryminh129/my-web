@@ -393,7 +393,7 @@ h3.my-profession {
     font-size: 24px;
     margin-bottom: 15px;
     font-weight: 700;
-    color: var(--text-bg-black-900);
+    color: wheat;
 }
 
 .about .about-content .about-text h3 span {
@@ -401,11 +401,13 @@ h3.my-profession {
 }
 
 .about .about-content .about-text p {
-    font-size: 16px;
-    weight: 15px;
+    margin: 30px 0;
+    font-size: 20px;
     line-height: 25px;
     color: var(--text-black-700);
+    font-weight: 550;
 }
+
 
 .about .about-content .personal-info {
     flex: 0 0 60%;
