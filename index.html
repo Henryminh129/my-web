@@ -1,654 +1,1161 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spartan Learning Ecosystem (Robust v5.1)</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Henry Marques | Strategic Content Architect</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        /* --- 1. SYSTEM VARIABLES --- */
+        /* --- 1. CORE VARIABLES --- */
         :root {
-            --primary-gradient: linear-gradient(135deg, #e85d5d 0%, #d4b942 100%);
-            --secondary-gradient: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
-            --bg-body: #f8fafc;
-            --text-main: #1e293b;
-            --text-light: #64748b;
-            --white: #ffffff;
-            --radius-xl: 20px;
-            --radius-md: 12px;
-            --shadow-card: 0 10px 30px -10px rgba(0,0,0,0.1);
-            --shadow-hover: 0 20px 40px -10px rgba(232, 93, 93, 0.2);
+            --bg-deep: #020203;
+            --bg-card: #0a0a0c;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+
+            --crimson: #ff1f4b;
+            --blue: #3b82f6;
+            --gradient-text: linear-gradient(90deg, var(--crimson), var(--blue));
+
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --card-radius: 16px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
-        body { background: var(--bg-body); color: var(--text-main); overflow-x: hidden; min-height: 100vh; }
-        .hidden { display: none !important; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-        /* --- 2. UI COMPONENTS --- */
-        .btn-primary { background: var(--primary-gradient); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-        .btn-secondary { background: white; border: 1px solid #e2e8f0; color: var(--text-main); padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; }
-        .btn-secondary:hover { background: #f1f5f9; }
-        .btn-danger { background: #fee2e2; color: #ef4444; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
-        .btn-icon { padding: 8px; border-radius: 6px; cursor: pointer; border: 1px solid #e2e8f0; background: white; color: var(--text-light); transition: 0.2s; }
-        .btn-icon:hover { background: var(--primary-gradient); color: white; border-color: transparent; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+            letter-spacing: -0.01em;
+        }
 
-        /* --- 3. LANDING & AUTH --- */
-        #landing-page { min-height: 100vh; display: flex; flex-direction: column; background: radial-gradient(circle at 10% 10%, rgba(232, 93, 93, 0.05) 0%, transparent 40%), radial-gradient(circle at 90% 90%, rgba(212, 185, 66, 0.05) 0%, transparent 40%); transition: opacity 0.5s ease, transform 0.5s ease; }
-        .navbar { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero { flex: 1; display: flex; align-items: center; justify-content: center; gap: 50px; padding: 0 5%; }
-        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; color: #0f172a; }
-        .hero-text p { font-size: 1.2rem; color: var(--text-light); margin-bottom: 30px; max-width: 500px; }
-        
-        .auth-card { background: white; padding: 40px; border-radius: var(--radius-xl); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1); width: 100%; max-width: 400px; transition: height 0.3s ease; }
-        .input-group { margin-bottom: 15px; position: relative; }
-        .input-group i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; }
-        .input-group input { width: 100%; padding: 12px 12px 12px 40px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none; transition: 0.3s; }
-        .input-group input:focus { border-color: #e85d5d; box-shadow: 0 0 0 3px rgba(232,93,93,0.1); }
-        .auth-switch { text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--text-light); }
-        .auth-switch a { color: #e85d5d; text-decoration: none; font-weight: 600; cursor: pointer; }
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo,
+        .gallery-title {
+            font-family: 'Space Grotesk', sans-serif;
+        }
 
-        /* --- 4. APP LAYOUT --- */
-        #main-app { max-width: 1400px; margin: 0 auto; padding: 20px; opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
-        #main-app.active { opacity: 1; transform: translateY(0); }
-        .app-header { background: var(--primary-gradient); border-radius: var(--radius-xl); padding: 20px 30px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; box-shadow: var(--shadow-card); }
-        .user-info { display: flex; align-items: center; gap: 10px; font-weight: 500; }
-        
-        .nav-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
-        .nav-tabs button { padding: 12px 30px; background: white; border: 1px solid #e2e8f0; border-radius: 12px; font-weight: 600; color: var(--text-light); cursor: pointer; transition: 0.3s; }
-        .nav-tabs button.active { background: var(--secondary-gradient); color: white; border: none; box-shadow: var(--shadow-card); }
+        /* Ambient Background */
+        .ambient-light {
+            position: fixed;
+            top: -30%;
+            left: -20%;
+            width: 150%;
+            height: 150%;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255, 31, 75, 0.04), transparent 60%),
+                radial-gradient(circle at 80% 30%, rgba(59, 130, 246, 0.04), transparent 50%);
+            filter: blur(120px);
+            opacity: 0.8;
+        }
 
-        /* --- 5. PIANO STYLES --- */
-        .piano-container { background: white; padding: 30px; border-radius: var(--radius-xl); box-shadow: var(--shadow-card); text-align: center; overflow: hidden; }
-        .piano-controls { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; background: #f8fafc; padding: 15px; border-radius: 12px; }
-        .piano-scroll-wrapper { overflow-x: auto; padding-bottom: 20px; display: flex; justify-content: center; }
-        .piano-keys-wrapper { display: inline-flex; position: relative; height: 260px; user-select: none; padding: 0 20px; }
-        .key { border: 1px solid #94a3b8; border-radius: 0 0 5px 5px; cursor: pointer; position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 15px; font-weight: bold; font-size: 11px; color: #94a3b8; box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1); }
-        .white-key { width: 44px; height: 100%; background: white; z-index: 1; }
-        .white-key.active { background: #fbbf24; border-color: #d97706; color: #78350f; box-shadow: inset 0 -5px 0 rgba(0,0,0,0.1); transform: scaleY(0.98); transform-origin: top; }
-        .black-key { width: 28px; height: 65%; background: #0f172a; position: absolute; z-index: 2; margin-left: -14px; color: white; border-bottom: 3px solid #000; }
-        .black-key.active { background: #e85d5d; border-color: #b91c1c; transform: scaleY(0.98); transform-origin: top; }
+        /* --- 2. UTILITIES & ANIMATIONS --- */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-        /* --- 6. FLASHCARD STYLES --- */
-        .flashcard-layout { display: grid; grid-template-columns: 280px 1fr; gap: 30px; }
-        .sidebar { background: white; padding: 20px; border-radius: var(--radius-xl); box-shadow: var(--shadow-card); height: fit-content; }
-        .folder-item { padding: 12px; margin-bottom: 5px; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s; }
-        .folder-item:hover { background: #f1f5f9; }
-        .folder-item.active { background: #fff1f2; color: #e11d48; font-weight: 700; }
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-        .flashcard { background: white; height: 200px; border-radius: 16px; perspective: 1000px; cursor: pointer; position: relative; box-shadow: var(--shadow-card); border: 1px solid #e2e8f0; transition: transform 0.3s; }
-        .flashcard:hover { transform: translateY(-5px); }
-        .card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; display: flex; align-items: center; justify-content: center; }
-        .flashcard.flipped .card-inner { transform: rotateY(180deg); }
-        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; border-radius: 16px; }
-        .card-front { background: white; color: var(--text-main); font-size: 1.2rem; font-weight: 600; }
-        .card-back { background: var(--primary-gradient); color: white; transform: rotateY(180deg); font-size: 1.2rem; }
-        .card-actions { position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 5px; opacity: 0; transition: 0.3s; }
-        .flashcard:hover .card-actions { opacity: 1; }
+        .section-padding {
+            padding: 120px 0;
+        }
 
-        /* --- 7. QUIZ MODE & MODALS --- */
-        .quiz-container { background: white; padding: 40px; border-radius: var(--radius-xl); box-shadow: var(--shadow-card); text-align: center; max-width: 700px; margin: 0 auto; }
-        .quiz-card-display { height: 300px; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; margin: 30px 0; border: 2px dashed #cbd5e1; border-radius: 16px; cursor: pointer; transition: 0.3s; background: #f8fafc; }
-        .quiz-card-display.revealed { background: #f0fdf4; color: #15803d; border-style: solid; border-color: #16a34a; }
-        .input-wrapper { position: relative; }
-        .suggestions-box { position: absolute; top: 100%; left: 0; width: 100%; background: white; border: 1px solid #e2e8f0; border-radius: 8px; max-height: 150px; overflow-y: auto; z-index: 2000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: none; }
-        .suggestion-item { padding: 10px; cursor: pointer; border-bottom: 1px solid #f1f5f9; }
-        .suggestion-item:hover { background: #f8fafc; color: #e85d5d; }
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 1000; }
-        .modal-overlay.active { display: flex; }
-        .modal-content { background: white; padding: 30px; border-radius: var(--radius-xl); width: 90%; max-width: 500px; animation: slideUp 0.3s ease; }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        input, textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; margin: 10px 0; outline: none; transition: 0.3s; }
-        input:focus, textarea:focus { border-color: #e85d5d; box-shadow: 0 0 0 3px rgba(232,93,93,0.1); }
-        .keybind-list { max-height: 300px; overflow-y: auto; margin: 15px 0; border: 1px solid #f1f5f9; padding: 10px; border-radius: 8px; }
-        .keybind-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
-        .kb-input { width: 50px; text-align: center; font-weight: 700; text-transform: uppercase; margin: 0; }
+        .text-gradient {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            font-weight: 700;
+        }
 
-        /* Responsive Fix */
-        @media (max-width: 768px) {
-            .flashcard-layout { grid-template-columns: 1fr; }
-            .hero { flex-direction: column; text-align: center; }
-            .hero-text h1 { font-size: 2.5rem; }
+        .hidden {
+            display: none !important;
+        }
+
+        /* Page Transition */
+        .page-section {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Buttons */
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 32px;
+            background: var(--text-primary);
+            color: var(--bg-deep);
+            border-radius: 99px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            padding: 12px 32px;
+            border-radius: 99px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--blue);
+            color: var(--text-primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Lang Switcher */
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 15px;
+            transition: 0.3s;
+        }
+
+        .lang-btn:hover {
+            color: white;
+            border-color: var(--text-primary);
+        }
+
+        /* --- 3. NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 999;
+            background: rgba(2, 2, 3, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+            letter-spacing: -0.02em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 4px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-btn.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        /* --- 4. HERO SECTION (REACTOR CORE AVATAR) --- */
+        .hero {
+            min-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 50px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            /* NEW: Continuous Glow Animation */
+            animation: reactorGlow 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes reactorGlow {
+            0% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.2), 0 0 10px rgba(59, 130, 246, 0.1) inset;
+                border-color: rgba(59, 130, 246, 0.4);
+            }
+
+            100% {
+                box-shadow: 0 0 50px rgba(255, 31, 75, 0.5), 0 0 20px rgba(255, 31, 75, 0.2) inset;
+                border-color: rgba(255, 31, 75, 0.6);
+            }
+        }
+
+        /* Ripple Effect */
+        .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: ripple 2s infinite cubic-bezier(0, 0.2, 0.8, 1);
+        }
+
+        .pulse-ring:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+                border-width: 4px;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+                border-width: 0px;
+            }
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--blue);
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--blue);
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 7vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* Inspirations */
+        .inspirations {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .insp-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .insp-items {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .insp-tag {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--glass-border);
+            transition: 0.3s;
+            cursor: default;
+        }
+
+        .insp-tag:hover {
+            border-color: var(--text-primary);
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- 5. TRUSTED BAR --- */
+        .trusted-section {
+            border-bottom: 1px solid var(--glass-border);
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.005);
+            margin-bottom: 80px;
+        }
+
+        .trusted-logos {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .trusted-logos:hover {
+            opacity: 1;
+        }
+
+        .t-item {
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .t-item span {
+            font-weight: 400;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* --- 6. ABOUT & TIMELINE --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .bio-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            padding: 50px;
+            position: sticky;
+            top: 120px;
+        }
+
+        .timeline-container {
+            border-left: 1px solid var(--glass-border);
+            padding-left: 40px;
+            margin-left: 15px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .dot {
+            position: absolute;
+            left: -45px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--bg-deep);
+            border: 2px solid var(--text-secondary);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .timeline-item:hover .dot {
+            border-color: var(--blue);
+            background: var(--blue);
+            box-shadow: 0 0 10px var(--blue);
+        }
+
+        .t-date {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+            letter-spacing: 0.05em;
+        }
+
+        .t-desc {
+            color: var(--text-secondary);
+            margin-top: 15px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* --- 7. CARDS (STRATEGY) --- */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .tilt-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            padding: 40px;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            height: 100%;
+        }
+
+        .tilt-card.c-crimson:hover {
+            border-color: var(--crimson);
+            box-shadow: 0 0 30px rgba(255, 31, 75, 0.15);
+        }
+
+        .tilt-card.c-blue:hover {
+            border-color: var(--blue);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
+        }
+
+        .tilt-card.c-mixed:hover {
+            border-image: var(--gradient-text) 1;
+            box-shadow: 0 0 30px rgba(150, 100, 255, 0.15);
+        }
+
+        .card-inner {
+            transform: translateZ(30px);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        /* --- 8. SHOWCASE GRID (IMPROVED - UNIFORM & BEAUTIFUL) --- */
+        .showcase-header {
+            text-align: center;
+            padding: 100px 0 60px;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+
+        /* Strict Grid for Uniformity */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px 30px;
+            /* Vertical gap bigger for text */
+            padding-bottom: 100px;
+        }
+
+        /* Gallery Card Style */
+        .gallery-card {
+            background: transparent;
+            transition: 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Thumb Wrapper */
+        .thumb-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            aspect-ratio: 9/16;
+            /* Default Short */
+            margin-bottom: 15px;
+        }
+
+        .gallery-card.long .thumb-wrapper {
+            aspect-ratio: 16/9;
+        }
+
+        .gallery-card.long {
+            grid-column: span 2;
+        }
+
+        /* Long takes 2 slots */
+
+        .thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+            opacity: 0.8;
+        }
+
+        .gallery-card:hover .thumb {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        /* Meta Data (Description) */
+        .meta-data {
+            padding: 0 5px;
+        }
+
+        .gallery-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .gallery-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: 'Inter';
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gallery-desc i {
+            color: var(--blue);
+            font-size: 0.7rem;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .gallery-card:hover .play-overlay {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* --- 9. BOOKING LAYOUT --- */
+        .split-screen {
+            display: flex;
+            min-height: 85vh;
+            padding-top: 100px;
+            gap: 60px;
+        }
+
+        .left-panel {
+            flex: 1;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-panel {
+            flex: 1;
+            background: #111;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            height: 700px;
+        }
+
+        .booking-list li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .booking-list li:hover {
+            color: var(--text-primary);
+            transform: translateX(10px);
+        }
+
+        .booking-list li::before {
+            content: '▹';
+            color: var(--blue);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .about-grid,
+            .cards-grid,
+            .split-screen {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .gallery-card.long {
+                grid-column: span 1;
+            }
+
+            .right-panel {
+                height: 600px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <section id="landing-page">
-        <nav class="navbar">
-            <div class="logo"><i class="fa-solid fa-layer-group"></i> Spartan.Edu</div>
-        </nav>
-        <div class="hero">
-            <div class="hero-text">
-                <h1>Học Piano & Từ Vựng<br><span style="color: #e85d5d">Hiệu Quả Gấp Đôi</span></h1>
-                <p>Nền tảng tích hợp dành cho những kẻ tham vọng. Lưu trữ dữ liệu riêng tư. Đăng ký ngay để bắt đầu.</p>
-            </div>
-            
-            <div class="auth-card">
-                <div id="login-form-container">
-                    <h2 style="margin-bottom: 20px;">Đăng Nhập</h2>
-                    <form id="loginForm">
-                        <div class="input-group">
-                            <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="loginEmail" placeholder="Email" required>
-                        </div>
-                        <div class="input-group">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="loginPass" placeholder="Mật khẩu" required>
-                        </div>
-                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-                            Vào Hệ Thống <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </form>
-                    <div class="auth-switch">
-                        Chưa có tài khoản? <a onclick="toggleAuth('register')">Đăng ký ngay</a>
-                    </div>
-                </div>
+    <div class="ambient-light"></div>
 
-                <div id="register-form-container" class="hidden">
-                    <h2 style="margin-bottom: 20px;">Đăng Ký Mới</h2>
-                    <form id="registerForm">
-                        <div class="input-group">
-                            <i class="fa-regular fa-user"></i>
-                            <input type="text" id="regName" placeholder="Tên hiển thị" required>
-                        </div>
-                        <div class="input-group">
-                            <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="regEmail" placeholder="Email" required>
-                        </div>
-                        <div class="input-group">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="regPass" placeholder="Mật khẩu" required>
-                        </div>
-                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; background: var(--secondary-gradient);">
-                            Tạo Tài Khoản
-                        </button>
-                    </form>
-                    <div class="auth-switch">
-                        Đã có tài khoản? <a onclick="toggleAuth('login')">Đăng nhập</a>
-                    </div>
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo" onclick="navigateTo('home')">
+                <span style="color:var(--blue)">///</span> HENRY MARQUES
+            </div>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="nav-links">
+                    <button class="nav-btn active" onclick="navigateTo('home')" data-key="nav_home">Story</button>
+                    <button class="nav-btn" onclick="navigateTo('showcase')" data-key="nav_showcase">Archive</button>
+                    <button class="nav-btn" onclick="navigateTo('booking')" data-key="nav_booking">Contact</button>
                 </div>
+                <button class="lang-btn" onclick="toggleLang()">EN | VN</button>
+                <button class="btn-main" onclick="navigateTo('booking')" data-key="btn_book_nav">Book Strategy</button>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <section id="main-app" class="hidden">
-        <header class="app-header">
-            <div style="font-size: 1.2rem; font-weight: 700;"><i class="fa-solid fa-terminal"></i> Workstation</div>
-            <div class="user-info">
-                <span id="user-display-name">User</span>
-                <button onclick="logout()" class="btn-secondary" style="background: rgba(255,255,255,0.2); border: none; color: white;">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                </button>
-            </div>
-        </header>
-
-        <div class="nav-tabs">
-            <button class="active" onclick="switchTab('piano')">🎹 Interactive Piano</button>
-            <button onclick="switchTab('flashcards')">📚 Flashcards System</button>
-        </div>
-
-        <div id="piano-view" class="tab-content">
-            <div class="piano-container">
-                <div class="piano-controls">
-                    <div>
-                        <label>Volume</label>
-                        <input type="range" id="vol-control" min="0" max="100" value="50">
-                    </div>
-                    <div>
-                        <label>Sound</label>
-                        <select id="sound-type" style="padding: 5px; border-radius: 5px;">
-                            <option value="sine">Acoustic</option>
-                            <option value="triangle">Electric</option>
-                            <option value="sawtooth">Synth</option>
-                            <option value="square">8-bit</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Base Octave</label>
-                        <select id="octave-control" style="padding: 5px; border-radius: 5px;">
-                            <option value="3">Low (C3-B5)</option>
-                            <option value="4" selected>Mid (C4-B6)</option>
-                        </select>
-                    </div>
-                    <button onclick="openKeybindModal()" class="btn-secondary"><i class="fa-regular fa-keyboard"></i> Edit Keybinds</button>
+    <div id="home" class="page-section active">
+        <section class="hero">
+            <div class="container">
+                <div class="status-badge">
+                    <div class="status-dot"></div> <span data-key="status">Open for High-Ticket Projects</span>
                 </div>
-                <div class="piano-scroll-wrapper">
-                    <div class="piano-keys-wrapper" id="piano-keys"></div>
-                </div>
-            </div>
-        </div>
 
-        <div id="flashcards-view" class="tab-content hidden">
-            <div class="flashcard-layout">
-                <div class="sidebar">
-                    <h3 style="margin-bottom: 15px;">📁 Folders</h3>
-                    <div id="folder-list"></div>
-                    <button onclick="openModal('folderModal')" class="btn-secondary" style="width: 100%; margin-top: 10px;">+ New Folder</button>
+                <div class="avatar-wrapper">
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring"></div>
+                    <img src="try.PNG" class="hero-avatar" alt="Henry Marques">
                 </div>
-                <div class="content-area">
-                    <div id="study-mode">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                            <h2 id="current-folder-title">Select a Folder</h2>
-                            <div style="display: flex; gap: 10px;">
-                                <button onclick="startQuiz()" id="quiz-btn" class="btn-secondary" disabled><i class="fa-solid fa-brain"></i> Start Quiz</button>
-                                <button onclick="openCardModal()" class="btn-primary" id="add-card-btn" disabled>+ Add Card</button>
-                            </div>
-                        </div>
-                        <div id="card-grid" class="card-grid">
-                            <div style="text-align: center; color: #94a3b8; grid-column: 1/-1; padding: 50px;">Chọn thư mục để bắt đầu.</div>
-                        </div>
-                    </div>
-                    <div id="quiz-mode" class="hidden">
-                        <div class="quiz-container">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                                <span id="quiz-progress" style="font-weight: 600; color: #64748b;">Question 1/10</span>
-                                <button onclick="exitQuiz()" class="btn-secondary">Thoát</button>
-                            </div>
-                            <div class="quiz-card-display" id="quiz-card-face" onclick="revealQuizCard()">???</div>
-                            <div id="quiz-actions" class="hidden" style="display: flex; gap: 15px; justify-content: center;">
-                                <button onclick="answerQuiz(false)" class="btn-danger" style="padding: 15px 30px;">Sai</button>
-                                <button onclick="answerQuiz(true)" class="btn-primary" style="background: #22c55e; padding: 15px 30px;">Đúng</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="quiz-results" class="hidden">
-                        <div class="quiz-container">
-                            <h2>Kết quả</h2>
-                            <div class="quiz-score-display" id="final-score">80%</div>
-                            <button onclick="exitQuiz()" class="btn-primary" style="margin-top: 20px;">Quay lại</button>
-                        </div>
+
+                <h1 data-key="hero_title">The Strategic <br><span class="text-gradient">Content Architect</span></h1>
+                <p data-key="hero_desc">I don't sell videos. I engineer <strong>Content Systems</strong> that allow
+                    Founders & Creators to dominate High-Ticket markets with authority.</p>
+
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px;">
+                    <button class="btn-main" onclick="navigateTo('showcase')" data-key="btn_view">Explore
+                        Archive</button>
+                    <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView()"
+                        data-key="btn_philosophy">My Philosophy</button>
+                </div>
+
+                <div class="inspirations">
+                    <span class="insp-label" data-key="insp_label">Built on the shoulders of giants</span>
+                    <div class="insp-items">
+                        <span class="insp-tag">Iman Gadzhi (Business)</span>
+                        <span class="insp-tag">Ali Abdaal (Systems)</span>
+                        <span class="insp-tag">Kevin Mach (Visuals)</span>
+                        <span class="insp-tag">Stoic Mindset</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div class="modal-overlay" id="folderModal">
-        <div class="modal-content">
-            <h3>Tạo thư mục mới</h3>
-            <input type="text" id="newFolderName" placeholder="Tên thư mục...">
-            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;">
-                <button onclick="closeModal('folderModal')" class="btn-secondary">Hủy</button>
-                <button onclick="createFolder()" class="btn-primary">Tạo</button>
+        <section class="trusted-section">
+            <div class="container">
+                <p style="text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #666; margin-bottom: 30px;"
+                    data-key="trusted_label">Strategic Impact Delivered For</p>
+                <div class="trusted-logos">
+                    <div class="t-item">🎙️ VSTN <span>Podcast</span></div>
+                    <div class="t-item">Finn Dollimore <span>Creator</span></div>
+                    <div class="t-item">Micky Dollimore <span>Lead SE</span></div>
+                    <div class="t-item">Aliena <span>Brand</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding container" id="about">
+            <div class="about-grid">
+                <div class="bio-card">
+                    <h3 style="font-size: 2rem; margin-bottom: 20px; line-height: 1.2;" data-key="bio_title">The System
+                        <br>Over Chaos.
+                    </h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc1">Real name
+                        <strong>Lý Minh Phúc</strong>. I realized early that in the High-Ticket world, "beautiful
+                        editing" is a commodity. <strong>Predictable results</strong> are assets.
+                    </p>
+                    <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc2">While others
+                        focus on flashy transitions, I obsess over the <strong>Workflow</strong>: How to produce premium
+                        quality at scale, retain attention, and convert viewers into high-value leads.</p>
+                    <hr style="border:0; border-top:1px solid var(--glass-border); margin: 30px 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h4 style="color: white; margin-bottom: 5px;" data-key="role_title">Current Focus</h4>
+                            <p style="color: #999; font-size: 0.9rem;" data-key="role_desc">Building Filmoty Agency.</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-trend-up" style="color: var(--blue); font-size: 1.5rem;"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 50px; padding-left: 40px;"><span
+                            data-key="journey_title">The</span> <span class="text-gradient">Evolution</span></h2>
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="dot"></div>
+                            <span class="t-date">2025 (Q2-Q3)</span>
+                            <h3>CPO & Production Lead</h3>
+                            <div class="t-desc" data-key="exp_1"><strong>At Conterine.</strong> Architected the
+                                post-production workflow. Managed quality control for high-volume deliverables and
+                                scaled the team without breaking the system.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="dot"></div>
+                            <span class="t-date">2025 (Q1)</span>
+                            <h3>Senior Strategic Editor</h3>
+                            <div class="t-desc" data-key="exp_2">Mastered retention mechanics. Worked directly with
+                                international creators to decode the algorithm of "High-Ticket Attention".</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="dot"></div>
+                            <span class="t-date">2024</span>
+                            <h3>Foundation Phase</h3>
+                            <div class="t-desc" data-key="exp_3">Started at Agency/Startup environment. Learned the hard
+                                way that talent without process leads to burnout. Clients: VSTN, Finn, Aliena.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 3rem;">Why <span class="text-gradient">Architect?</span></h2>
+                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;" data-key="why_subtitle">
+                    Because hope is not a strategy. You need an engineered approach.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="tilt-card c-crimson" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon" style="color: var(--crimson);">🚀</div>
+                        <h3>Strategic Partner</h3>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_1">I don't just take
+                            orders. I consult on concepts, framing, and distribution to maximize business impact, not
+                            just views.</p>
+                    </div>
+                </div>
+                <div class="tilt-card c-blue" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon" style="color: var(--blue);">🧠</div>
+                        <h3>CPO Mindset</h3>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_2">My management
+                            background means I build lean, efficient production pipelines that respect your time and
+                            resources.</p>
+                    </div>
+                </div>
+                <div class="tilt-card c-mixed" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon"
+                            style="background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                            💎</div>
+                        <h3>Premium Standard</h3>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_3">Pixel-perfect
+                            audio/visuals designed to position you as an undisputed authority, justifying premium
+                            pricing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="text-align: center; padding: 120px 0; border-top: 1px solid var(--glass-border);">
+            <h2 style="font-size: 3rem; margin-bottom: 20px; line-height: 1.1;" data-key="ready_title">Stop
+                Guessing.<br>Start Building.</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 40px;" data-key="ready_desc">Your expertise deserves
+                a system that matches its value.</p>
+            <button class="btn-main" onclick="navigateTo('booking')" data-key="btn_strategy_cta">Book Discovery
+                Call</button>
+            <div style="margin-top: 60px; color: #444; font-size: 0.8rem; letter-spacing: 1px;">© 2025 Filmoty Agency.
+                Engineered by Henry Marques.</div>
+        </section>
+    </div>
+
+    <div id="showcase" class="page-section">
+        <div class="container showcase-header">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">The <span class="text-gradient">Archive</span></h1>
+            <p style="color: var(--text-secondary); margin-bottom: 40px;" data-key="archive_desc">Collection of 30+
+                executed strategic projects.</p>
+
+            <div class="filter-container">
+                <button class="btn-outline" onclick="filterGallery('all')">All Work</button>
+                <button class="btn-outline" onclick="filterGallery('short')">Shorts</button>
+                <button class="btn-outline" onclick="filterGallery('long')">Long-form</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper">
+                        <img src="https://via.placeholder.com/450x800/111/fff?text=Short+1" class="thumb">
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">SaaS Launch V1</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Retention Strategy</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper">
+                        <img src="https://via.placeholder.com/450x800/111/fff?text=Short+2" class="thumb">
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Personal Brand Intro</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Storytelling</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff" class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Edu-Tech Series</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Education</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff" class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Client Acquisition</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Marketing</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff" class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">AI Tool Review</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Tech</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff" class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Mindset Shift</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Motivation</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card long gallery-item">
+                    <div class="thumb-wrapper">
+                        <img src="https://via.placeholder.com/800x450/111/fff?text=Long+1" class="thumb">
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Full Podcast Episode: Future of AI</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-film"></i> Multi-Cam Edit • 45m</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card long gallery-item">
+                    <div class="thumb-wrapper">
+                        <img src="https://via.placeholder.com/800x450/111/fff?text=Long+2" class="thumb">
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">VSL Sales Letter</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-film"></i> Conversion Focused</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card long gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff" class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Course Module 01</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-film"></i> Education</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="modal-overlay" id="cardModal">
-        <div class="modal-content">
-            <h3 id="cardModalTitle">Thẻ ghi nhớ mới</h3>
-            <div class="input-wrapper">
-                <textarea id="cardQuestion" placeholder="Mặt trước (Câu hỏi)"></textarea>
-                <div class="suggestions-box" id="suggestions"></div>
+    <div id="booking" class="page-section">
+        <div class="container split-screen">
+            <div class="left-panel">
+                <span
+                    style="color: var(--blue); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem;"
+                    data-key="booking_badge">Strategy Session</span>
+                <h1 style="font-size: 3.5rem; margin-top: 15px; line-height: 1.1;" data-key="booking_title">Let's
+                    Architect Your <br><span class="text-gradient">Revenue</span></h1>
+                <p style="color: var(--text-secondary); font-size: 1.15rem; margin-top: 30px; font-weight: 400; max-width: 500px;"
+                    data-key="booking_desc">A 1:1 consultation (30 mins) to audit your current content bottleneck and
+                    define a roadmap for authority & scale.</p>
+                <ul class="booking-list" style="margin-top: 50px; list-style: none;">
+                    <li data-key="list_1">Audit: Channel & Competitor Analysis</li>
+                    <li data-key="list_2">Strategy: High-Ticket Concept Direction</li>
+                    <li data-key="list_3">System: Production-House Workflow Design</li>
+                </ul>
+                <div style="margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--glass-border);">
+                    <p style="color: #666; font-size: 0.9rem;">Powered by <strong>FILMOTY AGENCY</strong></p>
+                </div>
             </div>
-            <textarea id="cardAnswer" placeholder="Mặt sau (Đáp án)"></textarea>
-            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;">
-                <button onclick="closeModal('cardModal')" class="btn-secondary">Hủy</button>
-                <button onclick="saveCard()" class="btn-primary">Lưu thẻ</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="keybindModal">
-        <div class="modal-content">
-            <h3>Cài đặt phím tắt</h3>
-            <div class="keybind-list" id="kb-list"></div>
-            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;">
-                <button onclick="closeModal('keybindModal')" class="btn-secondary">Đóng</button>
-                <button onclick="saveKeybinds()" class="btn-primary">Lưu</button>
+            <div class="right-panel">
+                <iframe
+                    src="https://calendar.google.com/calendar/embed?src=henrymarques190%40gmail.com&ctz=Asia%2FHo_Chi_Minh"
+                    style="border: 0; width: 100%; height: 100%;" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
     </div>
 
     <script>
-        // --- SAFE STORAGE WRAPPER (Fix lỗi trên Windows/File protocol) ---
-        const SafeStorage = {
-            memory: {},
-            setItem: function(key, value) {
-                try { localStorage.setItem(key, value); }
-                catch(e) { this.memory[key] = value; console.warn('LocalStorage unavailable, using RAM'); }
+        // ================= TRANSLATION DATA =================
+        const translations = {
+            en: {
+                nav_home: "Story", nav_showcase: "Archive", nav_booking: "Contact", btn_book_nav: "Book Strategy",
+                hero_title: "The Strategic <br><span class='text-gradient'>Content Architect</span>",
+                hero_desc: "I don't sell videos. I engineer <strong>Content Systems</strong> that allow Founders & Creators to dominate High-Ticket markets with authority.",
+                btn_view: "Explore Archive", btn_philosophy: "My Philosophy", insp_label: "Built on the shoulders of giants",
+                trusted_label: "Strategic Impact Delivered For",
+                bio_title: "The System <br>Over Chaos.",
+                bio_desc1: "Real name <strong>Lý Minh Phúc</strong>. I realized early that in the High-Ticket world, \"beautiful editing\" is a commodity. <strong>Predictable results</strong> are assets.",
+                bio_desc2: "While others focus on flashy transitions, I obsess over the <strong>Workflow</strong>: How to produce premium quality at scale, retain attention, and convert viewers into high-value leads.",
+                role_title: "Current Focus", role_desc: "Building Filmoty Agency.",
+                journey_title: "The",
+                exp_1: "<strong>At Conterine.</strong> Architected the post-production workflow. Managed quality control for high-volume deliverables and scaled the team without breaking the system.",
+                exp_2: "Mastered retention mechanics. Worked directly with international creators to decode the algorithm of \"High-Ticket Attention\".",
+                exp_3: "Started at Agency/Startup environment. Learned the hard way that talent without process leads to burnout. Clients: VSTN, Finn, Aliena.",
+                why_subtitle: "Because hope is not a strategy. You need an engineered approach.",
+                card_1: "I don't just take orders. I consult on concepts, framing, and distribution to maximize business impact, not just views.",
+                card_2: "My management background means I build lean, efficient production pipelines that respect your time and resources.",
+                card_3: "Pixel-perfect audio/visuals designed to position you as an undisputed authority, justifying premium pricing.",
+                ready_title: "Stop Guessing.<br>Start Building.", ready_desc: "Your expertise deserves a system that matches its value.", btn_strategy_cta: "Book Discovery Call",
+                archive_desc: "Collection of 30+ executed strategic projects.",
+                booking_badge: "Strategy Session",
+                booking_title: "Let's Architect Your <br><span class='text-gradient'>Revenue</span>",
+                booking_desc: "A 1:1 consultation (30 mins) to audit your current content bottleneck and define a roadmap for authority & scale.",
+                list_1: "Audit: Channel & Competitor Analysis",
+                list_2: "Strategy: High-Ticket Concept Direction",
+                list_3: "System: Production-House Workflow Design"
             },
-            getItem: function(key) {
-                try { return localStorage.getItem(key); }
-                catch(e) { return this.memory[key] || null; }
-            },
-            clear: function() {
-                try { localStorage.clear(); }
-                catch(e) { this.memory = {}; }
+            vi: {
+                nav_home: "Câu chuyện", nav_showcase: "Kho tàng", nav_booking: "Liên hệ", btn_book_nav: "Đặt lịch Tư vấn",
+                hero_title: "Kiến Trúc Sư <br><span class='text-gradient'>Nội Dung Chiến Lược</span>",
+                hero_desc: "Tôi không bán video. Tôi thiết kế <strong>Hệ thống Nội dung</strong> giúp Founder & Creator thống trị thị trường High-Ticket bằng uy tín và chất lượng.",
+                btn_view: "Xem Kho Tàng", btn_philosophy: "Triết lý của tôi", insp_label: "Đứng trên vai người khổng lồ",
+                trusted_label: "Đối tác Chiến lược đã hợp tác",
+                bio_title: "Hệ Thống <br>Thay vì Hỗn Loạn.",
+                bio_desc1: "Tên thật là <strong>Lý Minh Phúc</strong>. Tôi sớm nhận ra trong thế giới High-Ticket, \"edit đẹp\" chỉ là hàng hóa. <strong>Kết quả có thể dự đoán được</strong> mới là tài sản.",
+                bio_desc2: "Trong khi người khác tập trung vào hiệu ứng lòe loẹt, tôi ám ảnh với <strong>Quy trình (Workflow)</strong>: Làm sao để sản xuất chất lượng cao trên quy mô lớn, giữ chân người xem và chuyển đổi họ thành khách hàng giá trị cao.",
+                role_title: "Trọng tâm hiện tại", role_desc: "Xây dựng Filmoty Agency.",
+                journey_title: "Hành Trình",
+                exp_1: "<strong>Tại Conterine.</strong> Kiến tạo quy trình hậu kỳ. Quản lý kiểm soát chất lượng cho khối lượng sản phẩm lớn và mở rộng đội ngũ mà không phá vỡ hệ thống.",
+                exp_2: "Làm chủ cơ chế giữ chân người xem (Retention). Làm việc trực tiếp với các Creator quốc tế để giải mã thuật toán của sự \"Chú ý Giá trị cao\".",
+                exp_3: "Khởi đầu tại môi trường Agency/Startup. Học được bài học đắt giá rằng tài năng mà không có quy trình sẽ dẫn đến kiệt sức.",
+                why_subtitle: "Vì hy vọng không phải là một chiến lược. Bạn cần một cách tiếp cận được thiết kế bài bản.",
+                card_1: "Tôi không chỉ nhận lệnh. Tôi tư vấn về concept, góc nhìn và phân phối để tối đa hóa tác động kinh doanh, không chỉ là lượt xem.",
+                card_2: "Nền tảng quản trị giúp tôi xây dựng các dây chuyền sản xuất tinh gọn, hiệu quả, tôn trọng thời gian và nguồn lực của bạn.",
+                card_3: "Âm thanh/Hình ảnh chuẩn Pixel-perfect được thiết kế để định vị bạn là một chuyên gia không thể tranh cãi, xứng đáng với mức giá cao.",
+                ready_title: "Ngừng Đoán Mò.<br>Bắt Đầu Xây Dựng.", ready_desc: "Chuyên môn của bạn xứng đáng với một hệ thống tương xứng với giá trị của nó.", btn_strategy_cta: "Đặt lịch Khám phá",
+                archive_desc: "Tuyển tập các dự án chiến lược đã thực thi. Hơn 30+ Tư liệu.",
+                booking_badge: "Phiên Tư vấn Chiến lược",
+                booking_title: "Cùng Kiến tạo <br><span class='text-gradient'>Doanh thu</span> của bạn",
+                booking_desc: "Buổi tư vấn 1:1 (30 phút) để đánh giá điểm nghẽn nội dung hiện tại và xác định lộ trình cho uy tín & quy mô.",
+                list_1: "Audit: Phân tích Kênh & Đối thủ",
+                list_2: "Chiến lược: Định hướng Concept High-Ticket",
+                list_3: "Hệ thống: Thiết kế Quy trình Production-House"
             }
         };
 
-        // --- CORE DATA ---
-        const COMMON_WORDS = ["Strategy", "Architecture", "Ambition", "Discipline", "Focus", "High-Ticket", "Agency", "Conversion", "System", "Process", "Automation", "Leverage", "Capital", "Investment", "Asset"];
-        const DEFAULT_KEYS = [
-            { n: 'C', t: 'w', k: 'Z', o: -1 }, { n: 'C#', t: 'b', k: 'S', o: -1 }, { n: 'D', t: 'w', k: 'X', o: -1 }, { n: 'D#', t: 'b', k: 'D', o: -1 }, { n: 'E', t: 'w', k: 'C', o: -1 }, { n: 'F', t: 'w', k: 'V', o: -1 }, { n: 'F#', t: 'b', k: 'G', o: -1 }, { n: 'G', t: 'w', k: 'B', o: -1 }, { n: 'G#', t: 'b', k: 'H', o: -1 }, { n: 'A', t: 'w', k: 'N', o: -1 }, { n: 'A#', t: 'b', k: 'J', o: -1 }, { n: 'B', t: 'w', k: 'M', o: -1 },
-            { n: 'C', t: 'w', k: 'Q', o: 0 }, { n: 'C#', t: 'b', k: '2', o: 0 }, { n: 'D', t: 'w', k: 'W', o: 0 }, { n: 'D#', t: 'b', k: '3', o: 0 }, { n: 'E', t: 'w', k: 'E', o: 0 }, { n: 'F', t: 'w', k: 'R', o: 0 }, { n: 'F#', t: 'b', k: '5', o: 0 }, { n: 'G', t: 'w', k: 'T', o: 0 }, { n: 'G#', t: 'b', k: '6', o: 0 }, { n: 'A', t: 'w', k: 'Y', o: 0 }, { n: 'A#', t: 'b', k: '7', o: 0 }, { n: 'B', t: 'w', k: 'U', o: 0 },
-            { n: 'C', t: 'w', k: 'I', o: 1 }, { n: 'C#', t: 'b', k: '9', o: 1 }, { n: 'D', t: 'w', k: 'O', o: 1 }, { n: 'D#', t: 'b', k: '0', o: 1 }, { n: 'E', t: 'w', k: 'P', o: 1 }, { n: 'F', t: 'w', k: '[', o: 1 }, { n: 'F#', t: 'b', k: '=', o: 1 }, { n: 'G', t: 'w', k: ']', o: 1 }, { n: 'G#', t: 'b', k: 'A', o: 1 }, { n: 'A', t: 'w', k: '\\', o: 1 }, { n: 'A#', t: 'b', k: '', o: 1 }, { n: 'B', t: 'w', k: '', o: 1 }
-        ];
-        const NOTE_FREQUENCIES = { 'C': 261.63, 'C#': 277.18, 'D': 293.66, 'D#': 311.13, 'E': 329.63, 'F': 349.23, 'F#': 369.99, 'G': 392.00, 'G#': 415.30, 'A': 440.00, 'A#': 466.16, 'B': 493.88 };
+        let currentLang = 'en';
 
-        // State
-        let AppState = {
-            currentUser: null,
-            folders: [],
-            keys: [],
-            currentFolderId: null,
-            editingCardId: null,
-            quiz: { active: false, cards: [], index: 0, score: 0 },
-            audioCtx: null
-        };
-
-        /* --- AUTHENTICATION --- */
-        const Auth = {
-            getUsers: () => {
-                try { return JSON.parse(SafeStorage.getItem('spartan_users')) || []; }
-                catch(e) { return []; }
-            },
-            
-            register: (name, email, pass) => {
-                let users = Auth.getUsers();
-                if(users.find(u => u.email === email)) return alert("Email đã tồn tại!");
-                
-                const newUser = { id: 'u' + Date.now(), name, email, pass };
-                users.push(newUser);
-                SafeStorage.setItem('spartan_users', JSON.stringify(users));
-                
-                const userData = { folders: [], keys: DEFAULT_KEYS };
-                SafeStorage.setItem('spartan_data_' + newUser.id, JSON.stringify(userData));
-                
-                alert("Đăng ký thành công!");
-                toggleAuth('login');
-            },
-
-            login: (email, pass) => {
-                let users = Auth.getUsers();
-                const user = users.find(u => u.email === email && u.pass === pass);
-                if(user) Auth.loadUserSession(user);
-                else alert("Sai email hoặc mật khẩu!");
-            },
-
-            loadUserSession: (user) => {
-                AppState.currentUser = user;
-                const rawData = SafeStorage.getItem('spartan_data_' + user.id);
-                const userData = rawData ? JSON.parse(rawData) : { folders: [], keys: DEFAULT_KEYS };
-                
-                AppState.folders = userData.folders;
-                AppState.keys = userData.keys || DEFAULT_KEYS;
-                
-                document.getElementById('user-display-name').innerText = user.name;
-                document.getElementById('landing-page').classList.add('hidden');
-                document.getElementById('main-app').classList.remove('hidden');
-                setTimeout(() => document.getElementById('main-app').classList.add('active'), 50);
-                
-                initAudioContext();
-                initSystem();
-            },
-
-            logout: () => {
-                AppState.currentUser = null;
-                document.getElementById('main-app').classList.remove('active');
-                document.getElementById('main-app').classList.add('hidden');
-                document.getElementById('landing-page').classList.remove('hidden');
-                document.getElementById('loginForm').reset();
-            }
-        };
-
-        // --- AUDIO INIT (Robust for Windows/Chrome) ---
-        function initAudioContext() {
-            if (!AppState.audioCtx) {
-                const AudioCtor = window.AudioContext || window.webkitAudioContext;
-                if(AudioCtor) AppState.audioCtx = new AudioCtor();
-            }
-            // Resume on any interaction if suspended
-            if(AppState.audioCtx && AppState.audioCtx.state === 'suspended') {
-                AppState.audioCtx.resume();
-            }
-        }
-        document.addEventListener('click', initAudioContext);
-        document.addEventListener('keydown', initAudioContext);
-
-        // --- UI HANDLERS ---
-        function toggleAuth(mode) {
-            if(mode === 'register') {
-                document.getElementById('login-form-container').classList.add('hidden');
-                document.getElementById('register-form-container').classList.remove('hidden');
-            } else {
-                document.getElementById('register-form-container').classList.add('hidden');
-                document.getElementById('login-form-container').classList.remove('hidden');
-            }
-        }
-
-        document.getElementById('loginForm').addEventListener('submit', e => {
-            e.preventDefault();
-            Auth.login(document.getElementById('loginEmail').value, document.getElementById('loginPass').value);
-        });
-
-        document.getElementById('registerForm').addEventListener('submit', e => {
-            e.preventDefault();
-            Auth.register(document.getElementById('regName').value, document.getElementById('regEmail').value, document.getElementById('regPass').value);
-        });
-
-        function logout() { Auth.logout(); }
-
-        function saveData() {
-            if(!AppState.currentUser) return;
-            const data = { folders: AppState.folders, keys: AppState.keys };
-            SafeStorage.setItem('spartan_data_' + AppState.currentUser.id, JSON.stringify(data));
-        }
-
-        function resetData() {
-            if(confirm("Reset dữ liệu (chỉ trên trình duyệt này)?")) {
-                SafeStorage.clear();
-                location.reload();
-            }
-        }
-
-        // --- PIANO LOGIC ---
-        function renderPiano() {
-            const container = document.getElementById('piano-keys');
-            container.innerHTML = '';
-            let whiteCount = 0;
-            AppState.keys.forEach((k) => {
-                const div = document.createElement('div');
-                div.className = `key ${k.t === 'w' ? 'white-key' : 'black-key'}`;
-                div.innerHTML = k.k ? `<span style="position:absolute; bottom:5px;">${k.k}</span>` : '';
-                if (k.t === 'b') div.style.left = `${(whiteCount * 44) - 14}px`; else whiteCount++;
-                div.onmousedown = () => playNote(k, div);
-                container.appendChild(div);
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'vi' : 'en';
+            const data = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (data[key]) el.innerHTML = data[key];
             });
-            container.style.width = `${whiteCount * 44}px`;
         }
 
-        function playNote(keyObj, element) {
-            if (!AppState.audioCtx) return;
-            element.classList.add('active');
-            const osc = AppState.audioCtx.createOscillator();
-            const gain = AppState.audioCtx.createGain();
-            const baseFreq = NOTE_FREQUENCIES[keyObj.n];
-            const octaveControl = parseInt(document.getElementById('octave-control').value);
-            const freq = baseFreq * Math.pow(2, (octaveControl - 4) + keyObj.o);
-            osc.frequency.value = freq;
-            osc.type = document.getElementById('sound-type').value;
-            osc.connect(gain); gain.connect(AppState.audioCtx.destination);
-            gain.gain.setValueAtTime(0, AppState.audioCtx.currentTime);
-            gain.gain.linearRampToValueAtTime(document.getElementById('vol-control').value / 100, AppState.audioCtx.currentTime + 0.01);
-            gain.gain.exponentialRampToValueAtTime(0.001, AppState.audioCtx.currentTime + 0.5);
-            osc.start(); osc.stop(AppState.audioCtx.currentTime + 0.5);
-            setTimeout(() => element.classList.remove('active'), 200);
+        // ================= NAVIGATION & INTERACTION LOGIC =================
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            if (pageId === 'home') document.querySelectorAll('.nav-btn')[0].classList.add('active');
+            if (pageId === 'showcase') document.querySelectorAll('.nav-btn')[1].classList.add('active');
+            if (pageId === 'booking') document.querySelectorAll('.nav-btn')[2].classList.add('active');
+            window.scrollTo(0, 0);
         }
 
-        window.addEventListener('keydown', (e) => {
-            if (document.getElementById('piano-view').classList.contains('hidden')) return;
-            if (e.repeat) return;
-            const keyObj = AppState.keys.find(k => k.k === e.key.toUpperCase());
-            if (keyObj) {
-                const index = AppState.keys.indexOf(keyObj);
-                const els = document.querySelectorAll('.key');
-                if(els[index]) playNote(keyObj, els[index]);
-            }
+        function filterGallery(type) {
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                if (type === 'all' || item.classList.contains(type)) item.classList.remove('hidden');
+                else item.classList.add('hidden');
+            });
+        }
+
+        // 3D Tilt Effect
+        document.querySelectorAll('[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                card.style.transform = `perspective(1000px) rotateX(${-y / 25}deg) rotateY(${x / 25}deg) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)');
         });
-
-        function openKeybindModal() {
-            const list = document.getElementById('kb-list');
-            list.innerHTML = AppState.keys.map((k, i) => `
-                <div class="keybind-row"><span>${k.n} (Octave ${k.o})</span><input type="text" class="kb-input" value="${k.k}" oninput="updateKey(${i}, this.value)" maxlength="1"></div>
-            `).join('');
-            openModal('keybindModal');
-        }
-        function updateKey(index, val) { AppState.keys[index].k = val.toUpperCase(); }
-        function saveKeybinds() { saveData(); renderPiano(); closeModal('keybindModal'); }
-
-        // --- FLASHCARD LOGIC ---
-        function renderFolders() {
-            const list = document.getElementById('folder-list');
-            list.innerHTML = AppState.folders.map(f => `
-                <div class="folder-item ${AppState.currentFolderId === f.id ? 'active' : ''}" onclick="selectFolder(${f.id})">
-                    <span>📁 ${f.name}</span><span style="font-size: 0.8rem; opacity: 0.7;">${f.cards.length}</span>
-                </div>
-            `).join('');
-        }
-
-        function selectFolder(id) {
-            AppState.currentFolderId = id;
-            renderFolders(); renderCards();
-            const f = AppState.folders.find(f => f.id === id);
-            document.getElementById('current-folder-title').textContent = f.name;
-            document.getElementById('add-card-btn').disabled = false;
-            document.getElementById('quiz-btn').disabled = f.cards.length === 0;
-            document.getElementById('study-mode').classList.remove('hidden');
-            document.getElementById('quiz-mode').classList.add('hidden');
-            document.getElementById('quiz-results').classList.add('hidden');
-        }
-
-        function createFolder() {
-            const name = document.getElementById('newFolderName').value;
-            if (name) { AppState.folders.push({ id: Date.now(), name, cards: [] }); saveData(); closeModal('folderModal'); renderFolders(); }
-        }
-
-        function renderCards() {
-            const folder = AppState.folders.find(f => f.id === AppState.currentFolderId);
-            const grid = document.getElementById('card-grid');
-            if (!folder || folder.cards.length === 0) { grid.innerHTML = `<div style="text-align: center; color: #94a3b8; grid-column: 1/-1; padding: 50px;">Chưa có thẻ nào.</div>`; return; }
-            grid.innerHTML = folder.cards.map(c => `
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="card-actions" onclick="event.stopPropagation()">
-                        <button class="btn-icon" onclick="openEditCard(${c.id})"><i class="fa-solid fa-pen"></i></button>
-                        <button class="btn-icon" style="color: #ef4444;" onclick="deleteCard(${c.id})"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                    <div class="card-inner"><div class="card-front">${c.q}</div><div class="card-back">${c.a}</div></div>
-                </div>
-            `).join('');
-        }
-
-        function openCardModal() {
-            AppState.editingCardId = null;
-            document.getElementById('cardModalTitle').innerText = "Thêm thẻ mới";
-            document.getElementById('cardQuestion').value = ''; document.getElementById('cardAnswer').value = '';
-            openModal('cardModal');
-        }
-
-        function openEditCard(cardId) {
-            AppState.editingCardId = cardId;
-            const folder = AppState.folders.find(f => f.id === AppState.currentFolderId);
-            const card = folder.cards.find(c => c.id === cardId);
-            document.getElementById('cardModalTitle').innerText = "Chỉnh sửa thẻ";
-            document.getElementById('cardQuestion').value = card.q;
-            document.getElementById('cardAnswer').value = card.a;
-            openModal('cardModal');
-        }
-
-        function saveCard() {
-            const q = document.getElementById('cardQuestion').value;
-            const a = document.getElementById('cardAnswer').value;
-            if (!q || !a) return alert("Nhập đủ thông tin!");
-            const folder = AppState.folders.find(f => f.id === AppState.currentFolderId);
-            if (AppState.editingCardId) {
-                const card = folder.cards.find(c => c.id === AppState.editingCardId);
-                card.q = q; card.a = a;
-            } else {
-                folder.cards.push({ id: Date.now(), q, a });
-            }
-            saveData(); selectFolder(AppState.currentFolderId); closeModal('cardModal');
-        }
-
-        function deleteCard(id) {
-            if(confirm('Xóa thẻ này?')) {
-                const folder = AppState.folders.find(f => f.id === AppState.currentFolderId);
-                folder.cards = folder.cards.filter(c => c.id !== id);
-                saveData(); selectFolder(AppState.currentFolderId);
-            }
-        }
-
-        // Suggestions
-        const qInput = document.getElementById('cardQuestion');
-        const sugBox = document.getElementById('suggestions');
-        qInput.addEventListener('input', (e) => {
-            const val = e.target.value.toLowerCase();
-            if(val.length < 1) { sugBox.style.display = 'none'; return; }
-            const matches = COMMON_WORDS.filter(w => w.toLowerCase().includes(val));
-            if(matches.length > 0) {
-                sugBox.innerHTML = matches.map(w => `<div class="suggestion-item" onclick="applySug('${w}')">${w}</div>`).join('');
-                sugBox.style.display = 'block';
-            } else sugBox.style.display = 'none';
-        });
-        function applySug(w) { qInput.value = w; sugBox.style.display = 'none'; }
-
-        // --- QUIZ LOGIC ---
-        function startQuiz() {
-            const folder = AppState.folders.find(f => f.id === AppState.currentFolderId);
-            AppState.quiz = { active: true, cards: [...folder.cards].sort(() => Math.random() - 0.5), index: 0, score: 0 };
-            document.getElementById('study-mode').classList.add('hidden');
-            document.getElementById('quiz-mode').classList.remove('hidden');
-            renderQuizCard();
-        }
-
-        function renderQuizCard() {
-            const q = AppState.quiz;
-            document.getElementById('quiz-progress').innerText = `Question ${q.index + 1}/${q.cards.length}`;
-            const cardUI = document.getElementById('quiz-card-face');
-            cardUI.className = 'quiz-card-display';
-            cardUI.innerText = q.cards[q.index].q;
-            document.getElementById('quiz-actions').classList.add('hidden');
-        }
-
-        function revealQuizCard() {
-            const cardUI = document.getElementById('quiz-card-face');
-            cardUI.classList.add('revealed');
-            cardUI.innerText = AppState.quiz.cards[AppState.quiz.index].a;
-            document.getElementById('quiz-actions').classList.remove('hidden');
-        }
-
-        function answerQuiz(isCorrect) {
-            if (isCorrect) AppState.quiz.score++;
-            AppState.quiz.index++;
-            if (AppState.quiz.index >= AppState.quiz.cards.length) {
-                document.getElementById('quiz-mode').classList.add('hidden');
-                document.getElementById('quiz-results').classList.remove('hidden');
-                const percent = Math.round((AppState.quiz.score / AppState.quiz.cards.length) * 100);
-                document.getElementById('final-score').innerText = `${percent}%`;
-            } else { renderQuizCard(); }
-        }
-
-        function exitQuiz() { selectFolder(AppState.currentFolderId); }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-            document.getElementById('piano-view').classList.add('hidden');
-            document.getElementById('flashcards-view').classList.add('hidden');
-            if (tabName === 'piano') document.getElementById('piano-view').classList.remove('hidden');
-            else document.getElementById('flashcards-view').classList.remove('hidden');
-        }
-        function openModal(id) { document.getElementById(id).classList.add('active'); }
-        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-        function initSystem() { renderPiano(); renderFolders(); }
-
     </script>
 </body>
+
 </html>
