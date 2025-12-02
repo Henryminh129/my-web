@@ -16,11 +16,9 @@
             --bg-card: #0a0a0c;
             --text-primary: #ffffff;
             --text-secondary: #9ca3af;
-
             --crimson: #ff1f4b;
             --blue: #3b82f6;
             --gradient-text: linear-gradient(90deg, var(--crimson), var(--blue));
-
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
             --card-radius: 16px;
@@ -49,6 +47,7 @@
         .logo,
         .gallery-title {
             font-family: 'Space Grotesk', sans-serif;
+            text-wrap: balance;
         }
 
         /* Ambient Background */
@@ -67,9 +66,9 @@
             opacity: 0.8;
         }
 
-        /* --- 2. UTILITIES & ANIMATIONS --- */
+        /* --- 2. UTILITIES --- */
         .container {
-            max-width: 1140px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -90,7 +89,6 @@
             display: none !important;
         }
 
-        /* Page Transition */
         .page-section {
             display: none;
             opacity: 0;
@@ -128,6 +126,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            white-space: nowrap;
         }
 
         .btn-main:hover {
@@ -145,6 +144,7 @@
             font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .btn-outline:hover {
@@ -153,7 +153,6 @@
             background: rgba(59, 130, 246, 0.1);
         }
 
-        /* Lang Switcher */
         .lang-btn {
             background: transparent;
             border: 1px solid var(--glass-border);
@@ -235,14 +234,16 @@
             color: var(--text-primary);
         }
 
-        /* --- 4. HERO SECTION (REACTOR CORE AVATAR) --- */
+        /* --- 4. HERO SECTION (FIXED CENTERING) --- */
         .hero {
             min-height: 95vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            /* Đảm bảo căn giữa theo trục dọc */
             text-align: center;
+            /* Đảm bảo căn giữa văn bản */
             padding-top: 80px;
         }
 
@@ -251,6 +252,7 @@
             width: 180px;
             height: 180px;
             margin: 0 auto 50px auto;
+            /* Margin auto để căn giữa block */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -264,7 +266,6 @@
             position: relative;
             z-index: 2;
             border: 2px solid rgba(255, 255, 255, 0.2);
-            /* NEW: Continuous Glow Animation */
             animation: reactorGlow 4s infinite alternate ease-in-out;
         }
 
@@ -280,33 +281,37 @@
             }
         }
 
-        /* Ripple Effect */
         .pulse-ring {
             position: absolute;
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             animation: ripple 2s infinite cubic-bezier(0, 0.2, 0.8, 1);
         }
 
         .pulse-ring:nth-child(2) {
-            animation-delay: 0.5s;
+            animation-delay: 1s;
+        }
+
+        .pulse-ring:nth-child(3) {
+            animation-delay: 2s;
         }
 
         @keyframes ripple {
             0% {
                 transform: scale(0.8);
                 opacity: 0;
-                border-width: 4px;
+                border-width: 2px;
             }
 
             50% {
                 opacity: 0.5;
+                border-color: var(--blue);
             }
 
             100% {
-                transform: scale(1.5);
+                transform: scale(1.6);
                 opacity: 0;
                 border-width: 0px;
             }
@@ -349,23 +354,26 @@
             }
         }
 
+        /* GIA CỐ CĂN GIỮA CHO CHỮ */
         .hero h1 {
             font-size: clamp(3.5rem, 7vw, 5.5rem);
             font-weight: 700;
             line-height: 1.1;
-            margin-bottom: 25px;
+            margin: 0 auto 25px auto;
+            /* Căn giữa block */
             letter-spacing: -0.03em;
+            max-width: 900px;
         }
 
         .hero p {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 650px;
-            margin-bottom: 40px;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            /* Căn giữa block */
             font-weight: 400;
         }
 
-        /* Inspirations */
         .inspirations {
             margin-top: 80px;
             padding-top: 30px;
@@ -408,7 +416,7 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* --- 5. TRUSTED BAR --- */
+        /* --- 5. SECTIONS --- */
         .trusted-section {
             border-bottom: 1px solid var(--glass-border);
             padding: 40px 0;
@@ -445,7 +453,6 @@
             font-size: 0.9rem;
         }
 
-        /* --- 6. ABOUT & TIMELINE --- */
         .about-grid {
             display: grid;
             grid-template-columns: 0.9fr 1.1fr;
@@ -508,7 +515,6 @@
             line-height: 1.6;
         }
 
-        /* --- 7. CARDS (STRATEGY) --- */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -524,6 +530,10 @@
             transform-style: preserve-3d;
             perspective: 1000px;
             height: 100%;
+        }
+
+        .tilt-card:hover {
+            transform: translateY(-5px);
         }
 
         .tilt-card.c-crimson:hover {
@@ -551,7 +561,7 @@
             display: inline-block;
         }
 
-        /* --- 8. SHOWCASE GRID (IMPROVED - UNIFORM & BEAUTIFUL) --- */
+        /* --- 8. SHOWCASE GRID (FIXED CENTER ALIGNMENT) --- */
         .showcase-header {
             text-align: center;
             padding: 100px 0 60px;
@@ -564,55 +574,59 @@
             margin-bottom: 60px;
         }
 
-        /* Strict Grid for Uniformity */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 40px 30px;
-            /* Vertical gap bigger for text */
             padding-bottom: 100px;
         }
 
-        /* Gallery Card Style */
         .gallery-card {
             background: transparent;
             transition: 0.3s ease;
             cursor: pointer;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
+            /* Căn giữa nội dung card */
         }
 
         .gallery-card:hover {
             transform: translateY(-5px);
         }
 
-        /* Thumb Wrapper */
-        .thumb-wrapper {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            aspect-ratio: 9/16;
-            /* Default Short */
-            margin-bottom: 15px;
-        }
-
-        .gallery-card.long .thumb-wrapper {
-            aspect-ratio: 16/9;
+        .gallery-card.short {
+            grid-column: span 1;
         }
 
         .gallery-card.long {
             grid-column: span 2;
         }
 
-        /* Long takes 2 slots */
+        .thumb-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .gallery-card.short .thumb-wrapper {
+            aspect-ratio: 9/16;
+        }
+
+        .gallery-card.long .thumb-wrapper {
+            aspect-ratio: 16/9;
+        }
 
         .thumb {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: 0.5s;
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
         .gallery-card:hover .thumb {
@@ -620,9 +634,9 @@
             opacity: 1;
         }
 
-        /* Meta Data (Description) */
         .meta-data {
             padding: 0 5px;
+            width: 100%;
         }
 
         .gallery-title {
@@ -639,6 +653,7 @@
             font-family: 'Inter';
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
         }
 
@@ -670,7 +685,7 @@
             transform: translate(-50%, -50%) scale(1.1);
         }
 
-        /* --- 9. BOOKING LAYOUT --- */
+        /* --- 9. BOOKING & RESPONSIVE --- */
         .split-screen {
             display: flex;
             min-height: 85vh;
@@ -718,7 +733,20 @@
             line-height: 1;
         }
 
-        /* Responsive */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-card.short {
+                grid-column: span 1;
+            }
+
+            .gallery-card.long {
+                grid-column: span 2;
+            }
+        }
+
         @media (max-width: 900px) {
             .hero h1 {
                 font-size: 3.2rem;
@@ -735,12 +763,17 @@
                 display: none;
             }
 
-            .gallery-card.long {
-                grid-column: span 1;
-            }
-
             .right-panel {
                 height: 600px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-card.short,
+            .gallery-card.long {
+                grid-column: span 1;
             }
         }
     </style>
@@ -775,6 +808,7 @@
                 </div>
 
                 <div class="avatar-wrapper">
+                    <div class="pulse-ring"></div>
                     <div class="pulse-ring"></div>
                     <div class="pulse-ring"></div>
                     <img src="try.PNG" class="hero-avatar" alt="Henry Marques">
@@ -820,12 +854,10 @@
             <div class="about-grid">
                 <div class="bio-card">
                     <h3 style="font-size: 2rem; margin-bottom: 20px; line-height: 1.2;" data-key="bio_title">The System
-                        <br>Over Chaos.
-                    </h3>
+                        <br>Over Chaos.</h3>
                     <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc1">Real name
                         <strong>Lý Minh Phúc</strong>. I realized early that in the High-Ticket world, "beautiful
-                        editing" is a commodity. <strong>Predictable results</strong> are assets.
-                    </p>
+                        editing" is a commodity. <strong>Predictable results</strong> are assets.</p>
                     <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc2">While others
                         focus on flashy transitions, I obsess over the <strong>Workflow</strong>: How to produce premium
                         quality at scale, retain attention, and convert viewers into high-value leads.</p>
@@ -912,8 +944,6 @@
         <section style="text-align: center; padding: 120px 0; border-top: 1px solid var(--glass-border);">
             <h2 style="font-size: 3rem; margin-bottom: 20px; line-height: 1.1;" data-key="ready_title">Stop
                 Guessing.<br>Start Building.</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 40px;" data-key="ready_desc">Your expertise deserves
-                a system that matches its value.</p>
             <button class="btn-main" onclick="navigateTo('booking')" data-key="btn_strategy_cta">Book Discovery
                 Call</button>
             <div style="margin-top: 60px; color: #444; font-size: 0.8rem; letter-spacing: 1px;">© 2025 Filmoty Agency.
@@ -935,93 +965,306 @@
 
             <div class="gallery-grid">
                 <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <img src="https://via.placeholder.com/450x800/111/fff?text=Short+1" class="thumb">
-                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+1"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
                     </div>
                     <div class="meta-data">
                         <div class="gallery-title">SaaS Launch V1</div>
                         <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Retention Strategy</div>
                     </div>
                 </div>
-
                 <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <img src="https://via.placeholder.com/450x800/111/fff?text=Short+2" class="thumb">
-                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Personal Brand Intro</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Storytelling</div>
-                    </div>
-                </div>
-
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff" class="thumb">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+2"
+                            class="thumb">
                         <div class="play-overlay">▶</div>
                     </div>
                     <div class="meta-data">
                         <div class="gallery-title">Edu-Tech Series</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Education</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-graduation-cap"></i> Authority Building</div>
                     </div>
                 </div>
                 <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff" class="thumb">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+3"
+                            class="thumb">
                         <div class="play-overlay">▶</div>
                     </div>
                     <div class="meta-data">
                         <div class="gallery-title">Client Acquisition</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Marketing</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-handshake"></i> Marketing</div>
                     </div>
                 </div>
                 <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff" class="thumb">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+4"
+                            class="thumb">
                         <div class="play-overlay">▶</div>
                     </div>
                     <div class="meta-data">
                         <div class="gallery-title">AI Tool Review</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Tech</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-robot"></i> Tech</div>
                     </div>
                 </div>
                 <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff" class="thumb">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+5"
+                            class="thumb">
                         <div class="play-overlay">▶</div>
                     </div>
                     <div class="meta-data">
                         <div class="gallery-title">Mindset Shift</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Motivation</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-brain"></i> Motivation</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+6"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Behind The Scenes</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-video"></i> Process</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+7"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Product Teaser</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-box-open"></i> E-commerce</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+8"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Testimonial Cut</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-star"></i> Social Proof</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+9"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Event Highlight</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-calendar-day"></i> Recap</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+10"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Q&A Session</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-comments"></i> Engagement</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+11"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Tip of the Day</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-lightbulb"></i> Value</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+12"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Myth Busting</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-check-double"></i> Educational</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+13"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Before & After</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transformation
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+14"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Industry News</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-newspaper"></i> Update</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+15"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Team Spotlight</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-users"></i> Culture</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+16"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Workflow Hack</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-gears"></i> Productivity</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+17"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Book Recommendation</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-book"></i> Knowledge</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+18"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Motivation Quote</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-quote-right"></i> Inspiration</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+19"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Quick Tutorial</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-laptop-code"></i> How-to</div>
+                    </div>
+                </div>
+                <div class="gallery-card short gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+20"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Final Call to Action</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-bullhorn"></i> Sales</div>
                     </div>
                 </div>
 
                 <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <img src="https://via.placeholder.com/800x450/111/fff?text=Long+1" class="thumb">
-                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+1"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
                     </div>
                     <div class="meta-data">
                         <div class="gallery-title">Full Podcast Episode: Future of AI</div>
                         <div class="gallery-desc"><i class="fa-solid fa-film"></i> Multi-Cam Edit • 45m</div>
                     </div>
                 </div>
-
                 <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <img src="https://via.placeholder.com/800x450/111/fff?text=Long+2" class="thumb">
-                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSL Sales Letter</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-film"></i> Conversion Focused</div>
-                    </div>
-                </div>
-
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff" class="thumb">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+2"
+                            class="thumb">
                         <div class="play-overlay">▶</div>
                     </div>
                     <div class="meta-data">
-                        <div class="gallery-title">Course Module 01</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-film"></i> Education</div>
+                        <div class="gallery-title">VSL Sales Letter Breakdown</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-chart-line"></i> Conversion Focused • 12m</div>
+                    </div>
+                </div>
+                <div class="gallery-card long gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+3"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Course Module: System Building</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-chalkboard-user"></i> Education • 25m</div>
+                    </div>
+                </div>
+                <div class="gallery-card long gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+4"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Mini-Documentary: The Origin Story</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-video"></i> Storytelling • 18m</div>
+                    </div>
+                </div>
+                <div class="gallery-card long gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+5"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Client Case Study Deep Dive</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-magnifying-glass-chart"></i> Analysis • 15m
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-card long gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+6"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Webinar Recording: High-Ticket Sales</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-presentation-screen"></i> Training • 60m</div>
+                    </div>
+                </div>
+                <div class="gallery-card long gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+7"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Keynote Speech Highlights</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-microphone-lines"></i> Event • 10m</div>
+                    </div>
+                </div>
+                <div class="gallery-card long gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+8"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Software Demo & Walkthrough</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-laptop"></i> Tech Tutorial • 20m</div>
+                    </div>
+                </div>
+                <div class="gallery-card long gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+9"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Founder Interview Series</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-user-tie"></i> Interview • 30m</div>
+                    </div>
+                </div>
+                <div class="gallery-card long gallery-item">
+                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+10"
+                            class="thumb">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="meta-data">
+                        <div class="gallery-title">Year End Review & Future Plans</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-flag-checkered"></i> Vlog Style • 14m</div>
                     </div>
                 </div>
             </div>
