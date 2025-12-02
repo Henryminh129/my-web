@@ -1,552 +1,654 @@
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HenryMiSon web</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!---->
-    <link rel="stylesheet" href="color-1.css" class="alternate-style" title="color-1">
-    <!-- <link rel="stylesheet" href="color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="color-5.css" class="alternate-style" title="color-5" disabled> -->
-    <!-- <link rel="stylesheet" href="style-switcher.css"> -->
+    <title>Spartan Learning Ecosystem (Robust v5.1)</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 1. SYSTEM VARIABLES --- */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #e85d5d 0%, #d4b942 100%);
+            --secondary-gradient: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
+            --bg-body: #f8fafc;
+            --text-main: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --radius-xl: 20px;
+            --radius-md: 12px;
+            --shadow-card: 0 10px 30px -10px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 40px -10px rgba(232, 93, 93, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        body { background: var(--bg-body); color: var(--text-main); overflow-x: hidden; min-height: 100vh; }
+        .hidden { display: none !important; }
+
+        /* --- 2. UI COMPONENTS --- */
+        .btn-primary { background: var(--primary-gradient); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+        .btn-secondary { background: white; border: 1px solid #e2e8f0; color: var(--text-main); padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .btn-secondary:hover { background: #f1f5f9; }
+        .btn-danger { background: #fee2e2; color: #ef4444; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+        .btn-icon { padding: 8px; border-radius: 6px; cursor: pointer; border: 1px solid #e2e8f0; background: white; color: var(--text-light); transition: 0.2s; }
+        .btn-icon:hover { background: var(--primary-gradient); color: white; border-color: transparent; }
+
+        /* --- 3. LANDING & AUTH --- */
+        #landing-page { min-height: 100vh; display: flex; flex-direction: column; background: radial-gradient(circle at 10% 10%, rgba(232, 93, 93, 0.05) 0%, transparent 40%), radial-gradient(circle at 90% 90%, rgba(212, 185, 66, 0.05) 0%, transparent 40%); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .navbar { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero { flex: 1; display: flex; align-items: center; justify-content: center; gap: 50px; padding: 0 5%; }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; color: #0f172a; }
+        .hero-text p { font-size: 1.2rem; color: var(--text-light); margin-bottom: 30px; max-width: 500px; }
+        
+        .auth-card { background: white; padding: 40px; border-radius: var(--radius-xl); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1); width: 100%; max-width: 400px; transition: height 0.3s ease; }
+        .input-group { margin-bottom: 15px; position: relative; }
+        .input-group i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; }
+        .input-group input { width: 100%; padding: 12px 12px 12px 40px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none; transition: 0.3s; }
+        .input-group input:focus { border-color: #e85d5d; box-shadow: 0 0 0 3px rgba(232,93,93,0.1); }
+        .auth-switch { text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--text-light); }
+        .auth-switch a { color: #e85d5d; text-decoration: none; font-weight: 600; cursor: pointer; }
+
+        /* --- 4. APP LAYOUT --- */
+        #main-app { max-width: 1400px; margin: 0 auto; padding: 20px; opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+        #main-app.active { opacity: 1; transform: translateY(0); }
+        .app-header { background: var(--primary-gradient); border-radius: var(--radius-xl); padding: 20px 30px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; box-shadow: var(--shadow-card); }
+        .user-info { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+        
+        .nav-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+        .nav-tabs button { padding: 12px 30px; background: white; border: 1px solid #e2e8f0; border-radius: 12px; font-weight: 600; color: var(--text-light); cursor: pointer; transition: 0.3s; }
+        .nav-tabs button.active { background: var(--secondary-gradient); color: white; border: none; box-shadow: var(--shadow-card); }
+
+        /* --- 5. PIANO STYLES --- */
+        .piano-container { background: white; padding: 30px; border-radius: var(--radius-xl); box-shadow: var(--shadow-card); text-align: center; overflow: hidden; }
+        .piano-controls { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; background: #f8fafc; padding: 15px; border-radius: 12px; }
+        .piano-scroll-wrapper { overflow-x: auto; padding-bottom: 20px; display: flex; justify-content: center; }
+        .piano-keys-wrapper { display: inline-flex; position: relative; height: 260px; user-select: none; padding: 0 20px; }
+        .key { border: 1px solid #94a3b8; border-radius: 0 0 5px 5px; cursor: pointer; position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 15px; font-weight: bold; font-size: 11px; color: #94a3b8; box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1); }
+        .white-key { width: 44px; height: 100%; background: white; z-index: 1; }
+        .white-key.active { background: #fbbf24; border-color: #d97706; color: #78350f; box-shadow: inset 0 -5px 0 rgba(0,0,0,0.1); transform: scaleY(0.98); transform-origin: top; }
+        .black-key { width: 28px; height: 65%; background: #0f172a; position: absolute; z-index: 2; margin-left: -14px; color: white; border-bottom: 3px solid #000; }
+        .black-key.active { background: #e85d5d; border-color: #b91c1c; transform: scaleY(0.98); transform-origin: top; }
+
+        /* --- 6. FLASHCARD STYLES --- */
+        .flashcard-layout { display: grid; grid-template-columns: 280px 1fr; gap: 30px; }
+        .sidebar { background: white; padding: 20px; border-radius: var(--radius-xl); box-shadow: var(--shadow-card); height: fit-content; }
+        .folder-item { padding: 12px; margin-bottom: 5px; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s; }
+        .folder-item:hover { background: #f1f5f9; }
+        .folder-item.active { background: #fff1f2; color: #e11d48; font-weight: 700; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .flashcard { background: white; height: 200px; border-radius: 16px; perspective: 1000px; cursor: pointer; position: relative; box-shadow: var(--shadow-card); border: 1px solid #e2e8f0; transition: transform 0.3s; }
+        .flashcard:hover { transform: translateY(-5px); }
+        .card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; display: flex; align-items: center; justify-content: center; }
+        .flashcard.flipped .card-inner { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; border-radius: 16px; }
+        .card-front { background: white; color: var(--text-main); font-size: 1.2rem; font-weight: 600; }
+        .card-back { background: var(--primary-gradient); color: white; transform: rotateY(180deg); font-size: 1.2rem; }
+        .card-actions { position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 5px; opacity: 0; transition: 0.3s; }
+        .flashcard:hover .card-actions { opacity: 1; }
+
+        /* --- 7. QUIZ MODE & MODALS --- */
+        .quiz-container { background: white; padding: 40px; border-radius: var(--radius-xl); box-shadow: var(--shadow-card); text-align: center; max-width: 700px; margin: 0 auto; }
+        .quiz-card-display { height: 300px; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; margin: 30px 0; border: 2px dashed #cbd5e1; border-radius: 16px; cursor: pointer; transition: 0.3s; background: #f8fafc; }
+        .quiz-card-display.revealed { background: #f0fdf4; color: #15803d; border-style: solid; border-color: #16a34a; }
+        .input-wrapper { position: relative; }
+        .suggestions-box { position: absolute; top: 100%; left: 0; width: 100%; background: white; border: 1px solid #e2e8f0; border-radius: 8px; max-height: 150px; overflow-y: auto; z-index: 2000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: none; }
+        .suggestion-item { padding: 10px; cursor: pointer; border-bottom: 1px solid #f1f5f9; }
+        .suggestion-item:hover { background: #f8fafc; color: #e85d5d; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 1000; }
+        .modal-overlay.active { display: flex; }
+        .modal-content { background: white; padding: 30px; border-radius: var(--radius-xl); width: 90%; max-width: 500px; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; margin: 10px 0; outline: none; transition: 0.3s; }
+        input:focus, textarea:focus { border-color: #e85d5d; box-shadow: 0 0 0 3px rgba(232,93,93,0.1); }
+        .keybind-list { max-height: 300px; overflow-y: auto; margin: 15px 0; border: 1px solid #f1f5f9; padding: 10px; border-radius: 8px; }
+        .keybind-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
+        .kb-input { width: 50px; text-align: center; font-weight: 700; text-transform: uppercase; margin: 0; }
+
+        /* Responsive Fix */
+        @media (max-width: 768px) {
+            .flashcard-layout { grid-template-columns: 1fr; }
+            .hero { flex-direction: column; text-align: center; }
+            .hero-text h1 { font-size: 2.5rem; }
+        }
+    </style>
 </head>
-
 <body>
-    <!-- == Main conainer Start-->
-    <div class="main-container">
-        <!-- Aside Start-->
-        <div class="aside">
-            <div class="logo">
-                <a href="https://www.facebook.com/profile.php?id=100012653234069"><span>Henry Marques</span>Minh</a>
+
+    <section id="landing-page">
+        <nav class="navbar">
+            <div class="logo"><i class="fa-solid fa-layer-group"></i> Spartan.Edu</div>
+        </nav>
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Học Piano & Từ Vựng<br><span style="color: #e85d5d">Hiệu Quả Gấp Đôi</span></h1>
+                <p>Nền tảng tích hợp dành cho những kẻ tham vọng. Lưu trữ dữ liệu riêng tư. Đăng ký ngay để bắt đầu.</p>
             </div>
-            <div class="nav-toggler">
-                <span></span>
+            
+            <div class="auth-card">
+                <div id="login-form-container">
+                    <h2 style="margin-bottom: 20px;">Đăng Nhập</h2>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="loginEmail" placeholder="Email" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="loginPass" placeholder="Mật khẩu" required>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                            Vào Hệ Thống <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    <div class="auth-switch">
+                        Chưa có tài khoản? <a onclick="toggleAuth('register')">Đăng ký ngay</a>
+                    </div>
+                </div>
+
+                <div id="register-form-container" class="hidden">
+                    <h2 style="margin-bottom: 20px;">Đăng Ký Mới</h2>
+                    <form id="registerForm">
+                        <div class="input-group">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="regName" placeholder="Tên hiển thị" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="regEmail" placeholder="Email" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="regPass" placeholder="Mật khẩu" required>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; background: var(--secondary-gradient);">
+                            Tạo Tài Khoản
+                        </button>
+                    </form>
+                    <div class="auth-switch">
+                        Đã có tài khoản? <a onclick="toggleAuth('login')">Đăng nhập</a>
+                    </div>
+                </div>
             </div>
-            <ul class="nav">
-                <li><a href="#home" class="active"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="#about"><i class="fa fa-user"></i>About</a></li>
-                <li><a href="#services"><i class="fa fa-list"></i>Services</a></li>
-                <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Portfolio</a></li>
-                <li><a href="#contact"><i class="fa fa-comments"></i>contact</a></li>
-            </ul>
+        </div>
+    </section>
+
+    <section id="main-app" class="hidden">
+        <header class="app-header">
+            <div style="font-size: 1.2rem; font-weight: 700;"><i class="fa-solid fa-terminal"></i> Workstation</div>
+            <div class="user-info">
+                <span id="user-display-name">User</span>
+                <button onclick="logout()" class="btn-secondary" style="background: rgba(255,255,255,0.2); border: none; color: white;">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="active" onclick="switchTab('piano')">🎹 Interactive Piano</button>
+            <button onclick="switchTab('flashcards')">📚 Flashcards System</button>
         </div>
 
-        <!-- Aside End-->
-
-        <!-- Main content Start-->
-        <div class="main-content">
-            <!--Home Section Start-->
-            <section class="home active section" id="home">
-                <div class="container">
-                    <div class="row">
-                        <div class="home-info padd-15">
-                            <h3 class="hello">Hi, I'm <span class="name">Lý Minh Phúc</span></h3>
-
-                            <h3 class="my-profession">MY PASSION: <span class="typing">Videography</span></h3>
-
-                            <p>(You can also call me: Henry Minh)
-
-                                <br> <br>
-                                ・ I have an immense curiosity for Video Creation - ROI Freelancer Services. <br> <br>
-                                ・ Additionally, I have a strong interest in content creation, particularly video editing and Designing
-                                and videography. <br>
-                                <br>
-                                <span class="subtitle">( I'M IN MONK MODE ! )</span>
-                            </p>
-
-
-                            <a href="#contact" class="btn hire-me">Hire me</a>
-                        </div>
-                        <div class="home-img padd-15">
-                            <img src="my picture/IMG_1263.jpg" alt="">
-                        </div>
+        <div id="piano-view" class="tab-content">
+            <div class="piano-container">
+                <div class="piano-controls">
+                    <div>
+                        <label>Volume</label>
+                        <input type="range" id="vol-control" min="0" max="100" value="50">
                     </div>
+                    <div>
+                        <label>Sound</label>
+                        <select id="sound-type" style="padding: 5px; border-radius: 5px;">
+                            <option value="sine">Acoustic</option>
+                            <option value="triangle">Electric</option>
+                            <option value="sawtooth">Synth</option>
+                            <option value="square">8-bit</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Base Octave</label>
+                        <select id="octave-control" style="padding: 5px; border-radius: 5px;">
+                            <option value="3">Low (C3-B5)</option>
+                            <option value="4" selected>Mid (C4-B6)</option>
+                        </select>
+                    </div>
+                    <button onclick="openKeybindModal()" class="btn-secondary"><i class="fa-regular fa-keyboard"></i> Edit Keybinds</button>
                 </div>
-            </section>
-            <!--Home Section End-->
-            <!--About Section Start-->
-            <section class="about section" id="about">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>About Me</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="about-content padd-15">
-                            <div class="row">
-                                <div class="about-text padd-15">
-                                    <h3>I'M HENRY MINH <span>& FUTURE CT-PRO-INV</span> </h3>
-
-                                    <p>・ I'm a student at LTV High School. While most of my friends focus on gaining
-                                        more
-                                        knowledge about various subjects, I believe that this traditional path may not
-                                        be the best fit for me. Instead, I strive to make a meaningful impact in my own
-                                        unique way, beyond just excelling academically. <br> <br>
-                                        My goal is to establish an agency that provides comprehensive marketing
-                                        solutions.🔥
-                                        <br> <br>
-                                        ・ I'm eager to start early and build a foundation for my future
-                                        agency, which will offer services such as website design and development,
-                                        email and post copywriting, videography, and content creation.
-                                        <br> <br>
-                                        I can't wait to show you what I'm capable of. Watch out for me – I'm on my way
-                                        to making this dream a reality!✨
-                                        <br> <br>
-                                        <span class="active">SEE YOU IN THE FUTURE WHEN I'VE TURNED THIS VISION INTO
-                                            SUCCESS!</span>
-
-
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="personal-info padd-15">
-                                    <div class="row">
-                                        <div class="info-item padd-15">
-                                            <p>Birthday: <span>16 June</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Age: <span>16</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Website: <span>.........</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Email: <span>HenryMiSon0@gmail.com</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Phone: <span>0703607754</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Accomodation: <span>DISTRICT 7</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="buttons padd-15">
-                                            <a href="https://www.canva.com/design/DAF6zyBW0ck/SQ2BoNjRpyX1hiBrQ8eB4g/edit?utm_content=DAF6zyBW0ck&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-                                                class="btn">Download CV</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="skills padd-15">
-                                    <div class="row">
-                                        <div class="skill-item padd-15">
-                                            <h5>Video editing</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 80%;"></div>
-                                                <div class="skill-percent">80%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>Color ajustment</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 75%;"></div>
-                                                <div class="skill-percent">75%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>Animation</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 60%;"></div>
-                                                <div class="skill-percent">60%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>Thumnail Design</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 65%;"></div>
-                                                <div class="skill-percent">65%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>Davinci Resolve</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 80%;"></div>
-                                                <div class="skill-percent">80%</div>
-
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>Premiere Pro</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 70%;"></div>
-                                                <div class="skill-percent">70%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>After Effect</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 65%;"></div>
-                                                <div class="skill-percent">65%</div>
-                                            </div>
-                                            <div class="skill-item padd-15">
-                                                <h5>PTS</h5>
-                                                <div class="progress">
-                                                    <div class="progress-in" style="width: 70%;"></div>
-                                                    <div class="skill-percent">70%</div>
-                                                </div>
-                                            </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="education padd-15">
-                                    <h3 class="title">Education</h3>
-                                    <div class="row">
-                                        <div class="timeline-box padd-15">
-                                            <div class="timeline shadow-dark">
-                                                <!--timeline item-->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i>2023-2026
-                                                    </h3>
-                                                    <h4 class="timeline-title">Study</h4>
-                                                    <p class="timeline-text">I'm studying in LƯƠNG THẾ VINH high school
-                                                    </p>
-                                                </div>
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i>2019-2023
-                                                    </h3>
-                                                    <h4 class="timeline-title">excellent student</h4>
-                                                    <p class="timeline-text">Graduated from TRẦN QUỐC TUẤN secondary
-                                                        school
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="orientation padd-15">
-                                    <h3 class="title">Orientation</h3>
-                                    <div class="row">
-                                        <div class="timeline-box padd-15">
-                                            <div class="timeline shadow-dark">
-                                                <!--timeline item-->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i>about 1-2 years
-                                                    </h3>
-                                                    <h4 class="timeline-title">Short time</h4>
-                                                    <p class="timeline-text">ROI Freelancer - AI Video Creator✨
-                                                        <br>
-                                                        ・ It can be change all the time, that's why i'm not literally
-                                                        sure about it
-                                                    </p>
-                                                </div>
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i>Subsequently
-                                                    </h3>
-                                                    <h4 class="timeline-title">Long time</h4>
-                                                    <p class="timeline-text">Establish an agency that provide personal
-                                                        branding services
-                                                        for customers (website creation, video editing,...).
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="piano-scroll-wrapper">
+                    <div class="piano-keys-wrapper" id="piano-keys"></div>
                 </div>
-            </section>
-            <!-- About Section End-->
-            <!--Services Section Start-->
-            <section class="service section" id="services">
-                <div class="row">
-                    <div class="section-title padd-15">
-                        <h2>Services</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <!--item start-->
-                    <div class="service-item padd-15">
-                        <div class="service-item-inner">
-                            <div class="icon">
-                                <i class="fa fa-palette"></i>
-                            </div>
-                            <h4>Video editor</h4>
-                            <p>Coming soon...
-                                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                            </p>
-                        </div>
-                    </div>
-                    <!--item end-->
-                    <!--item start-->
-                    <div class="service-item padd-15">
-                        <div class="service-item-inner">
-                            <div class="icon">
-                                <i class=" fa fas fa-cloud"></i>
-                            </div>
-                            <h4>Web developer</h4>
-                            <p>Coming soon...
-                                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                            </p>
-                        </div>
-                    </div>
-                    <!--item end-->
-                    <!--item start-->
-                    <div class="service-item padd-15">
-                        <div class="service-item-inner">
-                            <div class="icon">
-                                <i class="fa fa-laptop-code"></i>
-                            </div>
-                            <h4>Web design</h4>
-                            <p>Coming soon...
-                                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                            </p>
-                        </div>
-                    </div>
-                    <!--item end-->
-                    <!--item start-->
-                    <!-- <div class="service-item padd-15">
-                        <div class="service-item-inner">
-                            <div class="icon">
-                                <i class="fa fas fa-file"></i>
-                            </div>
-                            <h4>Content creator</h4>
-                            <p>Coming soon...
-                                <br><br><br><br><br>
-                            </p>
-                        </div>
-                    </div> -->
-                    <!--item end-->
-                    <!--item start-->
-                    <!-- <div class="service-item padd-15">
-                        <div class="service-item-inner">
-                            <div class="icon">
-                                <i class="fa fa-code"></i>
-                            </div>
-                            <h4>Web design</h4>
-                            <p>Coming soon...</p>
-                        </div>
-                    </div> -->
-                    <!--item end-->
-                    <!--item start-->
-                    <!-- <div class="service-item padd-15">
-                        <div class="service-item-inner">
-                            <div class="icon">
-                                <i class="fa fa-laptop-code"></i>
-                            </div>
-                            <h4>Web design</h4>
-                            <p>Coming soon...</p>
-                        </div>
-                    </div> -->
-                    <!--item end-->
-                    <!--item start-->
-                    <!-- <div class="service-item padd-15">
-                        <div class="service-item-inner">
-                            <div class="icon">
-                                <i class="fa fa-palette"></i>
-                            </div>
-                            <h4>Web design</h4>
-                            <p>Coming soon...</p>
-                        </div>
-                    </div> -->
-                    <!--item end-->
-                    <!--item start-->
-                    <!-- <div class="service-item padd-15">
-                        <div class="service-item-inner">
-                            <div class="icon">
-                                <i class="fa fa-code"></i>
-                            </div>
-                            <h4>Web design</h4>
-                            <p>Coming soon...</p>
-                        </div>
-                    </div> -->
-                    <!--item end-->
-                    <!--item start-->
-                    <!-- <div class="service-item padd-15">
-                        <div class="service-item-inner">
-                            <div class="icon">
-                                <i class="fa fa-laptop-code"></i>
-                            </div>
-                            <h4>Web design</h4>
-                            <p>Coming soon...</p>
-                        </div>
-                    </div> -->
-                    <!--item end-->
-                </div>
-            </section>
-            <!--Services Section End-->
-            <!--Portfolio Section Start-->
-            <section class="portfolio section" id="portfolio">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Portfolio</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="portfolio-heading padd-15">
-                            <h2>My Projects :</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!--item start-->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img padd-15">
-                                    <img src="my picture/kisspng-blackmagic-davinci-resolve-blackmagic-design-color-davinci-resolve-studio-14-3-easydcp-toomac-me-5b62d3dc1501c5 Background Removed.7023693215332034200861.png"
-                                        alt="" class="davinci-resolve-img"> <br>
-                                    <p> <span>VIDEO EDITING</span><br>
-                                        I'm a video editor, so over time, my videos are becoming more polished. <br>
-                                        <a
-                                            href="https://drive.google.com/drive/folders/1riyoOF1GgX-q9ACipLUHLujF3dmEBvyG?usp=sharing">HERE
-                                            IS MY VIDEOS</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img padd-15">
-                                    <img src="my picture/Screenshot 2024-02-12 at 22.48.38.png" alt="" class="img">
-                                    <p> <span>MAIN DEVELOPER</span><br>
-                                        Develop front-end and back-end solutions. <br>
-                                        Provide information about new STT activities and products for those interested.
-                                        Besides, you can directly purchase our new products on this website if you wish.
-                                        <br>
-                                        Languages: HTML, CSS, JavaScript, ReactJS, NodeJS, Java <br>
-                                        <a
-                                            href="https://clbsangtaotreltvq1.github.io/web">https://clbsangtaotreltvq1.github.io/web/</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--item end-->
-                    </div>
-                </div>
-            </section>
-            <!--Portfolio Section End-->
-            <!--Contact Section start-->
-            <section class="contact section" id="contact">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Contact Me</h2>
-                        </div>
-                    </div>
-                    <h3 class="contact-title padd-15">Have you Any Question?</h3>
-                    <h4 class="contact-sub-title padd-15">I'M AT YOUR SERVICES</h4>
-                    <div class="row">
-                        <!--item-->
-                        <div class="contact-info-item padd-15">
-                            <div class="icon"><i class="fa fa-globe-europe"></i></div>
-                            <h4>Facebook</h4>
-                            <p>Lý Minh Phúc</p>
-                            <a href="https://www.facebook.com/profile.php?id=100012653234069">here</a>
-                        </div>
-                        <!--item end-->
-                        <!--item-->
-                        <div class="contact-info-item padd-15">
-                            <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
-                            <h4>Instagram</h4>
-                            <p>m.pfuc</p>
-                            <a
-                                href="https://www.instagram.com/m.pfuc/?fbclid=IwAR3thQXj5zOD1QutU1Zim-p4m6jb5b2jzQ5xXuFU2TkwE5BxyoYTBT6bp_M">here</a>
-                        </div>
-                        <!--item end-->
-                        <!--item-->
-                        <div class="contact-info-item padd-15">
-                            <div class="icon"><i class="fa fa-envelope"></i></div>
-                            <h4>Email</h4>
-                            <p>HenryMiSon0@gmail.com</p>
-                        </div>
-                        <!--item end-->
-                        <!--item-->
-                        <div class="contact-info-item padd-15">
-                            <div class="icon"><i class="fa fa-laptop-code"></i></div>
-                            <h4>Channel</h4>
-                            <p>Coming soon... (expected 17/04)</p>
-                        </div>
-                        <!--item end-->
-                    </div>
-                    <!-- <h3 class="contact-title padd-15">SEND ME AN EMAIL</h3>
-                    <h4 class="contact-sub-title padd-15">I'M VERY REPOSIVE TO MESSAGES</h4> -->
-                    <!-- Contact Form-->
-                    <!-- <div class="row">
-                        <div class="contact-form padd-15">
-                            <div class="row">
-                                <div class="form-item col-6 padd-15">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="form-item col-6 padd-15">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-item col-12 padd-15">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Subject">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-item col-12 padd-15">
-                                    <div class="form-group">
-                                        <textarea name="" class="form-control" id="" placeholder="Message"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-item col-12 padd-15">
-                                    <button type="submit" class="btn">Send Message</button>
-                                </div>
-                            </div>
-                        </div> -->
-                    <!-- </div> -->
-                </div>
-            </section>
-            <!--Contact Section End-->
+            </div>
         </div>
-        <!-- Main content End-->
+
+        <div id="flashcards-view" class="tab-content hidden">
+            <div class="flashcard-layout">
+                <div class="sidebar">
+                    <h3 style="margin-bottom: 15px;">📁 Folders</h3>
+                    <div id="folder-list"></div>
+                    <button onclick="openModal('folderModal')" class="btn-secondary" style="width: 100%; margin-top: 10px;">+ New Folder</button>
+                </div>
+                <div class="content-area">
+                    <div id="study-mode">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h2 id="current-folder-title">Select a Folder</h2>
+                            <div style="display: flex; gap: 10px;">
+                                <button onclick="startQuiz()" id="quiz-btn" class="btn-secondary" disabled><i class="fa-solid fa-brain"></i> Start Quiz</button>
+                                <button onclick="openCardModal()" class="btn-primary" id="add-card-btn" disabled>+ Add Card</button>
+                            </div>
+                        </div>
+                        <div id="card-grid" class="card-grid">
+                            <div style="text-align: center; color: #94a3b8; grid-column: 1/-1; padding: 50px;">Chọn thư mục để bắt đầu.</div>
+                        </div>
+                    </div>
+                    <div id="quiz-mode" class="hidden">
+                        <div class="quiz-container">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                                <span id="quiz-progress" style="font-weight: 600; color: #64748b;">Question 1/10</span>
+                                <button onclick="exitQuiz()" class="btn-secondary">Thoát</button>
+                            </div>
+                            <div class="quiz-card-display" id="quiz-card-face" onclick="revealQuizCard()">???</div>
+                            <div id="quiz-actions" class="hidden" style="display: flex; gap: 15px; justify-content: center;">
+                                <button onclick="answerQuiz(false)" class="btn-danger" style="padding: 15px 30px;">Sai</button>
+                                <button onclick="answerQuiz(true)" class="btn-primary" style="background: #22c55e; padding: 15px 30px;">Đúng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="quiz-results" class="hidden">
+                        <div class="quiz-container">
+                            <h2>Kết quả</h2>
+                            <div class="quiz-score-display" id="final-score">80%</div>
+                            <button onclick="exitQuiz()" class="btn-primary" style="margin-top: 20px;">Quay lại</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="folderModal">
+        <div class="modal-content">
+            <h3>Tạo thư mục mới</h3>
+            <input type="text" id="newFolderName" placeholder="Tên thư mục...">
+            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;">
+                <button onclick="closeModal('folderModal')" class="btn-secondary">Hủy</button>
+                <button onclick="createFolder()" class="btn-primary">Tạo</button>
+            </div>
+        </div>
     </div>
-    <!--Main Container End-->
-    <!--Style Switcher strart-->
-    <!-- <div class="style-switcher">
-        <div class="style-switcher-toggler s-icon">
-            <i class="fas fa-cog fa-spin"></i>
-        </div>
-        <div class="day-night s-icon">
-            <i class="fas fa-moon"></i>
-        </div>
-        <h4>Theme Colors</h4>
-        <div class="colors">
-            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
-            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
-            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
-            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
-            <span class="color-5" onclick="setActiveStyle('color-5')"></span>
-        </div>
-    </div> -->
-    <!--Style Switcher End-->
-    <!--JS FILE-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"
-        integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"
-        referrerpolicy="no=referrer"></script>
-    <script src="script.js"></script>
-    <!-- <script src="style-switcher.js"></script> -->
-</body>
 
+    <div class="modal-overlay" id="cardModal">
+        <div class="modal-content">
+            <h3 id="cardModalTitle">Thẻ ghi nhớ mới</h3>
+            <div class="input-wrapper">
+                <textarea id="cardQuestion" placeholder="Mặt trước (Câu hỏi)"></textarea>
+                <div class="suggestions-box" id="suggestions"></div>
+            </div>
+            <textarea id="cardAnswer" placeholder="Mặt sau (Đáp án)"></textarea>
+            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;">
+                <button onclick="closeModal('cardModal')" class="btn-secondary">Hủy</button>
+                <button onclick="saveCard()" class="btn-primary">Lưu thẻ</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="keybindModal">
+        <div class="modal-content">
+            <h3>Cài đặt phím tắt</h3>
+            <div class="keybind-list" id="kb-list"></div>
+            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;">
+                <button onclick="closeModal('keybindModal')" class="btn-secondary">Đóng</button>
+                <button onclick="saveKeybinds()" class="btn-primary">Lưu</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- SAFE STORAGE WRAPPER (Fix lỗi trên Windows/File protocol) ---
+        const SafeStorage = {
+            memory: {},
+            setItem: function(key, value) {
+                try { localStorage.setItem(key, value); }
+                catch(e) { this.memory[key] = value; console.warn('LocalStorage unavailable, using RAM'); }
+            },
+            getItem: function(key) {
+                try { return localStorage.getItem(key); }
+                catch(e) { return this.memory[key] || null; }
+            },
+            clear: function() {
+                try { localStorage.clear(); }
+                catch(e) { this.memory = {}; }
+            }
+        };
+
+        // --- CORE DATA ---
+        const COMMON_WORDS = ["Strategy", "Architecture", "Ambition", "Discipline", "Focus", "High-Ticket", "Agency", "Conversion", "System", "Process", "Automation", "Leverage", "Capital", "Investment", "Asset"];
+        const DEFAULT_KEYS = [
+            { n: 'C', t: 'w', k: 'Z', o: -1 }, { n: 'C#', t: 'b', k: 'S', o: -1 }, { n: 'D', t: 'w', k: 'X', o: -1 }, { n: 'D#', t: 'b', k: 'D', o: -1 }, { n: 'E', t: 'w', k: 'C', o: -1 }, { n: 'F', t: 'w', k: 'V', o: -1 }, { n: 'F#', t: 'b', k: 'G', o: -1 }, { n: 'G', t: 'w', k: 'B', o: -1 }, { n: 'G#', t: 'b', k: 'H', o: -1 }, { n: 'A', t: 'w', k: 'N', o: -1 }, { n: 'A#', t: 'b', k: 'J', o: -1 }, { n: 'B', t: 'w', k: 'M', o: -1 },
+            { n: 'C', t: 'w', k: 'Q', o: 0 }, { n: 'C#', t: 'b', k: '2', o: 0 }, { n: 'D', t: 'w', k: 'W', o: 0 }, { n: 'D#', t: 'b', k: '3', o: 0 }, { n: 'E', t: 'w', k: 'E', o: 0 }, { n: 'F', t: 'w', k: 'R', o: 0 }, { n: 'F#', t: 'b', k: '5', o: 0 }, { n: 'G', t: 'w', k: 'T', o: 0 }, { n: 'G#', t: 'b', k: '6', o: 0 }, { n: 'A', t: 'w', k: 'Y', o: 0 }, { n: 'A#', t: 'b', k: '7', o: 0 }, { n: 'B', t: 'w', k: 'U', o: 0 },
+            { n: 'C', t: 'w', k: 'I', o: 1 }, { n: 'C#', t: 'b', k: '9', o: 1 }, { n: 'D', t: 'w', k: 'O', o: 1 }, { n: 'D#', t: 'b', k: '0', o: 1 }, { n: 'E', t: 'w', k: 'P', o: 1 }, { n: 'F', t: 'w', k: '[', o: 1 }, { n: 'F#', t: 'b', k: '=', o: 1 }, { n: 'G', t: 'w', k: ']', o: 1 }, { n: 'G#', t: 'b', k: 'A', o: 1 }, { n: 'A', t: 'w', k: '\\', o: 1 }, { n: 'A#', t: 'b', k: '', o: 1 }, { n: 'B', t: 'w', k: '', o: 1 }
+        ];
+        const NOTE_FREQUENCIES = { 'C': 261.63, 'C#': 277.18, 'D': 293.66, 'D#': 311.13, 'E': 329.63, 'F': 349.23, 'F#': 369.99, 'G': 392.00, 'G#': 415.30, 'A': 440.00, 'A#': 466.16, 'B': 493.88 };
+
+        // State
+        let AppState = {
+            currentUser: null,
+            folders: [],
+            keys: [],
+            currentFolderId: null,
+            editingCardId: null,
+            quiz: { active: false, cards: [], index: 0, score: 0 },
+            audioCtx: null
+        };
+
+        /* --- AUTHENTICATION --- */
+        const Auth = {
+            getUsers: () => {
+                try { return JSON.parse(SafeStorage.getItem('spartan_users')) || []; }
+                catch(e) { return []; }
+            },
+            
+            register: (name, email, pass) => {
+                let users = Auth.getUsers();
+                if(users.find(u => u.email === email)) return alert("Email đã tồn tại!");
+                
+                const newUser = { id: 'u' + Date.now(), name, email, pass };
+                users.push(newUser);
+                SafeStorage.setItem('spartan_users', JSON.stringify(users));
+                
+                const userData = { folders: [], keys: DEFAULT_KEYS };
+                SafeStorage.setItem('spartan_data_' + newUser.id, JSON.stringify(userData));
+                
+                alert("Đăng ký thành công!");
+                toggleAuth('login');
+            },
+
+            login: (email, pass) => {
+                let users = Auth.getUsers();
+                const user = users.find(u => u.email === email && u.pass === pass);
+                if(user) Auth.loadUserSession(user);
+                else alert("Sai email hoặc mật khẩu!");
+            },
+
+            loadUserSession: (user) => {
+                AppState.currentUser = user;
+                const rawData = SafeStorage.getItem('spartan_data_' + user.id);
+                const userData = rawData ? JSON.parse(rawData) : { folders: [], keys: DEFAULT_KEYS };
+                
+                AppState.folders = userData.folders;
+                AppState.keys = userData.keys || DEFAULT_KEYS;
+                
+                document.getElementById('user-display-name').innerText = user.name;
+                document.getElementById('landing-page').classList.add('hidden');
+                document.getElementById('main-app').classList.remove('hidden');
+                setTimeout(() => document.getElementById('main-app').classList.add('active'), 50);
+                
+                initAudioContext();
+                initSystem();
+            },
+
+            logout: () => {
+                AppState.currentUser = null;
+                document.getElementById('main-app').classList.remove('active');
+                document.getElementById('main-app').classList.add('hidden');
+                document.getElementById('landing-page').classList.remove('hidden');
+                document.getElementById('loginForm').reset();
+            }
+        };
+
+        // --- AUDIO INIT (Robust for Windows/Chrome) ---
+        function initAudioContext() {
+            if (!AppState.audioCtx) {
+                const AudioCtor = window.AudioContext || window.webkitAudioContext;
+                if(AudioCtor) AppState.audioCtx = new AudioCtor();
+            }
+            // Resume on any interaction if suspended
+            if(AppState.audioCtx && AppState.audioCtx.state === 'suspended') {
+                AppState.audioCtx.resume();
+            }
+        }
+        document.addEventListener('click', initAudioContext);
+        document.addEventListener('keydown', initAudioContext);
+
+        // --- UI HANDLERS ---
+        function toggleAuth(mode) {
+            if(mode === 'register') {
+                document.getElementById('login-form-container').classList.add('hidden');
+                document.getElementById('register-form-container').classList.remove('hidden');
+            } else {
+                document.getElementById('register-form-container').classList.add('hidden');
+                document.getElementById('login-form-container').classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', e => {
+            e.preventDefault();
+            Auth.login(document.getElementById('loginEmail').value, document.getElementById('loginPass').value);
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', e => {
+            e.preventDefault();
+            Auth.register(document.getElementById('regName').value, document.getElementById('regEmail').value, document.getElementById('regPass').value);
+        });
+
+        function logout() { Auth.logout(); }
+
+        function saveData() {
+            if(!AppState.currentUser) return;
+            const data = { folders: AppState.folders, keys: AppState.keys };
+            SafeStorage.setItem('spartan_data_' + AppState.currentUser.id, JSON.stringify(data));
+        }
+
+        function resetData() {
+            if(confirm("Reset dữ liệu (chỉ trên trình duyệt này)?")) {
+                SafeStorage.clear();
+                location.reload();
+            }
+        }
+
+        // --- PIANO LOGIC ---
+        function renderPiano() {
+            const container = document.getElementById('piano-keys');
+            container.innerHTML = '';
+            let whiteCount = 0;
+            AppState.keys.forEach((k) => {
+                const div = document.createElement('div');
+                div.className = `key ${k.t === 'w' ? 'white-key' : 'black-key'}`;
+                div.innerHTML = k.k ? `<span style="position:absolute; bottom:5px;">${k.k}</span>` : '';
+                if (k.t === 'b') div.style.left = `${(whiteCount * 44) - 14}px`; else whiteCount++;
+                div.onmousedown = () => playNote(k, div);
+                container.appendChild(div);
+            });
+            container.style.width = `${whiteCount * 44}px`;
+        }
+
+        function playNote(keyObj, element) {
+            if (!AppState.audioCtx) return;
+            element.classList.add('active');
+            const osc = AppState.audioCtx.createOscillator();
+            const gain = AppState.audioCtx.createGain();
+            const baseFreq = NOTE_FREQUENCIES[keyObj.n];
+            const octaveControl = parseInt(document.getElementById('octave-control').value);
+            const freq = baseFreq * Math.pow(2, (octaveControl - 4) + keyObj.o);
+            osc.frequency.value = freq;
+            osc.type = document.getElementById('sound-type').value;
+            osc.connect(gain); gain.connect(AppState.audioCtx.destination);
+            gain.gain.setValueAtTime(0, AppState.audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(document.getElementById('vol-control').value / 100, AppState.audioCtx.currentTime + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.001, AppState.audioCtx.currentTime + 0.5);
+            osc.start(); osc.stop(AppState.audioCtx.currentTime + 0.5);
+            setTimeout(() => element.classList.remove('active'), 200);
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (document.getElementById('piano-view').classList.contains('hidden')) return;
+            if (e.repeat) return;
+            const keyObj = AppState.keys.find(k => k.k === e.key.toUpperCase());
+            if (keyObj) {
+                const index = AppState.keys.indexOf(keyObj);
+                const els = document.querySelectorAll('.key');
+                if(els[index]) playNote(keyObj, els[index]);
+            }
+        });
+
+        function openKeybindModal() {
+            const list = document.getElementById('kb-list');
+            list.innerHTML = AppState.keys.map((k, i) => `
+                <div class="keybind-row"><span>${k.n} (Octave ${k.o})</span><input type="text" class="kb-input" value="${k.k}" oninput="updateKey(${i}, this.value)" maxlength="1"></div>
+            `).join('');
+            openModal('keybindModal');
+        }
+        function updateKey(index, val) { AppState.keys[index].k = val.toUpperCase(); }
+        function saveKeybinds() { saveData(); renderPiano(); closeModal('keybindModal'); }
+
+        // --- FLASHCARD LOGIC ---
+        function renderFolders() {
+            const list = document.getElementById('folder-list');
+            list.innerHTML = AppState.folders.map(f => `
+                <div class="folder-item ${AppState.currentFolderId === f.id ? 'active' : ''}" onclick="selectFolder(${f.id})">
+                    <span>📁 ${f.name}</span><span style="font-size: 0.8rem; opacity: 0.7;">${f.cards.length}</span>
+                </div>
+            `).join('');
+        }
+
+        function selectFolder(id) {
+            AppState.currentFolderId = id;
+            renderFolders(); renderCards();
+            const f = AppState.folders.find(f => f.id === id);
+            document.getElementById('current-folder-title').textContent = f.name;
+            document.getElementById('add-card-btn').disabled = false;
+            document.getElementById('quiz-btn').disabled = f.cards.length === 0;
+            document.getElementById('study-mode').classList.remove('hidden');
+            document.getElementById('quiz-mode').classList.add('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+        }
+
+        function createFolder() {
+            const name = document.getElementById('newFolderName').value;
+            if (name) { AppState.folders.push({ id: Date.now(), name, cards: [] }); saveData(); closeModal('folderModal'); renderFolders(); }
+        }
+
+        function renderCards() {
+            const folder = AppState.folders.find(f => f.id === AppState.currentFolderId);
+            const grid = document.getElementById('card-grid');
+            if (!folder || folder.cards.length === 0) { grid.innerHTML = `<div style="text-align: center; color: #94a3b8; grid-column: 1/-1; padding: 50px;">Chưa có thẻ nào.</div>`; return; }
+            grid.innerHTML = folder.cards.map(c => `
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="card-actions" onclick="event.stopPropagation()">
+                        <button class="btn-icon" onclick="openEditCard(${c.id})"><i class="fa-solid fa-pen"></i></button>
+                        <button class="btn-icon" style="color: #ef4444;" onclick="deleteCard(${c.id})"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    <div class="card-inner"><div class="card-front">${c.q}</div><div class="card-back">${c.a}</div></div>
+                </div>
+            `).join('');
+        }
+
+        function openCardModal() {
+            AppState.editingCardId = null;
+            document.getElementById('cardModalTitle').innerText = "Thêm thẻ mới";
+            document.getElementById('cardQuestion').value = ''; document.getElementById('cardAnswer').value = '';
+            openModal('cardModal');
+        }
+
+        function openEditCard(cardId) {
+            AppState.editingCardId = cardId;
+            const folder = AppState.folders.find(f => f.id === AppState.currentFolderId);
+            const card = folder.cards.find(c => c.id === cardId);
+            document.getElementById('cardModalTitle').innerText = "Chỉnh sửa thẻ";
+            document.getElementById('cardQuestion').value = card.q;
+            document.getElementById('cardAnswer').value = card.a;
+            openModal('cardModal');
+        }
+
+        function saveCard() {
+            const q = document.getElementById('cardQuestion').value;
+            const a = document.getElementById('cardAnswer').value;
+            if (!q || !a) return alert("Nhập đủ thông tin!");
+            const folder = AppState.folders.find(f => f.id === AppState.currentFolderId);
+            if (AppState.editingCardId) {
+                const card = folder.cards.find(c => c.id === AppState.editingCardId);
+                card.q = q; card.a = a;
+            } else {
+                folder.cards.push({ id: Date.now(), q, a });
+            }
+            saveData(); selectFolder(AppState.currentFolderId); closeModal('cardModal');
+        }
+
+        function deleteCard(id) {
+            if(confirm('Xóa thẻ này?')) {
+                const folder = AppState.folders.find(f => f.id === AppState.currentFolderId);
+                folder.cards = folder.cards.filter(c => c.id !== id);
+                saveData(); selectFolder(AppState.currentFolderId);
+            }
+        }
+
+        // Suggestions
+        const qInput = document.getElementById('cardQuestion');
+        const sugBox = document.getElementById('suggestions');
+        qInput.addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            if(val.length < 1) { sugBox.style.display = 'none'; return; }
+            const matches = COMMON_WORDS.filter(w => w.toLowerCase().includes(val));
+            if(matches.length > 0) {
+                sugBox.innerHTML = matches.map(w => `<div class="suggestion-item" onclick="applySug('${w}')">${w}</div>`).join('');
+                sugBox.style.display = 'block';
+            } else sugBox.style.display = 'none';
+        });
+        function applySug(w) { qInput.value = w; sugBox.style.display = 'none'; }
+
+        // --- QUIZ LOGIC ---
+        function startQuiz() {
+            const folder = AppState.folders.find(f => f.id === AppState.currentFolderId);
+            AppState.quiz = { active: true, cards: [...folder.cards].sort(() => Math.random() - 0.5), index: 0, score: 0 };
+            document.getElementById('study-mode').classList.add('hidden');
+            document.getElementById('quiz-mode').classList.remove('hidden');
+            renderQuizCard();
+        }
+
+        function renderQuizCard() {
+            const q = AppState.quiz;
+            document.getElementById('quiz-progress').innerText = `Question ${q.index + 1}/${q.cards.length}`;
+            const cardUI = document.getElementById('quiz-card-face');
+            cardUI.className = 'quiz-card-display';
+            cardUI.innerText = q.cards[q.index].q;
+            document.getElementById('quiz-actions').classList.add('hidden');
+        }
+
+        function revealQuizCard() {
+            const cardUI = document.getElementById('quiz-card-face');
+            cardUI.classList.add('revealed');
+            cardUI.innerText = AppState.quiz.cards[AppState.quiz.index].a;
+            document.getElementById('quiz-actions').classList.remove('hidden');
+        }
+
+        function answerQuiz(isCorrect) {
+            if (isCorrect) AppState.quiz.score++;
+            AppState.quiz.index++;
+            if (AppState.quiz.index >= AppState.quiz.cards.length) {
+                document.getElementById('quiz-mode').classList.add('hidden');
+                document.getElementById('quiz-results').classList.remove('hidden');
+                const percent = Math.round((AppState.quiz.score / AppState.quiz.cards.length) * 100);
+                document.getElementById('final-score').innerText = `${percent}%`;
+            } else { renderQuizCard(); }
+        }
+
+        function exitQuiz() { selectFolder(AppState.currentFolderId); }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('piano-view').classList.add('hidden');
+            document.getElementById('flashcards-view').classList.add('hidden');
+            if (tabName === 'piano') document.getElementById('piano-view').classList.remove('hidden');
+            else document.getElementById('flashcards-view').classList.remove('hidden');
+        }
+        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+        function initSystem() { renderPiano(); renderFolders(); }
+
+    </script>
+</body>
 </html>
