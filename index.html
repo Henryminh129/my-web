@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Henry Marques | Strategic Content Architect</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* --- 1. CORE VARIABLES --- */
@@ -24,761 +21,250 @@
             --card-radius: 16px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-deep);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { 
+            background-color: var(--bg-deep); 
+            color: var(--text-primary); 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden; 
+            line-height: 1.6; 
             letter-spacing: -0.01em;
         }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        .logo,
-        .gallery-title {
-            font-family: 'Space Grotesk', sans-serif;
-            text-wrap: balance;
-        }
+        h1, h2, h3, h4, .logo, .gallery-title { font-family: 'Space Grotesk', sans-serif; text-wrap: balance; }
 
         /* Ambient Background */
         .ambient-light {
-            position: fixed;
-            top: -30%;
-            left: -20%;
-            width: 150%;
-            height: 150%;
-            z-index: -1;
-            pointer-events: none;
-            background:
+            position: fixed; top: -30%; left: -20%; width: 150%; height: 150%; z-index: -1; pointer-events: none;
+            background: 
                 radial-gradient(circle at 20% 50%, rgba(255, 31, 75, 0.04), transparent 60%),
                 radial-gradient(circle at 80% 30%, rgba(59, 130, 246, 0.04), transparent 50%);
-            filter: blur(120px);
-            opacity: 0.8;
+            filter: blur(120px); opacity: 0.8;
         }
 
         /* --- 2. UTILITIES --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section-padding {
-            padding: 120px 0;
-        }
-
-        .text-gradient {
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            font-weight: 700;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .page-section {
-            display: none;
-            opacity: 0;
-            animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        }
-
-        .page-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section-padding { padding: 120px 0; }
+        .text-gradient { background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; font-weight: 700;}
+        .hidden { display: none !important; }
+        
+        .page-section { display: none; opacity: 0; animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .page-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Buttons */
         .btn-main {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 32px;
-            background: var(--text-primary);
-            color: var(--bg-deep);
-            border-radius: 99px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            display: inline-flex; align-items: center; gap: 10px; padding: 12px 32px;
+            background: var(--text-primary); color: var(--bg-deep); border-radius: 99px; font-weight: 700; font-size: 0.95rem;
+            border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
             white-space: nowrap;
         }
-
-        .btn-main:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--glass-border);
-            color: var(--text-secondary);
-            padding: 12px 32px;
-            border-radius: 99px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(255, 255, 255, 0.25); }
+        
+        .btn-outline { 
+            background: transparent; border: 1px solid var(--glass-border); color: var(--text-secondary);
+            padding: 12px 32px; border-radius: 99px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease;
             white-space: nowrap;
         }
-
-        .btn-outline:hover {
-            border-color: var(--blue);
-            color: var(--text-primary);
-            background: rgba(59, 130, 246, 0.1);
-        }
+        .btn-outline:hover { border-color: var(--blue); color: var(--text-primary); background: rgba(59, 130, 246, 0.1); }
 
         .lang-btn {
-            background: transparent;
-            border: 1px solid var(--glass-border);
-            color: var(--text-secondary);
-            padding: 6px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-left: 15px;
-            transition: 0.3s;
+            background: transparent; border: 1px solid var(--glass-border); color: var(--text-secondary);
+            padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.75rem; font-weight: 600; margin-left: 15px; transition: 0.3s;
         }
-
-        .lang-btn:hover {
-            color: white;
-            border-color: var(--text-primary);
-        }
+        .lang-btn:hover { color: white; border-color: var(--text-primary); }
 
         /* --- 3. NAVIGATION --- */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 15px 0;
-            z-index: 999;
-            background: rgba(2, 2, 3, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
+            position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 999;
+            background: rgba(2, 2, 3, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border);
         }
-
-        .nav-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; font-size: 1.1rem; color: white; letter-spacing: -0.02em; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .logo span { color: var(--blue); }
+        .nav-links { display: flex; gap: 8px; background: rgba(255,255,255,0.02); padding: 4px; border-radius: 50px; border: 1px solid var(--glass-border); }
+        .nav-btn { 
+            background: transparent; border: none; color: var(--text-secondary); 
+            padding: 8px 24px; border-radius: 40px; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; 
         }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: white;
-            letter-spacing: -0.02em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo span {
-            color: var(--blue);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 4px;
-            border-radius: 50px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .nav-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            padding: 8px 24px;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-btn.active {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-        }
+        .nav-btn:hover { color: var(--text-primary); }
+        .nav-btn.active { background: rgba(255,255,255,0.1); color: var(--text-primary); }
 
         /* --- 4. HERO SECTION (FIXED CENTERING) --- */
-        .hero {
-            min-height: 95vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            /* Đảm bảo căn giữa theo trục dọc */
-            text-align: center;
-            /* Đảm bảo căn giữa văn bản */
-            padding-top: 80px;
+        .hero { 
+            min-height: 95vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding-top: 80px; 
         }
-
+        
         .avatar-wrapper {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 50px auto;
-            /* Margin auto để căn giữa block */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: relative; width: 180px; height: 180px; 
+            margin: 0 auto 50px auto; 
+            display: flex; justify-content: center; align-items: center;
         }
-
-        .hero-avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+        .hero-avatar { 
+            width: 150px; height: 150px; border-radius: 50%; object-fit: cover; position: relative; z-index: 2;
+            border: 2px solid rgba(255,255,255,0.2);
             animation: reactorGlow 4s infinite alternate ease-in-out;
         }
-
         @keyframes reactorGlow {
-            0% {
-                box-shadow: 0 0 20px rgba(59, 130, 246, 0.2), 0 0 10px rgba(59, 130, 246, 0.1) inset;
-                border-color: rgba(59, 130, 246, 0.4);
-            }
-
-            100% {
-                box-shadow: 0 0 50px rgba(255, 31, 75, 0.5), 0 0 20px rgba(255, 31, 75, 0.2) inset;
-                border-color: rgba(255, 31, 75, 0.6);
-            }
+            0% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2), 0 0 10px rgba(59, 130, 246, 0.1) inset; border-color: rgba(59, 130, 246, 0.4); }
+            100% { box-shadow: 0 0 50px rgba(255, 31, 75, 0.5), 0 0 20px rgba(255, 31, 75, 0.2) inset; border-color: rgba(255, 31, 75, 0.6); }
         }
 
         .pulse-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
+            position: absolute; width: 100%; height: 100%; border-radius: 50%;
             border: 1px solid rgba(255, 255, 255, 0.15);
             animation: ripple 2s infinite cubic-bezier(0, 0.2, 0.8, 1);
         }
-
-        .pulse-ring:nth-child(2) {
-            animation-delay: 1s;
-        }
-
-        .pulse-ring:nth-child(3) {
-            animation-delay: 2s;
-        }
-
+        .pulse-ring:nth-child(2) { animation-delay: 1s; }
+        .pulse-ring:nth-child(3) { animation-delay: 2s; }
         @keyframes ripple {
-            0% {
-                transform: scale(0.8);
-                opacity: 0;
-                border-width: 2px;
-            }
-
-            50% {
-                opacity: 0.5;
-                border-color: var(--blue);
-            }
-
-            100% {
-                transform: scale(1.6);
-                opacity: 0;
-                border-width: 0px;
-            }
+            0% { transform: scale(0.8); opacity: 0; border-width: 2px; }
+            50% { opacity: 0.5; border-color: var(--blue); }
+            100% { transform: scale(1.6); opacity: 0; border-width: 0px; }
         }
 
         .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: rgba(59, 130, 246, 0.08);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            color: var(--blue);
-            margin-bottom: 30px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+            display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+            background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 20px; font-size: 0.75rem; color: var(--blue); margin-bottom: 30px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+        }
+        .status-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; box-shadow: 0 0 10px var(--blue); animation: blink 2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .hero h1 { 
+            font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 700; line-height: 1.1; 
+            margin: 0 auto 25px auto; 
+            letter-spacing: -0.03em; max-width: 900px;
+        }
+        .hero p { 
+            font-size: 1.25rem; color: var(--text-secondary); 
+            max-width: 700px; 
+            margin: 0 auto 40px auto; 
+            font-weight: 400; 
         }
 
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--blue);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--blue);
-            animation: blink 2s infinite;
+        .inspirations { margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--glass-border); display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .insp-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #555; font-weight: 600; }
+        .insp-items { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .insp-tag { 
+            background: rgba(255,255,255,0.02); padding: 8px 18px; border-radius: 100px; font-size: 0.85rem; color: var(--text-secondary); 
+            border: 1px solid var(--glass-border); transition: 0.3s; cursor: default;
         }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.4;
-            }
-        }
-
-        /* GIA CỐ CĂN GIỮA CHO CHỮ */
-        .hero h1 {
-            font-size: clamp(3.5rem, 7vw, 5.5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin: 0 auto 25px auto;
-            /* Căn giữa block */
-            letter-spacing: -0.03em;
-            max-width: 900px;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 40px auto;
-            /* Căn giữa block */
-            font-weight: 400;
-        }
-
-        .inspirations {
-            margin-top: 80px;
-            padding-top: 30px;
-            border-top: 1px solid var(--glass-border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .insp-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #555;
-            font-weight: 600;
-        }
-
-        .insp-items {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .insp-tag {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            border: 1px solid var(--glass-border);
-            transition: 0.3s;
-            cursor: default;
-        }
-
-        .insp-tag:hover {
-            border-color: var(--text-primary);
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.05);
-        }
+        .insp-tag:hover { border-color: var(--text-primary); color: var(--text-primary); background: rgba(255,255,255,0.05); }
 
         /* --- 5. SECTIONS --- */
-        .trusted-section {
-            border-bottom: 1px solid var(--glass-border);
-            padding: 40px 0;
-            background: rgba(255, 255, 255, 0.005);
-            margin-bottom: 80px;
-        }
+        .trusted-section { border-bottom: 1px solid var(--glass-border); padding: 40px 0; background: rgba(255,255,255,0.005); margin-bottom: 80px; }
+        .trusted-logos { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; opacity: 0.5; transition: 0.3s; }
+        .trusted-logos:hover { opacity: 1; }
+        .t-item { font-weight: 600; color: white; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; letter-spacing: -0.02em; }
+        .t-item span { font-weight: 400; color: #666; font-size: 0.9rem; }
 
-        .trusted-logos {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            opacity: 0.5;
-            transition: 0.3s;
-        }
+        .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 80px; align-items: start; }
+        .bio-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--card-radius); padding: 50px; position: sticky; top: 120px; }
+        .timeline-container { border-left: 1px solid var(--glass-border); padding-left: 40px; margin-left: 15px; }
+        .timeline-item { position: relative; margin-bottom: 60px; }
+        .dot { position: absolute; left: -45px; top: 8px; width: 10px; height: 10px; background: var(--bg-deep); border: 2px solid var(--text-secondary); border-radius: 50%; transition: 0.3s; }
+        .timeline-item:hover .dot { border-color: var(--blue); background: var(--blue); box-shadow: 0 0 10px var(--blue); }
+        .t-date { color: var(--text-secondary); font-weight: 500; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 8px; display: block; letter-spacing: 0.05em; }
+        .t-desc { color: var(--text-secondary); margin-top: 15px; font-size: 1rem; line-height: 1.6; }
 
-        .trusted-logos:hover {
-            opacity: 1;
+        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .tilt-card { 
+            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--card-radius); padding: 40px; 
+            transition: all 0.3s ease; transform-style: preserve-3d; perspective: 1000px; height: 100%;
         }
+        .tilt-card:hover { transform: translateY(-5px); }
+        .tilt-card.c-crimson:hover { border-color: var(--crimson); box-shadow: 0 0 30px rgba(255, 31, 75, 0.15); }
+        .tilt-card.c-blue:hover { border-color: var(--blue); box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); }
+        .tilt-card.c-mixed:hover { border-image: var(--gradient-text) 1; box-shadow: 0 0 30px rgba(150, 100, 255, 0.15); }
+        .card-inner { transform: translateZ(30px); }
+        .card-icon { font-size: 2.5rem; margin-bottom: 25px; display: inline-block; }
 
-        .t-item {
-            font-weight: 600;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-            letter-spacing: -0.02em;
+        /* --- 8. SHOWCASE GRID (RESPONSIVE FIX) --- */
+        .showcase-header { text-align: center; padding: 100px 0 60px; }
+        .filter-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 60px; }
+        
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 40px 30px; 
+            padding-bottom: 100px; 
         }
-
-        .t-item span {
-            font-weight: 400;
-            color: #666;
-            font-size: 0.9rem;
+        
+        .gallery-card { 
+            background: transparent; transition: 0.3s ease; cursor: pointer; 
+            display: flex; flex-direction: column; 
+            align-items: center; text-align: center;
         }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 80px;
-            align-items: start;
-        }
-
-        .bio-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--card-radius);
-            padding: 50px;
-            position: sticky;
-            top: 120px;
-        }
-
-        .timeline-container {
-            border-left: 1px solid var(--glass-border);
-            padding-left: 40px;
-            margin-left: 15px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 60px;
-        }
-
-        .dot {
-            position: absolute;
-            left: -45px;
-            top: 8px;
-            width: 10px;
-            height: 10px;
-            background: var(--bg-deep);
-            border: 2px solid var(--text-secondary);
-            border-radius: 50%;
-            transition: 0.3s;
-        }
-
-        .timeline-item:hover .dot {
-            border-color: var(--blue);
-            background: var(--blue);
-            box-shadow: 0 0 10px var(--blue);
-        }
-
-        .t-date {
-            color: var(--text-secondary);
-            font-weight: 500;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            display: block;
-            letter-spacing: 0.05em;
-        }
-
-        .t-desc {
-            color: var(--text-secondary);
-            margin-top: 15px;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .tilt-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--card-radius);
-            padding: 40px;
-            transition: all 0.3s ease;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            height: 100%;
-        }
-
-        .tilt-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .tilt-card.c-crimson:hover {
-            border-color: var(--crimson);
-            box-shadow: 0 0 30px rgba(255, 31, 75, 0.15);
-        }
-
-        .tilt-card.c-blue:hover {
-            border-color: var(--blue);
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
-        }
-
-        .tilt-card.c-mixed:hover {
-            border-image: var(--gradient-text) 1;
-            box-shadow: 0 0 30px rgba(150, 100, 255, 0.15);
-        }
-
-        .card-inner {
-            transform: translateZ(30px);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            display: inline-block;
-        }
-
-        /* --- 8. SHOWCASE GRID (FIXED CENTER ALIGNMENT) --- */
-        .showcase-header {
-            text-align: center;
-            padding: 100px 0 60px;
-        }
-
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 60px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px 30px;
-            padding-bottom: 100px;
-        }
-
-        .gallery-card {
-            background: transparent;
-            transition: 0.3s ease;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            /* Căn giữa nội dung card */
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .gallery-card.short {
-            grid-column: span 1;
-        }
-
-        .gallery-card.long {
-            grid-column: span 2;
-        }
+        .gallery-card:hover { transform: translateY(-5px); }
+        
+        .gallery-card.short { grid-column: span 1; }
+        .gallery-card.long { grid-column: span 2; } 
 
         .thumb-wrapper {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            margin-bottom: 15px;
-            width: 100%;
+            position: relative; border-radius: 16px; overflow: hidden; 
+            border: 1px solid var(--glass-border); margin-bottom: 15px; width: 100%;
         }
+        .gallery-card.short .thumb-wrapper { aspect-ratio: 9/16; }
+        .gallery-card.long .thumb-wrapper { aspect-ratio: 16/9; }
 
-        .gallery-card.short .thumb-wrapper {
-            aspect-ratio: 9/16;
+        .thumb { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; opacity: 0.7; }
+        .gallery-card:hover .thumb { transform: scale(1.05); opacity: 1; }
+        
+        .meta-data { padding: 0 5px; width: 100%; }
+        .gallery-title { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 5px; line-height: 1.3; }
+        .gallery-desc { 
+            font-size: 0.85rem; color: var(--text-secondary); font-family: 'Inter'; 
+            display: flex; align-items: center; justify-content: center; gap: 8px; 
         }
+        .gallery-desc i { color: var(--blue); font-size: 0.7rem; }
 
-        .gallery-card.long .thumb-wrapper {
-            aspect-ratio: 16/9;
+        .play-overlay { 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+            width: 50px; height: 50px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            border: 1px solid rgba(255,255,255,0.2); opacity: 0; transition: 0.3s;
         }
+        .gallery-card:hover .play-overlay { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
 
-        .thumb {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-            opacity: 0.7;
-        }
+        /* --- 9. BOOKING --- */
+        .split-screen { display: flex; min-height: 85vh; padding-top: 100px; gap: 60px; }
+        .left-panel { flex: 1; padding: 20px 0; display: flex; flex-direction: column; justify-content: center; }
+        .right-panel { flex: 1; background: #111; border-radius: var(--card-radius); overflow: hidden; border: 1px solid var(--glass-border); height: 700px; }
+        .booking-list li { margin-bottom: 20px; display: flex; align-items: center; gap: 15px; color: var(--text-secondary); font-size: 1.1rem; font-weight: 500; transition: 0.3s; }
+        .booking-list li:hover { color: var(--text-primary); transform: translateX(10px); }
+        .booking-list li::before { content: '▹'; color: var(--blue); font-size: 1.5rem; line-height: 1; }
 
-        .gallery-card:hover .thumb {
-            transform: scale(1.05);
-            opacity: 1;
-        }
-
-        .meta-data {
-            padding: 0 5px;
-            width: 100%;
-        }
-
-        .gallery-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 5px;
-            line-height: 1.3;
-        }
-
-        .gallery-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            font-family: 'Inter';
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .gallery-desc i {
-            color: var(--blue);
-            font-size: 0.7rem;
-        }
-
-        .play-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            opacity: 0;
-            transition: 0.3s;
-        }
-
-        .gallery-card:hover .play-overlay {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        /* --- 9. BOOKING & RESPONSIVE --- */
-        .split-screen {
-            display: flex;
-            min-height: 85vh;
-            padding-top: 100px;
-            gap: 60px;
-        }
-
-        .left-panel {
-            flex: 1;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .right-panel {
-            flex: 1;
-            background: #111;
-            border-radius: var(--card-radius);
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            height: 700px;
-        }
-
-        .booking-list li {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .booking-list li:hover {
-            color: var(--text-primary);
-            transform: translateX(10px);
-        }
-
-        .booking-list li::before {
-            content: '▹';
-            color: var(--blue);
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
+        /* RESPONSIVE (MOBILE PERFECT) */
         @media (max-width: 1024px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .gallery-card.short {
-                grid-column: span 1;
-            }
-
-            .gallery-card.long {
-                grid-column: span 2;
-            }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-card.short { grid-column: span 1; }
+            .gallery-card.long { grid-column: span 2; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .bio-card { position: relative; top: 0; }
+            .timeline-container { margin-left: 0; }
         }
 
         @media (max-width: 900px) {
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-
-            .about-grid,
-            .cards-grid,
-            .split-screen {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .right-panel {
-                height: 600px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-card.short,
-            .gallery-card.long {
-                grid-column: span 1;
-            }
+            .hero h1 { font-size: 2.8rem; }
+            .cards-grid, .split-screen { grid-template-columns: 1fr; gap: 40px; }
+            .nav-links { display: none; }
+            .right-panel { height: 600px; }
+            /* Mobile Grid: 1 cột, video full width */
+            .gallery-grid { grid-template-columns: 1fr; gap: 40px; }
+            .gallery-card.short, .gallery-card.long { grid-column: span 1; }
+            /* Avatar nhỏ hơn trên mobile */
+            .avatar-wrapper { width: 140px; height: 140px; margin-bottom: 30px; }
+            .hero-avatar { width: 120px; height: 120px; }
+            .section-padding { padding: 80px 0; }
         }
     </style>
 </head>
-
 <body>
 
     <div class="ambient-light"></div>
@@ -806,7 +292,7 @@
                 <div class="status-badge">
                     <div class="status-dot"></div> <span data-key="status">Open for High-Ticket Projects</span>
                 </div>
-
+                
                 <div class="avatar-wrapper">
                     <div class="pulse-ring"></div>
                     <div class="pulse-ring"></div>
@@ -814,25 +300,20 @@
                     <img src="try.PNG" class="hero-avatar" alt="Henry Marques">
                 </div>
 
-                <h1 data-key="hero_title">The Strategic <br><span class="text-gradient">Video Architect</span>
-                </h1>
-                <p data-key="hero_desc">I don't sell videos. I engineer <strong>Video & Content Systems</strong> that
-                    allow
-                    Founders & Creators to dominate High-Ticket markets with authority.</p>
-
+                <h1 data-key="hero_title">The Strategic <br><span class="text-gradient">Content Architect</span></h1>
+                <p data-key="hero_desc">I don't sell videos. I engineer <strong>Content Systems</strong> that allow Founders & Creators to dominate High-Ticket markets with authority.</p>
+                
                 <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px;">
-                    <button class="btn-main" onclick="navigateTo('showcase')" data-key="btn_view">Explore
-                        Archive</button>
-                    <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView()"
-                        data-key="btn_philosophy">My Philosophy</button>
+                    <button class="btn-main" onclick="navigateTo('showcase')" data-key="btn_view">Explore Archive</button>
+                    <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView()" data-key="btn_philosophy">My Philosophy</button>
                 </div>
 
                 <div class="inspirations">
-                    <span class="insp-label" data-key="insp_label">Built on the shoulders of giants, Inspired by</span>
+                    <span class="insp-label" data-key="insp_label">Built on the shoulders of giants</span>
                     <div class="insp-items">
                         <span class="insp-tag">Trey Gustafson (Business)</span>
                         <span class="insp-tag">Ali Abdaal (Systems)</span>
-                        <span class="insp-tag">Kevin Mach (Visuals Mindset)</span>
+                        <span class="insp-tag">Kevin Mach (Visuals)</span>
                         <span class="insp-tag">Devin Jatho (Strategy)</span>
                         <span class="insp-tag">Iman Gadzhi (Psychology)</span>
                     </div>
@@ -842,14 +323,12 @@
 
         <section class="trusted-section">
             <div class="container">
-                <p style="text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #666; margin-bottom: 30px;"
-                    data-key="trusted_label">Strategic Impact Delivered (collaborated with <strong>Conterine</strong>)
-                    For</p>
+                <p style="text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #666; margin-bottom: 30px;" data-key="trusted_label">Strategic Impact Delivered For</p>
                 <div class="trusted-logos">
                     <div class="t-item">🎙️ VSTN <span>Podcast</span></div>
-                    <div class="t-item">Finn Dollimore <span>Expert Website Designer</span></div>
-                    <div class="t-item">Micky Dollimore <span>Map Developer & Consultant</span></div>
-                    <div class="t-item">Aliena <span>CEO of Fast Track Ui</span></div>
+                    <div class="t-item">Finn Dollimore <span>Creator</span></div>
+                    <div class="t-item">Micky Dollimore <span>Lead SE</span></div>
+                    <div class="t-item">Aliena <span>Brand</span></div>
                 </div>
             </div>
         </section>
@@ -857,56 +336,39 @@
         <section class="section-padding container" id="about">
             <div class="about-grid">
                 <div class="bio-card">
-                    <h3 style="font-size: 2rem; margin-bottom: 20px; line-height: 1.2;" data-key="bio_title">The System
-                        <br>Over Chaos.
-                    </h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc1">Real name
-                        <strong>Henry Marques (Lý Minh Phúc)</strong>. I realized early that in the High-Ticket world,
-                        "beautiful
-                        editing" is a commodity. However, <strong>Predictable results</strong> are assets.
-                    </p>
-                    <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc2">While others
-                        focus on flashy transitions, I obsess over the <strong>Workflow</strong>: How to produce premium
-                        quality at scale, retain attention, and convert viewers into high-value leads.</p>
+                    <h3 style="font-size: 2rem; margin-bottom: 20px; line-height: 1.2;" data-key="bio_title">The System <br>Over Chaos.</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc1">Real name <strong>Henry Marques (Lý Minh Phúc)</strong>. I realized early that in the High-Ticket world, "beautiful editing" is a commodity. <strong>Predictable results</strong> are assets.</p>
+                    <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc2">While others focus on flashy transitions, I obsess over the <strong>Workflow</strong>: How to produce premium quality at scale, retain attention, and convert viewers into high-value leads.</p>
                     <hr style="border:0; border-top:1px solid var(--glass-border); margin: 30px 0;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <h4 style="color: white; margin-bottom: 5px;" data-key="role_title">Current Focus</h4>
-                            <p style="color: #999; font-size: 0.9rem;" data-key="role_desc">Building Filmoty Agency
-                                (distinctive, innovative).</p>
+                            <p style="color: #999; font-size: 0.9rem;" data-key="role_desc">Building Filmoty Agency.</p>
                         </div>
                         <i class="fa-solid fa-arrow-trend-up" style="color: var(--blue); font-size: 1.5rem;"></i>
                     </div>
                 </div>
 
                 <div>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 50px; padding-left: 40px;"><span
-                            data-key="journey_title">The</span> <span class="text-gradient">Evolution</span></h2>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 50px; padding-left: 40px;"><span data-key="journey_title">The</span> <span class="text-gradient">Evolution</span></h2>
                     <div class="timeline-container">
                         <div class="timeline-item">
                             <div class="dot"></div>
                             <span class="t-date">2025 (Q3)</span>
                             <h3>CPO & Production Lead</h3>
-                            <div class="t-desc" data-key="exp_1"><strong>At Conterine.</strong> Architected the
-                                post-production workflow. Managed quality control for high-volume deliverables and
-                                scaled the team without breaking the system. Besides, establishing video style is my
-                                responsiblity when it comes to new potential clients.</div>
+                            <div class="t-desc" data-key="exp_1"><strong>At Conterine.</strong> Architected the post-production workflow. Managed quality control for high-volume deliverables and scaled the team without breaking the system.</div>
                         </div>
                         <div class="timeline-item">
                             <div class="dot"></div>
                             <span class="t-date">2025 (Q1-Q2)</span>
-                            <h3>Junior - Senior Strategic Editor</h3>
-                            <div class="t-desc" data-key="exp_2">Mastered retention mechanics. Worked directly with
-                                international creators to decode the algorithm of "High-Ticket Attention". Clients:
-                                VSTN, Finn, Aliena</div>
+                            <h3>Strategic Editor</h3>
+                            <div class="t-desc" data-key="exp_2">Mastered retention mechanics. Worked directly with international creators to decode the algorithm of "High-Ticket Attention". Clients: VSTN, Finn, Aliena.</div>
                         </div>
                         <div class="timeline-item">
                             <div class="dot"></div>
                             <span class="t-date">Present</span>
-                            <h3>CEO - Founder Filmoty Agency</h3>
-                            <div class="t-desc" data-key="exp_3">Started at a sustainable Agency/Startup environment
-                                with desire vision. Learned the hard way that talent without process leads to burnout.
-                            </div>
+                            <h3>CEO - Filmoty Agency</h3>
+                            <div class="t-desc" data-key="exp_3">Building a sustainable Agency environment with a clear vision. Learned that talent without process leads to burnout.</div>
                         </div>
                     </div>
                 </div>
@@ -916,57 +378,45 @@
         <section class="section-padding container">
             <div style="text-align: center; margin-bottom: 60px;">
                 <h2 style="font-size: 3rem;">Why <span class="text-gradient">Architect?</span></h2>
-                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;" data-key="why_subtitle">
-                    Because hope is not a strategy. You need an engineered approach.</p>
+                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;" data-key="why_subtitle">Because hope is not a strategy. You need an engineered approach.</p>
             </div>
             <div class="cards-grid">
                 <div class="tilt-card c-crimson" data-tilt>
                     <div class="card-inner">
                         <div class="card-icon" style="color: var(--crimson);">🚀</div>
                         <h3>Strategic Partner</h3>
-                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_1">I don't just take
-                            orders. I consult on concepts, framing, and distribution to maximize business impact, not
-                            just views.</p>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_1">I don't just take orders. I consult on concepts, framing, and distribution to maximize business impact.</p>
                     </div>
                 </div>
                 <div class="tilt-card c-blue" data-tilt>
                     <div class="card-inner">
                         <div class="card-icon" style="color: var(--blue);">🧠</div>
                         <h3>CPO Mindset</h3>
-                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_2">My management
-                            background means I build lean, efficient production pipelines that respect your time and
-                            resources.</p>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_2">My management background means I build lean, efficient production pipelines that respect your time.</p>
                     </div>
                 </div>
                 <div class="tilt-card c-mixed" data-tilt>
                     <div class="card-inner">
-                        <div class="card-icon"
-                            style="background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                            💎</div>
+                        <div class="card-icon" style="background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">💎</div>
                         <h3>Premium Standard</h3>
-                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_3">Pixel-perfect
-                            audio/visuals designed to position you as an undisputed authority, justifying premium
-                            pricing with optimized retention of your personality in brand-awareness.</p>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_3">Pixel-perfect audio/visuals designed to position you as an undisputed authority.</p>
                     </div>
                 </div>
             </div>
         </section>
+
         <section style="text-align: center; padding: 120px 0; border-top: 1px solid var(--glass-border);">
-            <h2 style="font-size: 3rem; margin-bottom: 20px; line-height: 1.1;" data-key="ready_title">Stop
-                Guessing.<br>Start Building.</h2>
-            <button class="btn-main" onclick="navigateTo('booking')" data-key="btn_strategy_cta">Book Discovery
-                Call</button>
-            <div style="margin-top: 60px; color: #444; font-size: 0.8rem; letter-spacing: 1px;">© 2025 Filmoty Agency.
-                Engineered by Henry Marques.</div>
+            <h2 style="font-size: 3rem; margin-bottom: 20px; line-height: 1.1;" data-key="ready_title">Stop Guessing.<br>Start Building.</h2>
+            <button class="btn-main" onclick="navigateTo('booking')" data-key="btn_strategy_cta">Book Discovery Call</button>
+            <div style="margin-top: 60px; color: #444; font-size: 0.8rem; letter-spacing: 1px;">© 2025 Filmoty Agency. Engineered by Henry Marques.</div>
         </section>
     </div>
 
     <div id="showcase" class="page-section">
         <div class="container showcase-header">
             <h1 style="font-size: 3.5rem; margin-bottom: 20px;">The <span class="text-gradient">Archive</span></h1>
-            <p style="color: var(--text-secondary); margin-bottom: 40px;" data-key="archive_desc">Collection of 30+
-                executed strategic projects.</p>
-
+            <p style="color: var(--text-secondary); margin-bottom: 40px;" data-key="archive_desc">Collection of 30+ executed strategic projects.</p>
+            
             <div class="filter-container">
                 <button class="btn-outline" onclick="filterGallery('all')">All Work</button>
                 <button class="btn-outline" onclick="filterGallery('short')">Shorts</button>
@@ -974,382 +424,37 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="henry.marq_ues_1737942969_3554445382095110426_72149056412.mp4" controls
-                            class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Before & After Showcase</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i>Trail Edits</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/Z3uH0LFWdXE"
-                            title="JASON EDIT SHOWCASE" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Before & After Showcase</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-graduation-cap"></i> Trail Edits</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/P0ZV2kXeZ78"
-                            title="henry marq ues 1737907743 3554150035212822395 72149056412" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Before & After Showcase</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-handshake"></i> Trail Edits</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/jK3AqJy1sPE"
-                            title="henry marq ues 1737907799 3554150461697972015 72149056412" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Before & After Showcase</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-robot"></i>Trail Edits</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/sTi8MvFw3bM"
-                            title="Ngưỡng vọng lên quốc kỳ đỏ thắm, lòng những người con dâng trào niềm tự hào"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-brain"></i>1M Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/0kgboYEC2MY"
-                            title="Những đứa trẻ đã từng xuất chúng     Cậu đã nghe tập podcast này chưa"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-video"></i>500K Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/qiaIVpr7AL0"
-                            title="Vì sao có những người giỏi nhưng mãi không phất lên được"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-box-open"></i>100K Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="3.Shorts.mp4" controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-star"></i>Unpost (project Archive)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="4.Shorts.mp4" controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-calendar-day"></i> Unpost (project Archive)
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <video
-                            src="-Đến sau cùng, nhiều người vẫn giỏi đưa ra lí do để rời xa hơn là cùng nhau cố gắng...-.mp4"
-                            controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-comments"></i>110K Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="VÌ SAO THẾ NHỈ Podcast visaothenhi TikTok.mp4" controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-lightbulb"></i>300K Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/d4Po2a3ih4w"
-                            title="VÌ SAO THẾ NHỈ Podcast on TikTok" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-check-double"></i> 200K Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/SZ1TCIUhexQ" title="Short1"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Micky Dollimore</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-arrow-right-arrow-left"></i> Unpost (project
-                            Archive)
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/7iLU196HoC4" title="short4"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Micky Dollimore</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-newspaper"></i> Unpost (project Archive)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+15"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Team Spotlight</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-users"></i> Culture</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+16"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Workflow Hack</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-gears"></i> Productivity</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+17"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Book Recommendation</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-book"></i> Knowledge</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+18"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Motivation Quote</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-quote-right"></i> Inspiration</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+19"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Quick Tutorial</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-laptop-code"></i> How-to</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+20"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Final Call to Action</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-bullhorn"></i> Sales</div>
-                    </div>
-                </div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+1" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">SaaS Launch</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Strategy</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+2" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Edu-Tech</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Authority</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+3" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Marketing</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Funnel</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+4" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">AI Tool</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Tech</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+5" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Mindset</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Motivation</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+6" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">BTS</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Process</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+7" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Product</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> E-com</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+8" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Testimonial</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Social Proof</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+9" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Event</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Recap</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+10" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Q&A</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Engage</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+11" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Tip</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Value</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+12" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Myth</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Education</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+13" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Transformation</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Results</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+14" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">News</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Update</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+15" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Team</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Culture</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+16" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Hack</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Productivity</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+17" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Book</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Knowledge</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+18" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Quote</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Inspire</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+19" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Tutorial</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> How-to</div></div></div>
+                <div class="gallery-card short gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+20" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">CTA</div><div class="gallery-desc"><i class="fa-solid fa-bolt"></i> Sales</div></div></div>
 
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="Figma Component (Revision-3).mov" controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Aliena Cai] How I Use Figma Component</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-film"></i>Editing Video Project</div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="How I use Figma Components as a Pro Web Designer.mp4" controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Finn Dollimore] How I use Figma Components as a Pro Web Designer
-                        </div>
-                        <div class="gallery-desc"><i class="fa-solid fa-chart-line"></i> Editing Video Project</div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="Day in the life of a Nomadic Software Developer - Malaysia.mp4" controls
-                            class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Micky Dollimore]: Day in the life of a Nomadic Software Developer -
-                            Malaysia</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-chalkboard-user"></i> Editing Video Project
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <video
-                            src="How -top- web design agencies build sites in 2025 (step-by-step Figma to Wix Studio tutorial).mp4"
-                            controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Aliena Cai]: How *top* web design agencies build sites in 2025
-                            (step-by-step Figma to Wix Studio tutorial)</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-video"></i>Editing Video Project</div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="What is a Tileset- - Mapbox.mp4" controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Micky Dollimore]: What is a Tilset - Mapbox</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-magnifying-glass-chart"></i>Editing Video
-                            Project
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="5 MUST HAVE features for Real Estate Maps.mp4" controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Micky Dollimore]: 5 MUST HAVE features for Real Estate Maps</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-presentation-screen"></i>Editing Video Project
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="Apple Business Essential Ads ( Alight Motion )_1 (1).mp4" controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Apple Business Essential Ads ( Alight Motion )</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-microphone-lines"></i>Editing Challenge Recover
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="Apple Business Essential Ads ( Alight Motion )_1 (1).mp4" controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Software Demo & Walkthrough</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-laptop"></i> Tech Tutorial • 20m</div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <video src="WhatsApp_Intro (Trail Video).mp4" controls class="thumb">
-                            <source src="movie.mp4" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                        </video>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">WhapsApp_Intro</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-user-tie"></i>Trail Editing Video</div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="1840" height="1035" src="https://www.youtube.com/embed/nQr0ok-Zpfw"
-                            title="KHONG MOT MINH REMAKE Changed My Life in 1 Min" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Khong Mot Minh Songs Animation (Trend)</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-flag-checkered"></i> Editing Challenge Recover
-                        </div>
-                    </div>
-                </div>
+                <div class="gallery-card long gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+1" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Full Podcast</div><div class="gallery-desc"><i class="fa-solid fa-film"></i> 45m</div></div></div>
+                <div class="gallery-card long gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+2" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">VSL</div><div class="gallery-desc"><i class="fa-solid fa-film"></i> 12m</div></div></div>
+                <div class="gallery-card long gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+3" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Course</div><div class="gallery-desc"><i class="fa-solid fa-film"></i> 25m</div></div></div>
+                <div class="gallery-card long gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+4" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Documentary</div><div class="gallery-desc"><i class="fa-solid fa-film"></i> 18m</div></div></div>
+                <div class="gallery-card long gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+5" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Case Study</div><div class="gallery-desc"><i class="fa-solid fa-film"></i> 15m</div></div></div>
+                <div class="gallery-card long gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+6" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Webinar</div><div class="gallery-desc"><i class="fa-solid fa-film"></i> 60m</div></div></div>
+                <div class="gallery-card long gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+7" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Keynote</div><div class="gallery-desc"><i class="fa-solid fa-film"></i> 10m</div></div></div>
+                <div class="gallery-card long gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+8" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Demo</div><div class="gallery-desc"><i class="fa-solid fa-film"></i> 20m</div></div></div>
+                <div class="gallery-card long gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+9" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Interview</div><div class="gallery-desc"><i class="fa-solid fa-film"></i> 30m</div></div></div>
+                <div class="gallery-card long gallery-item"><div class="thumb-wrapper"><img src="https://via.placeholder.com/800x450/111/fff?text=Long+10" class="thumb"><div class="play-overlay">▶</div></div><div class="meta-data"><div class="gallery-title">Vlog</div><div class="gallery-desc"><i class="fa-solid fa-film"></i> 14m</div></div></div>
             </div>
         </div>
     </div>
@@ -1357,16 +462,11 @@
     <div id="booking" class="page-section">
         <div class="container split-screen">
             <div class="left-panel">
-                <span
-                    style="color: var(--blue); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem;"
-                    data-key="booking_badge">Strategy Session</span>
-                <h1 style="font-size: 3.5rem; margin-top: 15px; line-height: 1.1;" data-key="booking_title">Let's
-                    Architect Your <br><span class="text-gradient">Revenue</span></h1>
-                <p style="color: var(--text-secondary); font-size: 1.15rem; margin-top: 30px; font-weight: 400; max-width: 500px;"
-                    data-key="booking_desc">A 1:1 consultation (60 mins) to audit your current content bottleneck and
-                    define a roadmap for authority & scale.</p>
+                <span style="color: var(--blue); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem;" data-key="booking_badge">Strategy Session</span>
+                <h1 style="font-size: 3.5rem; margin-top: 15px; line-height: 1.1;" data-key="booking_title">Let's Architect Your <br><span class="text-gradient">Revenue</span></h1>
+                <p style="color: var(--text-secondary); font-size: 1.15rem; margin-top: 30px; font-weight: 400; max-width: 500px;" data-key="booking_desc">A 1:1 consultation (30 mins) to audit your current content bottleneck and define a roadmap for authority & scale.</p>
                 <ul class="booking-list" style="margin-top: 50px; list-style: none;">
-                    <li data-key="list_1">Audit: Branding & Our Feasible Support</li>
+                    <li data-key="list_1">Audit: Channel & Competitor Analysis</li>
                     <li data-key="list_2">Strategy: High-Ticket Concept Direction</li>
                     <li data-key="list_3">System: Production-House Workflow Design</li>
                 </ul>
@@ -1374,10 +474,8 @@
                     <p style="color: #666; font-size: 0.9rem;">Powered by <strong>FILMOTY AGENCY</strong></p>
                 </div>
             </div>
-            <div class="right-panel" style="background-color: #ffffff">
-                <iframe
-                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07-OIRo9PlSFREUpOnBTJ4EoJLt9MQ-r3kqjFs-rTSdZBT5_mXAvjPRajfayOUwAw8FmcsRXS2?gv=true"
-                    style="border: 0" width="100%" height="600" frameborder="0 "></iframe>
+            <div class="right-panel">
+                <iframe src="https://calendar.google.com/calendar/embed?src=henrymarques190%40gmail.com&ctz=Asia%2FHo_Chi_Minh" style="border: 0; width: 100%; height: 100%;" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
     </div>
@@ -1387,16 +485,16 @@
         const translations = {
             en: {
                 nav_home: "Story", nav_showcase: "Archive", nav_booking: "Contact", btn_book_nav: "Book Strategy",
-                hero_title: "The Strategic <br><span class='text-gradient'>Video Architect</span>",
-                hero_desc: "I don't sell videos. I engineer <strong>Video & Content Systems</strong> that allow Founders & Creators to dominate High-Ticket markets with authority.",
-                btn_view: "Explore Archive", btn_philosophy: "My Philosophy", insp_label: "Built on the shoulders of giants, , Inspired by",
-                trusted_label: "Strategic Impact Delivered (collaborated with <strong>Conterine</strong>) For",
+                hero_title: "The Strategic <br><span class='text-gradient'>Content Architect</span>",
+                hero_desc: "I don't sell videos. I engineer <strong>Content Systems</strong> that allow Founders & Creators to dominate High-Ticket markets with authority.",
+                btn_view: "Explore Archive", btn_philosophy: "My Philosophy", insp_label: "Built on the shoulders of giants",
+                trusted_label: "Strategic Impact Delivered For",
                 bio_title: "The System <br>Over Chaos.",
-                bio_desc1: "Real name <strong>Henry Marques (Lý Minh Phúc)</strong>. I realized early that in the High-Ticket world, \"beautiful editing\" is a commodity. However, <strong>Predictable results</strong> are assets.",
+                bio_desc1: "Real name <strong>Henry Marques (Lý Minh Phúc)</strong>. I realized early that in the High-Ticket world, \"beautiful editing\" is a commodity. <strong>Predictable results</strong> are assets.",
                 bio_desc2: "While others focus on flashy transitions, I obsess over the <strong>Workflow</strong>: How to produce premium quality at scale, retain attention, and convert viewers into high-value leads.",
                 role_title: "Current Focus", role_desc: "Building Filmoty Agency.",
                 journey_title: "The",
-                exp_1: "<strong>At Conterine.</strong> Architected the post-production workflow. Managed quality control for high-volume deliverables and scaled the team without breaking the system. Besides, establishing video style is my responsiblity when it comes to new potential clients.",
+                exp_1: "<strong>At Conterine.</strong> Architected the post-production workflow. Managed quality control for high-volume deliverables and scaled the team without breaking the system.",
                 exp_2: "Mastered retention mechanics. Worked directly with international creators to decode the algorithm of \"High-Ticket Attention\". Clients: VSTN Podcast, Finn Dollimore, Micky Dollimore, Aliena Cai.",
                 exp_3: "Start at a sustainable Agency/Startup environment with desire vision. Learned the hard way that talent without process leads to burnout. ",
                 why_subtitle: "Because hope is not a strategy. You need an engineered approach.",
@@ -1448,7 +546,7 @@
             const data = translations[currentLang];
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
-                if (data[key]) el.innerHTML = data[key];
+                if(data[key]) el.innerHTML = data[key];
             });
         }
 
@@ -1456,12 +554,12 @@
         function navigateTo(pageId) {
             document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
-
+            
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            if (pageId === 'home') document.querySelectorAll('.nav-btn')[0].classList.add('active');
-            if (pageId === 'showcase') document.querySelectorAll('.nav-btn')[1].classList.add('active');
-            if (pageId === 'booking') document.querySelectorAll('.nav-btn')[2].classList.add('active');
-            window.scrollTo(0, 0);
+            if(pageId === 'home') document.querySelectorAll('.nav-btn')[0].classList.add('active');
+            if(pageId === 'showcase') document.querySelectorAll('.nav-btn')[1].classList.add('active');
+            if(pageId === 'booking') document.querySelectorAll('.nav-btn')[2].classList.add('active');
+            window.scrollTo(0,0);
         }
 
         function filterGallery(type) {
@@ -1483,5 +581,4 @@
         });
     </script>
 </body>
-
 </html>
