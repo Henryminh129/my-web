@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Henry Marques | Strategic Content Architect</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
@@ -36,8 +36,30 @@
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
+            /* Chỉ ẩn scroll ngang body chính */
+            line-height: 1.5;
             letter-spacing: -0.01em;
+            /* Scaling Font Size theo chiều rộng màn hình để giữ tỉ lệ */
+            font-size: clamp(10px, 1vw, 16px);
+            min-width: 1024px;
+            /* Ép trình duyệt render như màn hình rộng ít nhất 1024px */
+        }
+
+        /* Hack để ép mobile hiển thị như Desktop: Zoom out toàn bộ body */
+        /* Lưu ý: Cách này sẽ làm nội dung nhỏ đi trên điện thoại */
+        @media (max-width: 1024px) {
+            body {
+                /* Cho phép zoom out để vừa viewport mobile */
+                width: 100%;
+                min-width: 100%;
+                overflow-x: auto;
+                /* Cho phép cuộn ngang nếu cần */
+            }
+
+            .container {
+                min-width: 1000px;
+                /* Giữ độ rộng tối thiểu cho nội dung không bị bóp méo */
+            }
         }
 
         h1,
@@ -74,7 +96,7 @@
         }
 
         .section-padding {
-            padding: 120px 0;
+            padding: 100px 0;
         }
 
         .text-gradient {
@@ -112,21 +134,26 @@
         }
 
         /* Buttons */
-        .btn-main {
+        .btn-main,
+        .btn-outline {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             padding: 12px 32px;
-            background: var(--text-primary);
-            color: var(--bg-deep);
             border-radius: 99px;
-            font-weight: 700;
             font-size: 0.95rem;
-            border: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
             white-space: nowrap;
+        }
+
+        .btn-main {
+            background: var(--text-primary);
+            color: var(--bg-deep);
+            font-weight: 700;
+            border: none;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
         .btn-main:hover {
@@ -138,13 +165,7 @@
             background: transparent;
             border: 1px solid var(--glass-border);
             color: var(--text-secondary);
-            padding: 12px 32px;
-            border-radius: 99px;
             font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
         }
 
         .btn-outline:hover {
@@ -181,6 +202,8 @@
             background: rgba(2, 2, 3, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
+            min-width: 1000px;
+            /* Đảm bảo nav không bị vỡ khi màn hình nhỏ */
         }
 
         .nav-inner {
@@ -198,6 +221,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
         }
 
         .logo span {
@@ -223,6 +247,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .nav-btn:hover {
@@ -234,16 +259,14 @@
             color: var(--text-primary);
         }
 
-        /* --- 4. HERO SECTION (FIXED CENTERING) --- */
+        /* --- 4. HERO SECTION --- */
         .hero {
             min-height: 95vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Đảm bảo căn giữa theo trục dọc */
             text-align: center;
-            /* Đảm bảo căn giữa văn bản */
             padding-top: 80px;
         }
 
@@ -252,7 +275,6 @@
             width: 180px;
             height: 180px;
             margin: 0 auto 50px auto;
-            /* Margin auto để căn giữa block */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -331,6 +353,7 @@
             font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
+            white-space: nowrap;
         }
 
         .status-dot {
@@ -354,13 +377,12 @@
             }
         }
 
-        /* GIA CỐ CĂN GIỮA CHO CHỮ */
         .hero h1 {
-            font-size: clamp(3.5rem, 7vw, 5.5rem);
+            font-size: 4rem;
+            /* Giữ nguyên size lớn */
             font-weight: 700;
             line-height: 1.1;
             margin: 0 auto 25px auto;
-            /* Căn giữa block */
             letter-spacing: -0.03em;
             max-width: 900px;
         }
@@ -370,7 +392,6 @@
             color: var(--text-secondary);
             max-width: 700px;
             margin: 0 auto 40px auto;
-            /* Căn giữa block */
             font-weight: 400;
         }
 
@@ -395,7 +416,8 @@
         .insp-items {
             display: flex;
             gap: 15px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            /* Không xuống dòng */
             justify-content: center;
         }
 
@@ -408,6 +430,7 @@
             border: 1px solid var(--glass-border);
             transition: 0.3s;
             cursor: default;
+            white-space: nowrap;
         }
 
         .insp-tag:hover {
@@ -428,7 +451,8 @@
             display: flex;
             justify-content: center;
             gap: 60px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            /* Không xuống dòng */
             opacity: 0.5;
             transition: 0.3s;
         }
@@ -445,6 +469,7 @@
             gap: 10px;
             font-size: 1.1rem;
             letter-spacing: -0.02em;
+            white-space: nowrap;
         }
 
         .t-item span {
@@ -456,6 +481,7 @@
         .about-grid {
             display: grid;
             grid-template-columns: 0.9fr 1.1fr;
+            /* Luôn giữ 2 cột */
             gap: 80px;
             align-items: start;
         }
@@ -515,9 +541,11 @@
             line-height: 1.6;
         }
 
+        /* --- 7. CARDS GRID --- */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            /* Luôn giữ 3 cột */
             gap: 30px;
         }
 
@@ -577,6 +605,7 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            /* Luôn giữ 4 cột */
             gap: 40px 30px;
             padding-bottom: 100px;
         }
@@ -589,7 +618,6 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            /* Căn giữa nội dung card */
         }
 
         .gallery-card:hover {
@@ -733,48 +761,27 @@
             line-height: 1;
         }
 
+        /* --- 10. NO RESPONSIVE OVERRIDE (BẢO TOÀN LAYOUT) --- */
+        /* Ở đây chúng ta KHÔNG dùng @media để bẻ layout.
+           Thay vào đó, ta ép chiều rộng tối thiểu cho body để nó hiển thị full trang web
+           trên màn hình nhỏ, người dùng sẽ zoom/scroll ngang để xem */
+
+        /* Chỉ điều chỉnh nhẹ font size một chút nếu màn hình quá bé, nhưng không đổi cột */
         @media (max-width: 1024px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
+
+            html,
+            body {
+                min-width: 1200px;
+                /* Ép độ rộng tối thiểu */
+                overflow-x: auto;
+                /* Cho phép scroll ngang */
             }
 
-            .gallery-card.short {
-                grid-column: span 1;
-            }
-
-            .gallery-card.long {
-                grid-column: span 2;
-            }
-        }
-
-        @media (max-width: 900px) {
             .hero h1 {
-                font-size: 3.2rem;
+                font-size: 4.5rem;
             }
 
-            .about-grid,
-            .cards-grid,
-            .split-screen {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .right-panel {
-                height: 600px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-card.short,
-            .gallery-card.long {
-                grid-column: span 1;
-            }
+            /* Giữ font to */
         }
     </style>
 </head>
@@ -814,11 +821,9 @@
                     <img src="Henry Marques.PNG" class="hero-avatar" alt="Henry Marques">
                 </div>
 
-                <h1 data-key="hero_title">The Strategic <br><span class="text-gradient">Video Architect</span>
-                </h1>
+                <h1 data-key="hero_title">The Strategic <br><span class="text-gradient">Video Architect</span></h1>
                 <p data-key="hero_desc">I don't sell videos. I engineer <strong>Video & Content Systems</strong> that
-                    allow
-                    Founders & Creators to dominate High-Ticket markets with authority.</p>
+                    allow Founders & Creators to dominate High-Ticket markets with authority.</p>
 
                 <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px;">
                     <button class="btn-main" onclick="navigateTo('showcase')" data-key="btn_view">Explore
@@ -858,13 +863,11 @@
             <div class="about-grid">
                 <div class="bio-card">
                     <h3 style="font-size: 2rem; margin-bottom: 20px; line-height: 1.2;" data-key="bio_title">The
-                        Architect <br>Behind The Chaos.
-                    </h3>
+                        Architect <br>Behind The Chaos.</h3>
                     <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc1">They call it
                         "video editing." I call it <strong>engineering attention</strong>. My name is <strong>Henry
                             Marques (Lý Minh Phúc)</strong>. In a market flooded with "aesthetic" visuals, I chose a
-                        different path: <strong>System over Art.</strong>
-                    </p>
+                        different path: <strong>System over Art.</strong></p>
                     <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc2">I don't just make
                         things look good. I build <strong>video infrastructures</strong> that allow creators to scale
                         without burning out. Talent is useless without a process. That’s why I don’t sell videos; I sell
@@ -898,16 +901,15 @@
                             <span class="t-date">2025 (Q1-Q2)</span>
                             <h3>Junior - Senior Strategic Editor</h3>
                             <div class="t-desc" data-key="exp_2">Mastered retention mechanics. Worked directly with
-                                international creators to decode the algorithm of "High-Ticket Attention". Clients:
-                                VSTN Poadcast, Finn, Micky Dollimore, Aliena Cai.</div>
+                                international creators to decode the algorithm of "High-Ticket Attention". Clients: VSTN
+                                Podcast, Finn Dollimore, Micky Dollimore, Aliena Cai.</div>
                         </div>
                         <div class="timeline-item">
                             <div class="dot"></div>
                             <span class="t-date">Present</span>
                             <h3>CEO - Founder Filmoty Agency</h3>
                             <div class="t-desc" data-key="exp_3">Building a sustainable Agency model driven by a clear
-                                vision. Learned the hard way that talent without process leads to burnout.
-                            </div>
+                                vision. Learned the hard way that talent without process leads to burnout.</div>
                         </div>
                     </div>
                 </div>
@@ -1273,8 +1275,7 @@
                         </iframe>
                     </div>
                     <div class="meta-data">
-                        <div class="gallery-title">[Micky Dollimore]: Day in the life of a Nomadic Software
-                            Developer -
+                        <div class="gallery-title">[Micky Dollimore]: Day in the life of a Nomadic Software Developer -
                             Malaysia</div>
                         <div class="gallery-desc"><i class="fa-solid fa-chalkboard-user"></i> Editing Video Project
                             "Conterine"
@@ -1320,10 +1321,9 @@
                         </iframe>
                     </div>
                     <div class="meta-data">
-                        <div class="gallery-title">[Micky Dollimore]: 5 MUST HAVE features for Real Estate Maps
-                        </div>
-                        <div class="gallery-desc"><i class="fa-solid fa-presentation-screen"></i>Editing Video
-                            Project "Conterine"
+                        <div class="gallery-title">[Micky Dollimore]: 5 MUST HAVE features for Real Estate Maps</div>
+                        <div class="gallery-desc"><i class="fa-solid fa-presentation-screen"></i>Editing Video Project
+                            "Conterine"
                         </div>
                     </div>
                 </div>
@@ -1337,8 +1337,7 @@
                     </div>
                     <div class="meta-data">
                         <div class="gallery-title">Apple Business Essential Ads ( Alight Motion )</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-microphone-lines"></i>Editing Challenge
-                            Recover
+                        <div class="gallery-desc"><i class="fa-solid fa-microphone-lines"></i>Editing Challenge Recover
                         </div>
                     </div>
                 </div>
@@ -1367,8 +1366,7 @@
                     </div>
                     <div class="meta-data">
                         <div class="gallery-title">Khong Mot Minh Songs Animation (Trend)</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-flag-checkered"></i> Editing Challenge
-                            Recover
+                        <div class="gallery-desc"><i class="fa-solid fa-flag-checkered"></i> Editing Challenge Recover
                         </div>
                     </div>
                 </div>
@@ -1385,8 +1383,7 @@
                 <h1 style="font-size: 3.5rem; margin-top: 15px; line-height: 1.1;" data-key="booking_title">Let's
                     Architect Your <br><span class="text-gradient">Revenue</span></h1>
                 <p style="color: var(--text-secondary); font-size: 1.15rem; margin-top: 30px; font-weight: 400; max-width: 500px;"
-                    data-key="booking_desc">A 1:1 consultation (60 mins) to audit your current content bottleneck
-                    and
+                    data-key="booking_desc">A 1:1 consultation (60 mins) to audit your current content bottleneck and
                     define a roadmap for authority & scale.</p>
                 <ul class="booking-list" style="margin-top: 50px; list-style: none;">
                     <li data-key="list_1">Audit: Branding & Our Feasible Support</li>
