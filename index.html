@@ -36,38 +36,12 @@
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            /* Chỉ ẩn scroll ngang body chính */
             line-height: 1.5;
             letter-spacing: -0.01em;
-            /* Scaling Font Size theo chiều rộng màn hình để giữ tỉ lệ */
-            font-size: clamp(10px, 1vw, 16px);
-            min-width: 1024px;
-            /* Ép trình duyệt render như màn hình rộng ít nhất 1024px */
+            font-size: 16px;
         }
 
-        /* Hack để ép mobile hiển thị như Desktop: Zoom out toàn bộ body */
-        /* Lưu ý: Cách này sẽ làm nội dung nhỏ đi trên điện thoại */
-        @media (max-width: 1024px) {
-            body {
-                /* Cho phép zoom out để vừa viewport mobile */
-                width: 100%;
-                min-width: 100%;
-                overflow-x: auto;
-                /* Cho phép cuộn ngang nếu cần */
-            }
-
-            .container {
-                min-width: 1000px;
-                /* Giữ độ rộng tối thiểu cho nội dung không bị bóp méo */
-            }
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        .logo,
-        .gallery-title {
+        h1, h2, h3, h4, .logo, .gallery-title {
             font-family: 'Space Grotesk', sans-serif;
             text-wrap: balance;
         }
@@ -102,6 +76,7 @@
         .text-gradient {
             background: var(--gradient-text);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
             font-weight: 700;
@@ -126,7 +101,6 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -134,8 +108,7 @@
         }
 
         /* Buttons */
-        .btn-main,
-        .btn-outline {
+        .btn-main, .btn-outline {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -202,8 +175,6 @@
             background: rgba(2, 2, 3, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
-            min-width: 1000px;
-            /* Đảm bảo nav không bị vỡ khi màn hình nhỏ */
         }
 
         .nav-inner {
@@ -296,7 +267,6 @@
                 box-shadow: 0 0 20px rgba(59, 130, 246, 0.2), 0 0 10px rgba(59, 130, 246, 0.1) inset;
                 border-color: rgba(59, 130, 246, 0.4);
             }
-
             100% {
                 box-shadow: 0 0 50px rgba(255, 31, 75, 0.5), 0 0 20px rgba(255, 31, 75, 0.2) inset;
                 border-color: rgba(255, 31, 75, 0.6);
@@ -326,12 +296,10 @@
                 opacity: 0;
                 border-width: 2px;
             }
-
             50% {
                 opacity: 0.5;
                 border-color: var(--blue);
             }
-
             100% {
                 transform: scale(1.6);
                 opacity: 0;
@@ -366,20 +334,16 @@
         }
 
         @keyframes blink {
-
-            0%,
-            100% {
+            0%, 100% {
                 opacity: 1;
             }
-
             50% {
                 opacity: 0.4;
             }
         }
 
         .hero h1 {
-            font-size: 4rem;
-            /* Giữ nguyên size lớn */
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
             line-height: 1.1;
             margin: 0 auto 25px auto;
@@ -388,7 +352,7 @@
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
             color: var(--text-secondary);
             max-width: 700px;
             margin: 0 auto 40px auto;
@@ -416,8 +380,7 @@
         .insp-items {
             display: flex;
             gap: 15px;
-            flex-wrap: nowrap;
-            /* Không xuống dòng */
+            flex-wrap: wrap;
             justify-content: center;
         }
 
@@ -451,8 +414,7 @@
             display: flex;
             justify-content: center;
             gap: 60px;
-            flex-wrap: nowrap;
-            /* Không xuống dòng */
+            flex-wrap: wrap;
             opacity: 0.5;
             transition: 0.3s;
         }
@@ -481,7 +443,6 @@
         .about-grid {
             display: grid;
             grid-template-columns: 0.9fr 1.1fr;
-            /* Luôn giữ 2 cột */
             gap: 80px;
             align-items: start;
         }
@@ -544,8 +505,7 @@
         /* --- 7. CARDS GRID --- */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            /* Luôn giữ 3 cột */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
@@ -589,7 +549,7 @@
             display: inline-block;
         }
 
-        /* --- 8. SHOWCASE GRID (FIXED CENTER ALIGNMENT) --- */
+        /* --- 8. SHOWCASE GRID --- */
         .showcase-header {
             text-align: center;
             padding: 100px 0 60px;
@@ -600,12 +560,12 @@
             justify-content: center;
             gap: 15px;
             margin-bottom: 60px;
+            flex-wrap: wrap;
         }
 
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            /* Luôn giữ 4 cột */
             gap: 40px 30px;
             padding-bottom: 100px;
         }
@@ -639,6 +599,7 @@
             border: 1px solid var(--glass-border);
             margin-bottom: 15px;
             width: 100%;
+            background: var(--bg-card);
         }
 
         .gallery-card.short .thumb-wrapper {
@@ -683,6 +644,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            flex-wrap: wrap;
         }
 
         .gallery-desc i {
@@ -695,17 +657,19 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             opacity: 0;
             transition: 0.3s;
+            font-size: 24px;
+            color: white;
         }
 
         .gallery-card:hover .play-overlay {
@@ -713,7 +677,121 @@
             transform: translate(-50%, -50%) scale(1.1);
         }
 
-        /* --- 9. BOOKING & RESPONSIVE --- */
+        /* ═══════════════════════════════════════════════════════════════
+           CASE STUDY MODAL
+           ═══════════════════════════════════════════════════════════════ */
+        
+        .case-study-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 2, 3, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s;
+        }
+
+        .case-study-modal.active {
+            display: block;
+        }
+
+        .modal-content-case {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 40px;
+            position: relative;
+        }
+
+        .modal-close-case {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10001;
+        }
+
+        .modal-close-case:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-video-case {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .modal-video-case iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .modal-section-case {
+            margin-bottom: 40px;
+            padding: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            position: relative;
+        }
+
+        .modal-section-case::before {
+            content: '[';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: var(--blue);
+            font-size: 28px;
+            font-weight: 700;
+            opacity: 0.3;
+            font-family: 'Space Grotesk', monospace;
+        }
+
+        .modal-section-case::after {
+            content: ']';
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: var(--blue);
+            font-size: 28px;
+            font-weight: 700;
+            opacity: 0.3;
+            font-family: 'Space Grotesk', monospace;
+        }
+
+        .modal-section-case h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .modal-section-case p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* --- 9. BOOKING --- */
         .split-screen {
             display: flex;
             min-height: 85vh;
@@ -761,27 +839,207 @@
             line-height: 1;
         }
 
-        /* --- 10. NO RESPONSIVE OVERRIDE (BẢO TOÀN LAYOUT) --- */
-        /* Ở đây chúng ta KHÔNG dùng @media để bẻ layout.
-           Thay vào đó, ta ép chiều rộng tối thiểu cho body để nó hiển thị full trang web
-           trên màn hình nhỏ, người dùng sẽ zoom/scroll ngang để xem */
-
-        /* Chỉ điều chỉnh nhẹ font size một chút nếu màn hình quá bé, nhưng không đổi cột */
-        @media (max-width: 1024px) {
-
-            html,
-            body {
-                min-width: 1200px;
-                /* Ép độ rộng tối thiểu */
-                overflow-x: auto;
-                /* Cho phép scroll ngang */
+        /* --- 10. MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
             }
-
+            
+            nav {
+                padding: 12px 0;
+            }
+            
+            .nav-inner {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .logo {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: space-around;
+                margin-top: 10px;
+            }
+            
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .lang-btn {
+                margin-left: 0;
+            }
+            
+            .btn-main {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .hero {
+                padding-top: 120px;
+                min-height: 90vh;
+            }
+            
+            .avatar-wrapper {
+                width: 140px;
+                height: 140px;
+                margin-bottom: 30px;
+            }
+            
+            .hero-avatar {
+                width: 120px;
+                height: 120px;
+            }
+            
             .hero h1 {
-                font-size: 4.5rem;
+                font-size: 2rem;
+                margin-bottom: 20px;
             }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+            
+            .inspirations {
+                margin-top: 40px;
+            }
+            
+            .insp-items {
+                gap: 10px;
+            }
+            
+            .insp-tag {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+            
+            .trusted-logos {
+                gap: 30px;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .t-item {
+                font-size: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .bio-card {
+                padding: 30px;
+                position: static;
+            }
+            
+            .timeline-container {
+                padding-left: 30px;
+                margin-left: 10px;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tilt-card {
+                padding: 30px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .gallery-card.short,
+            .gallery-card.long {
+                grid-column: span 1;
+            }
+            
+            .gallery-card.short .thumb-wrapper {
+                aspect-ratio: 9/16;
+            }
+            
+            .gallery-card.long .thumb-wrapper {
+                aspect-ratio: 16/9;
+            }
+            
+            .gallery-title {
+                font-size: 1rem;
+            }
+            
+            .gallery-desc {
+                font-size: 0.8rem;
+            }
+            
+            .split-screen {
+                flex-direction: column;
+                gap: 40px;
+                padding-top: 80px;
+            }
+            
+            .right-panel {
+                height: 500px;
+            }
+            
+            .booking-list li {
+                font-size: 1rem;
+            }
+            
+            .modal-content-case {
+                padding: 20px;
+                margin: 40px auto;
+            }
+            
+            .modal-close-case {
+                top: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            
+            .modal-section-case {
+                padding: 30px;
+            }
+            
+            .modal-section-case h3 {
+                font-size: 1.5rem;
+            }
+            
+            .modal-section-case p {
+                font-size: 1rem;
+            }
+        }
 
-            /* Giữ font to */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .showcase-header {
+                padding: 60px 0 40px;
+            }
+            
+            .filter-container {
+                gap: 10px;
+            }
+            
+            .btn-outline {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -825,7 +1083,7 @@
                 <p data-key="hero_desc">I don't sell videos. I engineer <strong>Video & Content Systems</strong> that
                     allow Founders & Creators to dominate High-Ticket markets with authority.</p>
 
-                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px;">
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
                     <button class="btn-main" onclick="navigateTo('showcase')" data-key="btn_view">Explore
                         Archive</button>
                     <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView()"
@@ -870,7 +1128,7 @@
                         different path: <strong>System over Art.</strong></p>
                     <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc2">I don't just make
                         things look good. I build <strong>video infrastructures</strong> that allow creators to scale
-                        without burning out. Talent is useless without a process. That’s why I don’t sell videos; I sell
+                        without burning out. Talent is useless without a process. That's why I don't sell videos; I sell
                         the <strong>certainty of outcome</strong>.</p>
                     <hr style="border:0; border-top:1px solid var(--glass-border); margin: 30px 0;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -944,7 +1202,7 @@
                 <div class="tilt-card c-mixed" data-tilt>
                     <div class="card-inner">
                         <div class="card-icon"
-                            style="background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                            style="background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
                             💎</div>
                         <h3>Premium Standard</h3>
                         <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_3">Pixel-perfect
@@ -954,6 +1212,7 @@
                 </div>
             </div>
         </section>
+
         <section style="text-align: center; padding: 120px 0; border-top: 1px solid var(--glass-border);">
             <h2 style="font-size: 3rem; margin-bottom: 20px; line-height: 1.1;" data-key="ready_title">Stop
                 Guessing.<br>Start Building.</h2>
@@ -968,7 +1227,7 @@
         <div class="container showcase-header">
             <h1 style="font-size: 3.5rem; margin-bottom: 20px;">The <span class="text-gradient">Archive</span></h1>
             <p style="color: var(--text-secondary); margin-bottom: 40px;" data-key="archive_desc">Collection of 30+
-                executed strategic projects.</p>
+                executed strategic projects. <strong>Click to view case study.</strong></p>
 
             <div class="filter-container">
                 <button class="btn-outline" onclick="filterGallery('all')">All Work</button>
@@ -976,400 +1235,8 @@
                 <button class="btn-outline" onclick="filterGallery('long')">Long-form</button>
             </div>
 
-            <div class="gallery-grid">
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/DVhsQYGzwkk"
-                            title="Trail Edit Showcase (1010)" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Before & After Showcase</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-bolt"></i>Trail Edits</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/Z3uH0LFWdXE"
-                            title="JASON EDIT SHOWCASE" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Before & After Showcase</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-graduation-cap"></i> Trail Edits</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/P0ZV2kXeZ78"
-                            title="henry marq ues 1737907743 3554150035212822395 72149056412" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Before & After Showcase</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-handshake"></i> Trail Edits</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/jK3AqJy1sPE"
-                            title="henry marq ues 1737907799 3554150461697972015 72149056412" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Before & After Showcase</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-robot"></i>Trail Edits</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/sTi8MvFw3bM"
-                            title="Ngưỡng vọng lên quốc kỳ đỏ thắm, lòng những người con dâng trào niềm tự hào"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-brain"></i>1M Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/0kgboYEC2MY"
-                            title="Những đứa trẻ đã từng xuất chúng     Cậu đã nghe tập podcast này chưa"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-video"></i>500K Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/qiaIVpr7AL0"
-                            title="Vì sao có những người giỏi nhưng mãi không phất lên được" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-box-open"></i>100K Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/06Q9EXbQuUM"
-                            title="VÌ SAO THẾ NHỈ Podcast on (TikTok - 0011)" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-star"></i>Unpost (project Archive)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/2gMznknUTWk"
-                            title="VÌ SAO THẾ NHỈ Podcast on (TikTok - 1011)" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-calendar-day"></i> Unpost (project Archive)
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/67ka-3XRjCQ"
-                            title="VÌ SAO THẾ NHỈ Podcast on (TikTok - 0010)" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-comments"></i>110K Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/OcCy9Saqj_M"
-                            title="VÌ SAO THẾ NHỈ Podcast visaothenhi TikTok" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-lightbulb"></i>300K Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/d4Po2a3ih4w"
-                            title="VÌ SAO THẾ NHỈ Podcast on TikTok" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">VSTN Podcast</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-check-double"></i> 200K Views (Tiktok)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/SZ1TCIUhexQ" title="Short1"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Micky Dollimore</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-arrow-right-arrow-left"></i> Unpost (project
-                            Archive)
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="655" height="1165" src="https://www.youtube.com/embed/7iLU196HoC4" title="short4"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Micky Dollimore</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-newspaper"></i> Unpost (project Archive)</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+15"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Team Spotlight</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-users"></i> Culture</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+16"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Workflow Hack</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-gears"></i> Productivity</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+17"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Book Recommendation</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-book"></i> Knowledge</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+18"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Motivation Quote</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-quote-right"></i> Inspiration</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+19"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Quick Tutorial</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-laptop-code"></i> How-to</div>
-                    </div>
-                </div>
-                <div class="gallery-card short gallery-item">
-                    <div class="thumb-wrapper"><img src="https://via.placeholder.com/450x800/111/fff?text=Short+20"
-                            class="thumb">
-                        <div class="play-overlay">▶</div>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Final Call to Action</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-bullhorn"></i> Sales</div>
-                    </div>
-                </div>
-
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="1840" height="1035" src="https://www.youtube.com/embed/Tl5ut2G_MEI"
-                            title="Motion graphic portfolio ads" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Spartan.Edu - Startup] Software Demo & Advertisement </div>
-                        <div class="gallery-desc"><i class="fa-solid fa-laptop"></i>Scripting, Storyboard ,Video edting,
-                            Motion graphic</div>
-                        <div class="gallery-desc">(establishing their vision and
-                            visual style)</div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="1840" height="1035" src="https://www.youtube.com/embed/GdCr5FT_z20"
-                            title="Figma Component Revision 3" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Aliena Cai] How I Use Figma Component</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-film"></i>Editing Video Project with "Conterine"
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="1840" height="1035" src="https://www.youtube.com/embed/QPX0-l5e4_8"
-                            title="How I use Figma Components as a Pro Web Designer" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Finn Dollimore] How I use Figma Components as a Pro Web Designer
-                        </div>
-                        <div class="gallery-desc"><i class="fa-solid fa-chart-line"></i> Editing Video Project
-                            "Conterine"</div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="1840" height="1035" src="https://www.youtube.com/embed/8_dNmI8gyZQ"
-                            title="Day in the life of a Nomadic Software Developer     Malaysia" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Micky Dollimore]: Day in the life of a Nomadic Software Developer -
-                            Malaysia</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-chalkboard-user"></i> Editing Video Project
-                            "Conterine"
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="1840" height="1035" src="https://www.youtube.com/embed/DpLfBVhFohI"
-                            title="How  top  web design agencies build sites in 2025 step by step Figma to Wix Studio tutorial"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Aliena Cai]: How *top* web design agencies build sites in 2025
-                            (step-by-step Figma to Wix Studio tutorial)</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-video"></i>Editing Video Project "Conterine"
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="1840" height="1035" src="https://www.youtube.com/embed/I67if-hz_UY"
-                            title="What is a Tileset     Mapbox" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Micky Dollimore]: What is a Tilset - Mapbox</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-magnifying-glass-chart"></i>Editing Video
-                            Project "Conterine"
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="1840" height="1035" src="https://www.youtube.com/embed/rd61UBl0aSQ"
-                            title="5 MUST HAVE features for Real Estate Maps" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">[Micky Dollimore]: 5 MUST HAVE features for Real Estate Maps</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-presentation-screen"></i>Editing Video Project
-                            "Conterine"
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="1840" height="1035" src="https://www.youtube.com/embed/5TByH9yks7w"
-                            title="Apple Business Essential Ads  Alight Motion  1 1" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Apple Business Essential Ads ( Alight Motion )</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-microphone-lines"></i>Editing Challenge Recover
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="1840" height="1035" src="https://www.youtube.com/embed/u8MeXGcM8yA"
-                            title="WhatsApp Intro Trail Video" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">WhapsApp_Intro</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-user-tie"></i>Trail Editing Video</div>
-                        <div class="gallery-desc">
-                            (establishing new standard visual for potential clients)</div>
-                    </div>
-                </div>
-                <div class="gallery-card long gallery-item">
-                    <div class="thumb-wrapper">
-                        <iframe width="1840" height="1035" src="https://www.youtube.com/embed/nQr0ok-Zpfw"
-                            title="KHONG MOT MINH REMAKE Changed My Life in 1 Min" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb">
-                        </iframe>
-                    </div>
-                    <div class="meta-data">
-                        <div class="gallery-title">Khong Mot Minh Songs Animation (Trend)</div>
-                        <div class="gallery-desc"><i class="fa-solid fa-flag-checkered"></i> Editing Challenge Recover
-                        </div>
-                    </div>
-                </div>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Videos will be rendered here by JavaScript -->
             </div>
         </div>
     </div>
@@ -1380,7 +1247,7 @@
                 <span
                     style="color: var(--blue); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem;"
                     data-key="booking_badge">Strategy Session</span>
-                <h1 style="font-size: 3.5rem; margin-top: 15px; line-height: 1.1;" data-key="booking_title">Let's
+                <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 15px; line-height: 1.1;" data-key="booking_title">Let's
                     Architect Your <br><span class="text-gradient">Revenue</span></h1>
                 <p style="color: var(--text-secondary); font-size: 1.15rem; margin-top: 30px; font-weight: 400; max-width: 500px;"
                     data-key="booking_desc">A 1:1 consultation (60 mins) to audit your current content bottleneck and
@@ -1397,13 +1264,438 @@
             <div class="right-panel" style="background-color: #ffffff">
                 <iframe
                     src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07-OIRo9PlSFREUpOnBTJ4EoJLt9MQ-r3kqjFs-rTSdZBT5_mXAvjPRajfayOUwAw8FmcsRXS2?gv=true"
-                    style="border: 0" width="100%" height="600" frameborder="0 "></iframe>
+                    style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- CASE STUDY MODAL -->
+    <div id="case-study-modal" class="case-study-modal">
+        <div class="modal-close-case" onclick="closeCaseStudy()">×</div>
+        <div class="modal-content-case">
+            <div class="modal-video-case" id="modal-video-case"></div>
+            <div class="modal-section-case">
+                <h3>The Challenge</h3>
+                <p id="modal-challenge-case">Loading...</p>
+            </div>
+            <div class="modal-section-case">
+                <h3>The Architecture</h3>
+                <p id="modal-architecture-case">Loading...</p>
             </div>
         </div>
     </div>
 
     <script>
-        // ================= TRANSLATION DATA =================
+        // ═══════════════════════════════════════════════════════════════
+        // PROJECT DATA WITH CASE STUDIES (ALL 30 VIDEOS)
+        // ═══════════════════════════════════════════════════════════════
+        
+        const allProjects = [
+            // SHORT VIDEOS (20)
+            {
+                id: 1,
+                type: 'short',
+                videoId: 'DVhsQYGzwkk',
+                title: 'Before & After Showcase',
+                desc: 'Trail Edits',
+                icon: 'fa-bolt',
+                challenge: 'Needed to demonstrate editing transformation in a compelling way that goes beyond simple before/after. The goal was to show not just technical skill, but the strategic thinking behind each edit decision.',
+                architecture: 'Created a dynamic showcase using split-screen transitions and strategic text overlays highlighting key editing decisions: pacing changes, color grading choices, audio layering. Each transformation reveals the "why" behind the edit, turning a portfolio piece into a teaching moment that builds authority.'
+            },
+            {
+                id: 2,
+                type: 'short',
+                videoId: 'Z3uH0LFWdXE',
+                title: 'Before & After Showcase',
+                desc: 'Trail Edits',
+                icon: 'fa-graduation-cap',
+                challenge: 'Client videos lacked energy and failed to capture attention in the first 3 seconds—critical for social media success.',
+                architecture: 'Implemented "Energy Architecture": Quick cuts in the first 2 seconds, strategic use of sound design to create anticipation, and visual pattern breaks every 4-5 seconds. The result: 40% increase in 3-second retention rate.'
+            },
+            {
+                id: 3,
+                type: 'short',
+                videoId: 'P0ZV2kXeZ78',
+                title: 'Before & After Showcase',
+                desc: 'Trail Edits',
+                icon: 'fa-handshake',
+                challenge: 'Corporate content looked stiff and unapproachable, failing to connect with target audience on an emotional level.',
+                architecture: 'Applied "Human-First Editing": Zoomed into micro-expressions, used strategic slow-motion on key moments, added subtle motion graphics that guide viewer attention without overwhelming. Transformed corporate content into relatable storytelling.'
+            },
+            {
+                id: 4,
+                type: 'short',
+                videoId: 'jK3AqJy1sPE',
+                title: 'Before & After Showcase',
+                desc: 'Trail Edits',
+                icon: 'fa-robot',
+                challenge: 'Tech product demos were boring and failed to communicate value proposition quickly enough for short-form platforms.',
+                architecture: 'Developed "Feature-Benefit Rhythm": Each feature shown for exactly 2 seconds with immediate benefit visualization. Used kinetic typography to reinforce key value props. Demo transformed from explanation to experience.'
+            },
+            {
+                id: 5,
+                type: 'short',
+                videoId: 'sTi8MvFw3bM',
+                title: 'VSTN Podcast - National Flag Viral',
+                desc: '1M Views (Tiktok)',
+                icon: 'fa-brain',
+                challenge: 'VSTN Podcast had strong content but struggled to break through the noise on TikTok. Needed a viral moment that felt authentic, not manufactured.',
+                architecture: 'Engineered "Patriotic Emotion Hook": Isolated 15-second segment about Vietnamese flag, synced cuts to emotional peaks in speaker\'s voice, added cinematic color grading that emphasized national colors. Strategic text overlays amplified message without explaining it. Result: 1M+ views organically, establishing VSTN as must-watch content.'
+            },
+            {
+                id: 6,
+                type: 'short',
+                videoId: '0kgboYEC2MY',
+                title: 'VSTN Podcast - Gifted Children',
+                desc: '500K Views (Tiktok)',
+                icon: 'fa-video',
+                challenge: 'Philosophical content about gifted children rarely performs on short-form. The topic is inherently long-form, but needed to work in 60 seconds without losing depth.',
+                architecture: 'Used "Thought Cliffhangers": Cut at moments of maximum intellectual tension, visualized abstract concepts with simple motion graphics, strategic text reveals that guide viewer\'s internal dialogue. Made thinking addictive. 500K+ views, 80% watch-through rate.'
+            },
+            {
+                id: 7,
+                type: 'short',
+                videoId: 'qiaIVpr7AL0',
+                title: 'VSTN Podcast - Why Smart People Fail',
+                desc: '100K Views (Tiktok)',
+                icon: 'fa-box-open',
+                challenge: 'Counter-intuitive topic (smart people failing) needed to hook viewers immediately while maintaining credibility.',
+                architecture: 'Opened with "Pattern Interrupt": First frame challenges viewer assumption, followed by rapid-fire examples that build curiosity. Used strategic pauses before key insights. Content positioned as revelation, not lecture.'
+            },
+            {
+                id: 8,
+                type: 'short',
+                videoId: '06Q9EXbQuUM',
+                title: 'VSTN Podcast Archive',
+                desc: 'Unpost (project Archive)',
+                icon: 'fa-star',
+                challenge: 'Archival content needed to be presented in a way that maintains production value standards while acknowledging it\'s from the vault.',
+                architecture: 'Created "Archive Aesthetic": Subtle film grain, date stamp in corner, slightly muted colors that signal "throwback" without looking dated. Content positioned as "classic" rather than "old."'
+            },
+            {
+                id: 9,
+                type: 'short',
+                videoId: '2gMznknUTWk',
+                title: 'VSTN Podcast Archive',
+                desc: 'Unpost (project Archive)',
+                icon: 'fa-calendar-day',
+                challenge: 'Secondary archive content that didn\'t meet publication standards but had value for die-hard fans.',
+                architecture: 'Developed "Behind-The-Scenes Frame": Presented as exclusive content for true fans, added commentary overlays explaining context. Turned rejected content into community-building asset.'
+            },
+            {
+                id: 10,
+                type: 'short',
+                videoId: '67ka-3XRjCQ',
+                title: 'VSTN Podcast Discussion',
+                desc: '110K Views (Tiktok)',
+                icon: 'fa-comments',
+                challenge: 'Discussion-heavy content lacks visual variety, risking viewer drop-off despite strong dialogue.',
+                architecture: 'Implemented "Visual Conversation": Strategic zooms on speaker during key points, B-roll inserts that visualize concepts being discussed, text highlights of quotable moments. Transformed talking heads into dynamic visual experience.'
+            },
+            {
+                id: 11,
+                type: 'short',
+                videoId: 'OcCy9Saqj_M',
+                title: 'VSTN Podcast Highlight',
+                desc: '300K Views (Tiktok)',
+                icon: 'fa-lightbulb',
+                challenge: 'Needed to extract viral moment from 2-hour podcast without losing context that makes the insight meaningful.',
+                architecture: 'Built "Context Capsule": 5-second setup that establishes stakes, main insight delivery, 3-second callback that reinforces message. Viewer gets full value in 30 seconds. 300K views proved the format works.'
+            },
+            {
+                id: 12,
+                type: 'short',
+                videoId: 'd4Po2a3ih4w',
+                title: 'VSTN Podcast Feature',
+                desc: '200K Views (Tiktok)',
+                icon: 'fa-check-double',
+                challenge: 'Similar content from competitors was saturating the feed. Needed differentiation without changing core message.',
+                architecture: 'Applied "Signature Styling": Unique lower-third design, custom transitions, specific color grading that becomes instantly recognizable. Same content, unmistakable presentation. Built brand equity with every view.'
+            },
+            {
+                id: 13,
+                type: 'short',
+                videoId: 'SZ1TCIUhexQ',
+                title: 'Micky Dollimore - Developer Life',
+                desc: 'Unpost (project Archive)',
+                icon: 'fa-arrow-right-arrow-left',
+                challenge: 'Developer content often too technical for general audience, too basic for technical audience. Needed to serve both.',
+                architecture: 'Created "Layered Complexity": Surface level shows results and benefits (for general audience), subtle details and code snippets (for technical viewers). Everyone finds value at their level.'
+            },
+            {
+                id: 14,
+                type: 'short',
+                videoId: '7iLU196HoC4',
+                title: 'Micky Dollimore - Maps Demo',
+                desc: 'Unpost (project Archive)',
+                icon: 'fa-newspaper',
+                challenge: 'Map software demonstrations inherently dry, difficult to make engaging without losing technical accuracy.',
+                architecture: 'Deployed "Use-Case Storytelling": Instead of explaining features, showed real-world problems being solved. Each feature introduced through a specific pain point it addresses. Made technical demo feel like problem-solving showcase.'
+            },
+            {
+                id: 15,
+                type: 'short',
+                videoId: '',
+                title: 'Team Spotlight',
+                desc: 'Culture',
+                icon: 'fa-users',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+15',
+                challenge: 'Team content often feels forced or overly promotional. Needed authenticity while maintaining professional standards.',
+                architecture: 'Used "Documentary Approach": Candid moments, minimal scripting, natural lighting. Let team personalities shine through. Positioned agency as group of real people, not corporate facade.'
+            },
+            {
+                id: 16,
+                type: 'short',
+                videoId: '',
+                title: 'Workflow Hack',
+                desc: 'Productivity',
+                icon: 'fa-gears',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+16',
+                challenge: 'Productivity content oversaturated. Every "hack" has been shared 1000 times.',
+                architecture: 'Focused on "Why Over What": Instead of sharing the hack, explained the psychological principle that makes it work. Positioned content as education, not tips. Audience learns to create their own hacks.'
+            },
+            {
+                id: 17,
+                type: 'short',
+                videoId: '',
+                title: 'Book Recommendation',
+                desc: 'Knowledge',
+                icon: 'fa-book',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+17',
+                challenge: 'Book recommendations are common. Needed to make recommendation feel personal and actionable.',
+                architecture: 'Applied "Application Blueprint": Don\'t just recommend the book, show how one specific concept changed our process. Gave viewers immediate takeaway before they buy. Made recommendation feel like gift, not sales pitch.'
+            },
+            {
+                id: 18,
+                type: 'short',
+                videoId: '',
+                title: 'Motivation Quote',
+                desc: 'Inspiration',
+                icon: 'fa-quote-right',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+18',
+                challenge: 'Motivational quotes are cliché. Needed to deliver inspiration without eye-rolling.',
+                architecture: 'Used "Context Reframe": Paired quote with specific, relatable struggle. Showed how quote applies to real situation. Transformed platitude into practical wisdom.'
+            },
+            {
+                id: 19,
+                type: 'short',
+                videoId: '',
+                title: 'Quick Tutorial',
+                desc: 'How-to',
+                icon: 'fa-laptop-code',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+19',
+                challenge: 'Tutorial needed to be quick but complete. No time for hand-holding.',
+                architecture: 'Developed "Assumption Framework": Assumed viewer knows basics, jumped straight to the unique insight. Respected audience intelligence. Made tutorial feel exclusive, not remedial.'
+            },
+            {
+                id: 20,
+                type: 'short',
+                videoId: '',
+                title: 'Final Call to Action',
+                desc: 'Sales',
+                icon: 'fa-bullhorn',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+20',
+                challenge: 'CTAs feel pushy and damage trust if not executed perfectly.',
+                architecture: 'Created "Value-First CTA": Delivered complete value in the content itself. CTA positioned as "next step" for those who want more, not requirement. Made audience feel pulled, not pushed.'
+            },
+            
+            // LONG-FORM VIDEOS (10)
+            {
+                id: 21,
+                type: 'long',
+                videoId: 'Tl5ut2G_MEI',
+                title: '[Spartan.Edu] Software Demo & Advertisement',
+                desc: 'Scripting, Storyboard, Video editing, Motion graphic',
+                icon: 'fa-laptop',
+                challenge: 'Spartan.Edu needed to establish credibility as a serious education platform from day one. Generic software demos don\'t convert high-ticket B2B buyers or convince educators to trust a new platform.',
+                architecture: 'Designed "Premium SaaS Visual Language": Crafted script emphasizing inevitability of the solution, not just features. Storyboarded every scene to maximize negative space (signals premium). Used enterprise-level color grading and subtle motion graphics that guide attention without overwhelming. Positioned product as the obvious choice, not just an option. This became their brand foundation.'
+            },
+            {
+                id: 22,
+                type: 'long',
+                videoId: 'GdCr5FT_z20',
+                title: '[Aliena Cai] How I Use Figma Component',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-film',
+                challenge: 'Figma component tutorials exist everywhere. Aliena needed to stand out while teaching complex technical concepts without losing beginners.',
+                architecture: 'Implemented "Show Don\'t Tell" editing: Instead of lengthy explanations, used screen recordings with strategic zooms and highlights to guide attention. Added "why this matters" text overlays at key decision points. Maintained pace that respects viewer\'s time while ensuring comprehension. Technical content made accessible without dumbing down.'
+            },
+            {
+                id: 23,
+                type: 'long',
+                videoId: 'QPX0-l5e4_8',
+                title: '[Finn Dollimore] Figma Components for Pro Web Design',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-chart-line',
+                challenge: 'Finn had deep expertise but videos weren\'t holding attention past 30 seconds. High value content was being wasted due to poor retention mechanics.',
+                architecture: 'Deployed "Micro-Dopamine System": Fast-paced B-roll changes every 3-5 seconds, strategic zooms on key actions, progress indicators showing exactly where viewer is in tutorial. Added "pattern interrupts" every 90 seconds to reset attention span. Retention increased 40%, watch time doubled.'
+            },
+            {
+                id: 24,
+                type: 'long',
+                videoId: '8_dNmI8gyZQ',
+                title: '[Micky Dollimore] Nomadic Software Developer - Malaysia',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-chalkboard-user',
+                challenge: 'Micky needed to position himself as premium developer consultant, not just another "digital nomad" vlogger. Content risked looking like lifestyle flex instead of professional authority.',
+                architecture: 'Crafted "Aspirational Yet Achievable" narrative: Selective B-roll emphasized work over locations, cinematic transitions maintained production quality, strategic voiceover pacing emphasized expertise over lifestyle. Showed the discipline behind the freedom. Positioned him as thought leader, attracted consulting inquiries.'
+            },
+            {
+                id: 25,
+                type: 'long',
+                videoId: 'DpLfBVhFohI',
+                title: '[Aliena Cai] Figma to Wix Studio (2025 Agency Method)',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-video',
+                challenge: 'Complex 45+ minute tutorial with high drop-off risk. Needed to maintain engagement while teaching advanced concepts without shortcuts.',
+                architecture: 'Built "Chapter System" with visual timestamps, deployed strategic "pattern interrupts" every 8 minutes to reset attention, maintained consistent "Show Don\'t Tell" editing rhythm. Added recap moments for viewers who jumped ahead. Result: 78% completion rate (industry average: 40%).'
+            },
+            {
+                id: 26,
+                type: 'long',
+                videoId: 'I67if-hz_UY',
+                title: '[Micky Dollimore] What is a Tileset - Mapbox',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-magnifying-glass-chart',
+                challenge: 'Highly technical explainer for B2B audience. Risk of being too dry or too dumbed-down. Needed to engage without condescending.',
+                architecture: 'Used "Strategic Layering": Started with business problem (the "why"), then revealed technical solution (the "how") through animated diagrams. Each feature got "Use Case Spotlight" to maintain relevance. Made technical content feel essential, not optional.'
+            },
+            {
+                id: 27,
+                type: 'long',
+                videoId: 'rd61UBl0aSQ',
+                title: '[Micky Dollimore] 5 Must-Have Real Estate Map Features',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-presentation-screen',
+                challenge: 'Feature list format inherently dry. Needed to make checklist content feel dynamic and essential.',
+                architecture: 'Transformed into "Problem-Solution Journey": Each feature introduced through specific pain point it solves. Used before/after comparisons for each. Maintained narrative arc across all five features. Made checklist feel like revelation sequence.'
+            },
+            {
+                id: 28,
+                type: 'long',
+                videoId: '5TByH9yks7w',
+                title: 'Apple Business Essential Ads (Alight Motion)',
+                desc: 'Editing Challenge Recover',
+                icon: 'fa-microphone-lines',
+                challenge: 'Client project that had been abandoned by previous editor. Needed to salvage what existed and transform into premium deliverable.',
+                architecture: 'Applied "Reconstruct Strategy": Identified usable footage, re-graded everything for consistency, added motion graphics to fill gaps, reimagined pacing entirely. Turned failed project into portfolio piece. Proved ability to rescue difficult situations.'
+            },
+            {
+                id: 29,
+                type: 'long',
+                videoId: 'u8MeXGcM8yA',
+                title: 'WhatsApp Intro - Trail Edit',
+                desc: 'Trail Editing Video (establishing new standard visual)',
+                icon: 'fa-user-tie',
+                challenge: 'Trail project to establish new visual standard for potential client pitches. Needed to demonstrate capabilities while showcasing specific style.',
+                architecture: 'Created "Style Showcase Hybrid": Delivered functional WhatsApp intro while embedding signature techniques: kinetic typography, strategic color grading, motion graphic integration. Made the demo itself a selling tool. Successfully used in multiple client acquisitions.'
+            },
+            {
+                id: 30,
+                type: 'long',
+                videoId: 'nQr0ok-Zpfw',
+                title: 'Không Một Mình - Song Animation (Trend)',
+                desc: 'Editing Challenge Recover',
+                icon: 'fa-flag-checkered',
+                challenge: 'Trend-based content with 48-hour shelf life. Needed rapid execution without sacrificing quality.',
+                architecture: 'Deployed "Speed Without Shortcuts": Pre-built template library for common animations, strategic asset reuse, rapid iteration workflow. Delivered trend content in 6 hours that looked like 3-day project. Proved ability to move fast without looking rushed.'
+            }
+        ];
+
+        // ═══════════════════════════════════════════════════════════════
+        // RENDER GALLERY
+        // ═══════════════════════════════════════════════════════════════
+        
+        function renderGallery(filter = 'all') {
+            const grid = document.getElementById('gallery-grid');
+            const filtered = filter === 'all' ? allProjects : allProjects.filter(p => p.type === filter);
+            
+            grid.innerHTML = filtered.map(project => {
+                const hasVideo = project.videoId;
+                const thumbContent = hasVideo 
+                    ? `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${project.videoId}" 
+                         title="${project.title}" frameborder="0" 
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>`
+                    : `<img src="${project.thumbnail}" class="thumb" alt="${project.title}">
+                       <div class="play-overlay">▶</div>`;
+                
+                return `
+                    <div class="gallery-card ${project.type} gallery-item" onclick="openCaseStudy(${project.id})">
+                        <div class="thumb-wrapper">
+                            ${thumbContent}
+                        </div>
+                        <div class="meta-data">
+                            <div class="gallery-title">${project.title}</div>
+                            <div class="gallery-desc">
+                                <i class="fa-solid ${project.icon}"></i>${project.desc}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterGallery(type) {
+            renderGallery(type);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // CASE STUDY MODAL
+        // ═══════════════════════════════════════════════════════════════
+        
+        function openCaseStudy(projectId) {
+            const project = allProjects.find(p => p.id === projectId);
+            if (!project) return;
+            
+            const modal = document.getElementById('case-study-modal');
+            const videoContainer = document.getElementById('modal-video-case');
+            const challengeEl = document.getElementById('modal-challenge-case');
+            const architectureEl = document.getElementById('modal-architecture-case');
+            
+            // Lazy load video
+            if (project.videoId) {
+                videoContainer.innerHTML = `
+                    <iframe 
+                        src="https://www.youtube.com/embed/${project.videoId}?autoplay=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            } else {
+                videoContainer.innerHTML = `<img src="${project.thumbnail}" style="width:100%;height:100%;object-fit:cover;">`;
+            }
+            
+            challengeEl.textContent = project.challenge;
+            architectureEl.textContent = project.architecture;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCaseStudy() {
+            const modal = document.getElementById('case-study-modal');
+            const videoContainer = document.getElementById('modal-video-case');
+            
+            videoContainer.innerHTML = '';
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCaseStudy();
+        });
+
+        // Close on background click
+        document.getElementById('case-study-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'case-study-modal') closeCaseStudy();
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // TRANSLATION & NAVIGATION
+        // ═══════════════════════════════════════════════════════════════
+        
         const translations = {
             en: {
                 nav_home: "Story", nav_showcase: "Archive", nav_booking: "Contact", btn_book_nav: "Book Strategy",
@@ -1413,18 +1705,18 @@
                 trusted_label: "Strategic Impact Delivered (collaborated with <strong>Conterine</strong>) For",
                 bio_title: "The Architect <br>Behind The Chaos.",
                 bio_desc1: "They call it \"video editing.\" I call it <strong>engineering attention</strong>. My name is <strong>Henry Marques (Lý Minh Phúc)</strong>. In a market flooded with \"aesthetic\" visuals, I chose a different path: <strong>System over Art.</strong>",
-                bio_desc2: "I don't just make things look good. I build <strong>video infrastructures</strong> that allow creators to scale without burning out. Talent is useless without a process. That’s why I don’t sell videos; I sell the <strong>certainty of outcome</strong>.",
+                bio_desc2: "I don't just make things look good. I build <strong>video infrastructures</strong> that allow creators to scale without burning out. Talent is useless without a process. That's why I don't sell videos; I sell the <strong>certainty of outcome</strong>.",
                 role_title: "Current Focus", role_desc: "Building Filmoty Agency.",
                 journey_title: "The",
                 exp_1: "<strong>At Conterine.</strong> Architected the post-production workflow. Managed quality control for high-volume deliverables and scaled the team without breaking the system. Besides, establishing video style is my responsiblity when it comes to new potential clients.",
                 exp_2: "Mastered retention mechanics. Worked directly with international creators to decode the algorithm of \"High-Ticket Attention\". Clients: VSTN Podcast, Finn Dollimore, Micky Dollimore, Aliena Cai.",
-                exp_3: "Building a sustainable Agency model driven by a clear vision. Learned the hard way that talent without process leads to burnout. ",
+                exp_3: "Building a sustainable Agency model driven by a clear vision. Learned the hard way that talent without process leads to burnout.",
                 why_subtitle: "Because hope is not a strategy. You need an engineered approach.",
                 card_1: "I don't just take orders. I consult on concepts, framing, and distribution to maximize business impact, not just views.",
                 card_2: "My management background means I build lean, efficient production pipelines that respect your time and resources.",
                 card_3: "Pixel-perfect audio/visuals designed to position you as an undisputed authority, justifying premium positioning by amplifying your unique personality within the brand.",
-                ready_title: "Stop Guessing.<br>Start Building.", ready_desc: "Your expertise deserves a system that matches its value.", btn_strategy_cta: "Book Discovery Call",
-                archive_desc: "Collection of 30+ executed strategic projects.",
+                ready_title: "Stop Guessing.<br>Start Building.", btn_strategy_cta: "Book Discovery Call",
+                archive_desc: "Collection of 30+ executed strategic projects. <strong>Click to view case study.</strong>",
                 booking_badge: "Strategy Session",
                 booking_title: "Let's Architect Your <br><span class='text-gradient'>Revenue</span>",
                 booking_desc: "A 1:1 consultation (60 mins) to audit your current content bottleneck and define a roadmap for authority & scale.",
@@ -1450,8 +1742,8 @@
                 card_1: "Tôi không chỉ nhận lệnh. Tôi tư vấn về concept, góc nhìn và phân phối để tối đa hóa tác động kinh doanh, không chỉ là lượt xem.",
                 card_2: "Nền tảng quản trị giúp tôi xây dựng các dây chuyền sản xuất tinh gọn, hiệu quả, tôn trọng thời gian và nguồn lực của bạn.",
                 card_3: "Âm thanh/Hình ảnh chuẩn Pixel-perfect được thiết kế để định vị bạn là một chuyên gia không thể tranh cãi, xứng đáng với mức giá cao với khả năng lưu giữ tối ưu cá tính của bạn trong nhận thức về thương hiệu.",
-                ready_title: "Ngừng Đoán Mò.<br>Bắt Đầu Xây Dựng.", ready_desc: "Chuyên môn của bạn xứng đáng với một hệ thống tương xứng với giá trị của nó.", btn_strategy_cta: "Đặt lịch Khám phá",
-                archive_desc: "Tuyển tập các dự án chiến lược đã thực thi. Hơn 30+ Tư liệu.",
+                ready_title: "Ngừng Đoán Mò.<br>Bắt Đầu Xây Dựng.", btn_strategy_cta: "Đặt lịch Khám phá",
+                archive_desc: "Tuyển tập các dự án chiến lược đã thực thi. Hơn 30+ Tư liệu. <strong>Click để xem case study.</strong>",
                 booking_badge: "Phiên Tư vấn Chiến lược",
                 booking_title: "Cùng Kiến tạo <br><span class='text-gradient'>Doanh thu</span> của bạn",
                 booking_desc: "Buổi tư vấn 1:1 (60 phút) để đánh giá điểm nghẽn nội dung hiện tại và xác định lộ trình cho uy tín & quy mô.",
@@ -1472,7 +1764,6 @@
             });
         }
 
-        // ================= NAVIGATION & INTERACTION LOGIC =================
         function navigateTo(pageId) {
             document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
@@ -1484,13 +1775,6 @@
             window.scrollTo(0, 0);
         }
 
-        function filterGallery(type) {
-            document.querySelectorAll('.gallery-item').forEach(item => {
-                if (type === 'all' || item.classList.contains(type)) item.classList.remove('hidden');
-                else item.classList.add('hidden');
-            });
-        }
-
         // 3D Tilt Effect
         document.querySelectorAll('[data-tilt]').forEach(card => {
             card.addEventListener('mousemove', e => {
@@ -1500,6 +1784,11 @@
                 card.style.transform = `perspective(1000px) rotateX(${-y / 25}deg) rotateY(${x / 25}deg) scale(1.02)`;
             });
             card.addEventListener('mouseleave', () => card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)');
+        });
+
+        // Init gallery on load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGallery();
         });
     </script>
 </body>
