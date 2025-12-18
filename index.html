@@ -1,0 +1,2290 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Henry Marques | Strategic Content Architect</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- 1. CORE VARIABLES (Futuristic Enhanced Palette) --- */
+        :root {
+            /* Backgrounds */
+            --bg-deep: #0A0A0A;
+            /* The Void - Deeper black for contrast */
+            --bg-card: #141414;
+            /* The Stage - Elevated surface */
+
+            /* Text */
+            --text-primary: #FFFFFF;
+            /* Pure white for maximum contrast */
+            --text-secondary: #9E9E9E;
+            /* Refined gray */
+
+            /* Accent Colors - Enhanced */
+            --crimson: #D81F2A;
+            /* Brighter crimson for visibility */
+            --crimson-light: #FF3B47;
+            /* Vibrant light crimson */
+            --crimson-dark: #A31621;
+            /* Deep crimson for depth */
+            --blue: #4A9FFF;
+            /* Brighter blue */
+            --blue-light: #6BB3FF;
+            /* Light blue accent */
+
+            /* Gradients - Futuristic */
+            --gradient-text: linear-gradient(135deg, var(--crimson), var(--blue));
+            --gradient-border: linear-gradient(135deg, var(--crimson), var(--blue));
+            --gradient-glow: radial-gradient(circle at center, var(--crimson), transparent);
+
+            /* Glass Effects - Enhanced */
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-hover: rgba(255, 255, 255, 0.08);
+            --card-radius: 12px;
+
+            /* Glow Effects */
+            --glow-crimson: 0 0 20px rgba(216, 31, 42, 0.3);
+            --glow-blue: 0 0 20px rgba(74, 159, 255, 0.3);
+            --glow-mixed: 0 0 30px rgba(216, 31, 42, 0.2), 0 0 60px rgba(74, 159, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.5;
+            letter-spacing: -0.01em;
+            font-size: 16px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo,
+        .gallery-title {
+            font-family: 'Space Grotesk', sans-serif;
+            text-wrap: balance;
+        }
+
+        /* Ambient Background - Futuristic Animated */
+        .ambient-light {
+            position: fixed;
+            top: -30%;
+            left: -20%;
+            width: 150%;
+            height: 150%;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(216, 31, 42, 0.08), transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(74, 159, 255, 0.08), transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(163, 22, 33, 0.05), transparent 60%);
+            filter: blur(100px);
+            opacity: 0.9;
+            animation: ambientPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes ambientPulse {
+            0% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 0.85;
+                transform: scale(1);
+            }
+        }
+
+        /* --- 2. UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+            scroll-margin-top: 100px; /* Prevent fixed nav from covering section tops */
+        }
+
+        .text-gradient {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .page-section {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            scroll-margin-top: 100px; /* Prevent fixed nav from covering when navigating */
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Buttons - Futuristic Enhanced */
+        .btn-main,
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, var(--crimson), var(--crimson-light));
+            color: var(--text-primary);
+            font-weight: 700;
+            border: 1px solid var(--crimson);
+            box-shadow: var(--glow-crimson);
+        }
+
+        .btn-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--crimson-light), var(--blue));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .btn-main:hover::before {
+            opacity: 1;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow-mixed);
+            border-color: var(--crimson-light);
+        }
+
+        .btn-main:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-main span,
+        .btn-main i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--glass-hover);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .btn-outline:hover::before {
+            opacity: 1;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--crimson);
+            color: var(--text-primary);
+            box-shadow: var(--glow-crimson);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline span,
+        .btn-outline i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--crimson), var(--blue));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lang-btn:hover::before {
+            opacity: 0.15;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--crimson);
+            color: var(--text-primary);
+        }
+
+        .lang-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .lang-btn:hover {
+            color: white;
+            border-color: var(--text-primary);
+        }
+
+        /* --- 3. NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 999;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            letter-spacing: -0.02em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--crimson-light);
+            text-shadow: 0 0 20px rgba(216, 31, 42, 0.5);
+        }
+
+        .logo span {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            background: var(--glass-bg);
+            padding: 6px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--crimson), var(--blue));
+            opacity: 0;
+            border-radius: 40px;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-btn:hover::before {
+            opacity: 0.15;
+        }
+
+        .nav-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-btn.active {
+            background: rgba(216, 31, 42, 0.15);
+            color: var(--text-primary);
+            box-shadow: 0 0 20px rgba(216, 31, 42, 0.2);
+        }
+
+        .nav-btn.active::before {
+            opacity: 0;
+        }
+
+        .nav-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            min-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 50px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            border: 3px solid rgba(216, 31, 42, 0.3);
+            animation: reactorGlow 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes reactorGlow {
+            0% {
+                box-shadow: 
+                    0 0 30px rgba(74, 159, 255, 0.4), 
+                    0 0 15px rgba(74, 159, 255, 0.2) inset,
+                    0 0 60px rgba(74, 159, 255, 0.2);
+                border-color: rgba(74, 159, 255, 0.5);
+            }
+
+            100% {
+                box-shadow: 
+                    0 0 40px rgba(216, 31, 42, 0.6), 
+                    0 0 20px rgba(216, 31, 42, 0.3) inset,
+                    0 0 80px rgba(216, 31, 42, 0.3);
+                border-color: rgba(216, 31, 42, 0.7);
+            }
+        }
+
+        .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(216, 31, 42, 0.2);
+            animation: ripple 3s infinite cubic-bezier(0, 0.2, 0.8, 1);
+        }
+
+        .pulse-ring:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .pulse-ring:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+                border-width: 2px;
+                border-color: rgba(216, 31, 42, 0.3);
+            }
+
+            50% {
+                opacity: 0.6;
+                border-color: rgba(216, 31, 42, 0.6);
+            }
+
+            100% {
+                transform: scale(2);
+                opacity: 0;
+                border-width: 0px;
+                border-color: rgba(74, 159, 255, 0.3);
+            }
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(216, 31, 42, 0.08);
+            border: 1px solid rgba(216, 31, 42, 0.3);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--crimson-light);
+            margin-bottom: 30px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            box-shadow: 0 0 20px rgba(216, 31, 42, 0.1);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--crimson-light);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--crimson-light);
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0 auto 25px auto;
+            letter-spacing: -0.03em;
+            max-width: 900px;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            font-weight: 400;
+        }
+
+        .inspirations {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .insp-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .insp-items {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .insp-tag {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--glass-border);
+            transition: 0.3s;
+            cursor: default;
+            white-space: nowrap;
+        }
+
+        .insp-tag:hover {
+            border-color: var(--text-primary);
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- 5. SECTIONS --- */
+        .trusted-section {
+            border-bottom: 1px solid var(--glass-border);
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.005);
+            margin-bottom: 80px;
+        }
+
+        .trusted-logos {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .trusted-logos:hover {
+            opacity: 1;
+        }
+
+        .t-item {
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+
+        .t-item span {
+            font-weight: 400;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .bio-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            padding: 50px;
+            position: sticky;
+            top: 120px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bio-card:hover {
+            background: var(--glass-hover);
+            border-color: rgba(216, 31, 42, 0.3);
+            box-shadow: var(--glow-crimson);
+            transform: translateY(-5px);
+        }
+
+        .timeline-container {
+            border-left: 1px solid var(--glass-border);
+            padding-left: 40px;
+            margin-left: 15px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .dot {
+            position: absolute;
+            left: -45px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--bg-deep);
+            border: 2px solid var(--text-secondary);
+            border-radius: 50%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-item:hover .dot {
+            border-color: var(--crimson);
+            background: var(--crimson);
+            box-shadow: var(--glow-crimson);
+            transform: scale(1.3);
+        }
+
+        .t-date {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+            letter-spacing: 0.05em;
+        }
+
+        .t-desc {
+            color: var(--text-secondary);
+            margin-top: 15px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* --- 7. CARDS GRID --- */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tilt-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tilt-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, var(--glass-hover));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .tilt-card:hover::before {
+            opacity: 1;
+        }
+
+        .tilt-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--glass-border);
+        }
+
+        .tilt-card.c-crimson:hover {
+            border-color: var(--crimson);
+            box-shadow: var(--glow-crimson);
+        }
+
+        .tilt-card.c-blue:hover {
+            border-color: var(--blue);
+            box-shadow: var(--glow-blue);
+        }
+
+        .tilt-card.c-mixed:hover {
+            border-color: var(--crimson);
+            box-shadow: var(--glow-mixed);
+        }
+
+        .card-inner {
+            transform: translateZ(30px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        /* --- 8. SHOWCASE GRID --- */
+        .showcase-header {
+            text-align: center;
+            padding: 100px 0 60px;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding-bottom: 100px;
+        }
+
+        .gallery-card {
+            background: transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            text-align: center;
+            position: relative;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .gallery-card:hover .thumb-wrapper {
+            border-color: var(--crimson);
+            box-shadow: 0 0 30px rgba(216, 31, 42, 0.4);
+        }
+
+        /* Long videos: 2 columns each (2x2 grid) */
+        .gallery-card.long {
+            grid-column: span 2;
+        }
+
+        /* Short videos: 1 column each (4 columns per row) */
+        .gallery-card.short {
+            grid-column: span 1;
+        }
+
+        .thumb-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--bg-card);
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .thumb-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(216, 31, 42, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .gallery-card:hover .thumb-wrapper::after {
+            opacity: 1;
+        }
+
+        /* Aspect ratios */
+        .gallery-card.short .thumb-wrapper {
+            aspect-ratio: 9/16;
+        }
+
+        .gallery-card.long .thumb-wrapper {
+            aspect-ratio: 16/9;
+        }
+
+        .thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+            opacity: 0.7;
+        }
+
+        .gallery-card:hover .thumb {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .meta-data {
+            padding: 0 5px;
+            width: 100%;
+        }
+
+        .gallery-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .gallery-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: 'Inter';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-desc i {
+            color: var(--blue);
+            font-size: 0.7rem;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transition: 0.3s;
+            font-size: 24px;
+            color: white;
+        }
+
+        .gallery-card:hover .play-overlay {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CASE STUDY MODAL
+           ═══════════════════════════════════════════════════════════════ */
+
+        .case-study-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 2, 3, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s;
+        }
+
+        .case-study-modal.active {
+            display: block;
+        }
+
+        .modal-content-case {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 40px;
+            position: relative;
+        }
+
+        .modal-close-case {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10001;
+        }
+
+        .modal-close-case:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-video-case {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .modal-video-case iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .modal-section-case {
+            margin-bottom: 40px;
+            padding: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            position: relative;
+        }
+
+        .modal-section-case::before {
+            content: '[';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: var(--blue);
+            font-size: 28px;
+            font-weight: 700;
+            opacity: 0.3;
+            font-family: 'Space Grotesk', monospace;
+        }
+
+        .modal-section-case::after {
+            content: ']';
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: var(--blue);
+            font-size: 28px;
+            font-weight: 700;
+            opacity: 0.3;
+            font-family: 'Space Grotesk', monospace;
+        }
+
+        .modal-section-case h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .modal-section-case p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Behind The Scenes Gallery */
+        .bts-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .bts-image-wrapper {
+            position: relative;
+            aspect-ratio: 16/9;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            background: var(--bg-card);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .bts-image-wrapper:hover {
+            transform: translateY(-3px);
+            border-color: var(--blue);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .bts-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .bts-image-wrapper:hover .bts-image {
+            transform: scale(1.05);
+        }
+
+        .bts-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 15px 10px 10px;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .bts-image-wrapper:hover .bts-caption {
+            opacity: 1;
+        }
+
+        /* Lightbox for BTS images */
+        .bts-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10002;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .bts-lightbox.active {
+            display: flex;
+        }
+
+        .bts-lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .bts-lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .bts-lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .bts-lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* --- 9. BOOKING --- */
+        .split-screen {
+            display: flex;
+            min-height: 85vh;
+            padding-top: 100px;
+            gap: 60px;
+        }
+
+        .left-panel {
+            flex: 1;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-panel {
+            flex: 1;
+            background: #111;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            height: 700px;
+        }
+
+        .booking-list li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .booking-list li:hover {
+            color: var(--text-primary);
+            transform: translateX(10px);
+        }
+
+        .booking-list li::before {
+            content: '▹';
+            color: var(--blue);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* --- 10. MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            nav {
+                padding: 12px 0;
+            }
+
+            .nav-inner {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: space-around;
+                margin-top: 10px;
+            }
+
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .lang-btn {
+                margin-left: 0;
+            }
+
+            .btn-main {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding-top: 120px;
+                min-height: 90vh;
+            }
+
+            .avatar-wrapper {
+                width: 140px;
+                height: 140px;
+                margin-bottom: 30px;
+            }
+
+            .hero-avatar {
+                width: 120px;
+                height: 120px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .inspirations {
+                margin-top: 40px;
+            }
+
+            .insp-items {
+                gap: 10px;
+            }
+
+            .insp-tag {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+
+            .trusted-logos {
+                gap: 30px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .t-item {
+                font-size: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .bio-card {
+                padding: 30px;
+                position: static;
+            }
+
+            .timeline-container {
+                padding-left: 30px;
+                margin-left: 10px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tilt-card {
+                padding: 30px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .gallery-card.short,
+            .gallery-card.long {
+                grid-column: span 1;
+            }
+
+            .gallery-card.short .thumb-wrapper {
+                aspect-ratio: 9/16;
+            }
+
+            .gallery-card.long .thumb-wrapper {
+                aspect-ratio: 16/9;
+            }
+
+            .gallery-title {
+                font-size: 1rem;
+            }
+
+            .gallery-desc {
+                font-size: 0.8rem;
+            }
+
+            .split-screen {
+                flex-direction: column;
+                gap: 40px;
+                padding-top: 100px; /* Increase to prevent navbar overlap */
+            }
+
+            .right-panel {
+                height: 500px;
+            }
+
+            .booking-list li {
+                font-size: 1rem;
+            }
+
+            .modal-content-case {
+                padding: 20px;
+                margin: 40px auto;
+            }
+
+            .modal-close-case {
+                top: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .modal-section-case {
+                padding: 30px;
+            }
+
+            .modal-section-case h3 {
+                font-size: 1.5rem;
+            }
+
+            .modal-section-case p {
+                font-size: 1rem;
+            }
+
+            .bts-gallery {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .bts-lightbox-close {
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .showcase-header {
+                padding: 80px 0 40px; /* Increase top padding on mobile to account for fixed nav */
+            }
+
+            .filter-container {
+                gap: 10px;
+            }
+
+            .btn-outline {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ambient-light"></div>
+
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo" onclick="navigateTo('home')">
+                <span style="color:var(--blue)">///</span> HENRY MARQUES
+            </div>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="nav-links">
+                    <button class="nav-btn active" onclick="navigateTo('home')" data-key="nav_home">Story</button>
+                    <button class="nav-btn" onclick="navigateTo('showcase')" data-key="nav_showcase">Archive</button>
+                    <button class="nav-btn" onclick="navigateTo('booking')" data-key="nav_booking">Contact</button>
+                </div>
+                <button class="lang-btn" onclick="toggleLang()">EN | VN</button>
+                <button class="btn-main" onclick="navigateTo('booking')" data-key="btn_book_nav">Book Strategy</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="home" class="page-section active">
+        <section class="hero">
+            <div class="container">
+                <div class="status-badge">
+                    <div class="status-dot"></div> <span data-key="status">Open for High-Ticket Projects</span>
+                </div>
+
+                <div class="avatar-wrapper">
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring"></div>
+                    <img src="Henry Marques.PNG" class="hero-avatar" alt="Henry Marques">
+                </div>
+
+                <h1 data-key="hero_title">The Strategic <br><span class="text-gradient">Video Architect</span></h1>
+                <p data-key="hero_desc">I don't sell videos. I engineer <strong>Video & Content Systems</strong> that
+                    allow Founders & Creators to dominate High-Ticket markets with authority.</p>
+
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+                    <button class="btn-main" onclick="navigateTo('showcase')" data-key="btn_view">Explore
+                        Archive</button>
+                    <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView()"
+                        data-key="btn_philosophy">My Philosophy</button>
+                </div>
+
+                <div class="inspirations">
+                    <span class="insp-label" data-key="insp_label">Built on the shoulders of giants. Inspired by</span>
+                    <div class="insp-items">
+                        <span class="insp-tag">Trey Gustafson (Business)</span>
+                        <span class="insp-tag">Ali Abdaal (Systems)</span>
+                        <span class="insp-tag">Kevin Mach (Visuals Mindset)</span>
+                        <span class="insp-tag">Devin Jatho (Strategy)</span>
+                        <span class="insp-tag">Iman Gadzhi (Psychology)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="trusted-section">
+            <div class="container">
+                <p style="text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #666; margin-bottom: 30px;"
+                    data-key="trusted_label">Strategic Impact Delivered (collaborated with <strong>Conterine</strong>)
+                    For</p>
+                <div class="trusted-logos">
+                    <div class="t-item">🎙️ VSTN <span>Podcast</span></div>
+                    <div class="t-item">Finn Dollimore <span>Expert Website Designer</span></div>
+                    <div class="t-item">Micky Dollimore <span>Map Developer & Consultant</span></div>
+                    <div class="t-item">Aliena <span>CEO of Fast Track Ui</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding container" id="about">
+            <div class="about-grid">
+                <div class="bio-card">
+                    <h3 style="font-size: 2rem; margin-bottom: 20px; line-height: 1.2;" data-key="bio_title">The
+                        Architect <br>Behind The Chaos.</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc1">They call it
+                        "video editing." I call it <strong>engineering attention</strong>. My name is <strong>Henry
+                            Marques (Lý Minh Phúc)</strong>. In a market flooded with "aesthetic" visuals, I chose a
+                        different path: <strong>System over Art.</strong></p>
+                    <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc2">I don't just make
+                        things look good. I build <strong>video infrastructures</strong> that allow creators to scale
+                        without burning out. Talent is useless without a process. That's why I don't sell videos; I sell
+                        the <strong>certainty of outcome</strong>.</p>
+                    <hr style="border:0; border-top:1px solid var(--glass-border); margin: 30px 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h4 style="color: white; margin-bottom: 5px;" data-key="role_title">Current Focus</h4>
+                            <p style="color: #999; font-size: 0.9rem;" data-key="role_desc">Building Filmoty Agency
+                                (distinctive, innovative).</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-trend-up" style="color: var(--blue); font-size: 1.5rem;"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 50px; padding-left: 40px;"><span
+                            data-key="journey_title">The</span> <span class="text-gradient">Evolution</span></h2>
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="dot"></div>
+                            <span class="t-date">2025 (Q3)</span>
+                            <h3>CPO & Production Lead</h3>
+                            <div class="t-desc" data-key="exp_1"><strong>At Conterine.</strong> Architected the
+                                post-production workflow. Managed quality control for high-volume deliverables and
+                                scaled the team without breaking the system. Besides, establishing video style is my
+                                responsiblity when it comes to new potential clients.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="dot"></div>
+                            <span class="t-date">2025 (Q1-Q2)</span>
+                            <h3>Junior - Senior Strategic Editor</h3>
+                            <div class="t-desc" data-key="exp_2">Mastered retention mechanics. Worked directly with
+                                international creators to decode the algorithm of "High-Ticket Attention". Clients: VSTN
+                                Podcast, Finn Dollimore, Micky Dollimore, Aliena Cai.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="dot"></div>
+                            <span class="t-date">Present</span>
+                            <h3>CEO - Founder Filmoty Agency</h3>
+                            <div class="t-desc" data-key="exp_3">Building a sustainable Agency model driven by a clear
+                                vision. Learned the hard way that talent without process leads to burnout.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 3rem;">Why <span class="text-gradient">Architect?</span></h2>
+                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;" data-key="why_subtitle">
+                    Because hope is not a strategy. You need an engineered approach.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="tilt-card c-crimson" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon" style="color: var(--crimson);">🚀</div>
+                        <h3>Strategic Partner</h3>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_1">I don't just take
+                            orders. I consult on concepts, framing, and distribution to maximize business impact, not
+                            just views.</p>
+                    </div>
+                </div>
+                <div class="tilt-card c-blue" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon" style="color: var(--blue);">🧠</div>
+                        <h3>CPO Mindset</h3>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_2">My management
+                            background means I build lean, efficient production pipelines that respect your time and
+                            resources.</p>
+                    </div>
+                </div>
+                <div class="tilt-card c-mixed" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon"
+                            style="background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                            💎</div>
+                        <h3>Premium Standard</h3>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_3">Pixel-perfect
+                            audio/visuals designed to position you as an undisputed authority, justifying premium
+                            positioning by amplifying your unique personality within the brand.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="text-align: center; padding: 120px 0; border-top: 1px solid var(--glass-border);">
+            <h2 style="font-size: 3rem; margin-bottom: 20px; line-height: 1.1;" data-key="ready_title">Stop
+                Guessing.<br>Start Building.</h2>
+            <button class="btn-main" onclick="navigateTo('booking')" data-key="btn_strategy_cta">Book Discovery
+                Call</button>
+            <div style="margin-top: 60px; color: #444; font-size: 0.8rem; letter-spacing: 1px;">© 2025 Filmoty Agency.
+                Engineered by Henry Marques.</div>
+        </section>
+    </div>
+
+    <div id="showcase" class="page-section">
+        <div class="container showcase-header">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">The <span class="text-gradient">Archive</span></h1>
+            <p style="color: var(--text-secondary); margin-bottom: 40px;" data-key="archive_desc">Collection of 30+
+                executed strategic projects. <strong>Click to view case study.</strong></p>
+
+            <div class="filter-container">
+                <button class="btn-outline" onclick="filterGallery('all')">All Work</button>
+                <button class="btn-outline" onclick="filterGallery('short')">Shorts</button>
+                <button class="btn-outline" onclick="filterGallery('long')">Long-form</button>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Videos will be rendered here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div id="booking" class="page-section">
+        <div class="container split-screen">
+            <div class="left-panel">
+                <span
+                    style="color: var(--blue); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem;"
+                    data-key="booking_badge">Strategy Session</span>
+                <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 15px; line-height: 1.1;"
+                    data-key="booking_title">Let's
+                    Architect Your <br><span class="text-gradient">Revenue</span></h1>
+                <p style="color: var(--text-secondary); font-size: 1.15rem; margin-top: 30px; font-weight: 400; max-width: 500px;"
+                    data-key="booking_desc">A 1:1 consultation (60 mins) to audit your current content bottleneck and
+                    define a roadmap for authority & scale.</p>
+                <ul class="booking-list" style="margin-top: 50px; list-style: none;">
+                    <li data-key="list_1">Audit: Branding & Our Feasible Support</li>
+                    <li data-key="list_2">Strategy: High-Ticket Concept Direction</li>
+                    <li data-key="list_3">System: Production-House Workflow Design</li>
+                </ul>
+                <div style="margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--glass-border);">
+                    <p style="color: #666; font-size: 0.9rem;">Powered by <strong>FILMOTY AGENCY</strong></p>
+                </div>
+            </div>
+            <div class="right-panel" style="background-color: #ffffff">
+                <iframe
+                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07-OIRo9PlSFREUpOnBTJ4EoJLt9MQ-r3kqjFs-rTSdZBT5_mXAvjPRajfayOUwAw8FmcsRXS2?gv=true"
+                    style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- CASE STUDY MODAL -->
+    <div id="case-study-modal" class="case-study-modal">
+        <div class="modal-close-case" onclick="closeCaseStudy()">×</div>
+        <div class="modal-content-case">
+            <div class="modal-video-case" id="modal-video-case"></div>
+
+            <div class="modal-section-case">
+                <h3>The Challenge</h3>
+                <p id="modal-challenge-case">Loading...</p>
+            </div>
+
+            <div class="modal-section-case">
+                <h3>The Architecture</h3>
+                <p id="modal-architecture-case">Loading...</p>
+            </div>
+
+            <div class="modal-section-case">
+                <h3>Behind The Scenes</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">A glimpse into the creative process.</p>
+                <div id="modal-bts-gallery" class="bts-gallery">
+                    <!-- BTS images will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BTS Image Lightbox -->
+    <div id="bts-lightbox" class="bts-lightbox" onclick="closeBTSLightbox(event)">
+        <div class="bts-lightbox-content">
+            <div class="bts-lightbox-close" onclick="closeBTSLightbox(event)">×</div>
+            <img id="bts-lightbox-image" class="bts-lightbox-image" src="" alt="Behind the scenes">
+        </div>
+    </div>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════════
+        // PROJECT DATA WITH CASE STUDIES (ALL 30 VIDEOS)
+        // REORGANIZED: 10 LONG VIDEOS FIRST, THEN 20 SHORT VIDEOS
+        // ═══════════════════════════════════════════════════════════════
+
+        const allProjects = [
+            // LONG-FORM VIDEOS (10) - DISPLAYED FIRST
+            {
+                id: 21,
+                type: 'long',
+                videoId: 'Tl5ut2G_MEI',
+                title: '[Spartan.Edu] Software Demo & Advertisement',
+                desc: 'Scripting, Storyboard, Video editing, Motion graphic',
+                icon: 'fa-laptop',
+                challenge: 'Spartan.Edu needed to establish credibility as a serious education platform from day one. Generic software demos do not convert high-ticket B2B buyers or convince educators to trust a new platform.',
+                architecture: 'Designed "Premium SaaS Visual Language": Crafted script emphasizing inevitability of the solution, not just features. Storyboarded every scene to maximize negative space (signals premium). Used enterprise-level color grading and subtle motion graphics that guide attention without overwhelming. Positioned product as the obvious choice, not just an option. This became their brand foundation.',
+                bts: [
+                    { img: './SpartanEdu_StoryBoard.png', caption: 'Storyboard layout for Spartan.Edu demo' },
+                    { img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800', caption: 'Script review with client' },
+                    { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800', caption: 'Motion graphics timeline' }
+                ]
+            },
+            {
+                id: 22,
+                type: 'long',
+                videoId: 'GdCr5FT_z20',
+                title: '[Aliena Cai] How I Use Figma Component',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-film',
+                challenge: 'Figma component tutorials exist everywhere. Aliena needed to stand out while teaching complex technical concepts without losing beginners.',
+                architecture: 'Implemented "Show Do Not Tell" editing: Instead of lengthy explanations, used screen recordings with strategic zooms and highlights to guide attention. Added "why this matters" text overlays at key decision points. Maintained pace that respects viewer time while ensuring comprehension. Technical content made accessible without dumbing down.',
+                bts: [
+                    { img: './Aliena_Cai__figma_component.png', caption: 'Component files and editing assets in Google Drive' },
+                    { img: './aliena_component.png', caption: 'Asana task management for Aliena tutorial' },
+                    { img: './Aliena_How_i_got_100_.png', caption: 'Script planning and timeline setup' }
+                ]
+            },
+            {
+                id: 23,
+                type: 'long',
+                videoId: 'QPX0-l5e4_8',
+                title: '[Finn Dollimore] Figma Components for Pro Web Design',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-chart-line',
+                challenge: 'Finn had deep expertise but videos were not holding attention past 30 seconds. High value content was being wasted due to poor retention mechanics.',
+                architecture: 'Deployed "Micro-Dopamine System": Fast-paced B-roll changes every 3-5 seconds, strategic zooms on key actions, progress indicators showing exactly where viewer is in tutorial. Added "pattern interrupts" every 90 seconds to reset attention span. Retention increased 40%, watch time doubled.',
+                bts: [
+                    { img: './Finn_Dollimore_visual_edit_board.png', caption: 'Visual edit board and brand guidelines for Finn' },
+                    { img: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=800', caption: 'Analyzing retention graphs' }
+                ]
+            },
+            {
+                id: 24,
+                type: 'long',
+                videoId: '8_dNmI8gyZQ',
+                title: '[Micky Dollimore] Nomadic Software Developer - Malaysia',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-chalkboard-user',
+                challenge: 'Micky needed to position himself as premium developer consultant, not just another "digital nomad" vlogger. Content risked looking like lifestyle flex instead of professional authority.',
+                architecture: 'Crafted "Aspirational Yet Achievable" narrative: Selective B-roll emphasized work over locations, cinematic transitions maintained production quality, strategic voiceover pacing emphasized expertise over lifestyle. Showed the discipline behind the freedom. Positioned him as thought leader, attracted consulting inquiries.',
+                bts: [
+                    { img: './Micky_Dollomore_visual_edit_board.png', caption: 'Visual edit board and style guide for Micky Dollimore' }
+                ]
+            },
+            {
+                id: 25,
+                type: 'long',
+                videoId: 'DpLfBVhFohI',
+                title: '[Aliena Cai] Figma to Wix Studio (2025 Agency Method)',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-video',
+                challenge: 'Complex 45+ minute tutorial with high drop-off risk. Needed to maintain engagement while teaching advanced concepts without shortcuts.',
+                architecture: 'Built "Chapter System" with visual timestamps, deployed strategic "pattern interrupts" every 8 minutes to reset attention, maintained consistent "Show Do not Tell" editing rhythm. Added recap moments for viewers who jumped ahead. Result: 78% completion rate (industry average: 40%).',
+                bts: [
+                    { img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800', caption: 'Mapping out 45-minute chapter structure' },
+                    { img: 'https://images.unsplash.com/photo-1590650213165-d67df15c7f05?w=800', caption: 'Color coding timeline sections' }
+                ]
+            },
+            {
+                id: 26,
+                type: 'long',
+                videoId: 'I67if-hz_UY',
+                title: '[Micky Dollimore] What is a Tileset - Mapbox',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-magnifying-glass-chart',
+                challenge: 'Highly technical explainer for B2B audience. Risk of being too dry or too dumbed-down. Needed to engage without condescending.',
+                architecture: 'Used "Strategic Layering": Started with business problem (the "why"), then revealed technical solution (the "how") through animated diagrams. Each feature got "Use Case Spotlight" to maintain relevance. Made technical content feel essential, not optional.',
+                bts: [
+                    { img: './Micky_Dollimore_What_is_title_set.png', caption: 'Google Drive folder with tileset resources and reference materials' }
+                ]
+            },
+            {
+                id: 27,
+                type: 'long',
+                videoId: 'rd61UBl0aSQ',
+                title: '[Micky Dollimore] 5 Must-Have Real Estate Map Features',
+                desc: 'Editing Video Project "Conterine"',
+                icon: 'fa-presentation-screen',
+                challenge: 'Feature list format inherently dry. Needed to make checklist content feel dynamic and essential.',
+                architecture: 'Transformed into "Problem-Solution Journey": Each feature introduced through specific pain point it solves. Used before/after comparisons for each. Maintained narrative arc across all five features. Made checklist feel like revelation sequence.',
+                bts: [
+                    { img: './Micky_5_feature_must_have.png', caption: 'Script document and Google Drive folder for 5 features video' }
+                ]
+            },
+            {
+                id: 28,
+                type: 'long',
+                videoId: '5TByH9yks7w',
+                title: 'Apple Business Essential Ads (Alight Motion)',
+                desc: 'Editing Challenge Recover',
+                icon: 'fa-microphone-lines',
+                challenge: 'Client project that had been abandoned by previous editor. Needed to salvage what existed and transform into premium deliverable.',
+                architecture: 'Applied "Reconstruct Strategy": Identified usable footage, re-graded everything for consistency, added motion graphics to fill gaps, reimagined pacing entirely. Turned failed project into portfolio piece. Proved ability to rescue difficult situations.',
+                bts: [
+                    { img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800', caption: 'Salvaging footage from failed project' },
+                    { img: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800', caption: 'Re-grading for consistency' }
+                ]
+            },
+            {
+                id: 29,
+                type: 'long',
+                videoId: 'u8MeXGcM8yA',
+                title: 'WhatsApp Intro - Trail Edit',
+                desc: 'Trail Editing Video (establishing new standard visual)',
+                icon: 'fa-user-tie',
+                challenge: 'Trail project to establish new visual standard for potential client pitches. Needed to demonstrate capabilities while showcasing specific style.',
+                architecture: 'Created "Style Showcase Hybrid": Delivered functional WhatsApp intro while embedding signature techniques: kinetic typography, strategic color grading, motion graphic integration. Made the demo itself a selling tool. Successfully used in multiple client acquisitions.',
+                bts: []
+            },
+            {
+                id: 30,
+                type: 'long',
+                videoId: 'nQr0ok-Zpfw',
+                title: 'Không Một Mình - Song Animation (Trend)',
+                desc: 'Editing Challenge Recover',
+                icon: 'fa-flag-checkered',
+                challenge: 'Trend-based content with 48-hour shelf life. Needed rapid execution without sacrificing quality.',
+                architecture: 'Deployed "Speed Without Shortcuts": Pre-built template library for common animations, strategic asset reuse, rapid iteration workflow. Delivered trend content in 6 hours that looked like 3-day project. Proved ability to move fast without looking rushed.',
+                bts: [
+                    { img: 'https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=800', caption: 'Racing against trend timeline - 6 hour sprint' }
+                ]
+            },
+
+            // SHORT-FORM VIDEOS (20) - DISPLAYED AFTER LONG VIDEOS
+            {
+                id: 1,
+                type: 'short',
+                videoId: 'DVhsQYGzwkk',
+                title: 'Before & After Showcase',
+                desc: 'Trail Edits',
+                icon: 'fa-bolt',
+                challenge: 'Needed to demonstrate editing transformation in a compelling way that goes beyond simple before/after. The goal was to show not just technical skill, but the strategic thinking behind each edit decision.',
+                architecture: 'Created a dynamic showcase using split-screen transitions and strategic text overlays highlighting key editing decisions: pacing changes, color grading choices, audio layering. Each transformation reveals the "why" behind the edit, turning a portfolio piece into a teaching moment that builds authority.',
+                bts: [
+                    { img: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800', caption: 'Timeline setup - organizing multi-layer edit' },
+                    { img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800', caption: 'Color grading comparison panel' },
+                    { img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800', caption: 'Audio waveform synchronization' }
+                ]
+            },
+            {
+                id: 2,
+                type: 'short',
+                videoId: 'Z3uH0LFWdXE',
+                title: 'Before & After Showcase',
+                desc: 'Trail Edits',
+                icon: 'fa-graduation-cap',
+                challenge: 'Client videos lacked energy and failed to capture attention in the first 3 seconds—critical for social media success.',
+                architecture: 'Implemented "Energy Architecture": Quick cuts in the first 2 seconds, strategic use of sound design to create anticipation, and visual pattern breaks every 4-5 seconds. The result: 40% increase in 3-second retention rate.',
+                bts: [
+                    { img: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800', caption: 'Studying retention analytics' },
+                    { img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800', caption: 'Testing different cut patterns' }
+                ]
+            },
+            {
+                id: 3,
+                type: 'short',
+                videoId: 'P0ZV2kXeZ78',
+                title: 'Before & After Showcase',
+                desc: 'Trail Edits',
+                icon: 'fa-handshake',
+                challenge: 'Corporate content looked stiff and unapproachable, failing to connect with target audience on an emotional level.',
+                architecture: 'Applied "Human-First Editing": Zoomed into micro-expressions, used strategic slow-motion on key moments, added subtle motion graphics that guide viewer attention without overwhelming. Transformed corporate content into relatable storytelling.',
+                bts: [
+                    { img: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800', caption: 'Team review session - refining emotional beats' },
+                    { img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800', caption: 'Client feedback meeting' }
+                ]
+            },
+            {
+                id: 4,
+                type: 'short',
+                videoId: 'jK3AqJy1sPE',
+                title: 'Before & After Showcase',
+                desc: 'Trail Edits',
+                icon: 'fa-robot',
+                challenge: 'Tech product demos were boring and failed to communicate value proposition quickly enough for short-form platforms.',
+                architecture: 'Developed "Feature-Benefit Rhythm": Each feature shown for exactly 2 seconds with immediate benefit visualization. Used kinetic typography to reinforce key value props. Demo transformed from explanation to experience.',
+                bts: [
+                    { img: 'https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=800', caption: 'Wireframing motion graphic sequences' }
+                ]
+            },
+            {
+                id: 5,
+                type: 'short',
+                videoId: 'sTi8MvFw3bM',
+                title: 'VSTN Podcast - National Flag Viral',
+                desc: '1M Views (Tiktok)',
+                icon: 'fa-brain',
+                challenge: 'VSTN Podcast had strong content but struggled to break through the noise on TikTok. Needed a viral moment that felt authentic, not manufactured.',
+                architecture: 'Engineered "Patriotic Emotion Hook": Isolated 15-second segment about Vietnamese flag, synced cuts to emotional peaks in speaker voice, added cinematic color grading that emphasized national colors. Strategic text overlays amplified message without explaining it. Result: 1M+ views organically, establishing VSTN as must-watch content.',
+                bts: [
+                    { img: './VSTN_Script_Nhu__ng_vie_n_đa_n_bay_ra_tu___no__ng_su_ng.png', caption: 'Google Doc script for VSTN viral clip about Vietnamese flag' },
+                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' },
+                    { img: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800', caption: 'Final export render - 1M views incoming!' }
+                ]
+            },
+            {
+                id: 6,
+                type: 'short',
+                videoId: '0kgboYEC2MY',
+                title: 'VSTN Podcast - Gifted Children',
+                desc: '500K Views (Tiktok)',
+                icon: 'fa-video',
+                challenge: 'Philosophical content about gifted children rarely performs on short-form. The topic is inherently long-form, but needed to work in 60 seconds without losing depth.',
+                architecture: 'Used "Thought Cliffhangers": Cut at moments of maximum intellectual tension, visualized abstract concepts with simple motion graphics, strategic text reveals that guide viewer internal dialogue. Made thinking addictive. 500K+ views, 80% watch-through rate.',
+                bts: [
+                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' },
+                    { img: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800', caption: 'Mapping out philosophical talking points' }
+                ]
+            },
+            {
+                id: 7,
+                type: 'short',
+                videoId: 'qiaIVpr7AL0',
+                title: 'VSTN Podcast - Why Smart People Fail',
+                desc: '100K Views (Tiktok)',
+                icon: 'fa-box-open',
+                challenge: 'Counter-intuitive topic (smart people failing) needed to hook viewers immediately while maintaining credibility.',
+                architecture: 'Opened with "Pattern Interrupt": First frame challenges viewer assumption, followed by rapid-fire examples that build curiosity. Used strategic pauses before key insights. Content positioned as revelation, not lecture.',
+                bts: [
+                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' },
+                    { img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800', caption: 'Brainstorming hook strategies' }
+                ]
+            },
+            {
+                id: 8,
+                type: 'short',
+                videoId: '06Q9EXbQuUM',
+                title: 'VSTN Podcast Archive',
+                desc: 'Unpost (project Archive)',
+                icon: 'fa-star',
+                challenge: 'Archival content needed to be presented in a way that maintains production value standards while acknowledging it is from the vault.',
+                architecture: 'Created "Archive Aesthetic": Subtle film grain, date stamp in corner, slightly muted colors that signal "throwback" without looking dated. Content positioned as "classic" rather than "old."',
+                bts: [
+                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' },
+                    { img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=800', caption: 'Digging through old footage' }
+                ]
+            },
+            {
+                id: 9,
+                type: 'short',
+                videoId: '2gMznknUTWk',
+                title: 'VSTN Podcast Archive',
+                desc: 'Unpost (project Archive)',
+                icon: 'fa-calendar-day',
+                challenge: 'Secondary archive content that did not meet publication standards but had value for die-hard fans.',
+                architecture: 'Developed "Behind-The-Scenes Frame": Presented as exclusive content for true fans, added commentary overlays explaining context. Turned rejected content into community-building asset.',
+                bts: [
+                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' }
+                ]
+            },
+            {
+                id: 10,
+                type: 'short',
+                videoId: '67ka-3XRjCQ',
+                title: 'VSTN Podcast Discussion',
+                desc: '110K Views (Tiktok)',
+                icon: 'fa-comments',
+                challenge: 'Discussion-heavy content lacks visual variety, risking viewer drop-off despite strong dialogue.',
+                architecture: 'Implemented "Visual Conversation": Strategic zooms on speaker during key points, B-roll inserts that visualize concepts being discussed, text highlights of quotable moments. Transformed talking heads into dynamic visual experience.',
+                bts: [
+                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' }
+                ]
+            },
+            {
+                id: 11,
+                type: 'short',
+                videoId: 'OcCy9Saqj_M',
+                title: 'VSTN Podcast Highlight',
+                desc: '300K Views (Tiktok)',
+                icon: 'fa-lightbulb',
+                challenge: 'Needed to extract viral moment from 2-hour podcast without losing context that makes the insight meaningful.',
+                architecture: 'Built "Context Capsule": 5-second setup that establishes stakes, main insight delivery, 3-second callback that reinforces message. Viewer gets full value in 30 seconds. 300K views proved the format works.',
+                bts: [
+                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' }
+                ]
+            },
+            {
+                id: 12,
+                type: 'short',
+                videoId: 'd4Po2a3ih4w',
+                title: 'VSTN Podcast Feature',
+                desc: '200K Views (Tiktok)',
+                icon: 'fa-check-double',
+                challenge: 'Similar content from competitors was saturating the feed. Needed differentiation without changing core message.',
+                architecture: 'Applied "Signature Styling": Unique lower-third design, custom transitions, specific color grading that becomes instantly recognizable. Same content, unmistakable presentation. Built brand equity with every view.',
+                bts: [
+                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' }
+                ]
+            },
+            {
+                id: 13,
+                type: 'short',
+                videoId: 'SZ1TCIUhexQ',
+                title: 'Micky Dollimore - Developer Life',
+                desc: 'Unpost (project Archive)',
+                icon: 'fa-arrow-right-arrow-left',
+                challenge: 'Developer content often too technical for general audience, too basic for technical audience. Needed to serve both.',
+                architecture: 'Created "Layered Complexity": Surface level shows results and benefits (for general audience), subtle details and code snippets (for technical viewers). Everyone finds value at their level.',
+                bts: []
+            },
+            {
+                id: 14,
+                type: 'short',
+                videoId: '7iLU196HoC4',
+                title: 'Micky Dollimore - Maps Demo',
+                desc: 'Unpost (project Archive)',
+                icon: 'fa-newspaper',
+                challenge: 'Map software demonstrations inherently dry, difficult to make engaging without losing technical accuracy.',
+                architecture: 'Deployed "Use-Case Storytelling": Instead of explaining features, showed real-world problems being solved. Each feature introduced through a specific pain point it addresses. Made technical demo feel like problem-solving showcase.',
+                bts: []
+            },
+            {
+                id: 15,
+                type: 'short',
+                videoId: '',
+                title: 'Team Spotlight',
+                desc: 'Culture',
+                icon: 'fa-users',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+15',
+                challenge: 'Team content often feels forced or overly promotional. Needed authenticity while maintaining professional standards.',
+                architecture: 'Used "Documentary Approach": Candid moments, minimal scripting, natural lighting. Let team personalities shine through. Positioned agency as group of real people, not corporate facade.',
+                bts: []
+            },
+            {
+                id: 16,
+                type: 'short',
+                videoId: '',
+                title: 'Workflow Hack',
+                desc: 'Productivity',
+                icon: 'fa-gears',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+16',
+                challenge: 'Productivity content oversaturated. Every "hack" has been shared 1000 times.',
+                architecture: 'Focused on "Why Over What": Instead of sharing the hack, explained the psychological principle that makes it work. Positioned content as education, not tips. Audience learns to create their own hacks.',
+                bts: []
+            },
+            {
+                id: 17,
+                type: 'short',
+                videoId: '',
+                title: 'Book Recommendation',
+                desc: 'Knowledge',
+                icon: 'fa-book',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+17',
+                challenge: 'Book recommendations are common. Needed to make recommendation feel personal and actionable.',
+                architecture: 'Applied "Application Blueprint": Do not just recommend the book, show how one specific concept changed our process. Gave viewers immediate takeaway before they buy. Made recommendation feel like gift, not sales pitch.',
+                bts: []
+            },
+            {
+                id: 18,
+                type: 'short',
+                videoId: '',
+                title: 'Motivation Quote',
+                desc: 'Inspiration',
+                icon: 'fa-quote-right',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+18',
+                challenge: 'Motivational quotes are cliché. Needed to deliver inspiration without eye-rolling.',
+                architecture: 'Used "Context Reframe": Paired quote with specific, relatable struggle. Showed how quote applies to real situation. Transformed platitude into practical wisdom.',
+                bts: []
+            },
+            {
+                id: 19,
+                type: 'short',
+                videoId: '',
+                title: 'Quick Tutorial',
+                desc: 'How-to',
+                icon: 'fa-laptop-code',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+19',
+                challenge: 'Tutorial needed to be quick but complete. No time for hand-holding.',
+                architecture: 'Developed "Assumption Framework": Assumed viewer knows basics, jumped straight to the unique insight. Respected audience intelligence. Made tutorial feel exclusive, not remedial.',
+                bts: []
+            },
+            {
+                id: 20,
+                type: 'short',
+                videoId: '',
+                title: 'Final Call to Action',
+                desc: 'Sales',
+                icon: 'fa-bullhorn',
+                thumbnail: 'https://via.placeholder.com/450x800/111/fff?text=Short+20',
+                challenge: 'CTAs feel pushy and damage trust if not executed perfectly.',
+                architecture: 'Created "Value-First CTA": Delivered complete value in the content itself. CTA positioned as "next step" for those who want more, not requirement. Made audience feel pulled, not pushed.',
+                bts: []
+            },
+
+        ];
+        // ═══════════════════════════════════════════════════════════════
+        // RENDER GALLERY
+        // ═══════════════════════════════════════════════════════════════
+
+        function renderGallery(filter = 'all') {
+            const grid = document.getElementById('gallery-grid');
+            const filtered = filter === 'all' ? allProjects : allProjects.filter(p => p.type === filter);
+
+            grid.innerHTML = filtered.map(project => {
+                const hasVideo = project.videoId;
+                const thumbContent = hasVideo
+                    ? `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${project.videoId}" 
+                         title="${project.title}" frameborder="0" 
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>`
+                    : `<img src="${project.thumbnail}" class="thumb" alt="${project.title}">
+                       <div class="play-overlay">▶</div>`;
+
+                return `
+                    <div class="gallery-card ${project.type} gallery-item" onclick="openCaseStudy(${project.id})">
+                        <div class="thumb-wrapper">
+                            ${thumbContent}
+                        </div>
+                        <div class="meta-data">
+                            <div class="gallery-title">${project.title}</div>
+                            <div class="gallery-desc">
+                                <i class="fa-solid ${project.icon}"></i>${project.desc}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterGallery(type) {
+            renderGallery(type);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // CASE STUDY MODAL
+        // ═══════════════════════════════════════════════════════════════
+
+        function openCaseStudy(projectId) {
+            const project = allProjects.find(p => p.id === projectId);
+            if (!project) return;
+
+            const modal = document.getElementById('case-study-modal');
+            const videoContainer = document.getElementById('modal-video-case');
+            const challengeEl = document.getElementById('modal-challenge-case');
+            const architectureEl = document.getElementById('modal-architecture-case');
+            const btsGallery = document.getElementById('modal-bts-gallery');
+
+            // Lazy load video
+            if (project.videoId) {
+                videoContainer.innerHTML = `
+                    <iframe 
+                        src="https://www.youtube.com/embed/${project.videoId}?autoplay=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            } else {
+                videoContainer.innerHTML = `<img src="${project.thumbnail}" style="width:100%;height:100%;object-fit:cover;">`;
+            }
+
+            challengeEl.textContent = project.challenge;
+            architectureEl.textContent = project.architecture;
+
+            // Render BTS gallery
+            if (project.bts && project.bts.length > 0) {
+                btsGallery.innerHTML = project.bts.map((item, index) => `
+                    <div class="bts-image-wrapper" onclick="openBTSLightbox('${item.img}')">
+                        <img src="${item.img}" alt="BTS ${index + 1}" class="bts-image" loading="lazy">
+                        <div class="bts-caption">${item.caption}</div>
+                    </div>
+                `).join('');
+            } else {
+                btsGallery.innerHTML = `
+                    <p style="color: var(--text-secondary); font-style: italic; text-align: center; padding: 40px;">
+                        📸 Behind-the-scenes photos coming soon! This project was completed before our BTS documentation process.
+                    </p>
+                `;
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCaseStudy() {
+            const modal = document.getElementById('case-study-modal');
+            const videoContainer = document.getElementById('modal-video-case');
+
+            videoContainer.innerHTML = '';
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openBTSLightbox(imgSrc) {
+            const lightbox = document.getElementById('bts-lightbox');
+            const lightboxImage = document.getElementById('bts-lightbox-image');
+
+            lightboxImage.src = imgSrc;
+            lightbox.classList.add('active');
+        }
+
+        function closeBTSLightbox(event) {
+            if (event.target.id === 'bts-lightbox' || event.target.classList.contains('bts-lightbox-close')) {
+                const lightbox = document.getElementById('bts-lightbox');
+                lightbox.classList.remove('active');
+                event.stopPropagation();
+            }
+        }
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCaseStudy();
+                const lightbox = document.getElementById('bts-lightbox');
+                if (lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                }
+            }
+        });
+
+        // Close on background click
+        document.getElementById('case-study-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'case-study-modal') closeCaseStudy();
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // TRANSLATION & NAVIGATION
+        // ═══════════════════════════════════════════════════════════════
+
+        const translations = {
+            en: {
+                nav_home: "Story", nav_showcase: "Archive", nav_booking: "Contact", btn_book_nav: "Book Strategy",
+                hero_title: "The Strategic <br><span class='text-gradient'>Video Architect</span>",
+                hero_desc: "I don't sell videos. I engineer <strong>Video & Content Systems</strong> that allow Founders & Creators to dominate High-Ticket markets with authority.",
+                btn_view: "Explore Archive", btn_philosophy: "My Philosophy", insp_label: "Built on the shoulders of giants. Inspired by",
+                trusted_label: "Strategic Impact Delivered (collaborated with <strong>Conterine</strong>) For",
+                bio_title: "The Architect <br>Behind The Chaos.",
+                bio_desc1: "They call it \"video editing.\" I call it <strong>engineering attention</strong>. My name is <strong>Henry Marques (Lý Minh Phúc)</strong>. In a market flooded with \"aesthetic\" visuals, I chose a different path: <strong>System over Art.</strong>",
+                bio_desc2: "I don't just make things look good. I build <strong>video infrastructures</strong> that allow creators to scale without burning out. Talent is useless without a process. That's why I don't sell videos; I sell the <strong>certainty of outcome</strong>.",
+                role_title: "Current Focus", role_desc: "Building Filmoty Agency.",
+                journey_title: "The",
+                exp_1: "<strong>At Conterine.</strong> Architected the post-production workflow. Managed quality control for high-volume deliverables and scaled the team without breaking the system. Besides, establishing video style is my responsiblity when it comes to new potential clients.",
+                exp_2: "Mastered retention mechanics. Worked directly with international creators to decode the algorithm of \"High-Ticket Attention\". Clients: VSTN Podcast, Finn Dollimore, Micky Dollimore, Aliena Cai.",
+                exp_3: "Building a sustainable Agency model driven by a clear vision. Learned the hard way that talent without process leads to burnout.",
+                why_subtitle: "Because hope is not a strategy. You need an engineered approach.",
+                card_1: "I don't just take orders. I consult on concepts, framing, and distribution to maximize business impact, not just views.",
+                card_2: "My management background means I build lean, efficient production pipelines that respect your time and resources.",
+                card_3: "Pixel-perfect audio/visuals designed to position you as an undisputed authority, justifying premium positioning by amplifying your unique personality within the brand.",
+                ready_title: "Stop Guessing.<br>Start Building.", btn_strategy_cta: "Book Discovery Call",
+                archive_desc: "Collection of 30+ executed strategic projects. <strong>Click to view case study.</strong>",
+                booking_badge: "Strategy Session",
+                booking_title: "Let's Architect Your <br><span class='text-gradient'>Revenue</span>",
+                booking_desc: "A 1:1 consultation (60 mins) to audit your current content bottleneck and define a roadmap for authority & scale.",
+                list_1: "Audit: Branding & Our feasible support",
+                list_2: "Strategy: High-Ticket Concept Direction",
+                list_3: "System: Strategy Branding Workflow Design"
+            },
+            vi: {
+                nav_home: "Câu chuyện", nav_showcase: "Kho tàng", nav_booking: "Liên hệ", btn_book_nav: "Đặt lịch Tư vấn",
+                hero_title: "Kiến Trúc Sư <br><span class='text-gradient'>Video Chiến Lược</span>",
+                hero_desc: "Tôi không bán video. Tôi thiết kế <strong>Hệ thống Video & Nội dung</strong> giúp Founder & Creator thống trị thị trường High-Ticket bằng uy tín và chất lượng.",
+                btn_view: "Xem Kho Tàng", btn_philosophy: "Triết lý của tôi", insp_label: "Đứng trên vai người khổng lồ, Được truyền cảm hứng bởi",
+                trusted_label: "Đã làm việc và trao giá trị (hợp tác cùng <strong>Conterine</strong>) cho ",
+                bio_title: "Kiến Trúc Sư <br>Của Sự Hỗn Loạn.",
+                bio_desc1: "Người ta gọi là \"edit video\". Tôi gọi là <strong>kỹ thuật thu hút sự chú ý</strong>. Tên tôi là <strong>Henry Marques (Lý Minh Phúc)</strong>. Giữa một rừng những video chỉ \"đẹp mã\", tôi chọn lối đi riêng: <strong>Hệ thống quan trọng hơn Nghệ thuật.</strong>",
+                bio_desc2: "Tôi không chỉ làm cho đẹp. Tôi xây dựng <strong>cơ sở hạ tầng video</strong> giúp Creator mở rộng quy mô mà không bị kiệt sức. Tài năng mà thiếu quy trình thì vứt. Đó là lý do tôi không bán video; tôi bán <strong>sự chắc chắn về kết quả</strong>.",
+                role_title: "Trọng tâm hiện tại", role_desc: "Xây dựng Filmoty Agency.",
+                journey_title: "Hành Trình",
+                exp_1: "<strong>Tại Conterine.</strong> Kiến tạo quy trình hậu kỳ. Quản lý kiểm soát chất lượng cho khối lượng sản phẩm lớn và mở rộng đội ngũ mà không phá vỡ hệ thống. Bên cạnh đó, việc xây dựng phong cách video là trách nhiệm của tôi khi tiếp cận những khách hàng tiềm năng mới.",
+                exp_2: "Làm chủ cơ chế giữ chân người xem (Retention). Làm việc trực tiếp với các Creator quốc tế để giải mã thuật toán của sự \"Chú ý Giá trị cao\". Những khách hàng đã làm việc: VSTN Podcast, Finn Dollimore, Micky Dollimore, Aliena Cai.",
+                exp_3: "Xây dựng mô hình bền vững dựa trên tầm nhìn rõ ràng. Đã học được bài học xương máu rằng tài năng không có quy trình sẽ dẫn đến kiệt sức.",
+                why_subtitle: "Vì hy vọng không phải là một chiến lược. Bạn cần một cách tiếp cận được thiết kế bài bản.",
+                card_1: "Tôi không chỉ nhận lệnh. Tôi tư vấn về concept, góc nhìn và phân phối để tối đa hóa tác động kinh doanh, không chỉ là lượt xem.",
+                card_2: "Nền tảng quản trị giúp tôi xây dựng các dây chuyền sản xuất tinh gọn, hiệu quả, tôn trọng thời gian và nguồn lực của bạn.",
+                card_3: "Âm thanh/Hình ảnh chuẩn Pixel-perfect được thiết kế để định vị bạn là một chuyên gia không thể tranh cãi, xứng đáng với mức giá cao với khả năng lưu giữ tối ưu cá tính của bạn trong nhận thức về thương hiệu.",
+                ready_title: "Ngừng Đoán Mò.<br>Bắt Đầu Xây Dựng.", btn_strategy_cta: "Đặt lịch Khám phá",
+                archive_desc: "Tuyển tập các dự án chiến lược đã thực thi. Hơn 30+ Tư liệu. <strong>Click để xem case study.</strong>",
+                booking_badge: "Phiên Tư vấn Chiến lược",
+                booking_title: "Cùng Kiến tạo <br><span class='text-gradient'>Doanh thu</span> của bạn",
+                booking_desc: "Buổi tư vấn 1:1 (60 phút) để đánh giá điểm nghẽn nội dung hiện tại và xác định lộ trình cho uy tín & quy mô.",
+                list_1: "Audit: Phân tích Thương hiệu & Đưa ra Giải pháp Thích Hợp",
+                list_2: "Chiến lược: Định hướng Concept High-Ticket",
+                list_3: "Hệ thống: Thiết kế Quy trình Chiến lược Thương hiệu"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'vi' : 'en';
+            const data = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (data[key]) el.innerHTML = data[key];
+            });
+        }
+
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            if (pageId === 'home') document.querySelectorAll('.nav-btn')[0].classList.add('active');
+            if (pageId === 'showcase') document.querySelectorAll('.nav-btn')[1].classList.add('active');
+            if (pageId === 'booking') document.querySelectorAll('.nav-btn')[2].classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // 3D Tilt Effect
+        document.querySelectorAll('[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                card.style.transform = `perspective(1000px) rotateX(${-y / 25}deg) rotateY(${x / 25}deg) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)');
+        });
+
+        // Init gallery on load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGallery();
+        });
+    </script>
+</body>
+
+</html>
