@@ -4,12 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="theme-color" content="#0A0A0A">
     <title>Henry Marques | Strategic Content Architect</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Performance Optimizations */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+        
         /* --- 1. CORE VARIABLES (Futuristic Enhanced Palette) --- */
         :root {
             /* Backgrounds */
@@ -136,6 +143,51 @@
 
         .hidden {
             display: none !important;
+        }
+
+        /* Scroll Animation Classes */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-animate-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate-left.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-animate-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate-right.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-animate-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate-scale.animate-in {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .page-section {
@@ -921,7 +973,6 @@
             backdrop-filter: blur(20px);
             z-index: 10000;
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
             animation: fadeIn 0.3s;
         }
 
@@ -934,7 +985,6 @@
             margin: 60px auto;
             padding: 40px;
             position: relative;
-            min-height: 100vh; /* Ensure content takes full height */
         }
 
         .modal-close-case {
@@ -1334,8 +1384,7 @@
 
             .modal-content-case {
                 padding: 20px;
-                margin: 80px auto 40px; /* Add top margin for mobile navbar */
-                min-height: auto; /* Remove full height on mobile */
+                margin: 40px auto;
             }
 
             .modal-close-case {
@@ -1880,8 +1929,8 @@
                 challenge: 'Philosophical content about gifted children rarely performs on short-form. The topic is inherently long-form, but needed to work in 60 seconds without losing depth.',
                 architecture: 'Used "Thought Cliffhangers": Cut at moments of maximum intellectual tension, visualized abstract concepts with simple motion graphics, strategic text reveals that guide viewer internal dialogue. Made thinking addictive. 500K+ views, 80% watch-through rate.',
                 bts: [
-                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' },
-                    { img: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800', caption: 'Mapping out philosophical talking points' }
+                    { img: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800', caption: 'Mapping out philosophical talking points' },
+                    { img: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800', caption: 'Testing motion graphics for abstract concepts' }
                 ]
             },
             {
@@ -1894,7 +1943,6 @@
                 challenge: 'Counter-intuitive topic (smart people failing) needed to hook viewers immediately while maintaining credibility.',
                 architecture: 'Opened with "Pattern Interrupt": First frame challenges viewer assumption, followed by rapid-fire examples that build curiosity. Used strategic pauses before key insights. Content positioned as revelation, not lecture.',
                 bts: [
-                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' },
                     { img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800', caption: 'Brainstorming hook strategies' }
                 ]
             },
@@ -1908,7 +1956,6 @@
                 challenge: 'Archival content needed to be presented in a way that maintains production value standards while acknowledging it is from the vault.',
                 architecture: 'Created "Archive Aesthetic": Subtle film grain, date stamp in corner, slightly muted colors that signal "throwback" without looking dated. Content positioned as "classic" rather than "old."',
                 bts: [
-                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' },
                     { img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=800', caption: 'Digging through old footage' }
                 ]
             },
@@ -1921,9 +1968,7 @@
                 icon: 'fa-calendar-day',
                 challenge: 'Secondary archive content that did not meet publication standards but had value for die-hard fans.',
                 architecture: 'Developed "Behind-The-Scenes Frame": Presented as exclusive content for true fans, added commentary overlays explaining context. Turned rejected content into community-building asset.',
-                bts: [
-                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' }
-                ]
+                bts: []
             },
             {
                 id: 10,
@@ -1934,9 +1979,7 @@
                 icon: 'fa-comments',
                 challenge: 'Discussion-heavy content lacks visual variety, risking viewer drop-off despite strong dialogue.',
                 architecture: 'Implemented "Visual Conversation": Strategic zooms on speaker during key points, B-roll inserts that visualize concepts being discussed, text highlights of quotable moments. Transformed talking heads into dynamic visual experience.',
-                bts: [
-                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' }
-                ]
+                bts: []
             },
             {
                 id: 11,
@@ -1947,9 +1990,7 @@
                 icon: 'fa-lightbulb',
                 challenge: 'Needed to extract viral moment from 2-hour podcast without losing context that makes the insight meaningful.',
                 architecture: 'Built "Context Capsule": 5-second setup that establishes stakes, main insight delivery, 3-second callback that reinforces message. Viewer gets full value in 30 seconds. 300K views proved the format works.',
-                bts: [
-                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' }
-                ]
+                bts: []
             },
             {
                 id: 12,
@@ -1960,9 +2001,7 @@
                 icon: 'fa-check-double',
                 challenge: 'Similar content from competitors was saturating the feed. Needed differentiation without changing core message.',
                 architecture: 'Applied "Signature Styling": Unique lower-third design, custom transitions, specific color grading that becomes instantly recognizable. Same content, unmistakable presentation. Built brand equity with every view.',
-                bts: [
-                    { img: './VSTN_visual_edit_board.png', caption: 'Visual edit board and style guide for VSTN Podcast' }
-                ]
+                bts: []
             },
             {
                 id: 13,
@@ -2065,33 +2104,51 @@
         // ═══════════════════════════════════════════════════════════════
 
         function renderGallery(filter = 'all') {
-            const grid = document.getElementById('gallery-grid');
-            const filtered = filter === 'all' ? allProjects : allProjects.filter(p => p.type === filter);
+            try {
+                const grid = document.getElementById('gallery-grid');
+                if (!grid) {
+                    console.error('Gallery grid not found');
+                    return;
+                }
+                
+                const filtered = filter === 'all' ? allProjects : allProjects.filter(p => p.type === filter);
 
-            grid.innerHTML = filtered.map(project => {
-                const hasVideo = project.videoId;
-                const thumbContent = hasVideo
-                    ? `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${project.videoId}" 
-                         title="${project.title}" frameborder="0" 
-                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="thumb"></iframe>`
-                    : `<img src="${project.thumbnail}" class="thumb" alt="${project.title}">
-                       <div class="play-overlay">▶</div>`;
+                // Use YouTube thumbnails instead of iframes for performance
+                grid.innerHTML = filtered.map(project => {
+                    const thumbContent = project.videoId
+                        ? `<img src="https://i.ytimg.com/vi/${project.videoId}/hqdefault.jpg" 
+                             class="thumb" 
+                             alt="${project.title}"
+                             loading="lazy">
+                           <div class="play-overlay">▶</div>`
+                        : `<img src="${project.thumbnail || 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800'}" 
+                             class="thumb" 
+                             alt="${project.title}"
+                             loading="lazy">
+                           <div class="play-overlay">▶</div>`;
 
-                return `
-                    <div class="gallery-card ${project.type} gallery-item" onclick="openCaseStudy(${project.id})">
-                        <div class="thumb-wrapper">
-                            ${thumbContent}
-                        </div>
-                        <div class="meta-data">
-                            <div class="gallery-title">${project.title}</div>
-                            <div class="gallery-desc">
-                                <i class="fa-solid ${project.icon}"></i>${project.desc}
+                    return `
+                        <div class="gallery-card ${project.type} scroll-animate-scale" onclick="openCaseStudy(${project.id})">
+                            <div class="thumb-wrapper">
+                                ${thumbContent}
+                            </div>
+                            <div class="meta-data">
+                                <div class="gallery-title">${project.title}</div>
+                                <div class="gallery-desc">
+                                    <i class="fa-solid ${project.icon}"></i> ${project.desc}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `;
-            }).join('');
+                    `;
+                }).join('');
+                
+                // Re-observe new elements for scroll animation
+                setTimeout(() => {
+                    observeElements();
+                }, 100);
+            } catch (error) {
+                console.error('Gallery render error:', error);
+            }
         }
 
         function filterGallery(type) {
@@ -2103,69 +2160,49 @@
         // ═══════════════════════════════════════════════════════════════
 
         function openCaseStudy(projectId) {
-            try {
-                const project = allProjects.find(p => p.id === projectId);
-                if (!project) {
-                    console.error('Project not found:', projectId);
-                    return;
-                }
+            const project = allProjects.find(p => p.id === projectId);
+            if (!project) return;
 
-                const modal = document.getElementById('case-study-modal');
-                const videoContainer = document.getElementById('modal-video-case');
-                const challengeEl = document.getElementById('modal-challenge-case');
-                const architectureEl = document.getElementById('modal-architecture-case');
-                const btsGallery = document.getElementById('modal-bts-gallery');
+            const modal = document.getElementById('case-study-modal');
+            const videoContainer = document.getElementById('modal-video-case');
+            const challengeEl = document.getElementById('modal-challenge-case');
+            const architectureEl = document.getElementById('modal-architecture-case');
+            const btsGallery = document.getElementById('modal-bts-gallery');
 
-                if (!modal || !videoContainer || !challengeEl || !architectureEl || !btsGallery) {
-                    console.error('Modal elements not found');
-                    return;
-                }
-
-                // Lazy load video
-                if (project.videoId) {
-                    videoContainer.innerHTML = `
-                        <iframe 
-                            src="https://www.youtube.com/embed/${project.videoId}?autoplay=1" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    `;
-                } else if (project.thumbnail) {
-                    videoContainer.innerHTML = `<img src="${project.thumbnail}" style="width:100%;height:100%;object-fit:cover;">`;
-                } else {
-                    videoContainer.innerHTML = '<div style="background:#000;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#666;">No video available</div>';
-                }
-
-                challengeEl.textContent = project.challenge || 'No challenge description available.';
-                architectureEl.textContent = project.architecture || 'No architecture description available.';
-
-                // Render BTS gallery
-                if (project.bts && project.bts.length > 0) {
-                    btsGallery.innerHTML = project.bts.map((item, index) => `
-                        <div class="bts-image-wrapper" onclick="openBTSLightbox('${item.img}')">
-                            <img src="${item.img}" alt="BTS ${index + 1}" class="bts-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800'">
-                            <div class="bts-caption">${item.caption || 'Behind the scenes'}</div>
-                        </div>
-                    `).join('');
-                } else {
-                    btsGallery.innerHTML = `
-                        <p style="color: var(--text-secondary); font-style: italic; text-align: center; padding: 40px;">
-                            📸 Behind-the-scenes photos coming soon! This project was completed before our BTS documentation process.
-                        </p>
-                    `;
-                }
-
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                
-                // Scroll to top of modal on mobile
-                setTimeout(() => {
-                    modal.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 100);
-            } catch (error) {
-                console.error('Error opening case study:', error);
-                alert('Sorry, there was an error loading this case study. Please try again.');
+            // Lazy load video
+            if (project.videoId) {
+                videoContainer.innerHTML = `
+                    <iframe 
+                        src="https://www.youtube.com/embed/${project.videoId}?autoplay=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            } else {
+                videoContainer.innerHTML = `<img src="${project.thumbnail}" style="width:100%;height:100%;object-fit:cover;">`;
             }
+
+            challengeEl.textContent = project.challenge;
+            architectureEl.textContent = project.architecture;
+
+            // Render BTS gallery
+            if (project.bts && project.bts.length > 0) {
+                btsGallery.innerHTML = project.bts.map((item, index) => `
+                    <div class="bts-image-wrapper" onclick="openBTSLightbox('${item.img}')">
+                        <img src="${item.img}" alt="BTS ${index + 1}" class="bts-image" loading="lazy">
+                        <div class="bts-caption">${item.caption}</div>
+                    </div>
+                `).join('');
+            } else {
+                btsGallery.innerHTML = `
+                    <p style="color: var(--text-secondary); font-style: italic; text-align: center; padding: 40px;">
+                        📸 Behind-the-scenes photos coming soon! This project was completed before our BTS documentation process.
+                    </p>
+                `;
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeCaseStudy() {
@@ -2282,14 +2319,41 @@
         }
 
         function navigateTo(pageId) {
-            document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
+            try {
+                // Hide all sections
+                document.querySelectorAll('.page-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show target section
+                const targetSection = document.getElementById(pageId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                } else {
+                    console.error('Section not found:', pageId);
+                    return;
+                }
 
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            if (pageId === 'home') document.querySelectorAll('.nav-btn')[0].classList.add('active');
-            if (pageId === 'showcase') document.querySelectorAll('.nav-btn')[1].classList.add('active');
-            if (pageId === 'booking') document.querySelectorAll('.nav-btn')[2].classList.add('active');
-            window.scrollTo(0, 0);
+                // Update nav buttons
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                const navButtons = document.querySelectorAll('.nav-btn');
+                if (pageId === 'home' && navButtons[0]) navButtons[0].classList.add('active');
+                if (pageId === 'showcase' && navButtons[1]) navButtons[1].classList.add('active');
+                if (pageId === 'booking' && navButtons[2]) navButtons[2].classList.add('active');
+                
+                // Smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Trigger scroll animations after navigation
+                setTimeout(() => {
+                    observeElements();
+                }, 300);
+            } catch (error) {
+                console.error('Navigation error:', error);
+            }
         }
 
         // 3D Tilt Effect
@@ -2303,10 +2367,80 @@
             card.addEventListener('mouseleave', () => card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)');
         });
 
-        // Init gallery on load
+        // ═══════════════════════════════════════════════════════════════
+        // SCROLL ANIMATION SYSTEM
+        // ═══════════════════════════════════════════════════════════════
+        
+        function observeElements() {
+            const options = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Stagger animation delay
+                        setTimeout(() => {
+                            entry.target.classList.add('animate-in');
+                        }, index * 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            // Observe all animation elements
+            document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Init on load
         document.addEventListener('DOMContentLoaded', () => {
             renderGallery();
+            
+            // Add animation classes to elements
+            addAnimationClasses();
+            
+            // Start observing
+            observeElements();
         });
+
+        // Add animation classes to appropriate elements
+        function addAnimationClasses() {
+            // Animate section headings
+            document.querySelectorAll('section h1, section h2').forEach((el, index) => {
+                if (!el.classList.contains('scroll-animate')) {
+                    el.classList.add('scroll-animate');
+                }
+            });
+
+            // Animate cards with stagger
+            document.querySelectorAll('.tilt-card').forEach((card, index) => {
+                if (index % 3 === 0) card.classList.add('scroll-animate-left');
+                else if (index % 3 === 1) card.classList.add('scroll-animate');
+                else card.classList.add('scroll-animate-right');
+            });
+
+            // Animate gallery cards
+            document.querySelectorAll('.gallery-card').forEach((card, index) => {
+                card.classList.add('scroll-animate-scale');
+            });
+
+            // Animate timeline items
+            document.querySelectorAll('.timeline-item').forEach((item, index) => {
+                item.classList.add('scroll-animate-left');
+            });
+
+            // Animate bio card
+            const bioCard = document.querySelector('.bio-card');
+            if (bioCard) bioCard.classList.add('scroll-animate-left');
+
+            // Animate trusted logos
+            document.querySelectorAll('.t-item').forEach((item, index) => {
+                item.classList.add('scroll-animate');
+            });
+        }
     </script>
 </body>
 
