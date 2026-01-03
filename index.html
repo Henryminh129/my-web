@@ -1345,11 +1345,15 @@
             margin-right: auto;
         }
 
+        .recap-video-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .recap-video-container {
             position: relative;
             width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
             aspect-ratio: 16/9;
             border-radius: var(--card-radius);
             overflow: hidden;
@@ -1370,14 +1374,150 @@
             border: none;
         }
 
-        .recap-placeholder {
+        /* Custom Thumbnail Overlay */
+        .video-thumbnail-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(216, 31, 42, 0.85) 0%,
+                rgba(74, 159, 255, 0.75) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23141414" width="100" height="100"/></svg>');
+            background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--bg-card), var(--bg-deep));
-            color: var(--text-secondary);
+            cursor: pointer;
+            z-index: 10;
+            border-radius: var(--card-radius);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .video-thumbnail-overlay:hover {
+            background: linear-gradient(135deg, 
+                rgba(216, 31, 42, 0.95) 0%,
+                rgba(74, 159, 255, 0.85) 100%);
+        }
+
+        .thumbnail-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Play Button with Rings */
+        .play-button-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+        }
+
+        .play-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        .play-ring:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+                border-width: 3px;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+                border-width: 0px;
+            }
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .video-thumbnail-overlay:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .play-button i {
+            font-size: 28px;
+            color: var(--crimson);
+            margin-left: 5px;
+            transition: all 0.3s;
+        }
+
+        .video-thumbnail-overlay:hover .play-button i {
+            color: var(--blue);
+            transform: scale(1.1);
+        }
+
+        /* Video Meta Info */
+        .video-meta {
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-year {
+            font-size: 3.5rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.03em;
+            margin-bottom: 5px;
+            animation: fade-in-up 0.6s ease-out;
+        }
+
+        .video-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            animation: fade-in-up 0.6s ease-out 0.1s backwards;
+        }
+
+        .video-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 400;
+            animation: fade-in-up 0.6s ease-out 0.2s backwards;
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Social Links Section */
@@ -1461,17 +1601,16 @@
         .social-icon-link.youtube:hover {
             box-shadow: 0 15px 40px rgba(255, 0, 0, 0.25);
         }
-
-        color: var(--text-primary);
-        text-decoration: none;
-        font-size: 0.85rem;
-        transition: all 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        transform: translateY(-10px);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* --- 9. BOOKING --- */
@@ -2131,39 +2270,59 @@
             <p class="scroll-animate" data-key="recap_subtitle">A cinematic journey through our most impactful projects
                 and strategic wins.</p>
 
-            <div class="recap-video-container scroll-animate-scale">
-                <iframe src="https://www.youtube.com/embed/hkY4jpdEKJo"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen style="width: 100%; height: 100%; border: none; border-radius: var(--card-radius);">
-                </iframe>
+            <div class="recap-video-wrapper scroll-animate-scale">
+                <!-- Custom Thumbnail Overlay -->
+                <div class="video-thumbnail-overlay" onclick="this.style.display='none';">
+                    <div class="thumbnail-content">
+                        <div class="play-button-wrapper">
+                            <div class="play-ring"></div>
+                            <div class="play-ring"></div>
+                            <div class="play-button">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-meta">
+                            <div class="video-year">2025</div>
+                            <div class="video-title">Year in Review</div>
+                            <div class="video-subtitle">Watch Our Journey</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- YouTube Iframe -->
+                <div class="recap-video-container">
+                    <iframe src="https://www.youtube.com/embed/hkY4jpdEKJo"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        style="width: 100%; height: 100%; border: none; border-radius: var(--card-radius);">
+                    </iframe>
+                </div>
             </div>
         </section>
 
         <!-- SOCIAL LINKS SECTION - SIMPLE ICONS -->
         <section class="social-section-simple container">
             <h2 class="scroll-animate" data-key="social_title">Connect <span class="text-gradient">With Us</span></h2>
-
+            
             <div class="social-icons-grid">
                 <!-- Facebook -->
                 <a href="#" target="_blank" rel="noopener" class="social-icon-link facebook scroll-animate-scale">
                     <i class="fa-brands fa-facebook"></i>
                     <span data-key="social_facebook">Facebook</span>
                 </a>
-
+                
                 <!-- Instagram Personal -->
-                <a href="https://instagram.com/henrymarques" target="_blank" rel="noopener"
-                    class="social-icon-link instagram scroll-animate-scale">
+                <a href="https://instagram.com/henrymarques" target="_blank" rel="noopener" class="social-icon-link instagram scroll-animate-scale">
                     <i class="fa-brands fa-instagram"></i>
                     <span data-key="social_personal_ig">@henrymarques</span>
                 </a>
-
+                
                 <!-- Instagram Agency -->
-                <a href="https://instagram.com/filmoty" target="_blank" rel="noopener"
-                    class="social-icon-link instagram scroll-animate-scale">
+                <a href="https://instagram.com/filmoty" target="_blank" rel="noopener" class="social-icon-link instagram scroll-animate-scale">
                     <i class="fa-brands fa-instagram"></i>
                     <span data-key="social_agency_ig">@filmoty</span>
                 </a>
-
+                
                 <!-- YouTube -->
                 <a href="#" target="_blank" rel="noopener" class="social-icon-link youtube scroll-animate-scale">
                     <i class="fa-brands fa-youtube"></i>
