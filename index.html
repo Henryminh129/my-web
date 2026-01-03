@@ -16,7 +16,7 @@
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
         }
-        
+
         /* --- 1. CORE VARIABLES (Futuristic Enhanced Palette) --- */
         :root {
             /* Backgrounds */
@@ -110,10 +110,12 @@
                 opacity: 0.8;
                 transform: scale(1);
             }
+
             50% {
                 opacity: 1;
                 transform: scale(1.05);
             }
+
             100% {
                 opacity: 0.85;
                 transform: scale(1);
@@ -129,7 +131,8 @@
 
         .section-padding {
             padding: 100px 0;
-            scroll-margin-top: 100px; /* Prevent fixed nav from covering section tops */
+            scroll-margin-top: 100px;
+            /* Prevent fixed nav from covering section tops */
         }
 
         .text-gradient {
@@ -194,7 +197,8 @@
             display: none;
             opacity: 0;
             animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-            scroll-margin-top: 100px; /* Prevent fixed nav from covering when navigating */
+            scroll-margin-top: 100px;
+            /* Prevent fixed nav from covering when navigating */
         }
 
         .page-section.active {
@@ -479,16 +483,16 @@
 
         @keyframes reactorGlow {
             0% {
-                box-shadow: 
-                    0 0 30px rgba(74, 159, 255, 0.4), 
+                box-shadow:
+                    0 0 30px rgba(74, 159, 255, 0.4),
                     0 0 15px rgba(74, 159, 255, 0.2) inset,
                     0 0 60px rgba(74, 159, 255, 0.2);
                 border-color: rgba(74, 159, 255, 0.5);
             }
 
             100% {
-                box-shadow: 
-                    0 0 40px rgba(216, 31, 42, 0.6), 
+                box-shadow:
+                    0 0 40px rgba(216, 31, 42, 0.6),
                     0 0 20px rgba(216, 31, 42, 0.3) inset,
                     0 0 80px rgba(216, 31, 42, 0.3);
                 border-color: rgba(216, 31, 42, 0.7);
@@ -637,7 +641,8 @@
             border-bottom: 1px solid var(--glass-border);
             padding: 40px 0;
             background: rgba(255, 255, 255, 0.005);
-            margin-bottom: 80px;
+            margin-bottom: 0;
+            overflow: hidden;
         }
 
         .trusted-logos {
@@ -668,6 +673,144 @@
             font-weight: 400;
             color: #666;
             font-size: 0.9rem;
+        }
+
+        /* --- TRUSTED BY SECTION --- */
+        .trusted-by-section {
+            padding: 60px 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(216, 31, 42, 0.02) 100%);
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 80px;
+            overflow: hidden;
+        }
+
+        .trusted-by-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .trusted-by-compact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .compact-client {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 18px 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            min-width: 320px;
+        }
+
+        .compact-client::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--crimson), var(--blue));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .compact-client:hover::before {
+            opacity: 0.05;
+        }
+
+        .compact-client:hover {
+            transform: translateY(-3px);
+            border-color: var(--crimson);
+            box-shadow: 0 10px 30px rgba(216, 31, 42, 0.2);
+        }
+
+        .compact-client.coming-soon {
+            border-style: dashed;
+            opacity: 0.7;
+        }
+
+        .compact-client.coming-soon:hover {
+            opacity: 1;
+            border-color: var(--blue);
+            box-shadow: 0 10px 30px rgba(61, 133, 198, 0.15);
+        }
+
+        .compact-icon {
+            font-size: 2rem;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            flex-shrink: 0;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .compact-client:hover .compact-icon {
+            transform: scale(1.1);
+            border-color: var(--crimson);
+        }
+
+        .compact-client.coming-soon:hover .compact-icon {
+            border-color: var(--blue);
+        }
+
+        .compact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .compact-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .compact-type {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .compact-status {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .compact-status.active {
+            background: rgba(216, 31, 42, 0.15);
+            border: 1px solid rgba(216, 31, 42, 0.3);
+            color: var(--crimson);
+        }
+
+        .compact-status.available {
+            background: rgba(61, 133, 198, 0.15);
+            border: 1px solid rgba(61, 133, 198, 0.3);
+            color: var(--blue);
         }
 
         .about-grid {
@@ -1180,6 +1323,157 @@
             transform: rotate(90deg);
         }
 
+        /* --- FOOTER SECTIONS --- */
+
+        /* Recap Video Section */
+        .recap-section {
+            padding: 60px 0 50px;
+            text-align: center;
+        }
+
+        .recap-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .recap-section p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .recap-video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            aspect-ratio: 16/9;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .recap-video-container:hover {
+            transform: translateY(-5px);
+            border-color: var(--crimson);
+            box-shadow: 0 20px 60px rgba(216, 31, 42, 0.25);
+        }
+
+        .recap-video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .recap-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-deep));
+            color: var(--text-secondary);
+        }
+
+        /* Social Links Section */
+        /* SIMPLE SOCIAL ICONS */
+        .social-section-simple {
+            padding: 50px 0;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .social-section-simple h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .social-icons-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-icon-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 120px;
+        }
+
+        .social-icon-link i {
+            font-size: 2.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-icon-link span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .social-icon-link:hover {
+            transform: translateY(-5px);
+            border-color: currentColor;
+        }
+
+        .social-icon-link:hover i {
+            transform: scale(1.1);
+        }
+
+        .social-icon-link.facebook {
+            color: #1877F2;
+        }
+
+        .social-icon-link.facebook:hover {
+            box-shadow: 0 15px 40px rgba(24, 119, 242, 0.25);
+        }
+
+        .social-icon-link.instagram {
+            color: #E4405F;
+        }
+
+        .social-icon-link.instagram:hover {
+            box-shadow: 0 15px 40px rgba(228, 64, 95, 0.25);
+        }
+
+        .social-icon-link.youtube {
+            color: #FF0000;
+        }
+
+        .social-icon-link.youtube:hover {
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.25);
+        }
+
+        color: var(--text-primary);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transform: translateY(-10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         /* --- 9. BOOKING --- */
         .split-screen {
             display: flex;
@@ -1230,12 +1524,14 @@
 
         /* --- 10. MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
+
+            /* STANDARD MOBILE PADDING: 20px */
             .container {
-                padding: 0 16px;
+                padding: 0 20px;
             }
 
             nav {
-                padding: 12px 0;
+                padding: 12px 20px;
             }
 
             .nav-inner {
@@ -1269,14 +1565,25 @@
             }
 
             .hero {
-                padding-top: 120px;
+                padding: 120px 20px 60px;
                 min-height: 90vh;
+            }
+
+            .hero .container {
+                max-width: 100%;
+                padding: 0;
+                /* Remove extra padding */
+            }
+
+            .status-badge {
+                font-size: 0.7rem;
+                padding: 6px 16px;
             }
 
             .avatar-wrapper {
                 width: 140px;
                 height: 140px;
-                margin-bottom: 30px;
+                margin: 0 auto 30px;
             }
 
             .hero-avatar {
@@ -1285,38 +1592,147 @@
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
                 margin-bottom: 20px;
+                line-height: 1.2;
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 0.95rem;
                 margin-bottom: 30px;
+                line-height: 1.6;
+                padding: 0;
+                /* Remove - hero already has 20px */
             }
 
+            .hero>div>div[style*="flex"] {
+                gap: 12px !important;
+                margin-top: 30px !important;
+                padding: 0;
+                /* Remove - hero already has 20px */
+            }
+
+            .hero button {
+                width: auto;
+                min-width: 140px;
+            }
+
+            .btn-outline {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            /* Marquee Animation Keyframes */
+            @keyframes marquee {
+                0% {
+                    transform: translateX(0);
+                }
+
+                100% {
+                    transform: translateX(-50%);
+                }
+            }
+
+            /* Inspirations - Add Marquee */
             .inspirations {
                 margin-top: 40px;
+                overflow: hidden;
             }
 
             .insp-items {
-                gap: 10px;
+                gap: 15px;
+                animation: marquee 20s linear infinite;
+                width: max-content;
+            }
+
+            .insp-items:hover {
+                animation-play-state: paused;
             }
 
             .insp-tag {
                 font-size: 0.75rem;
                 padding: 6px 12px;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            /* Trusted Logos - Add Marquee */
+            .trusted-section {
+                overflow: hidden;
             }
 
             .trusted-logos {
-                gap: 30px;
-                flex-direction: column;
-                align-items: center;
+                gap: 40px;
+                flex-direction: row !important;
+                flex-wrap: nowrap;
+                animation: marquee 25s linear infinite;
+                width: max-content;
+            }
+
+            .trusted-logos:hover {
+                animation-play-state: paused;
             }
 
             .t-item {
-                font-size: 1rem;
-                flex-direction: column;
-                text-align: center;
+                font-size: 0.95rem;
+                flex-direction: row;
+                text-align: left;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .t-item span {
+                display: inline;
+            }
+
+            /* Trusted By - Add Marquee */
+            .trusted-by-section {
+                padding: 50px 0;
+                overflow: hidden;
+            }
+
+            .trusted-by-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+                padding: 0 20px;
+            }
+
+            .trusted-by-compact {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                gap: 20px;
+                animation: marquee 18s linear infinite;
+                width: max-content;
+            }
+
+            .trusted-by-compact:hover {
+                animation-play-state: paused;
+            }
+
+            .compact-client {
+                min-width: 280px;
+                width: 280px;
+                padding: 15px 20px;
+                flex-shrink: 0;
+            }
+
+            .compact-icon {
+                font-size: 1.5rem;
+                width: 40px;
+                height: 40px;
+            }
+
+            .compact-name {
+                font-size: 0.95rem;
+            }
+
+            .compact-type {
+                font-size: 0.75rem;
+            }
+
+            .compact-status {
+                padding: 3px 10px;
+                font-size: 0.65rem;
             }
 
             .about-grid {
@@ -1325,7 +1741,7 @@
             }
 
             .bio-card {
-                padding: 30px;
+                padding: 25px;
                 position: static;
             }
 
@@ -1339,12 +1755,12 @@
             }
 
             .tilt-card {
-                padding: 30px;
+                padding: 25px;
             }
 
             .gallery-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 25px;
             }
 
             .gallery-card.short,
@@ -1371,7 +1787,8 @@
             .split-screen {
                 flex-direction: column;
                 gap: 40px;
-                padding-top: 100px; /* Increase to prevent navbar overlap */
+                padding: 100px 24px 0;
+                /* Add horizontal padding */
             }
 
             .right-panel {
@@ -1384,19 +1801,20 @@
 
             .modal-content-case {
                 padding: 20px;
-                margin: 40px auto;
+                margin: 40px 16px;
+                max-width: calc(100% - 32px);
             }
 
             .modal-close-case {
-                top: 20px;
-                right: 20px;
+                top: 15px;
+                right: 15px;
                 width: 40px;
                 height: 40px;
                 font-size: 20px;
             }
 
             .modal-section-case {
-                padding: 30px;
+                padding: 25px 20px;
             }
 
             .modal-section-case h3 {
@@ -1416,6 +1834,63 @@
                 top: 10px;
                 right: 10px;
             }
+
+            /* Footer Sections Mobile */
+            .recap-section h2,
+            .social-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .recap-section {
+                padding: 40px 20px 30px;
+            }
+
+            .recap-section p {
+                font-size: 0.9rem;
+                margin-bottom: 30px;
+                padding: 0 10px;
+            }
+
+            /* Social Section - Simple Icons Mobile */
+            .social-section-simple {
+                padding: 40px 20px;
+            }
+
+            .social-section-simple h2 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+
+            .social-icons-grid {
+                gap: 15px;
+            }
+
+            .social-icon-link {
+                min-width: 100px;
+                padding: 15px 10px;
+            }
+
+            .social-icon-link i {
+                font-size: 2rem;
+            }
+
+            .social-icon-link span {
+                font-size: 0.75rem;
+            }
+
+            .recap-video-container {
+                max-width: 100%;
+            }
+        }
+
+        /* Desktop - Disable Marquee Animations */
+        @media (min-width: 769px) {
+
+            .insp-items,
+            .trusted-logos,
+            .trusted-by-compact {
+                animation: none !important;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1428,11 +1903,23 @@
             }
 
             .showcase-header {
-                padding: 80px 0 40px; /* Increase top padding on mobile to account for fixed nav */
+                padding: 120px 0 40px;
+                /* More top padding for fixed nav */
+            }
+
+            .showcase-header h1 {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+
+            .showcase-header p {
+                font-size: 0.9rem;
+                margin-bottom: 30px;
             }
 
             .filter-container {
                 gap: 10px;
+                margin-bottom: 30px;
             }
 
             .btn-outline {
@@ -1503,15 +1990,40 @@
         </section>
 
         <section class="trusted-section">
-            <div class="container">
-                <p style="text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #666; margin-bottom: 30px;"
-                    data-key="trusted_label">Strategic Impact Delivered (collaborated with <strong>Conterine</strong>)
-                    For</p>
-                <div class="trusted-logos">
-                    <div class="t-item">🎙️ VSTN <span>Podcast</span></div>
-                    <div class="t-item">Finn Dollimore <span>Expert Website Designer</span></div>
-                    <div class="t-item">Micky Dollimore <span>Map Developer & Consultant</span></div>
-                    <div class="t-item">Aliena <span>CEO of Fast Track Ui</span></div>
+            <p style="text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #666; margin-bottom: 30px; padding: 0 20px;"
+                data-key="trusted_label">Strategic Impact Delivered (collaborated with <strong>Conterine</strong>)
+                For</p>
+            <div class="trusted-logos">
+                <div class="t-item">🎙️ VSTN <span>Podcast</span></div>
+                <div class="t-item">Finn Dollimore <span>Expert Website Designer</span></div>
+                <div class="t-item">Micky Dollimore <span>Map Developer & Consultant</span></div>
+                <div class="t-item">Aliena <span>CEO of Fast Track Ui</span></div>
+            </div>
+        </section>
+
+        <!-- TRUSTED BY - PERSONAL CLIENTS -->
+        <section class="trusted-by-section scroll-animate">
+            <h3 class="trusted-by-title" data-key="trusted_by_title">2026 Trusted <span class="text-gradient">By</span>
+            </h3>
+            <div class="trusted-by-compact">
+                <!-- SpartanEdu -->
+                <div class="compact-client scroll-animate-scale">
+                    <div class="compact-icon">🎓</div>
+                    <div class="compact-info">
+                        <span class="compact-name" data-key="client_spartan_name">SpartanEdu</span>
+                        <span class="compact-type" data-key="client_spartan_type">Start-up Tech Website</span>
+                    </div>
+                    <div class="compact-status active" data-key="client_active">Active</div>
+                </div>
+
+                <!-- Placeholder for more clients -->
+                <div class="compact-client coming-soon scroll-animate-scale">
+                    <div class="compact-icon">➕</div>
+                    <div class="compact-info">
+                        <span class="compact-name" data-key="client_next">Your Brand</span>
+                        <span class="compact-type" data-key="client_next_desc">Next Success Story</span>
+                    </div>
+                    <div class="compact-status available" data-key="client_available">Available</div>
                 </div>
             </div>
         </section>
@@ -1575,7 +2087,7 @@
 
         <section class="section-padding container">
             <div style="text-align: center; margin-bottom: 60px;">
-                <h2 style="font-size: 3rem;">Why <span class="text-gradient">Architect?</span></h2>
+                <h2 style="font-size: 3rem;" data-key="why_title">Why <span class="text-gradient">Architect?</span></h2>
                 <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;" data-key="why_subtitle">
                     Because hope is not a strategy. You need an engineered approach.</p>
             </div>
@@ -1583,7 +2095,7 @@
                 <div class="tilt-card c-crimson" data-tilt>
                     <div class="card-inner">
                         <div class="card-icon" style="color: var(--crimson);">🚀</div>
-                        <h3>Strategic Partner</h3>
+                        <h3 data-key="tilt_title_1">Strategic Consultation</h3>
                         <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_1">I don't just take
                             orders. I consult on concepts, framing, and distribution to maximize business impact, not
                             just views.</p>
@@ -1592,7 +2104,7 @@
                 <div class="tilt-card c-blue" data-tilt>
                     <div class="card-inner">
                         <div class="card-icon" style="color: var(--blue);">🧠</div>
-                        <h3>CPO Mindset</h3>
+                        <h3 data-key="tilt_title_2">System Builder</h3>
                         <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_2">My management
                             background means I build lean, efficient production pipelines that respect your time and
                             resources.</p>
@@ -1603,7 +2115,7 @@
                         <div class="card-icon"
                             style="background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
                             💎</div>
-                        <h3>Premium Standard</h3>
+                        <h3 data-key="tilt_title_3">Production Excellence</h3>
                         <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_3">Pixel-perfect
                             audio/visuals designed to position you as an undisputed authority, justifying premium
                             positioning by amplifying your unique personality within the brand.</p>
@@ -1612,13 +2124,68 @@
             </div>
         </section>
 
-        <section style="text-align: center; padding: 120px 0; border-top: 1px solid var(--glass-border);">
-            <h2 style="font-size: 3rem; margin-bottom: 20px; line-height: 1.1;" data-key="ready_title">Stop
+        <!-- RECAP VIDEO SECTION -->
+        <section class="recap-section container">
+            <h2 class="scroll-animate" data-key="recap_title">2025 <span class="text-gradient">Year in Review</span>
+            </h2>
+            <p class="scroll-animate" data-key="recap_subtitle">A cinematic journey through our most impactful projects
+                and strategic wins.</p>
+
+            <div class="recap-video-container scroll-animate-scale">
+                <iframe src="https://www.youtube.com/embed/hkY4jpdEKJo"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen style="width: 100%; height: 100%; border: none; border-radius: var(--card-radius);">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- SOCIAL LINKS SECTION - SIMPLE ICONS -->
+        <section class="social-section-simple container">
+            <h2 class="scroll-animate" data-key="social_title">Connect <span class="text-gradient">With Us</span></h2>
+
+            <div class="social-icons-grid">
+                <!-- Facebook -->
+                <a href="#" target="_blank" rel="noopener" class="social-icon-link facebook scroll-animate-scale">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span data-key="social_facebook">Facebook</span>
+                </a>
+
+                <!-- Instagram Personal -->
+                <a href="https://instagram.com/henrymarques" target="_blank" rel="noopener"
+                    class="social-icon-link instagram scroll-animate-scale">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span data-key="social_personal_ig">@henrymarques</span>
+                </a>
+
+                <!-- Instagram Agency -->
+                <a href="https://instagram.com/filmoty" target="_blank" rel="noopener"
+                    class="social-icon-link instagram scroll-animate-scale">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span data-key="social_agency_ig">@filmoty</span>
+                </a>
+
+                <!-- YouTube -->
+                <a href="#" target="_blank" rel="noopener" class="social-icon-link youtube scroll-animate-scale">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span data-key="social_youtube">YouTube</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- BOOK CALL CTA -->
+        <section class="scroll-animate"
+            style="text-align: center; padding: 80px 0 60px; border-top: 1px solid var(--glass-border);">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; line-height: 1.1;" data-key="ready_title">Stop
                 Guessing.<br>Start Building.</h2>
             <button class="btn-main" onclick="navigateTo('booking')" data-key="btn_strategy_cta">Book Discovery
                 Call</button>
-            <div style="margin-top: 60px; color: #444; font-size: 0.8rem; letter-spacing: 1px;">© 2025 Filmoty Agency.
-                Engineered by Henry Marques.</div>
+        </section>
+
+        <!-- COPYRIGHT -->
+        <section style="text-align: center; padding: 50px 0 40px; border-top: 1px solid var(--glass-border);">
+            <div style="color: #444; font-size: 0.8rem; letter-spacing: 1px;" data-key="copyright">
+                © 2025 Filmoty Agency. Engineered by Henry Marques.
+            </div>
         </section>
     </div>
 
@@ -1714,7 +2281,7 @@
             {
                 id: 21,
                 type: 'long',
-                videoId: '-YNFAFWixRo',  
+                videoId: '-YNFAFWixRo',
                 title: '[Spartan.Edu] Software Demo & Advertisement',
                 desc: 'Scripting, Storyboard, Video editing, Motion graphic',
                 icon: 'fa-laptop',
@@ -2110,7 +2677,7 @@
                     console.error('Gallery grid not found');
                     return;
                 }
-                
+
                 const filtered = filter === 'all' ? allProjects : allProjects.filter(p => p.type === filter);
 
                 // Use YouTube thumbnails instead of iframes for performance
@@ -2141,7 +2708,7 @@
                         </div>
                     `;
                 }).join('');
-                
+
                 // Re-observe new elements for scroll animation
                 setTimeout(() => {
                     observeElements();
@@ -2253,58 +2820,118 @@
 
         const translations = {
             en: {
+                status: "Open for High-Ticket Projects",
                 nav_home: "Story", nav_showcase: "Archive", nav_booking: "Contact", btn_book_nav: "Book Strategy",
                 hero_title: "The Strategic <br><span class='text-gradient'>Video Architect</span>",
                 hero_desc: "I don't sell videos. I engineer <strong>Video & Content Systems</strong> that allow Founders & Creators to dominate High-Ticket markets with authority.",
                 btn_view: "Explore Archive", btn_philosophy: "My Philosophy", insp_label: "Built on the shoulders of giants. Inspired by",
                 trusted_label: "Strategic Impact Delivered (collaborated with <strong>Conterine</strong>) For",
+                trusted_by_title: "2026 Trusted <span class='text-gradient'>By</span>",
+                client_spartan_name: "SpartanEdu",
+                client_spartan_type: "Start-up Tech Website",
+                client_active: "Active",
+                client_next: "Your Brand",
+                client_next_desc: "Next Success Story",
+                client_available: "Available",
                 bio_title: "The Architect <br>Behind The Chaos.",
                 bio_desc1: "They call it \"video editing.\" I call it <strong>engineering attention</strong>. My name is <strong>Henry Marques (Lý Minh Phúc)</strong>. In a market flooded with \"aesthetic\" visuals, I chose a different path: <strong>System over Art.</strong>",
                 bio_desc2: "I don't just make things look good. I build <strong>video infrastructures</strong> that allow creators to scale without burning out. Talent is useless without a process. That's why I don't sell videos; I sell the <strong>certainty of outcome</strong>.",
-                role_title: "Current Focus", role_desc: "Building Filmoty Agency.",
+                role_title: "Current Focus", role_desc: "Building Filmoty Agency (distinctive, innovative).",
                 journey_title: "The",
                 exp_1: "<strong>At Conterine.</strong> Architected the post-production workflow. Managed quality control for high-volume deliverables and scaled the team without breaking the system. Besides, establishing video style is my responsiblity when it comes to new potential clients.",
                 exp_2: "Mastered retention mechanics. Worked directly with international creators to decode the algorithm of \"High-Ticket Attention\". Clients: VSTN Podcast, Finn Dollimore, Micky Dollimore, Aliena Cai.",
                 exp_3: "Building a sustainable Agency model driven by a clear vision. Learned the hard way that talent without process leads to burnout.",
+                why_title: "Why <span class='text-gradient'>Architect?</span>",
                 why_subtitle: "Because hope is not a strategy. You need an engineered approach.",
+                tilt_title_1: "Strategic Consultation",
+                tilt_title_2: "System Builder",
+                tilt_title_3: "Production Excellence",
                 card_1: "I don't just take orders. I consult on concepts, framing, and distribution to maximize business impact, not just views.",
                 card_2: "My management background means I build lean, efficient production pipelines that respect your time and resources.",
                 card_3: "Pixel-perfect audio/visuals designed to position you as an undisputed authority, justifying premium positioning by amplifying your unique personality within the brand.",
-                ready_title: "Stop Guessing.<br>Start Building.", btn_strategy_cta: "Book Discovery Call",
+                ready_title: "Stop Guessing.<br>Start Building.",
+                btn_strategy_cta: "Book Discovery Call",
+                social_title: "Connect <span class='text-gradient'>With Us</span>",
+                recap_title: "2025 <span class='text-gradient'>Year in Review</span>",
+                recap_subtitle: "A cinematic journey through our most impactful projects and strategic wins.",
+                recap_coming: "2025 Recap Video",
+                recap_status: "Coming Soon",
+                recap_instructions_bold: "To add your video:",
+                recap_instructions_text: "Uncomment the iframe below and<br>replace YOUR_VIDEO_ID with your YouTube video ID",
+                social_facebook: "Facebook",
+                social_instagram: "Instagram",
+                social_youtube: "YouTube",
+                social_personal: "Henry Marques",
+                social_agency: "Filmoty Agency",
+                social_personal_ig: "@henrymarques",
+                social_agency_ig: "@filmoty",
+                social_personal_yt: "Henry Marques",
+                social_agency_yt: "Filmoty Channel",
+                copyright: "© 2025 Filmoty Agency. Engineered by Henry Marques.",
                 archive_desc: "Collection of 30+ executed strategic projects. <strong>Click to view case study.</strong>",
                 booking_badge: "Strategy Session",
                 booking_title: "Let's Architect Your <br><span class='text-gradient'>Revenue</span>",
                 booking_desc: "A 1:1 consultation (60 mins) to audit your current content bottleneck and define a roadmap for authority & scale.",
                 list_1: "Audit: Branding & Our feasible support",
                 list_2: "Strategy: High-Ticket Concept Direction",
-                list_3: "System: Strategy Branding Workflow Design"
+                list_3: "System: Production-House Workflow Design"
             },
             vi: {
+                status: "Sẵn sàng cho Dự án High-Ticket",
                 nav_home: "Câu chuyện", nav_showcase: "Kho tàng", nav_booking: "Liên hệ", btn_book_nav: "Đặt lịch Tư vấn",
                 hero_title: "Kiến Trúc Sư <br><span class='text-gradient'>Video Chiến Lược</span>",
                 hero_desc: "Tôi không bán video. Tôi thiết kế <strong>Hệ thống Video & Nội dung</strong> giúp Founder & Creator thống trị thị trường High-Ticket bằng uy tín và chất lượng.",
                 btn_view: "Xem Kho Tàng", btn_philosophy: "Triết lý của tôi", insp_label: "Đứng trên vai người khổng lồ, Được truyền cảm hứng bởi",
                 trusted_label: "Đã làm việc và trao giá trị (hợp tác cùng <strong>Conterine</strong>) cho ",
+                trusted_by_title: "2026 Được tin tưởng <span class='text-gradient'>bởi</span>",
+                client_spartan_name: "SpartanEdu",
+                client_spartan_type: "Website Công nghệ Start-up",
+                client_active: "Hiện tại",
+                client_next: "Thương hiệu của bạn",
+                client_next_desc: "Câu chuyện Tiếp theo",
+                client_available: "Sẵn sàng",
                 bio_title: "Kiến Trúc Sư <br>Của Sự Hỗn Loạn.",
                 bio_desc1: "Người ta gọi là \"edit video\". Tôi gọi là <strong>kỹ thuật thu hút sự chú ý</strong>. Tên tôi là <strong>Henry Marques (Lý Minh Phúc)</strong>. Giữa một rừng những video chỉ \"đẹp mã\", tôi chọn lối đi riêng: <strong>Hệ thống quan trọng hơn Nghệ thuật.</strong>",
                 bio_desc2: "Tôi không chỉ làm cho đẹp. Tôi xây dựng <strong>cơ sở hạ tầng video</strong> giúp Creator mở rộng quy mô mà không bị kiệt sức. Tài năng mà thiếu quy trình thì vứt. Đó là lý do tôi không bán video; tôi bán <strong>sự chắc chắn về kết quả</strong>.",
-                role_title: "Trọng tâm hiện tại", role_desc: "Xây dựng Filmoty Agency.",
+                role_title: "Trọng tâm hiện tại", role_desc: "Xây dựng Filmoty Agency (khác biệt, đổi mới).",
                 journey_title: "Hành Trình",
                 exp_1: "<strong>Tại Conterine.</strong> Kiến tạo quy trình hậu kỳ. Quản lý kiểm soát chất lượng cho khối lượng sản phẩm lớn và mở rộng đội ngũ mà không phá vỡ hệ thống. Bên cạnh đó, việc xây dựng phong cách video là trách nhiệm của tôi khi tiếp cận những khách hàng tiềm năng mới.",
                 exp_2: "Làm chủ cơ chế giữ chân người xem (Retention). Làm việc trực tiếp với các Creator quốc tế để giải mã thuật toán của sự \"Chú ý Giá trị cao\". Những khách hàng đã làm việc: VSTN Podcast, Finn Dollimore, Micky Dollimore, Aliena Cai.",
-                exp_3: "Xây dựng mô hình bền vững dựa trên tầm nhìn rõ ràng. Đã học được bài học xương máu rằng tài năng không có quy trình sẽ dẫn đến kiệt sức.",
+                exp_3: "Xây dựng mô hình Agency bền vững dựa trên tầm nhìn rõ ràng. Đã học được bài học xương máu rằng tài năng không có quy trình sẽ dẫn đến kiệt sức.",
+                why_title: "Tại sao <span class='text-gradient'>Kiến Trúc Sư?</span>",
                 why_subtitle: "Vì hy vọng không phải là một chiến lược. Bạn cần một cách tiếp cận được thiết kế bài bản.",
+                tilt_title_1: "Tư vấn Chiến lược",
+                tilt_title_2: "Xây dựng Hệ thống",
+                tilt_title_3: "Hoàn thiện Sản xuất",
                 card_1: "Tôi không chỉ nhận lệnh. Tôi tư vấn về concept, góc nhìn và phân phối để tối đa hóa tác động kinh doanh, không chỉ là lượt xem.",
                 card_2: "Nền tảng quản trị giúp tôi xây dựng các dây chuyền sản xuất tinh gọn, hiệu quả, tôn trọng thời gian và nguồn lực của bạn.",
                 card_3: "Âm thanh/Hình ảnh chuẩn Pixel-perfect được thiết kế để định vị bạn là một chuyên gia không thể tranh cãi, xứng đáng với mức giá cao với khả năng lưu giữ tối ưu cá tính của bạn trong nhận thức về thương hiệu.",
-                ready_title: "Ngừng Đoán Mò.<br>Bắt Đầu Xây Dựng.", btn_strategy_cta: "Đặt lịch Khám phá",
+                ready_title: "Ngừng Đoán Mò.<br>Bắt Đầu Xây Dựng.",
+                btn_strategy_cta: "Đặt lịch Khám phá",
+                social_title: "Kết nối <span class='text-gradient'>Với chúng tôi</span>",
+                recap_title: "Nhìn lại <span class='text-gradient'>2025</span>",
+                recap_subtitle: "Hành trình điện ảnh qua những dự án có tác động mạnh mẽ nhất và những chiến thắng chiến lược.",
+                recap_coming: "Video Nhìn lại 2025",
+                recap_status: "Sắp ra mắt",
+                recap_instructions_bold: "Để thêm video:",
+                recap_instructions_text: "Bỏ comment iframe bên dưới và<br>thay YOUR_VIDEO_ID bằng ID video YouTube của bạn",
+                social_facebook: "Facebook",
+                social_instagram: "Instagram",
+                social_youtube: "YouTube",
+                social_personal: "Henry Marques",
+                social_agency: "Filmoty Agency",
+                social_personal_ig: "@henrymarques",
+                social_agency_ig: "@filmoty",
+                social_personal_yt: "Henry Marques",
+                social_agency_yt: "Kênh Filmoty",
+                copyright: "© 2025 Filmoty Agency. Được thiết kế bởi Henry Marques.",
                 archive_desc: "Tuyển tập các dự án chiến lược đã thực thi. Hơn 30+ Tư liệu. <strong>Click để xem case study.</strong>",
                 booking_badge: "Phiên Tư vấn Chiến lược",
                 booking_title: "Cùng Kiến tạo <br><span class='text-gradient'>Doanh thu</span> của bạn",
                 booking_desc: "Buổi tư vấn 1:1 (60 phút) để đánh giá điểm nghẽn nội dung hiện tại và xác định lộ trình cho uy tín & quy mô.",
                 list_1: "Audit: Phân tích Thương hiệu & Đưa ra Giải pháp Thích Hợp",
                 list_2: "Chiến lược: Định hướng Concept High-Ticket",
-                list_3: "Hệ thống: Thiết kế Quy trình Chiến lược Thương hiệu"
+                list_3: "Hệ thống: Thiết kế Quy trình Sản xuất Chuyên nghiệp"
             }
         };
 
@@ -2325,7 +2952,7 @@
                 document.querySelectorAll('.page-section').forEach(section => {
                     section.classList.remove('active');
                 });
-                
+
                 // Show target section
                 const targetSection = document.getElementById(pageId);
                 if (targetSection) {
@@ -2339,15 +2966,15 @@
                 document.querySelectorAll('.nav-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
-                
+
                 const navButtons = document.querySelectorAll('.nav-btn');
                 if (pageId === 'home' && navButtons[0]) navButtons[0].classList.add('active');
                 if (pageId === 'showcase' && navButtons[1]) navButtons[1].classList.add('active');
                 if (pageId === 'booking' && navButtons[2]) navButtons[2].classList.add('active');
-                
+
                 // Smooth scroll to top
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                
+
                 // Trigger scroll animations after navigation
                 setTimeout(() => {
                     observeElements();
@@ -2369,9 +2996,58 @@
         });
 
         // ═══════════════════════════════════════════════════════════════
+        // SOCIAL LINKS TOGGLE
+        // ═══════════════════════════════════════════════════════════════
+
+        function toggleSocialLinks(card) {
+            // Close other cards
+            document.querySelectorAll('.social-card').forEach(c => {
+                if (c !== card) {
+                    c.classList.remove('expanded');
+                }
+            });
+
+            // Toggle current card
+            card.classList.toggle('expanded');
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // MARQUEE DUPLICATION FOR MOBILE
+        // ═══════════════════════════════════════════════════════════════
+
+        function initMarquee() {
+            // Only on mobile
+            if (window.innerWidth <= 768) {
+                // Duplicate inspirations
+                const inspItems = document.querySelector('.insp-items');
+                if (inspItems && !inspItems.hasAttribute('data-duplicated')) {
+                    const clone = inspItems.innerHTML;
+                    inspItems.innerHTML = clone + clone;
+                    inspItems.setAttribute('data-duplicated', 'true');
+                }
+
+                // Duplicate trusted logos
+                const trustedLogos = document.querySelector('.trusted-logos');
+                if (trustedLogos && !trustedLogos.hasAttribute('data-duplicated')) {
+                    const clone = trustedLogos.innerHTML;
+                    trustedLogos.innerHTML = clone + clone;
+                    trustedLogos.setAttribute('data-duplicated', 'true');
+                }
+
+                // Duplicate trusted-by clients
+                const trustedByCompact = document.querySelector('.trusted-by-compact');
+                if (trustedByCompact && !trustedByCompact.hasAttribute('data-duplicated')) {
+                    const clone = trustedByCompact.innerHTML;
+                    trustedByCompact.innerHTML = clone + clone;
+                    trustedByCompact.setAttribute('data-duplicated', 'true');
+                }
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
         // SCROLL ANIMATION SYSTEM
         // ═══════════════════════════════════════════════════════════════
-        
+
         function observeElements() {
             const options = {
                 threshold: 0.1,
@@ -2399,12 +3075,24 @@
         // Init on load
         document.addEventListener('DOMContentLoaded', () => {
             renderGallery();
-            
+
             // Add animation classes to elements
             addAnimationClasses();
-            
+
             // Start observing
             observeElements();
+
+            // Init marquee for mobile
+            initMarquee();
+        });
+
+        // Reinit marquee on resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                initMarquee();
+            }, 250);
         });
 
         // Add animation classes to appropriate elements
