@@ -2024,6 +2024,22 @@
 
         /* Desktop - Disable Marquee Animations */
         @media (min-width: 769px) {
+            /* Ensure split-screen works on desktop */
+            .split-screen {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 60px !important;
+                min-height: 85vh;
+            }
+
+            .left-panel,
+            .right-panel {
+                flex: 1 !important;
+            }
+
+            .right-panel {
+                height: 700px !important;
+            }
 
             .insp-items,
             .trusted-logos,
