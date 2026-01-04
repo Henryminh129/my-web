@@ -1381,9 +1381,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, 
-                rgba(216, 31, 42, 0.85) 0%,
-                rgba(74, 159, 255, 0.75) 100%),
+            background: linear-gradient(135deg,
+                    rgba(216, 31, 42, 0.85) 0%,
+                    rgba(74, 159, 255, 0.75) 100%),
                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23141414" width="100" height="100"/></svg>');
             background-size: cover;
             display: flex;
@@ -1396,9 +1396,9 @@
         }
 
         .video-thumbnail-overlay:hover {
-            background: linear-gradient(135deg, 
-                rgba(216, 31, 42, 0.95) 0%,
-                rgba(74, 159, 255, 0.85) 100%);
+            background: linear-gradient(135deg,
+                    rgba(216, 31, 42, 0.95) 0%,
+                    rgba(74, 159, 255, 0.85) 100%);
         }
 
         .thumbnail-content {
@@ -1437,9 +1437,11 @@
                 opacity: 1;
                 border-width: 3px;
             }
+
             50% {
                 opacity: 0.5;
             }
+
             100% {
                 transform: translate(-50%, -50%) scale(1.5);
                 opacity: 0;
@@ -1514,6 +1516,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1600,7 +1603,6 @@
 
         .social-icon-link.youtube:hover {
             box-shadow: 0 15px 40px rgba(255, 0, 0, 0.25);
-        }
             color: var(--text-primary);
             text-decoration: none;
             font-size: 0.85rem;
@@ -1619,14 +1621,16 @@
             min-height: 85vh;
             padding-top: 100px;
             gap: 60px;
+            align-items: stretch;
         }
 
         .left-panel {
             flex: 1;
-            padding: 20px 0;
+            padding: 40px 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            min-height: 700px;
         }
 
         .right-panel {
@@ -1636,6 +1640,7 @@
             overflow: hidden;
             border: 1px solid var(--glass-border);
             height: 700px;
+            align-self: center;
         }
 
         .booking-list li {
@@ -2024,6 +2029,7 @@
 
         /* Desktop - Disable Marquee Animations */
         @media (min-width: 769px) {
+
             /* Ensure split-screen works on desktop */
             .split-screen {
                 display: flex !important;
@@ -2304,7 +2310,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- YouTube Iframe -->
                 <div class="recap-video-container">
                     <iframe src="https://www.youtube.com/embed/hkY4jpdEKJo"
@@ -2319,30 +2325,27 @@
         <!-- SOCIAL LINKS SECTION - SIMPLE ICONS -->
         <section class="social-section-simple container">
             <h2 class="scroll-animate" data-key="social_title">Connect <span class="text-gradient">With Us</span></h2>
-            
+
             <div class="social-icons-grid">
                 <!-- Facebook -->
-                <a href="https://www.facebook.com/ly.minh.phuc.293252/" target="_blank" rel="noopener" class="social-icon-link facebook scroll-animate-scale">
+                <a href="https://www.facebook.com/ly.minh.phuc.293252/" target="_blank" rel="noopener"
+                    class="social-icon-link facebook scroll-animate-scale">
                     <i class="fa-brands fa-facebook"></i>
                     <span data-key="social_facebook">Facebook</span>
                 </a>
-                
+
                 <!-- Instagram Personal -->
-                <a href="https://www.instagram.com/henry.marq_ues" target="_blank" rel="noopener" class="social-icon-link instagram scroll-animate-scale">
+                <a href="https://www.instagram.com/henry.marq_ues" target="_blank" rel="noopener"
+                    class="social-icon-link instagram scroll-animate-scale">
                     <i class="fa-brands fa-instagram"></i>
                     <span data-key="social_personal_ig">@henrymarques</span>
                 </a>
-                
+
                 <!-- Instagram Agency -->
-                <a href="https://www.instagram.com/filmotyagency" target="_blank" rel="noopener" class="social-icon-link instagram scroll-animate-scale">
+                <a href="https://instagram.com/filmotyagency" target="_blank" rel="noopener"
+                    class="social-icon-link instagram scroll-animate-scale">
                     <i class="fa-brands fa-instagram"></i>
-                    <span data-key="social_agency_ig">@filmoty</span>
-                </a>
-                
-                <!-- YouTube -->
-                <a href="https://www.youtube.com/@HenryMarques-k8w" target="_blank" rel="noopener" class="social-icon-link youtube scroll-animate-scale">
-                    <i class="fa-brands fa-youtube"></i>
-                    <span data-key="social_youtube">YouTube</span>
+                    <span data-key="social_agency_ig">@filmotyagency</span>
                 </a>
             </div>
         </section>
@@ -2404,9 +2407,8 @@
                 </div>
             </div>
             <div class="right-panel" style="background-color: #ffffff">
-                <iframe
-                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07-OIRo9PlSFREUpOnBTJ4EoJLt9MQ-r3kqjFs-rTSdZBT5_mXAvjPRajfayOUwAw8FmcsRXS2?gv=true"
-                    style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+                <iframe src="https://tally.so/r/Pd1lY0" style="border: 0" width="100%" height="100%"
+                    frameborder="0"></iframe>
             </div>
         </div>
     </div>
