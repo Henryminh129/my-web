@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="theme-color" content="#0A0A0A">
+    <title>Henry Marques | Strategic Content Architect</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="ambient-light"></div>
+
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo" onclick="navigateTo('home')">
+                <span style="color:var(--blue)">///</span> HENRY MARQUES
+            </div>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="nav-links">
+                    <button class="nav-btn active" onclick="navigateTo('home')" data-key="nav_home">Story</button>
+                    <button class="nav-btn" onclick="navigateTo('showcase')" data-key="nav_showcase">Case
+                        Studies</button>
+                    <button class="nav-btn" onclick="navigateTo('booking')" data-key="nav_booking">Contact</button>
+                </div>
+                <button class="lang-btn" onclick="toggleLang()">EN | VN</button>
+                <button class="btn-main" onclick="navigateTo('booking')" data-key="btn_book_nav">Book Strategy</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="home" class="page-section active">
+        <section class="hero">
+            <div class="container">
+                <!-- UPDATED: System Recalibration Status -->
+                <br>
+                <div class="status-badge-recalibration">
+                    <div class="status-dot-yellow"></div>
+
+                    <span data-key="status">SYSTEM RECALIBRATION</span>
+                </div>
+
+
+                <div class="avatar-wrapper">
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring"></div>
+                    <img src="Henry Marques.PNG" class="hero-avatar" alt="Henry Marques">
+                </div>
+
+                <h1 data-key="hero_title">The Strategic <br><span class="text-gradient">Video Architect</span></h1>
+                <p data-key="hero_desc">I don't sell videos. I engineer <strong>Video & Content Systems</strong> that
+                    allow Founders & Creators to dominate High-Ticket markets with authority.</p>
+
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+                    <button class="btn-main" onclick="navigateTo('showcase')" data-key="btn_view">Explore
+                        Archive</button>
+                    <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView()"
+                        data-key="btn_philosophy">My Philosophy</button>
+                </div>
+
+                <div class="inspirations">
+                    <span class="insp-label" data-key="insp_label">Built on the shoulders of giants. Inspired by</span>
+                    <div class="insp-items">
+                        <span class="insp-tag">Trey Gustafson (Business)</span>
+                        <span class="insp-tag">Ali Abdaal (Systems)</span>
+                        <span class="insp-tag">Kevin Mach (Visuals Mindset)</span>
+                        <span class="insp-tag">Devin Jatho (Strategy)</span>
+                        <span class="insp-tag">Iman Gadzhi (Psychology)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="trusted-section">
+            <p style="text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #666; margin-bottom: 30px; padding: 0 20px;"
+                data-key="trusted_label">Strategic Impact Delivered (collaborated with <strong>Conterine</strong>) For
+            </p>
+            <div class="trusted-logos">
+                <div class="t-item">🎙️ VSTN <span>Podcast</span></div>
+                <div class="t-item">Finn Dollimore <span>Expert Website Designer</span></div>
+                <div class="t-item">Micky Dollimore <span>Map Developer & Consultant</span></div>
+                <div class="t-item">Aliena <span>CEO of Fast Track Ui</span></div>
+            </div>
+        </section>
+
+        <!-- REMOVED: 2026 Trusted By Section -->
+
+        <section class="section-padding container" id="about">
+            <div class="about-grid">
+                <div class="bio-card">
+                    <h3 style="font-size: 2rem; margin-bottom: 20px; line-height: 1.2;" data-key="bio_title">The
+                        Architect <br>Behind The Chaos.</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc1">They call it
+                        "video editing." I call it <strong>engineering attention</strong>. My name is <strong>Henry
+                            Marques (Lý Minh Phúc)</strong>. In a market flooded with "aesthetic" visuals, I chose a
+                        different path: <strong>System over Art.</strong></p>
+                    <p style="color: var(--text-secondary); margin-bottom: 25px;" data-key="bio_desc2">I don't just make
+                        things look good. I build <strong>video infrastructures</strong> that allow creators to scale
+                        without burning out. Talent is useless without a process. That's why I don't sell videos; I sell
+                        the <strong>certainty of outcome</strong>.</p>
+                    <hr style="border:0; border-top:1px solid var(--glass-border); margin: 30px 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h4 style="color: white; margin-bottom: 5px;" data-key="role_title">Current Focus</h4>
+                            <!-- UPDATED: Current Focus -->
+                            <p style="color: #999; font-size: 0.9rem;" data-key="role_desc">Scaling Filmoty Agency while
+                                maintaining Academic Excellence at Grade 12.</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-trend-up" style="color: var(--blue); font-size: 1.5rem;"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 50px; padding-left: 40px;"><span
+                            data-key="journey_title">The</span> <span class="text-gradient">Evolution</span></h2>
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="dot"></div>
+                            <span class="t-date">2025 (Q3)</span>
+                            <h3>CPO & Production Lead</h3>
+                            <!-- FIXED: Typo responsibility -->
+                            <div class="t-desc" data-key="exp_1"><strong>At Conterine.</strong> Architected the
+                                post-production workflow. Managed quality control for high-volume deliverables and
+                                scaled the team without breaking the system. Besides, establishing video style is my
+                                responsibility when it comes to new potential clients.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="dot"></div>
+                            <span class="t-date">2025 (Q1-Q2)</span>
+                            <h3>Junior - Senior Strategic Editor</h3>
+                            <div class="t-desc" data-key="exp_2">Mastered retention mechanics. Worked directly with
+                                international creators to decode the algorithm of "High-Ticket Attention". Clients: VSTN
+                                Podcast, Finn Dollimore, Micky Dollimore, Aliena Cai.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="dot"></div>
+                            <span class="t-date">Present</span>
+                            <h3>CEO - Founder Filmoty Agency</h3>
+                            <div class="t-desc" data-key="exp_3">Building a sustainable Agency model driven by a clear
+                                vision. Learned the hard way that talent without process leads to burnout.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 3rem;" data-key="why_title">Why <span class="text-gradient">Architect?</span></h2>
+                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;" data-key="why_subtitle">
+                    Because hope is not a strategy. You need an engineered approach.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="tilt-card c-crimson" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon" style="color: var(--crimson);">🚀</div>
+                        <h3 data-key="tilt_title_1">Strategic Consultation</h3>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_1">I don't just take
+                            orders. I consult on concepts, framing, and distribution to maximize business impact, not
+                            just views.</p>
+                    </div>
+                </div>
+                <div class="tilt-card c-blue" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon" style="color: var(--blue);">🧠</div>
+                        <h3 data-key="tilt_title_2">System Builder</h3>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_2">My management
+                            background means I build lean, efficient production pipelines that respect your time and
+                            resources.</p>
+                    </div>
+                </div>
+                <div class="tilt-card c-mixed" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon"
+                            style="background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                            💎</div>
+                        <h3 data-key="tilt_title_3">Production Excellence</h3>
+                        <p style="color: var(--text-secondary); margin-top: 15px;" data-key="card_3">Pixel-perfect
+                            audio/visuals designed to position you as an undisputed authority, justifying premium
+                            positioning by amplifying your unique personality within the brand.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECAP VIDEO SECTION -->
+        <section class="recap-section container">
+            <h2 class="scroll-animate" data-key="recap_title">2025 <span class="text-gradient">Year in Review</span>
+            </h2>
+            <p class="scroll-animate" data-key="recap_subtitle">A cinematic journey through our most impactful projects
+                and strategic wins.</p>
+
+            <div class="recap-video-wrapper scroll-animate-scale">
+                <div class="video-thumbnail-overlay" onclick="this.style.display='none';">
+                    <div class="thumbnail-content">
+                        <div class="play-button-wrapper">
+                            <div class="play-ring"></div>
+                            <div class="play-ring"></div>
+                            <div class="play-button">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-meta">
+                            <div class="video-year">2025</div>
+                            <div class="video-title">Year in Review</div>
+                            <div class="video-subtitle">Watch Our Journey</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recap-video-container">
+                    <iframe src="https://www.youtube.com/embed/hkY4jpdEKJo"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        style="width: 100%; height: 100%; border: none; border-radius: var(--card-radius);"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOCIAL LINKS SECTION -->
+        <section class="social-section-simple container">
+            <h2 class="scroll-animate" data-key="social_title">Connect <span class="text-gradient">With Us</span></h2>
+
+            <div class="social-icons-grid">
+                <a href="https://www.facebook.com/ly.minh.phuc.293252/" target="_blank" rel="noopener"
+                    class="social-icon-link facebook scroll-animate-scale">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span data-key="social_facebook">Facebook</span>
+                </a>
+
+                <a href="https://www.instagram.com/henry.marq_ues" target="_blank" rel="noopener"
+                    class="social-icon-link instagram scroll-animate-scale">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span data-key="social_personal_ig">@henrymarques</span>
+                </a>
+
+                <a href="https://instagram.com/filmotyagency" target="_blank" rel="noopener"
+                    class="social-icon-link instagram scroll-animate-scale">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span data-key="social_agency_ig">@filmotyagency</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- BOOK CALL CTA -->
+        <section class="scroll-animate"
+            style="text-align: center; padding: 80px 0 60px; border-top: 1px solid var(--glass-border);">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; line-height: 1.1;" data-key="ready_title">Stop
+                Guessing.<br>Start Building.</h2>
+            <button class="btn-main" onclick="navigateTo('booking')" data-key="btn_strategy_cta">Book Discovery
+                Call</button>
+        </section>
+
+        <!-- COPYRIGHT -->
+        <section style="text-align: center; padding: 50px 0 40px; border-top: 1px solid var(--glass-border);">
+            <div style="color: #444; font-size: 0.8rem; letter-spacing: 1px;" data-key="copyright">© 2025 Filmoty
+                Agency. Engineered by Henry Marques.</div>
+        </section>
+    </div>
+
+    <div id="showcase" class="page-section">
+        <div class="container showcase-header">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">The <span class="text-gradient">Case Studies</span></h1>
+            <p style="color: var(--text-secondary); margin-bottom: 40px;" data-key="archive_desc">Real projects with
+                proven results. <strong>Click to view detailed breakdown.</strong></p>
+
+            <div class="filter-container">
+                <button class="btn-outline" onclick="filterGallery('all')">All Work</button>
+                <button class="btn-outline" onclick="filterGallery('short')">Shorts</button>
+                <button class="btn-outline" onclick="filterGallery('long')">Long-form</button>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid"></div>
+        </div>
+    </div>
+
+    <div id="booking" class="page-section">
+        <div class="container split-screen">
+            <div class="left-panel">
+                <span
+                    style="color: var(--blue); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem;"
+                    data-key="booking_badge">Strategy Session</span>
+                <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 15px; line-height: 1.1;"
+                    data-key="booking_title">Let's Architect Your <br><span class="text-gradient">Revenue</span></h1>
+                <p style="color: var(--text-secondary); font-size: 1.15rem; margin-top: 30px; font-weight: 400; max-width: 500px;"
+                    data-key="booking_desc">A 1:1 consultation (60 mins) to audit your current content bottleneck and
+                    define a roadmap for authority & scale.</p>
+                <ul class="booking-list" style="margin-top: 50px; list-style: none;">
+                    <li data-key="list_1">Audit: Branding & Our Feasible Support</li>
+                    <li data-key="list_2">Strategy: High-Ticket Concept Direction</li>
+                    <li data-key="list_3">System: Production-House Workflow Design</li>
+                </ul>
+                <div style="margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--glass-border);">
+                    <p style="color: #666; font-size: 0.9rem;">Powered by <strong>FILMOTY AGENCY</strong></p>
+                </div>
+            </div>
+            <div class="right-panel" style="background-color: #ffffff">
+                <iframe src="https://tally.so/r/Pd1lY0" style="border: 0" width="100%" height="100%"
+                    frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- CASE STUDY MODAL -->
+    <div id="case-study-modal" class="case-study-modal">
+        <div class="modal-close-case" onclick="closeCaseStudy()">×</div>
+        <div class="modal-content-case">
+            <div class="modal-video-case" id="modal-video-case"></div>
+
+            <div class="modal-section-case">
+                <h3>The Challenge</h3>
+                <p id="modal-challenge-case">Loading...</p>
+            </div>
+
+            <div class="modal-section-case">
+                <h3>The Architecture</h3>
+                <p id="modal-architecture-case">Loading...</p>
+            </div>
+
+            <div class="modal-section-case">
+                <h3>Behind The Scenes</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">A glimpse into the creative process.</p>
+                <div id="modal-bts-gallery" class="bts-gallery"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BTS Image Lightbox -->
+    <div id="bts-lightbox" class="bts-lightbox" onclick="closeBTSLightbox(event)">
+        <div class="bts-lightbox-content">
+            <div class="bts-lightbox-close" onclick="closeBTSLightbox(event)">×</div>
+            <img id="bts-lightbox-image" class="bts-lightbox-image" src="" alt="Behind the scenes">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
