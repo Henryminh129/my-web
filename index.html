@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Henry's Portfolio — Personal Brand Production Studio</title>
   <meta name="description"
-    content="Henry's Portfolio — production & strategy partner for creators, experts and entrepreneurs who want their brand built around who they really are, engineered toward the outcome they need: sales, leads, or reputation.">
+    content="Henry's Portfolio — remote production & strategy partner for creators, experts and entrepreneurs worldwide. I coach the shoot, edit and build the growth strategy, engineered toward the outcome you need: sales, leads, or reputation.">
   <meta property="og:title" content="Henry's Portfolio — Personal Brand Production Studio">
   <meta property="og:description"
-    content="Production & strategy partner behind fast-growing personal brands — from concept to editing to growth, built around your real personality and the outcome you need.">
+    content="Remote production & strategy partner behind fast-growing personal brands, working with clients anywhere in the world — from concept to editing to growth strategy.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <style>
@@ -507,6 +507,51 @@
       text-underline-offset: 3px;
     }
 
+    .svc-bonus {
+      margin-top: 18px;
+      border: 1.5px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      background: var(--white);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .svc-bonus .bonus-tag {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--red);
+      background: rgba(255, 90, 78, .1);
+      padding: 5px 11px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    .svc-bonus h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .svc-bonus p {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: rgba(23, 20, 15, .7);
+      max-width: 640px;
+    }
+
+    .svc-bonus .bonus-note {
+      font-style: italic;
+      font-size: 13px;
+      color: rgba(23, 20, 15, .5);
+      margin-top: 8px;
+    }
+
     /* ---------- WORK / CASE STUDIES ---------- */
     .work-head-row {
       display: flex;
@@ -515,6 +560,18 @@
       margin-bottom: 44px;
       flex-wrap: wrap;
       gap: 20px;
+    }
+
+    .brand-philosophy {
+      border-left: 3px solid var(--red);
+      padding: 4px 0 4px 22px;
+      margin: 0 0 44px;
+      max-width: 760px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 19px;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--ink);
     }
 
     .work-grid {
@@ -1188,6 +1245,18 @@
       margin-bottom: 16px;
     }
 
+    .case-modal-frame.is-tiktok {
+      aspect-ratio: auto;
+      max-width: 325px;
+      margin-left: auto;
+      margin-right: auto;
+      background: transparent;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .case-modal-frame iframe {
       width: 100%;
       height: 100%;
@@ -1282,6 +1351,30 @@
       aspect-ratio: 16/9;
       object-fit: cover;
       display: block;
+    }
+
+    .case-thumb-tiktok {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: linear-gradient(160deg, #1C1712 0%, #0A0908 100%);
+      color: rgba(251, 248, 241, .55);
+    }
+
+    .case-thumb-tiktok svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .case-thumb-tiktok span.platform-label {
+      font-family: 'IBM Plex Mono';
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
     }
 
     .case-thumb span {
@@ -1449,12 +1542,9 @@
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">We Do Specific Brand Identity</div>
+          <div class="eyebrow">I Build Focused Brand Identity</div>
           <h1 class="reveal">Drive The Growth Through <span class="hl"> Your Exceptional Brand</span></h1>
-          <p class="lead reveal">We build your brand around who you actually are — not a generic template — then
-            engineer every piece of content toward the exact outcome you need: more sales, more leads, or a
-            reputation people trust.</p>
-          <div class="hero-ctas reveal">
+          <div class="hero-ctas reveal" style="margin-top:32px;">
             <a href="#contact" class="btn btn-red">Book A Free Consultation →</a>
             <a href="#work" class="btn btn-outline-dark">View Case Study</a>
           </div>
@@ -1465,7 +1555,7 @@
           </svg>
           <div class="num">Production Partner</div>
           <div class="num" style="color:#FF5A4E;">For Million-View Channels</div>
-          <div class="cap">4 Personal Brands · 2024–2026</div>
+          <div class="cap">4 Personal Brands · 100% Remote · Global</div>
         </div>
       </div>
     </div>
@@ -1479,8 +1569,9 @@
       <div class="section-head reveal">
         <div class="eyebrow">Services</div>
         <h2>End-to-End Personal Brand Services</h2>
-        <p>From content strategy to deep post-production — every decision is engineered around your personality and
-          the outcome you're chasing, not just prettier output.
+        <p>Brand lives in story, trust, and what makes you unmistakably you — every service below exists to protect
+          that story. I don't hold the camera: I coach you through the shoot and build the strategy around your
+          raw footage, working 100% remotely with clients anywhere in the world.
         </p>
       </div>
 
@@ -1494,7 +1585,7 @@
           </svg>
           <div>
             <h3>Channel Strategy</h3>
-            <p>We build a content roadmap based on real audience data, defining a direction that grows sustainably
+            <p>I build a content roadmap based on real audience data, defining a direction that grows sustainably
               while staying true to who you are.</p>
           </div>
         </div>
@@ -1519,7 +1610,7 @@
           </svg>
           <div>
             <h3>Thumbnail &amp; Title Optimization</h3>
-            <p>We test and optimize thumbnails and titles against real CTR data, helping your video stand out among
+            <p>I test and optimize thumbnails and titles against real CTR data, helping your video stand out among
               thousands of daily suggestions.</p>
           </div>
         </div>
@@ -1528,7 +1619,7 @@
           <div class="arrow">↗</div>
           <div>
             <h3>Personal Brand Building</h3>
-            <p>We define a consistent visual identity, voice and story across every platform — from YouTube to
+            <p>I define a consistent visual identity, voice and story across every platform — from YouTube to
               TikTok and Instagram. Learn more: <a class="link" href="#">Brand Identity</a></p>
           </div>
         </div>
@@ -1537,7 +1628,7 @@
           <div class="arrow">↗</div>
           <div>
             <h3>Growth Strategy</h3>
-            <p>We analyze data, optimize posting schedules and content formats with one goal: your actual outcome —
+            <p>I analyze data, optimize posting schedules and content formats with one goal: your actual outcome —
               more sales, more leads, or a reputation people trust.
             </p>
           </div>
@@ -1546,9 +1637,9 @@
         <div class="svc svc-light svc-narrow reveal">
           <div class="arrow">↗</div>
           <div>
-            <h3>Podcast Production</h3>
-            <p>Multi-camera recording and format optimization for podcasts across YouTube, Spotify and other audio
-              platforms.</p>
+            <h3>Remote Shooting Guidance</h3>
+            <p>I don't hold the camera — I coach you on framing, lighting and delivery, then build the strategy
+              around your own raw footage. Fully remote, built for clients anywhere in the world.</p>
           </div>
         </div>
 
@@ -1556,9 +1647,22 @@
           <div class="arrow">↗</div>
           <div>
             <h3>Brand Partnership Consulting</h3>
-            <p>We connect and advise on brand collaboration deals, making sure every partnership fits your image and
+            <p>I connect and advise on brand collaboration deals, making sure every partnership fits your image and
               maximizes revenue for your channel. Learn more: <a class="link" href="#">Partnership Rates</a></p>
           </div>
+        </div>
+      </div>
+
+      <div class="svc-bonus reveal">
+        <div style="flex:1;min-width:260px;">
+          <span class="bonus-tag">Bonus — By Request Only</span>
+          <h3>Paid Media &amp; Ads Management</h3>
+          <p>For clients who want one person accountable for the whole channel, I can also step in to run and manage
+            paid ads on top of the content system I've already built for you. I'll say this plainly: it isn't my core
+            specialty yet, so I offer it as an optional extra, not a promise — and I'll tell you honestly if it's
+            not the right fit for your channel.</p>
+          <p class="bonus-note">I only bring it up because I care about your actual results, not just the content
+            (it's because I do care about direct response).</p>
         </div>
       </div>
     </div>
@@ -1569,25 +1673,31 @@
       <div class="work-head-row">
         <div class="section-head reveal" style="margin-bottom:0;">
           <div class="eyebrow">Selected Work</div>
-          <h2>Channels We've Partnered With</h2>
+          <h2>Channels I've Partnered With</h2>
           <p>Real case studies, delivered while working at <strong>Conterine</strong>. Results below are real client
             numbers.</p>
         </div>
         <a href="#contact" class="btn btn-outline-light reveal">View More Case Studies</a>
       </div>
 
+      <blockquote class="brand-philosophy reveal">
+        "Brand lives in story, trust, and what makes you unmistakably you. Every storytelling choice, every cut, every
+        beat of emotion in a video either reflects that story or reinforces it — turning the values your audience
+        already believes in into real conversion."
+      </blockquote>
+
       <div class="work-grid">
-        <div class="case reveal" onclick="openCaseStudy('aliena')">
-          <img class="case-cover" loading="lazy" src="https://i.ytimg.com/vi/DpLfBVhFohI/hqdefault.jpg"
-            alt="Aliena Cai — Figma to Wix Studio">
+        <div class="case reveal" onclick="openCaseStudy('vstn')">
+          <img class="case-cover" loading="lazy" src="https://i.ytimg.com/vi/sTi8MvFw3bM/hqdefault.jpg"
+            alt="Vì Sao Thế Nhỉ — National Flag Viral">
           <div class="case-tag">Conterine</div>
           <div class="case-play"><svg width="14" height="14" viewBox="0 0 24 24">
               <path d="M8 5L19 12L8 19V5Z" fill="#FBF8F1" />
             </svg></div>
           <div class="case-info">
-            <div class="stat">+112% Performance</div>
-            <div class="name">Aliena Cai</div>
-            <div class="role">CEO, Fast Track UX</div>
+            <div class="stat">9.2M Traffic</div>
+            <div class="name">Vì Sao Thế Nhỉ</div>
+            <div class="role">Top #1 Education Podcast, Vietnam</div>
           </div>
         </div>
 
@@ -1605,6 +1715,20 @@
           </div>
         </div>
 
+        <div class="case reveal" onclick="openCaseStudy('aliena')">
+          <img class="case-cover" loading="lazy" src="https://i.ytimg.com/vi/DpLfBVhFohI/hqdefault.jpg"
+            alt="Aliena Cai — Figma to Wix Studio">
+          <div class="case-tag">Conterine</div>
+          <div class="case-play"><svg width="14" height="14" viewBox="0 0 24 24">
+              <path d="M8 5L19 12L8 19V5Z" fill="#FBF8F1" />
+            </svg></div>
+          <div class="case-info">
+            <div class="stat">+112% Performance</div>
+            <div class="name">Aliena Cai</div>
+            <div class="role">CEO, Fast Track UX</div>
+          </div>
+        </div>
+
         <div class="case reveal" onclick="openCaseStudy('finn')">
           <img class="case-cover" loading="lazy" src="https://i.ytimg.com/vi/QPX0-l5e4_8/hqdefault.jpg"
             alt="Finn Dollimore — Figma Components for Pro Web Design">
@@ -1618,20 +1742,6 @@
             <div class="role">Professional Web Designer</div>
           </div>
         </div>
-
-        <div class="case reveal" onclick="openCaseStudy('vstn')">
-          <img class="case-cover" loading="lazy" src="https://i.ytimg.com/vi/sTi8MvFw3bM/hqdefault.jpg"
-            alt="Vì Sao Thế Nhỉ — National Flag Viral">
-          <div class="case-tag">Conterine</div>
-          <div class="case-play"><svg width="14" height="14" viewBox="0 0 24 24">
-              <path d="M8 5L19 12L8 19V5Z" fill="#FBF8F1" />
-            </svg></div>
-          <div class="case-info">
-            <div class="stat">9.2M Traffic</div>
-            <div class="name">Vì Sao Thế Nhỉ</div>
-            <div class="role">Top #1 Education Podcast, Vietnam</div>
-          </div>
-        </div>
       </div>
 
     </div>
@@ -1641,7 +1751,7 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Testimonials</div>
-        <h2>What Clients Say About Us</h2>
+        <h2>What Clients Say About&nbsp;Me</h2>
         <p>Real feedback from 4 clients, collected while working at <strong>Conterine</strong>
           — the production house where I led these projects.</p>
       </div>
@@ -1721,7 +1831,9 @@
             Production Lead at Conterine, directly editing and directing the style for dozens of real video
             projects for international experts, coaches and entrepreneurs.</p>
           <p>I don't sell videos — I build brand systems around who you really are, engineered toward the exact
-            outcome you need: more sales, more leads, or a reputation people trust.</p>
+            outcome you need: more sales, more leads, or a reputation people trust. I don't hold the camera myself —
+            I coach you through the shoot and build the strategy around your own raw footage, working 100% remotely
+            with clients around the world.</p>
           <div class="about-chips">
             <span class="result-chip">Founder, Filmoty Agency</span>
             <span class="result-chip">Ex-Production Lead, Conterine</span>
@@ -1741,7 +1853,8 @@
       <div class="cta-inner">
         <div class="eyebrow reveal">Get Started</div>
         <h2 class="reveal">Book A 30-Minute Consultation<br>— Pick A Time That Works For You.</h2>
-        <p class="reveal">No strings attached. Let's look at your current channel and map out where to go next.</p>
+        <p class="reveal">No strings attached, no matter your time zone — let's look at your current channel and map
+          out where to go next.</p>
       </div>
       <div class="calendly-wrap reveal" id="calendly-wrap"></div>
       <div class="cta-fallback reveal">
@@ -1811,8 +1924,9 @@
       <div class="foot-top">
         <div>
           <div class="foot-logo">✺ HENRY'S <span>PORTFOLIO</span></div>
-          <p style="max-width:260px; font-size:13.5px; margin-top:12px; line-height:1.6;">Content and strategy
-            production for creators, experts and entrepreneurs building a personal brand.</p>
+          <p style="max-width:260px; font-size:13.5px; margin-top:12px; line-height:1.6;">Remote content strategy and
+            post-production for creators, experts and entrepreneurs building a personal brand — wherever in the world
+            they are.</p>
         </div>
         <div class="foot-links">
           <div class="foot-col">
@@ -1888,7 +2002,7 @@
     //
     // 👉 HOW TO ADD A NEW CLIENT / CASE STUDY:
     //    copy the commented-out template below, fill it in, then uncomment it.
-    //    Then add a new card in the "Our Work" HTML section with:
+    //    Then add a new card in the "Selected Work" HTML section with:
     //    onclick="openCaseStudy('new_key')"
     //
     //    new_key: {
@@ -1908,14 +2022,19 @@
         results: ['+112% Overall Performance', '116.2K Lifetime Traffic', '+10% Engagement Rate'],
         videos: [
           {
-            id: 'DpLfBVhFohI', title: 'Figma to Wix Studio (2025 Agency Method)', stat: '78% Completion (industry avg: 40%)',
-            challenge: 'A 45+ minute tutorial with a high risk of drop-off. Needed to hold attention while still teaching the technique properly, with no cut corners.',
-            architecture: 'Built a chapter system with visual timestamps, inserted a "pattern interrupt" every 8 minutes to refresh attention, and kept a consistent "Show — Not Tell" editing rhythm throughout. Result: 78% completion rate, nearly double the industry average.'
+            id: 'q0xzHj994VM', title: 'Building On The Existing Brand Line', stat: 'Brand-Consistent Extension',
+            challenge: 'Aliena already had a clear brand identity in place — the challenge was extending it into new content without diluting it, while still teaching a technical topic in a way total beginners could follow.',
+            architecture: 'Every visual choice — pacing, type, color — was pulled directly from her existing design system, so the video reads as a natural continuation of her brand rather than a one-off. Knowledge was broken into clear, visual steps so it stayed accessible to both her core audience and new potential customers discovering her for the first time.'
           },
           {
-            id: 'GdCr5FT_z20', title: 'How I Use Figma Component', stat: 'Beginner-Friendly Technical Content',
-            challenge: 'The Figma component topic already has countless tutorials out there. Aliena needed to stand out while still teaching a complex technical concept without overwhelming beginners.',
-            architecture: 'Applied the "Show, Not Tell" principle: screen recordings with zoom and highlights instead of long explanations, with "why this matters" text overlays inserted at key decision points.'
+            id: 'TIWCR3yd8R0', title: 'Turning Complex Knowledge Into Visual Steps', stat: 'Visual-First Teaching',
+            challenge: 'The subject matter was dense and easy to explain badly — a long verbal walkthrough loses non-technical viewers within the first minute.',
+            architecture: 'We rebuilt the explanation around visuals first: on-screen diagrams, highlighted steps and minimal text, so the knowledge lands instantly instead of asking the viewer to hold it all in their head.'
+          },
+          {
+            id: 'zDBxiZ8CbIU', title: 'Speaking Directly To The Right Audience', stat: 'Audience-Focused Framing',
+            challenge: 'The content needed to speak clearly to Aliena\'s actual target audience and potential customers — not just anyone scrolling by — while staying inside her established design system.',
+            architecture: 'Framing, examples and pacing were chosen specifically for her ideal viewer profile, keeping the video anchored to her existing brand system so every piece reinforces the same brand story instead of feeling like a one-off.'
           }
           // 👉 add Aliena's new videos here
         ]
@@ -1931,14 +2050,34 @@
             architecture: 'Built an "Aspirational Yet Achievable" narrative: curated B-roll focused on the work rather than the location, cinematic transitions kept production quality high, and voiceover leaned into expertise rather than lifestyle. Result: positioned him as a thought leader and attracted consulting inquiries.'
           },
           {
-            id: 'I67if-hz_UY', title: 'What is a Tileset - Mapbox', stat: 'B2B Technical Explainer',
-            challenge: 'A highly technical explainer for a B2B audience. Risked coming across as either too dry or too oversimplified.',
-            architecture: 'Used "Strategic Layering": opened with the business problem ("why"), then unpacked the technical solution ("how") through animated diagrams. Each feature got a "Use Case Spotlight" to keep it relevant.'
+            id: 'oEtHY9-EbNA', title: 'Shaping The Visual Brand From Scratch', stat: 'New Visual Identity',
+            challenge: 'The channel had no defined visual system yet, and every video risked looking like a different, disconnected project.',
+            architecture: 'We designed the visual brand line from the ground up — consistent framing, color and on-screen style. Micky wrote his own script throughout; our role was to shape how it looked and felt, not put words in his mouth.'
+          },
+          {
+            id: 'uVxmX27kfOk', title: 'Laying The Groundwork For "Consultant," Not Just "Developer"', stat: 'Consultant Positioning',
+            challenge: 'In front of clients, Micky was still being read as "just a developer" — technically capable, but not yet positioned as someone worth paying for strategic advice.',
+            architecture: 'We shaped pacing, framing and delivery to carry more authority and perspective, laying the first foundations for a shift from developer to consultant in how the audience perceives him.'
           },
           {
             id: 'rd61UBl0aSQ', title: '5 Must-Have Real Estate Map Features', stat: 'Problem-Solution Storytelling',
             challenge: 'A feature-list format is inherently dry. Needed to make checklist content feel dynamic and essential.',
             architecture: 'Turned it into a "Problem-Solution" journey: each feature introduced through the exact pain point it solves, with before/after comparisons for every item, keeping one narrative thread running across all five features.'
+          },
+          {
+            id: 'yaQJp3Cq8mQ', title: 'Guided, Not Written: Keeping His Own Voice', stat: 'Client-Written Script',
+            challenge: 'Micky wanted every word to be his own — the challenge was building a strong video around a script we didn\'t write ourselves.',
+            architecture: 'We offered structural and pacing suggestions only, then designed the entire edit around his own words, so the final video still sounds authentically like him.'
+          },
+          {
+            id: 'wbmKjBw-WKw', title: 'Reinforcing The Brand Line', stat: 'Consistent Brand Line',
+            challenge: 'As the channel grew, staying visually consistent with everything that came before got harder with each new video.',
+            architecture: 'Every new video was checked against the brand line already established — same visual grammar, same tone — so the channel reads as one continuous story instead of scattered uploads.'
+          },
+          {
+            id: 'W8ysGs3w0cI', title: 'The Final Video — Wrapping Up To Refocus', stat: 'Final Collaboration Video',
+            challenge: 'Micky ultimately chose to step back from content to refocus on his core career.',
+            architecture: 'This was the closing video of our collaboration — produced to wrap up the channel\'s story on a strong note as Micky shifted his focus back to his profession.'
           }
           // 👉 add Micky's new videos here
         ]
@@ -1951,7 +2090,7 @@
           {
             id: 'QPX0-l5e4_8', title: 'Figma Components for Pro Web Design', stat: '+40% Retention · 2x Watch Time',
             challenge: 'Finn has deep expertise but his videos weren\'t holding attention past 30 seconds. High-value content was being wasted due to poor retention.',
-            architecture: 'Implemented a "Micro-Dopamine System": B-roll changes every 3–5 seconds, strategic zooms on key actions, a progress bar showing where you are in the tutorial, and a pattern interrupt inserted every 90 seconds. Retention grew 40%, watch time doubled.'
+            architecture: 'Working inside Finn\'s existing brand line, we pushed the edit toward more creative territory: B-roll changes every 3–5 seconds, strategic zooms on key actions, a progress bar showing where you are in the tutorial, and a pattern interrupt inserted every 90 seconds — creative enough to stand out, disciplined enough to still feel like his brand. Retention grew 40%, watch time doubled.'
           }
           // 👉 add Finn's new videos here
         ]
@@ -1990,6 +2129,41 @@
             id: '67ka-3XRjCQ', title: 'Podcast Discussion', stat: '110K+ Views (TikTok)',
             challenge: 'Dialogue-heavy discussion content lacks visual variety, risking drop-off even when the content itself is strong.',
             architecture: 'Implemented "Visual Conversation": strategic zooms on the speaker at key points, B-roll inserts illustrating the concepts being discussed, and text highlights on the most quotable lines.'
+          },
+          {
+            id: '7493911034080611602', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Balancing Animation & Clean Branding', stat: 'TikTok Short',
+            challenge: 'Shorts for VSTN lean heavily on animation and creative editing to grab attention — but too much motion risks burying the brand\'s clean, minimal identity underneath the effects.',
+            architecture: 'Every animated element was kept inside the same restrained color and type system, so the short stays visually playful without losing the professional, minimal feel that defines the brand.'
+          },
+          {
+            id: '7493182808668556562', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Reaching Every Age Group', stat: 'TikTok Short',
+            challenge: 'As an education podcast with no product to sell, VSTN\'s only real goal is reach — the content has to land with viewers across a wide range of ages, not just one niche demographic.',
+            architecture: 'Pacing, language and visual metaphors were chosen to stay legible to both younger and older viewers at once, prioritizing clarity of the idea over any single generation\'s trends.'
+          },
+          {
+            id: '7475731493659200769', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Information First', stat: 'TikTok Short',
+            challenge: 'Because the channel isn\'t monetized through the audience, every short has to justify its own existence purely through the value of the information, not through entertainment alone.',
+            architecture: 'The edit was built to deliver the actual idea as fast and clearly as possible, using animation to support comprehension rather than as decoration for its own sake.'
+          },
+          {
+            id: '7477947788685266192', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Consistent Visual Identity', stat: 'TikTok Short',
+            challenge: 'With a high volume of shorts going out, it\'s easy for a channel to drift visually from one video to the next.',
+            architecture: 'A consistent visual language — same title cards, same pacing logic, same restrained color palette — was applied across the short so it\'s instantly recognizable as VSTN regardless of topic.'
+          },
+          {
+            id: '7474971296326044946', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Complex Ideas, Accessible Format', stat: 'TikTok Short',
+            challenge: 'Educational topics can easily feel like a lecture in short-form video, causing viewers to scroll away before the point lands.',
+            architecture: 'The concept was broken into small, sequential visual beats rather than one dense explanation, so it reads more like a quick discovery than a class.'
+          },
+          {
+            id: '7458278819439463687', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Professional Within The Creative', stat: 'TikTok Short',
+            challenge: 'Creative, animation-heavy shorts can start to feel unpolished or amateur if not held to a clear production standard.',
+            architecture: 'Motion design, sound design and pacing were all held to the same professional bar as the channel\'s long-form work, keeping the short feeling premium despite its playful tone.'
+          },
+          {
+            id: '7474219190350662920', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Clarity Over Noise', stat: 'TikTok Short',
+            challenge: 'Short-form feeds reward loud, chaotic editing — which can easily clash with a brand that wants to be seen as calm, minimal and trustworthy.',
+            architecture: 'The edit intentionally pulled back on unnecessary noise: fewer competing effects, more deliberate pacing, letting the core idea stay the clear focal point of the short.'
           }
           // 👉 add VSTN's new videos here
         ]
@@ -2026,20 +2200,45 @@
 
     function renderCaseThumbs(data) {
       const wrap = document.getElementById('case-modal-thumbs');
-      wrap.innerHTML = data.videos.map(v => `
+      wrap.innerHTML = data.videos.map(v => {
+        const thumbInner = v.platform === 'tiktok'
+          ? `<div class="case-thumb-tiktok">
+               <svg viewBox="0 0 24 24" fill="none"><path d="M16.5 3c.4 2.2 2 3.9 4.2 4.2v3.1c-1.6 0-3.1-.5-4.2-1.4v6.4c0 3.4-2.8 6.2-6.2 6.2S4.1 18.7 4.1 15.3c0-3.4 2.8-6.2 6.2-6.2.4 0 .8 0 1.1.1v3.2a3 3 0 1 0 2.1 2.9V3h3z" fill="currentColor"/></svg>
+               <span class="platform-label">TikTok</span>
+             </div>`
+          : `<img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" loading="lazy" alt="${v.title}">`;
+        return `
       <div class="case-thumb" data-id="${v.id}" onclick="selectCaseVideo('${v.id}')">
-        <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" loading="lazy" alt="${v.title}">
+        ${thumbInner}
         <span>${v.title}</span>
       </div>
-    `).join('');
+    `;
+      }).join('');
     }
 
     function selectCaseVideo(videoId) {
       const data = caseStudies[currentCaseKey];
       const video = data.videos.find(v => v.id === videoId);
       if (!video) return;
-      document.getElementById('case-modal-frame').innerHTML =
-        `<iframe src="https://www.youtube.com/embed/${video.id}?autoplay=1" title="${video.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      const frame = document.getElementById('case-modal-frame');
+
+      if (video.platform === 'tiktok') {
+        frame.classList.add('is-tiktok');
+        const handle = video.handle || '';
+        frame.innerHTML = `<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@${handle}/video/${video.id}" data-video-id="${video.id}" style="max-width:325px; min-width:280px;"><section></section></blockquote>`;
+        // re-append TikTok's embed script so it picks up the freshly injected blockquote
+        const oldScript = document.getElementById('tiktok-embed-script');
+        if (oldScript) oldScript.remove();
+        const s = document.createElement('script');
+        s.id = 'tiktok-embed-script';
+        s.async = true;
+        s.src = 'https://www.tiktok.com/embed.js';
+        document.body.appendChild(s);
+      } else {
+        frame.classList.remove('is-tiktok');
+        frame.innerHTML = `<iframe src="https://www.youtube.com/embed/${video.id}?autoplay=1" title="${video.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      }
+
       document.getElementById('case-modal-video-title').textContent = video.title;
       document.getElementById('case-modal-stat').textContent = video.stat;
       document.getElementById('case-modal-challenge').textContent = video.challenge;
