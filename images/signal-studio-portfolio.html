@@ -1,0 +1,2365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Henry's Portfolio — Personal Brand Production Studio</title>
+  <meta name="description"
+    content="Henry's Portfolio — remote production & strategy partner for creators, experts and entrepreneurs worldwide. I coach the shoot, edit and build the growth strategy, engineered toward the outcome you need: sales, leads, or reputation.">
+  <meta property="og:title" content="Henry's Portfolio — Personal Brand Production Studio">
+  <meta property="og:description"
+    content="Remote production & strategy partner behind fast-growing personal brands, working with clients anywhere in the world — from concept to editing to growth strategy.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+    :root {
+      --bg-dark: #100E0C;
+      --bg-dark-2: #1C1712;
+      --paper: #FBF8F1;
+      --cream: #F2ECDD;
+      --red: #FF5A4E;
+      --red-2: #FFB3A8;
+      --coral: #FF5C39;
+      --ink: #17140F;
+      --ink-soft: #5B564C;
+      --white: #FFFFFF;
+      --line: rgba(23, 20, 15, .12);
+      --line-dark: rgba(255, 255, 255, .14);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 18px;
+      height: 2px;
+      background: var(--red);
+      display: inline-block;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      line-height: 1.05;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter';
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 26px;
+      border-radius: 100px;
+      cursor: pointer;
+      border: none;
+      transition: transform .35s cubic-bezier(.16, 1, .3, 1), box-shadow .35s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: var(--ink);
+      box-shadow: 0 0 0 0 rgba(255, 90, 78, 0);
+    }
+
+    .btn-red:hover {
+      box-shadow: 0 10px 28px rgba(255, 90, 78, .35);
+    }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--paper);
+      border: 1.5px solid var(--line-dark);
+    }
+
+    .btn-outline-dark:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--line);
+    }
+
+    .btn-outline-light:hover {
+      border-color: var(--ink);
+    }
+
+    /* ---------- NAV ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(16, 14, 12, .92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      max-width: 1220px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Bricolage Grotesque';
+      font-weight: 800;
+      font-size: 21px;
+      color: var(--paper);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -.01em;
+    }
+
+    .logo span {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(251, 248, 241, .72);
+      font-size: 14.5px;
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .burger span {
+      width: 22px;
+      height: 2px;
+      background: var(--paper);
+    }
+
+    .nav-cta-mobile {
+      display: none;
+    }
+
+    .nav-links .nav-cta-mobile a {
+      color: var(--ink);
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      background: var(--bg-dark);
+      color: var(--paper);
+      padding: 64px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -160px;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(255, 90, 78, .20) 0%, rgba(255, 90, 78, 0) 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.8fr .7fr;
+      gap: 40px;
+      align-items: start;
+      padding-bottom: 56px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 4.4vw, 58px);
+      margin: 20px 0 22px;
+      max-width: 640px;
+    }
+
+    .hero h1 .hl {
+      color: var(--red);
+    }
+
+    .hero p.lead {
+      font-size: 17px;
+      color: rgba(251, 248, 241, .72);
+      max-width: 620px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .badge-card {
+      background: var(--bg-dark-2);
+      border: 1px solid var(--line-dark);
+      border-radius: 18px;
+      padding: 22px 24px;
+      width: 100%;
+      max-width: 280px;
+      justify-self: end;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .badge-card .num {
+      font-family: 'Bricolage Grotesque';
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--paper);
+    }
+
+    .badge-card .cap {
+      font-family: 'IBM Plex Mono';
+      font-size: 10.5px;
+      letter-spacing: .08em;
+      color: rgba(251, 248, 241, .5);
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .badge-star {
+      width: 34px;
+      height: 34px;
+      margin-bottom: 12px;
+    }
+
+    /* ticker */
+    .ticker-wrap {
+      border-top: 1px solid var(--line-dark);
+      background: var(--bg-dark-2);
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ticker {
+      display: flex;
+      width: max-content;
+      animation: scroll 32s linear infinite;
+    }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'IBM Plex Mono';
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(251, 248, 241, .65);
+      padding: 16px 40px;
+      white-space: nowrap;
+      border-right: 1px solid var(--line-dark);
+    }
+
+    .ticker-item b {
+      color: var(--red-2);
+      font-weight: 600;
+    }
+
+    .ticker-item .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ---------- SECTION HEADS ---------- */
+    section {
+      padding: 104px 0;
+    }
+
+    .section-head {
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(34px, 4.4vw, 58px);
+      margin: 16px 0 14px;
+    }
+
+    .section-head p {
+      color: var(--ink-soft);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .section-head.on-dark p {
+      color: rgba(251, 248, 241, .65);
+    }
+
+    /* ---------- SERVICES ---------- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .svc {
+      border-radius: var(--radius);
+      padding: 28px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: transform .4s cubic-bezier(.16, 1, .3, 1), box-shadow .4s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .svc:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(23, 20, 15, .1);
+    }
+
+    .svc h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .svc p {
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+
+    .svc .icon {
+      width: 38px;
+      height: 38px;
+      margin-bottom: auto;
+    }
+
+    .svc .arrow {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .svc-dark {
+      background: var(--bg-dark);
+      color: var(--paper);
+      grid-column: span 4;
+    }
+
+    .svc-dark p {
+      color: rgba(251, 248, 241, .65);
+    }
+
+    .svc-dark .arrow {
+      background: var(--red);
+      color: var(--ink);
+    }
+
+    .svc-red {
+      background: var(--red);
+      color: var(--ink);
+      grid-column: span 4;
+    }
+
+    .svc-red .arrow {
+      background: var(--ink);
+      color: var(--red);
+    }
+
+    .svc-light {
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      grid-column: span 4;
+    }
+
+    .svc-light .arrow {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .svc-cream {
+      background: var(--cream);
+      color: var(--ink);
+      grid-column: span 7;
+    }
+
+    .svc-cream .arrow {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .svc-narrow {
+      grid-column: span 5;
+    }
+
+    .svc-wide2 {
+      grid-column: span 7;
+    }
+
+    .svc a.link {
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .svc-bonus {
+      margin-top: 18px;
+      border: 1.5px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      background: var(--white);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .svc-bonus .bonus-tag {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--red);
+      background: rgba(255, 90, 78, .1);
+      padding: 5px 11px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    .svc-bonus h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .svc-bonus p {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: rgba(23, 20, 15, .7);
+      max-width: 640px;
+    }
+
+    .svc-bonus .bonus-note {
+      font-style: italic;
+      font-size: 13px;
+      color: rgba(23, 20, 15, .5);
+      margin-top: 8px;
+    }
+
+    /* ---------- WORK / CASE STUDIES ---------- */
+    .work-head-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 44px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .brand-philosophy {
+      border-left: 3px solid var(--red);
+      padding: 4px 0 4px 22px;
+      margin: 0 0 44px;
+      max-width: 760px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 19px;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .case {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+      isolation: isolate;
+    }
+
+    .case-cover {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .case {
+      transition: transform .4s cubic-bezier(.16, 1, .3, 1), box-shadow .4s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .case:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 36px rgba(23, 20, 15, .22);
+    }
+
+    .case:hover .case-cover {
+      transform: scale(1.07);
+    }
+
+    .case::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(16, 14, 12, 0) 40%, rgba(16, 14, 12, .88) 100%);
+    }
+
+    .case-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 2;
+      background: var(--red);
+      color: var(--ink);
+      font-family: 'IBM Plex Mono';
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 100px;
+    }
+
+    .case-play {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(16, 14, 12, .55);
+      border: 1px solid rgba(251, 248, 241, .35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .3s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .case:hover .case-play {
+      background: var(--red);
+    }
+
+    .case:hover .case-play svg path {
+      fill: var(--ink);
+    }
+
+    .case-info {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      color: var(--paper);
+    }
+
+    .case-info .role {
+      font-family: 'IBM Plex Mono';
+      font-size: 10.5px;
+      letter-spacing: .04em;
+      color: rgba(251, 248, 241, .6);
+      margin-top: 3px;
+    }
+
+    .case-info .stat {
+      font-family: 'Bricolage Grotesque';
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--red-2);
+    }
+
+    .case-info .name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .case-info .desc {
+      font-size: 12.5px;
+      color: rgba(251, 248, 241, .6);
+      margin-top: 2px;
+    }
+
+    /* (abstract cover gradients removed — using real YouTube thumbnails now) */
+
+    /* ---------- TESTIMONIALS ---------- */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .testi {
+      border-radius: var(--radius);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+    }
+
+    .testi:nth-child(1) {
+      background: var(--bg-dark);
+      color: var(--paper);
+    }
+
+    .testi:nth-child(2) {
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    .testi:nth-child(3) {
+      background: var(--red);
+      color: var(--ink);
+    }
+
+    .testi:nth-child(4) {
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .testi .house-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      align-self: flex-start;
+      font-family: 'IBM Plex Mono';
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .testi:nth-child(1) .house-kicker {
+      background: rgba(255, 255, 255, .12);
+      color: var(--paper);
+    }
+
+    .testi:nth-child(2) .house-kicker,
+    .testi:nth-child(4) .house-kicker {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .testi:nth-child(3) .house-kicker {
+      background: var(--ink);
+      color: var(--red-2);
+    }
+
+    .testi .quote-mark {
+      font-family: 'Bricolage Grotesque';
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1;
+      opacity: .4;
+      margin-bottom: 6px;
+    }
+
+    .testi p.quote {
+      font-size: 16.5px;
+      line-height: 1.55;
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+
+    .testi .attr {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .testi .attr .dot-av {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: .14;
+      flex-shrink: 0;
+    }
+
+    .testi .attr img.dot-av {
+      object-fit: cover;
+      opacity: 1;
+      border: 1px solid var(--line);
+    }
+
+    .testi .attr-name {
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+
+    .testi .attr-role {
+      font-family: 'IBM Plex Mono';
+      font-size: 10.5px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      opacity: .6;
+      margin-top: 2px;
+    }
+
+    /* ---------- NEWSLETTER ---------- */
+    .newsletter-sec {
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter-inner {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 56px;
+      align-items: center;
+      padding: 88px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .newsletter-text h2 {
+      font-size: clamp(34px, 4.4vw, 58px);
+      margin: 16px 0 14px;
+    }
+
+    .newsletter-text p {
+      color: var(--ink-soft);
+      font-size: 15.5px;
+      line-height: 1.6;
+      max-width: 440px;
+    }
+
+    .newsletter-text .hl-pill {
+      background: var(--red);
+      color: var(--ink);
+      padding: 2px 10px;
+      border-radius: 6px;
+    }
+
+    .newsletter-form {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 30px;
+    }
+
+    .nf-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .nf-row input,
+    .newsletter-form input[type="email"] {
+      flex: 1;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 13px 15px;
+      color: var(--ink);
+      font-family: 'Inter';
+      font-size: 14px;
+      outline: none;
+      transition: border-color .3s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .nf-row input::placeholder {
+      color: var(--ink-soft);
+      opacity: .6;
+    }
+
+    .nf-row input:focus {
+      border-color: var(--red);
+    }
+
+    .nf-check {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .nf-check input {
+      margin-top: 3px;
+      accent-color: var(--red);
+    }
+
+    .newsletter-form .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .nf-success {
+      display: none;
+      margin-top: 14px;
+      font-family: 'IBM Plex Mono';
+      font-size: 12.5px;
+      color: var(--ink);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .nf-success.show {
+      display: block;
+    }
+
+    /* ---------- ABOUT ME ---------- */
+    .about-me-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .about-me-text p {
+      color: var(--ink-soft);
+      font-size: 15.5px;
+      line-height: 1.65;
+      margin-bottom: 16px;
+      max-width: 480px;
+    }
+
+    .about-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .about-chips .result-chip {
+      color: var(--ink);
+      background: var(--white);
+      border-color: var(--line);
+    }
+
+    .about-video-frame {
+      aspect-ratio: 16/9;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .about-video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .about-video-placeholder {
+      color: rgba(251, 248, 241, .55);
+      text-align: center;
+      padding: 32px;
+      font-family: 'IBM Plex Mono';
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .about-video-placeholder strong {
+      display: block;
+      color: var(--paper);
+      font-family: 'Bricolage Grotesque';
+      font-size: 17px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    /* ---------- BOOK A CALL / CALENDLY ---------- */
+    .calendly-wrap {
+      margin-top: 36px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .calendly-placeholder {
+      max-width: 560px;
+      margin: 0 auto;
+      border: 1.5px dashed var(--line-dark);
+      border-radius: 18px;
+      padding: 36px 24px;
+      text-align: center;
+      color: rgba(251, 248, 241, .55);
+      font-family: 'IBM Plex Mono';
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .calendly-placeholder b {
+      color: var(--red-2);
+    }
+
+    .cta-fallback {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 24px;
+      position: relative;
+      z-index: 2;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- CTA BAND ---------- */
+    .cta-band {
+      background: var(--bg-dark);
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      bottom: -140px;
+      left: -100px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(255, 92, 57, .18) 0%, transparent 70%);
+    }
+
+    .cta-inner {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cta-inner h2 {
+      font-size: clamp(34px, 4.4vw, 58px);
+      margin: 16px 0 16px;
+    }
+
+    .cta-inner p {
+      color: rgba(251, 248, 241, .65);
+      font-size: 16px;
+      margin-bottom: 34px;
+    }
+
+    .cta-inner .hero-ctas {
+      justify-content: center;
+    }
+
+    .cta-inner .eyebrow {
+      justify-content: center;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--bg-dark-2);
+      color: rgba(251, 248, 241, .6);
+      padding: 56px 0 28px;
+      border-top: 1px solid var(--line-dark);
+    }
+
+    .foot-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--line-dark);
+      margin-bottom: 24px;
+    }
+
+    .foot-logo {
+      font-family: 'Bricolage Grotesque';
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--paper);
+    }
+
+    .foot-logo span {
+      color: var(--red);
+    }
+
+    .foot-links {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .foot-col h4 {
+      font-family: 'IBM Plex Mono';
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(251, 248, 241, .4);
+      margin-bottom: 14px;
+    }
+
+    .foot-col a {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: rgba(251, 248, 241, .7);
+    }
+
+    .foot-col a:hover {
+      color: var(--red);
+    }
+
+    .foot-bottom {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* ---------- CASE STUDY MODAL ---------- */
+    .case-modal {
+      display: flex;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(16, 14, 12, .96);
+      backdrop-filter: blur(6px);
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 24px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .4s cubic-bezier(.16, 1, .3, 1), visibility 0s linear .4s;
+    }
+
+    .case-modal.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity .4s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .case-modal-inner {
+      width: 100%;
+      max-width: 880px;
+      position: relative;
+      margin-bottom: 40px;
+      transform: translateY(24px) scale(.97);
+      transition: transform .45s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .case-modal.active .case-modal-inner {
+      transform: translateY(0) scale(1);
+    }
+
+    .case-modal-close {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--red);
+      color: var(--ink);
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .3);
+    }
+
+    .case-modal-head {
+      margin-bottom: 24px;
+    }
+
+    .case-modal-house {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'IBM Plex Mono';
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--red);
+      padding: 7px 14px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+
+    .case-modal-name {
+      font-family: 'Bricolage Grotesque';
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--paper);
+      margin-bottom: 4px;
+    }
+
+    .case-modal-role {
+      display: block;
+      font-family: 'IBM Plex Mono';
+      font-size: 12px;
+      letter-spacing: .04em;
+      color: rgba(251, 248, 241, .55);
+      margin-bottom: 18px;
+    }
+
+    .case-modal-results {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .result-chip {
+      font-family: 'IBM Plex Mono';
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--red-2);
+      background: var(--bg-dark-2);
+      border: 1px solid var(--line-dark);
+      padding: 8px 14px;
+      border-radius: 100px;
+    }
+
+    .case-modal-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+      margin-bottom: 16px;
+    }
+
+    .case-modal-frame.is-tiktok {
+      aspect-ratio: auto;
+      max-width: 325px;
+      margin-left: auto;
+      margin-right: auto;
+      background: transparent;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .case-modal-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .case-modal-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .case-modal-video-title {
+      color: var(--paper);
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .case-modal-stat {
+      font-family: 'IBM Plex Mono';
+      font-size: 12px;
+      color: var(--red-2);
+      font-weight: 600;
+    }
+
+    .case-modal-text {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .case-modal-text .block {
+      background: var(--bg-dark-2);
+      border: 1px solid var(--line-dark);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .case-modal-text h4 {
+      font-family: 'IBM Plex Mono';
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--red-2);
+      margin-bottom: 10px;
+    }
+
+    .case-modal-text p {
+      color: rgba(251, 248, 241, .72);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .case-modal-thumbs-label {
+      font-family: 'IBM Plex Mono';
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(251, 248, 241, .45);
+      margin-bottom: 12px;
+    }
+
+    .case-modal-thumbs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .case-thumb {
+      cursor: pointer;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: border-color .3s cubic-bezier(.16, 1, .3, 1), transform .3s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .case-thumb:hover {
+      transform: translateY(-2px);
+    }
+
+    .case-thumb.active {
+      border-color: var(--red);
+    }
+
+    .case-thumb img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .case-thumb-tiktok {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: linear-gradient(160deg, #1C1712 0%, #0A0908 100%);
+      color: rgba(251, 248, 241, .55);
+    }
+
+    .case-thumb-tiktok svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .case-thumb-tiktok span.platform-label {
+      font-family: 'IBM Plex Mono';
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .case-thumb span {
+      display: block;
+      font-size: 11.5px;
+      color: rgba(251, 248, 241, .75);
+      padding: 8px 10px;
+      background: var(--bg-dark-2);
+      line-height: 1.3;
+    }
+
+    @media(max-width:640px) {
+      .case-modal-text {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---------- REVEAL ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px) scale(.98);
+      transition: opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media(max-width:900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: var(--bg-dark);
+        padding: 22px 20px;
+        border-bottom: 1px solid var(--line-dark);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, .35);
+      }
+
+      .nav-cta-mobile {
+        display: block;
+        margin-top: 8px;
+      }
+
+      #nav-book-btn {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .logo {
+        font-size: 17px;
+        gap: 5px;
+      }
+
+      nav {
+        padding: 16px 20px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .badge-card {
+        display: none;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      .svc-dark,
+      .svc-red,
+      .svc-light {
+        grid-column: span 6 !important;
+      }
+
+      .svc-cream,
+      .svc-narrow,
+      .svc-wide2 {
+        grid-column: span 6 !important;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testi-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-inner {
+        grid-template-columns: 1fr;
+        padding: 64px 0;
+      }
+
+      .about-me-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nf-row {
+        flex-direction: column;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .wrap {
+        padding: 0 20px;
+      }
+    }
+
+    @media(max-width:520px) {
+      .wrap {
+        padding: 0 18px;
+      }
+
+      nav {
+        padding: 14px 18px;
+      }
+
+      .foot-top {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">HENRY'S <span>PORTFOLIO</span></div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Case Study</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#about-me">About Me</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="nav-cta-mobile"><a href="#contact" class="btn btn-red">Book A Call</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-red" id="nav-book-btn" style="padding:11px 22px; font-size:14px;">Book A
+          Call</a>
+        <button class="burger" aria-label="menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" style="padding-top:64px; margin-bottom:0;">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">I Build Focused Brand Identity</div>
+          <h1 class="reveal">Drive The Growth Through <span class="hl"> Your Exceptional Brand</span></h1>
+          <div class="hero-ctas reveal" style="margin-top:32px;">
+            <a href="#contact" class="btn btn-red">Book A Free Consultation →</a>
+            <a href="#work" class="btn btn-outline-dark">View Case Study</a>
+          </div>
+        </div>
+        <div class="badge-card reveal">
+          <svg class="badge-star" viewBox="0 0 24 24" fill="none">
+            <path d="M12 1L14.5 8.5L22 9.5L16.5 14.5L18 22L12 18L6 22L7.5 14.5L2 9.5L9.5 8.5L12 1Z" fill="#FF5A4E" />
+          </svg>
+          <div class="num">Production Partner</div>
+          <div class="num" style="color:#FF5A4E;">For Million-View Channels</div>
+          <div class="cap">4 Personal Brands · 100% Remote · Global</div>
+        </div>
+      </div>
+    </div>
+    <div class="ticker-wrap">
+      <div class="ticker" id="ticker"></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Services</div>
+        <h2>End-to-End Personal Brand Services</h2>
+        <p>Brand lives in story, trust, and what makes you unmistakably you. Every service below exists to protect
+          that story. I help you through the shoot, the edit, and the strategy about around your raw footage, working
+          100% remotely with clients anywhere in the world.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="svc svc-dark reveal">
+          <div class="arrow">↗</div>
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
+            <path d="M4 16L9 10L13 13L20 5" stroke="#FF5A4E" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M14 5H20V11" stroke="#FF5A4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <div>
+            <h3>Channel Strategy</h3>
+            <p>I help you build a content roadmap based on real audience data, defining a direction that grows
+              sustainably
+              while staying true to who you are.</p>
+          </div>
+        </div>
+
+        <div class="svc svc-red reveal">
+          <div class="arrow">↗</div>
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
+            <path d="M8 5L19 12L8 19V5Z" fill="#17140F" />
+          </svg>
+          <div>
+            <h3>Video Production &amp; Post</h3>
+            <p>From editing to color, sound and pacing, animation, annotation. Every video is finished to fit the
+              standards, holding
+              attention and emotional impact to the very last second.</p>
+          </div>
+        </div>
+
+        <div class="svc svc-light reveal">
+          <div class="arrow">↗</div>
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="13" rx="2" stroke="#17140F" stroke-width="2" />
+            <path d="M8 21H16" stroke="#17140F" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <div>
+            <h3>Thumbnail &amp; Title Optimization</h3>
+            <p>I test and optimize thumbnails and titles against real CTR data, helping your video stand out among
+              thousands of daily suggestions. But, honestly, this is not my core specialty.</p>
+          </div>
+        </div>
+
+        <div class="svc svc-cream svc-wide2 reveal">
+          <div class="arrow">↗</div>
+          <div>
+            <h3>Personal Brand Building</h3>
+            <p>I define a consistent visual identity, voice and story across every platform - from YouTube to
+              TikTok and Instagram. Learn more: <a class="link" href="#">Brand Identity</a></p>
+          </div>
+        </div>
+
+        <div class="svc svc-dark svc-narrow reveal">
+          <div class="arrow">↗</div>
+          <div>
+            <h3>Growth Strategy</h3>
+            <p>I analyze data, optimize posting schedules and content formats with one goal: your actual outcome —
+              more sales, more leads, or a reputation people trust.
+            </p>
+          </div>
+        </div>
+
+        <div class="svc svc-light svc-narrow reveal">
+          <div class="arrow">↗</div>
+          <div>
+            <h3>Remote Shooting Guidance</h3>
+            <p>I don't hold the camera - But I can instruct you on framing, lighting and delivery, then build the
+              strategy
+              around your own raw footage. Fully remote, built for clients anywhere in the world.</p>
+          </div>
+        </div>
+
+        <div class="svc svc-red svc-wide2 reveal">
+          <div class="arrow">↗</div>
+          <div>
+            <h3>Brand Partnership Consulting</h3>
+            <p>I connect and advise on brand collaboration deals, making sure every partnership fits your image and
+              maximizes revenue for your channel. Learn more: <a class="link" href="#">Partnership Rates</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-bonus reveal">
+        <div style="flex:1;min-width:260px;">
+          <span class="bonus-tag">Bonus — By Request Only</span>
+          <h3>Paid Media &amp; Ads Management</h3>
+          <p>For clients who want one person accountable for the whole channel, I can also step in to run and manage
+            paid ads on top of the content system I've already built for you. I'll say this plainly: it isn't my core
+            specialty yet, so I offer it as an optional extra, not a promise, and I'll tell you honestly if it's
+            not the right fit for your channel.</p>
+          <p class="bonus-note">I only bring it up because I care about your actual results, not just the content
+            (it's because I do care about direct response).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" style="background:var(--cream);">
+    <div class="wrap">
+      <div class="work-head-row">
+        <div class="section-head reveal" style="margin-bottom:0;">
+          <div class="eyebrow">Selected Work</div>
+          <h2>Channels I've Partnered With</h2>
+          <p>Real case studies, delivered while working at <strong>Conterine</strong>. Results below are real client
+            numbers.</p>
+        </div>
+        <a href="#contact" class="btn btn-outline-light reveal">View More Case Studies</a>
+      </div>
+
+      <blockquote class="brand-philosophy reveal">
+        "Brand lives in story, trust, and what makes you unmistakably you. Every storytelling choice, every cut, every
+        beat of emotion in a video either reflects that story or reinforces it that turning the values your audience
+        already believes in into real conversion."
+      </blockquote>
+
+      <div class="work-grid">
+        <div class="case reveal" onclick="openCaseStudy('vstn')">
+          <img class="case-cover" loading="lazy" src="https://i.ytimg.com/vi/sTi8MvFw3bM/hqdefault.jpg"
+            alt="Vì Sao Thế Nhỉ — National Flag Viral">
+          <div class="case-tag">Conterine</div>
+          <div class="case-play"><svg width="14" height="14" viewBox="0 0 24 24">
+              <path d="M8 5L19 12L8 19V5Z" fill="#FBF8F1" />
+            </svg></div>
+          <div class="case-info">
+            <div class="stat">9.2M Traffic</div>
+            <div class="name">Vì Sao Thế Nhỉ</div>
+            <div class="role">Top #1 Education Podcast, Vietnam</div>
+          </div>
+        </div>
+
+        <div class="case reveal" onclick="openCaseStudy('micky')">
+          <img class="case-cover" loading="lazy" src="https://i.ytimg.com/vi/8_dNmI8gyZQ/hqdefault.jpg"
+            alt="Micky Dollimore — Nomadic Software Developer">
+          <div class="case-tag">Conterine</div>
+          <div class="case-play"><svg width="14" height="14" viewBox="0 0 24 24">
+              <path d="M8 5L19 12L8 19V5Z" fill="#FBF8F1" />
+            </svg></div>
+          <div class="case-info">
+            <div class="stat">+183% Growth</div>
+            <div class="name">Micky Dollimore</div>
+            <div class="role">Real-Estate Web Developer</div>
+          </div>
+        </div>
+
+        <div class="case reveal" onclick="openCaseStudy('aliena')">
+          <img class="case-cover" loading="lazy" src="https://i.ytimg.com/vi/DpLfBVhFohI/hqdefault.jpg"
+            alt="Aliena Cai — Figma to Wix Studio">
+          <div class="case-tag">Conterine</div>
+          <div class="case-play"><svg width="14" height="14" viewBox="0 0 24 24">
+              <path d="M8 5L19 12L8 19V5Z" fill="#FBF8F1" />
+            </svg></div>
+          <div class="case-info">
+            <div class="stat">+112% Performance</div>
+            <div class="name">Aliena Cai</div>
+            <div class="role">CEO, Fast Track UX</div>
+          </div>
+        </div>
+
+        <div class="case reveal" onclick="openCaseStudy('finn')">
+          <img class="case-cover" loading="lazy" src="https://i.ytimg.com/vi/QPX0-l5e4_8/hqdefault.jpg"
+            alt="Finn Dollimore — Figma Components for Pro Web Design">
+          <div class="case-tag">Conterine</div>
+          <div class="case-play"><svg width="14" height="14" viewBox="0 0 24 24">
+              <path d="M8 5L19 12L8 19V5Z" fill="#FBF8F1" />
+            </svg></div>
+          <div class="case-info">
+            <div class="stat">+150% / 2 Months</div>
+            <div class="name">Finn Dollimore</div>
+            <div class="role">Professional Web Designer</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Testimonials</div>
+        <h2>What Clients Say About&nbsp;Me</h2>
+        <p>Real feedback from 4 clients, collected while working at <strong>Conterine</strong>
+          — the production house where I led these projects.</p>
+      </div>
+
+      <div class="testi-grid">
+        <div class="testi reveal">
+          <div>
+            <div class="house-kicker">Conterine · Production House</div>
+            <div class="quote-mark">"</div>
+            <p class="quote">"Wow the new edit is so much better. Proud of you guys! It's perfect. Thank you all."</p>
+          </div>
+          <div class="attr">
+            <img class="dot-av" src="images/aliena-cai.png" alt="Aliena Cai" loading="lazy">
+            <div>
+              <div class="attr-name">Aliena Cai</div>
+              <div class="attr-role">CEO, Fast Track UX</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi reveal">
+          <div>
+            <div class="house-kicker">Conterine · Production House</div>
+            <div class="quote-mark">"</div>
+            <p class="quote">"Looking gooooood. When I get my new camera I'll make sure to get some better photos of
+              myself — these are like 1 year old lol 😄"</p>
+          </div>
+          <div class="attr">
+            <img class="dot-av" src="images/micky-dollimore.png" alt="Micky Dollimore" loading="lazy">
+            <div>
+              <div class="attr-name">Micky Dollimore</div>
+              <div class="attr-role">Real-Estate Web Developer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi reveal">
+          <div>
+            <div class="house-kicker">Conterine · Production House</div>
+            <div class="quote-mark">"</div>
+            <p class="quote">"Thanks! Looking forward to seeing the edit. Will start planning another video soon."</p>
+          </div>
+          <div class="attr">
+            <img class="dot-av" src="images/finn-dollimore.png" alt="Finn Dollimore" loading="lazy">
+            <div>
+              <div class="attr-name">Finn Dollimore</div>
+              <div class="attr-role">Professional Web Designer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi reveal">
+          <div>
+            <div class="house-kicker">Conterine · Production House</div>
+            <div class="quote-mark">"</div>
+            <p class="quote">"Hehe phải thế này chứ 🤣🤣 - that's what I expect á."</p>
+          </div>
+          <div class="attr">
+            <img class="dot-av" src="images/vstn-podcast.png" alt="Vì Sao Thế Nhỉ" loading="lazy" style="background:#fff;">
+            <div>
+              <div class="attr-name">Vì Sao Thế Nhỉ</div>
+              <div class="attr-role">Top #1 Education Podcast, Vietnam</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about-me" style="background:var(--cream);">
+    <div class="wrap">
+      <div class="about-me-grid">
+        <div class="about-me-text reveal">
+          <div class="eyebrow">About Me</div>
+          <h2 style="font-size:clamp(34px,4.4vw,58px); margin:16px 0 18px;">The Person Behind These Case Studies.</h2>
+          <p>I'm <strong>Henry Marques (Lý Minh Phúc)</strong>. When I was 17 years old I was a
+            Production Lead at a startup - Conterine, directly editing and directing the style for tons of real video
+            projects for local podcast brands, international experts, coaches and entrepreneurs.</p>
+          <div class="about-chips">
+            <span class="result-chip">Freelance Video Creator for Brands</span>
+            <span class="result-chip">Ex-Production Lead, Conterine</span>
+          </div>
+          <a href="#contact" class="btn btn-outline-light" style="margin-top:28px;">Book A Call With Me →</a>
+        </div>
+        <div class="about-me-video reveal">
+          <div class="about-video-frame" id="about-video-frame"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" id="contact">
+    <div class="wrap">
+      <div class="cta-inner">
+        <div class="eyebrow reveal">Get Started</div>
+        <h2 class="reveal">Book A 30-Minute Consultation<br>— Pick A Time That Works For You.</h2>
+        <p class="reveal">No strings attached, no matter your time zone — let's look at your current channel and map
+          out where to go next.</p>
+      </div>
+      <div class="calendly-wrap reveal" id="calendly-wrap"></div>
+      <div class="cta-fallback reveal">
+        <a href="#" id="calendly-btn" target="_blank" rel="noopener" class="btn btn-red">Book A Call Now →</a>
+        <a href="mailto:henrymarques190@gmail.com" class="btn btn-outline-dark">henrymarques190@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="case-modal" id="case-modal">
+    <div class="case-modal-inner">
+      <button class="case-modal-close" onclick="closeCaseStudy()">×</button>
+      <div class="case-modal-head">
+        <div class="case-modal-house">Project Delivered While At Conterine</div>
+        <h3 class="case-modal-name" id="case-modal-name"></h3>
+        <span class="case-modal-role" id="case-modal-role"></span>
+        <div class="case-modal-results" id="case-modal-results"></div>
+      </div>
+      <div class="case-modal-frame" id="case-modal-frame"></div>
+      <div class="case-modal-meta">
+        <span class="case-modal-video-title" id="case-modal-video-title"></span>
+        <span class="case-modal-stat" id="case-modal-stat"></span>
+      </div>
+      <div class="case-modal-text">
+        <div class="block">
+          <h4>Challenge</h4>
+          <p id="case-modal-challenge"></p>
+        </div>
+        <div class="block">
+          <h4>Solution</h4>
+          <p id="case-modal-architecture"></p>
+        </div>
+      </div>
+      <div class="case-modal-thumbs-label">Other Videos In This Case Study</div>
+      <div class="case-modal-thumbs" id="case-modal-thumbs"></div>
+    </div>
+  </div>
+
+  <section class="newsletter-sec">
+    <div class="wrap">
+      <div class="newsletter-inner">
+        <div class="newsletter-text reveal">
+          <div class="eyebrow">Newsletter</div>
+          <h2>Get Notes On <span class="hl-pill">Building Your Personal Brand</span> — Straight To Your Inbox.</h2>
+          <p>Strategy, real case studies and lessons from real production work — sent regularly, no spam, unsubscribe
+            anytime.</p>
+        </div>
+        <form class="newsletter-form reveal" id="newsletter-form" onsubmit="return handleNewsletterSubmit(event)">
+          <div class="nf-row">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Work email" required>
+          </div>
+          <label class="nf-check">
+            <input type="checkbox" required>
+            <span>I agree to receive more updates from Henry.</span>
+          </label>
+          <button type="submit" class="btn btn-red" id="nf-submit-btn">Subscribe To The Newsletter →</button>
+          <div class="nf-success" id="nf-success">Thanks for subscribing! You'll get your first newsletter soon 🎬
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-top">
+        <div>
+          <div class="foot-logo">✺ HENRY'S <span>PORTFOLIO</span></div>
+          <p style="max-width:260px; font-size:13.5px; margin-top:12px; line-height:1.6;">Remote content strategy and
+            post-production for creators, experts and entrepreneurs building a personal brand — wherever in the world
+            they are.</p>
+        </div>
+        <div class="foot-links">
+          <div class="foot-col">
+            <h4>Navigate</h4>
+            <a href="#services">Services</a>
+            <a href="#work">Case Study</a>
+            <a href="#testimonials">Testimonials</a>
+          </div>
+          <div class="foot-col">
+            <h4>Contact</h4>
+            <a href="mailto:henrymarques190@gmail.com">henrymarques190@gmail.com</a>
+          </div>
+          <div class="foot-col">
+            <h4>Follow</h4>
+            <a href="https://www.instagram.com/henry.marq_ues/">Instagram</a>
+            <a href="https://www.linkedin.com/in/henry-marques-466853366/">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Henry's Portfolio. All rights reserved.</span>
+        <span>Portfolio template — replace with real content &amp; numbers before outreach.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════════
+    // ⚙️ CONFIG — just fill in the 3 lines below, nothing else to touch
+    // ═══════════════════════════════════════════════════════════════
+    const CALENDLY_URL = 'https://calendly.com/phucly190/30min';     // 👉 paste your real Calendly link here, e.g. 'https://calendly.com/your-name/30min'
+    const ABOUT_VIDEO_ID = '';   // 👉 paste the YouTube video ID of your intro video here
+    const WEB3FORMS_KEY = '';    // 👉 get a free Access Key at https://web3forms.com to receive newsletter signups
+
+    // ticker content
+    const tickerItems = [
+      ['Aliena Cai', '+112% performance'],
+      ['Micky Dollimore', '+183% growth'],
+      ['Finn Dollimore', '+150% in 2 months'],
+      ['Vì Sao Thế Nhỉ', '9.2M lifetime traffic'],
+    ];
+    const ticker = document.getElementById('ticker');
+    let html = '';
+    for (let r = 0; r < 2; r++) {
+      tickerItems.forEach(([name, stat]) => {
+        html += `<div class="ticker-item"><span class="dot"></span><b>${name}</b> · ${stat}</div>`;
+      });
+    }
+    ticker.innerHTML = html;
+
+    // burger toggle (class-based, styling lives in CSS)
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('mobile-open');
+      });
+    });
+
+    // ═══════════════════════════════════════════════════════════════
+    // CASE STUDY DATA — each client can have multiple videos.
+    // Results are real numbers from the Conterine portfolio.
+    //
+    // 👉 HOW TO ADD A NEW VIDEO for a client that already exists:
+    //    just add an object to that client's videos[] array, e.g:
+    //    { id:'YOUTUBE_ID', title:'Video title', stat:'Headline stat for this video',
+    //      challenge:'Describe the challenge...', architecture:'Describe the solution...' }
+    //
+    // 👉 HOW TO ADD A NEW CLIENT / CASE STUDY:
+    //    copy the commented-out template below, fill it in, then uncomment it.
+    //    Then add a new card in the "Selected Work" HTML section with:
+    //    onclick="openCaseStudy('new_key')"
+    //
+    //    new_key: {
+    //      name: 'Client Name',
+    //      role: 'Their role / field',
+    //      results: ['Result 1', 'Result 2', 'Result 3'],
+    //      videos: [
+    //        { id:'YOUTUBE_ID', title:'Video title', stat:'Headline stat',
+    //          challenge:'Challenge...', architecture:'Solution...' }
+    //      ]
+    //    },
+    // ═══════════════════════════════════════════════════════════════
+    const caseStudies = {
+      aliena: {
+        name: 'Aliena Cai',
+        role: 'CEO, Fast Track UX',
+        results: ['+112% Overall Performance', '116.2K Lifetime Traffic', '+10% Engagement Rate'],
+        videos: [
+          {
+            id: 'q0xzHj994VM', title: 'Building On The Existing Brand Line', stat: 'Brand-Consistent Extension',
+            challenge: 'Aliena already had a clear brand identity in place — the challenge was extending it into new content without diluting it, while still teaching a technical topic in a way total beginners could follow.',
+            architecture: 'Every visual choice — pacing, type, color — was pulled directly from her existing design system, so the video reads as a natural continuation of her brand rather than a one-off. Knowledge was broken into clear, visual steps so it stayed accessible to both her core audience and new potential customers discovering her for the first time.'
+          },
+          {
+            id: 'TIWCR3yd8R0', title: 'Turning Complex Knowledge Into Visual Steps', stat: 'Visual-First Teaching',
+            challenge: 'The subject matter was dense and easy to explain badly — a long verbal walkthrough loses non-technical viewers within the first minute.',
+            architecture: 'We rebuilt the explanation around visuals first: on-screen diagrams, highlighted steps and minimal text, so the knowledge lands instantly instead of asking the viewer to hold it all in their head.'
+          },
+          {
+            id: 'zDBxiZ8CbIU', title: 'Speaking Directly To The Right Audience', stat: 'Audience-Focused Framing',
+            challenge: 'The content needed to speak clearly to Aliena\'s actual target audience and potential customers — not just anyone scrolling by — while staying inside her established design system.',
+            architecture: 'Framing, examples and pacing were chosen specifically for her ideal viewer profile, keeping the video anchored to her existing brand system so every piece reinforces the same brand story instead of feeling like a one-off.'
+          }
+          // 👉 add Aliena's new videos here
+        ]
+      },
+      micky: {
+        name: 'Micky Dollimore',
+        role: 'Real-Estate Web Developer',
+        results: ['$15,000 Service Value', '+183% Growth Across Platforms'],
+        videos: [
+          {
+            id: '8_dNmI8gyZQ', title: 'Nomadic Software Developer - Malaysia', stat: 'Premium Consultant Positioning',
+            challenge: 'Micky needed to position himself as a premium development consultant, not just another "digital nomad" vlogger. The content risked being read as lifestyle flexing rather than professional credibility.',
+            architecture: 'Built an "Aspirational Yet Achievable" narrative: curated B-roll focused on the work rather than the location, cinematic transitions kept production quality high, and voiceover leaned into expertise rather than lifestyle. Result: positioned him as a thought leader and attracted consulting inquiries.'
+          },
+          {
+            id: 'oEtHY9-EbNA', title: 'Shaping The Visual Brand From Scratch', stat: 'New Visual Identity',
+            challenge: 'The channel had no defined visual system yet, and every video risked looking like a different, disconnected project.',
+            architecture: 'We designed the visual brand line from the ground up — consistent framing, color and on-screen style. Micky wrote his own script throughout; our role was to shape how it looked and felt, not put words in his mouth.'
+          },
+          {
+            id: 'uVxmX27kfOk', title: 'Laying The Groundwork For "Consultant," Not Just "Developer"', stat: 'Consultant Positioning',
+            challenge: 'In front of clients, Micky was still being read as "just a developer" — technically capable, but not yet positioned as someone worth paying for strategic advice.',
+            architecture: 'We shaped pacing, framing and delivery to carry more authority and perspective, laying the first foundations for a shift from developer to consultant in how the audience perceives him.'
+          },
+          {
+            id: 'rd61UBl0aSQ', title: '5 Must-Have Real Estate Map Features', stat: 'Problem-Solution Storytelling',
+            challenge: 'A feature-list format is inherently dry. Needed to make checklist content feel dynamic and essential.',
+            architecture: 'Turned it into a "Problem-Solution" journey: each feature introduced through the exact pain point it solves, with before/after comparisons for every item, keeping one narrative thread running across all five features.'
+          },
+          {
+            id: 'yaQJp3Cq8mQ', title: 'Guided, Not Written: Keeping His Own Voice', stat: 'Client-Written Script',
+            challenge: 'Micky wanted every word to be his own — the challenge was building a strong video around a script we didn\'t write ourselves.',
+            architecture: 'We offered structural and pacing suggestions only, then designed the entire edit around his own words, so the final video still sounds authentically like him.'
+          },
+          {
+            id: 'wbmKjBw-WKw', title: 'Reinforcing The Brand Line', stat: 'Consistent Brand Line',
+            challenge: 'As the channel grew, staying visually consistent with everything that came before got harder with each new video.',
+            architecture: 'Every new video was checked against the brand line already established — same visual grammar, same tone — so the channel reads as one continuous story instead of scattered uploads.'
+          },
+          {
+            id: 'W8ysGs3w0cI', title: 'The Final Video — Wrapping Up To Refocus', stat: 'Final Collaboration Video',
+            challenge: 'Micky ultimately chose to step back from content to refocus on his core career.',
+            architecture: 'This was the closing video of our collaboration — produced to wrap up the channel\'s story on a strong note as Micky shifted his focus back to his profession.'
+          }
+          // 👉 add Micky's new videos here
+        ]
+      },
+      finn: {
+        name: 'Finn Dollimore',
+        role: 'Professional Web Designer',
+        results: ['+150% Growth in 2 Months', 'New Visual Brand Identity', 'Consistent Video Systems'],
+        videos: [
+          {
+            id: 'AFINAGPfgPM', title: 'Figma Components for Pro Web Design', stat: '+40% Retention · 2x Watch Time',
+            challenge: 'Finn has deep expertise but his videos weren\'t holding attention past 30 seconds. High-value content was being wasted due to poor retention.',
+            architecture: 'Working inside Finn\'s existing brand line, we pushed the edit toward more creative territory: B-roll changes every 3–5 seconds, strategic zooms on key actions, a progress bar showing where you are in the tutorial, and a pattern interrupt inserted every 90 seconds — creative enough to stand out, disciplined enough to still feel like his brand. Retention grew 40%, watch time doubled.'
+          }
+          // 👉 add Finn's new videos here
+        ]
+      },
+      vstn: {
+        name: 'Vì Sao Thế Nhỉ',
+        role: 'Top #1 Education Podcast, Vietnam',
+        results: ['9.2M Lifetime Traffic', 'Collaborated with Elsa Speak, Generally', 'Published books & courses'],
+        videos: [
+          {
+            id: 'sTi8MvFw3bM', title: 'National Flag Viral', stat: '1M+ Views (TikTok)',
+            challenge: 'VSTN had strong content but struggled to break through on TikTok. Needed a genuinely natural viral moment, not something forced.',
+            architecture: 'Built a "Patriotic Emotion Hook": cut a 15-second segment about the Vietnamese flag, synced cuts to the emotional peaks in the voiceover, and used cinematic color grading that leaned into the flag\'s colors. Result: over 1 million organic views.'
+          },
+          {
+            id: '0kgboYEC2MY', title: 'Gifted Children', stat: '500K+ Views (TikTok)',
+            challenge: 'Philosophical content about gifted children rarely performs well in short form — a topic built for long-form that needed to fit into 60 seconds without losing depth.',
+            architecture: 'Used a "Thought Cliffhanger" technique: cut at the point of maximum intellectual tension, visualized abstract concepts with simple motion graphics. Reached over 500K views with an 80% completion rate.'
+          },
+          {
+            id: 'qiaIVpr7AL0', title: 'Why Smart People Fail', stat: '100K+ Views (TikTok)',
+            challenge: 'A counter-intuitive topic (smart people failing) needed to hook viewers instantly while staying credible.',
+            architecture: 'Opened with a "Pattern Interrupt": the first frame challenges the viewer\'s assumption, followed by a rapid-fire series of examples that build curiosity. Content positioned as a discovery, not a lecture.'
+          },
+          {
+            id: 'OcCy9Saqj_M', title: 'Podcast Highlight', stat: '300K+ Views (TikTok)',
+            challenge: 'Needed to pull exactly the right viral moment from a 2-hour podcast episode without losing the context that makes the insight meaningful.',
+            architecture: 'Built a "Context Capsule": a 5-second setup establishing context, the core insight delivered, then a 3-second callback reinforcing the message. Viewers get the full value in 30 seconds.'
+          },
+          {
+            id: 'd4Po2a3ih4w', title: 'Podcast Feature', stat: '200K+ Views (TikTok)',
+            challenge: 'Similar content from competitors was saturating the feed. Needed differentiation without changing the core message.',
+            architecture: 'Applied "Signature Styling": a distinct lower-third, custom transitions, and a recognizable color grade — same content, an unmistakably different presentation.'
+          },
+          {
+            id: '67ka-3XRjCQ', title: 'Podcast Discussion', stat: '110K+ Views (TikTok)',
+            challenge: 'Dialogue-heavy discussion content lacks visual variety, risking drop-off even when the content itself is strong.',
+            architecture: 'Implemented "Visual Conversation": strategic zooms on the speaker at key points, B-roll inserts illustrating the concepts being discussed, and text highlights on the most quotable lines.'
+          },
+          {
+            id: '7493911034080611602', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Balancing Animation & Clean Branding', stat: 'TikTok Short',
+            challenge: 'Shorts for VSTN lean heavily on animation and creative editing to grab attention — but too much motion risks burying the brand\'s clean, minimal identity underneath the effects.',
+            architecture: 'Every animated element was kept inside the same restrained color and type system, so the short stays visually playful without losing the professional, minimal feel that defines the brand.'
+          },
+          {
+            id: '7493182808668556562', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Reaching Every Age Group', stat: 'TikTok Short',
+            challenge: 'As an education podcast with no product to sell, VSTN\'s only real goal is reach — the content has to land with viewers across a wide range of ages, not just one niche demographic.',
+            architecture: 'Pacing, language and visual metaphors were chosen to stay legible to both younger and older viewers at once, prioritizing clarity of the idea over any single generation\'s trends.'
+          },
+          {
+            id: '7475731493659200769', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Information First', stat: 'TikTok Short',
+            challenge: 'Because the channel isn\'t monetized through the audience, every short has to justify its own existence purely through the value of the information, not through entertainment alone.',
+            architecture: 'The edit was built to deliver the actual idea as fast and clearly as possible, using animation to support comprehension rather than as decoration for its own sake.'
+          },
+          {
+            id: '7477947788685266192', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Consistent Visual Identity', stat: 'TikTok Short',
+            challenge: 'With a high volume of shorts going out, it\'s easy for a channel to drift visually from one video to the next.',
+            architecture: 'A consistent visual language — same title cards, same pacing logic, same restrained color palette — was applied across the short so it\'s instantly recognizable as VSTN regardless of topic.'
+          },
+          {
+            id: '7474971296326044946', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Complex Ideas, Accessible Format', stat: 'TikTok Short',
+            challenge: 'Educational topics can easily feel like a lecture in short-form video, causing viewers to scroll away before the point lands.',
+            architecture: 'The concept was broken into small, sequential visual beats rather than one dense explanation, so it reads more like a quick discovery than a class.'
+          },
+          {
+            id: '7458278819439463687', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Professional Within The Creative', stat: 'TikTok Short',
+            challenge: 'Creative, animation-heavy shorts can start to feel unpolished or amateur if not held to a clear production standard.',
+            architecture: 'Motion design, sound design and pacing were all held to the same professional bar as the channel\'s long-form work, keeping the short feeling premium despite its playful tone.'
+          },
+          {
+            id: '7474219190350662920', platform: 'tiktok', handle: 'visaothenhi', title: 'VSTN Short — Clarity Over Noise', stat: 'TikTok Short',
+            challenge: 'Short-form feeds reward loud, chaotic editing — which can easily clash with a brand that wants to be seen as calm, minimal and trustworthy.',
+            architecture: 'The edit intentionally pulled back on unnecessary noise: fewer competing effects, more deliberate pacing, letting the core idea stay the clear focal point of the short.'
+          }
+          // 👉 add VSTN's new videos here
+        ]
+      }
+
+      /* 👉 TEMPLATE TO ADD A NEW CLIENT — copy, fill in, uncomment:
+      new_key: {
+        name: 'Client Name',
+        role: 'Role / field',
+        results: ['Result 1', 'Result 2'],
+        videos: [
+          { id:'YOUTUBE_ID', title:'Video title', stat:'Headline stat',
+            challenge:'Challenge...', architecture:'Solution...' }
+        ]
+      },
+      */
+    };
+
+    let currentCaseKey = null;
+
+    function openCaseStudy(key) {
+      const data = caseStudies[key];
+      if (!data) return;
+      currentCaseKey = key;
+      document.getElementById('case-modal-name').textContent = data.name;
+      document.getElementById('case-modal-role').textContent = data.role;
+      document.getElementById('case-modal-results').innerHTML =
+        (data.results || []).map(r => `<span class="result-chip">${r}</span>`).join('');
+      renderCaseThumbs(data);
+      selectCaseVideo(data.videos[0].id);
+      document.getElementById('case-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderCaseThumbs(data) {
+      const wrap = document.getElementById('case-modal-thumbs');
+      wrap.innerHTML = data.videos.map(v => {
+        const thumbInner = v.platform === 'tiktok'
+          ? `<div class="case-thumb-tiktok">
+               <svg viewBox="0 0 24 24" fill="none"><path d="M16.5 3c.4 2.2 2 3.9 4.2 4.2v3.1c-1.6 0-3.1-.5-4.2-1.4v6.4c0 3.4-2.8 6.2-6.2 6.2S4.1 18.7 4.1 15.3c0-3.4 2.8-6.2 6.2-6.2.4 0 .8 0 1.1.1v3.2a3 3 0 1 0 2.1 2.9V3h3z" fill="currentColor"/></svg>
+               <span class="platform-label">TikTok</span>
+             </div>`
+          : `<img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" loading="lazy" alt="${v.title}">`;
+        return `
+      <div class="case-thumb" data-id="${v.id}" onclick="selectCaseVideo('${v.id}')">
+        ${thumbInner}
+        <span>${v.title}</span>
+      </div>
+    `;
+      }).join('');
+    }
+
+    function selectCaseVideo(videoId) {
+      const data = caseStudies[currentCaseKey];
+      const video = data.videos.find(v => v.id === videoId);
+      if (!video) return;
+      const frame = document.getElementById('case-modal-frame');
+
+      if (video.platform === 'tiktok') {
+        frame.classList.add('is-tiktok');
+        const handle = video.handle || '';
+        frame.innerHTML = `<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@${handle}/video/${video.id}" data-video-id="${video.id}" style="max-width:325px; min-width:280px;"><section></section></blockquote>`;
+        // re-append TikTok's embed script so it picks up the freshly injected blockquote
+        const oldScript = document.getElementById('tiktok-embed-script');
+        if (oldScript) oldScript.remove();
+        const s = document.createElement('script');
+        s.id = 'tiktok-embed-script';
+        s.async = true;
+        s.src = 'https://www.tiktok.com/embed.js';
+        document.body.appendChild(s);
+      } else {
+        frame.classList.remove('is-tiktok');
+        frame.innerHTML = `<iframe src="https://www.youtube.com/embed/${video.id}?autoplay=1" title="${video.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      }
+
+      document.getElementById('case-modal-video-title').textContent = video.title;
+      document.getElementById('case-modal-stat').textContent = video.stat;
+      document.getElementById('case-modal-challenge').textContent = video.challenge;
+      document.getElementById('case-modal-architecture').textContent = video.architecture;
+      document.querySelectorAll('.case-thumb').forEach(t => t.classList.toggle('active', t.dataset.id === videoId));
+    }
+
+    function closeCaseStudy() {
+      document.getElementById('case-modal-frame').innerHTML = '';
+      document.getElementById('case-modal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+      currentCaseKey = null;
+    }
+
+    document.getElementById('case-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'case-modal') closeCaseStudy();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCaseStudy();
+    });
+
+    // about-me intro video — falls back to a friendly placeholder until ABOUT_VIDEO_ID is set
+    function renderAboutVideo() {
+      const wrap = document.getElementById('about-video-frame');
+      if (ABOUT_VIDEO_ID) {
+        wrap.innerHTML = `<iframe src="https://www.youtube.com/embed/${ABOUT_VIDEO_ID}" title="Intro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      } else {
+        wrap.innerHTML = `<div class="about-video-placeholder"><strong></strong>Coming soon...</div>`;
+      }
+    }
+    renderAboutVideo();
+
+    // Calendly booking widget — falls back to a placeholder + disabled button until CALENDLY_URL is set
+    function renderCalendly() {
+      const wrap = document.getElementById('calendly-wrap');
+      const btn = document.getElementById('calendly-btn');
+      if (CALENDLY_URL) {
+        btn.href = CALENDLY_URL;
+        wrap.innerHTML = `<div class="calendly-inline-widget" data-url="${CALENDLY_URL}" style="min-width:320px; height:650px;"></div>`;
+        const s = document.createElement('script');
+        s.src = 'https://assets.calendly.com/assets/external/widget.js';
+        s.async = true;
+        document.body.appendChild(s);
+      } else {
+        btn.removeAttribute('href');
+        btn.style.opacity = '.5';
+        btn.style.cursor = 'not-allowed';
+        btn.addEventListener('click', e => e.preventDefault());
+        wrap.innerHTML = `<div class="calendly-placeholder">📅 Calendly isn't connected yet — paste your link into the <b>CALENDLY_URL</b> variable at the top of the file (CONFIG section) to show live booking here.</div>`;
+      }
+    }
+    renderCalendly();
+
+    // newsletter form — sends via Web3Forms (free, no server needed) once WEB3FORMS_KEY is set.
+    // No key yet → runs in "demo mode": still shows a thank-you message but does NOT send anything.
+    async function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('newsletter-form');
+      const btn = document.getElementById('nf-submit-btn');
+      const successEl = document.getElementById('nf-success');
+
+      if (!WEB3FORMS_KEY) {
+        successEl.textContent = 'Demo mode: WEB3FORMS_KEY isn\'t set yet, so this form isn\'t sending anywhere — check the setup guide to activate it for real.';
+        successEl.classList.add('show');
+        form.reset();
+        return false;
+      }
+
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const formData = new FormData(form);
+        formData.append('access_key', WEB3FORMS_KEY);
+        formData.append('subject', 'New newsletter signup — Henry\'s Portfolio');
+        formData.append('from_name', 'Henry\'s Portfolio Website');
+
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+        const result = await res.json();
+
+        if (result.success) {
+          successEl.textContent = 'Thanks for subscribing! You\'ll get your first newsletter soon 🎬';
+          successEl.classList.add('show');
+          form.reset();
+        } else {
+          successEl.textContent = 'Something went wrong — please try again or reach out directly by email.';
+          successEl.classList.add('show');
+        }
+      } catch (err) {
+        successEl.textContent = 'Couldn\'t send — check your connection and try again.';
+        successEl.classList.add('show');
+      } finally {
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
+      return false;
+    }
+
+    // scroll reveal (with subtle stagger for grouped elements)
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const siblings = Array.from(e.target.parentElement.children).filter(c => c.classList.contains('reveal'));
+          const idx = siblings.indexOf(e.target);
+          e.target.style.transitionDelay = (Math.min(idx, 6) * 70) + 'ms';
+          e.target.classList.add('show');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+
+</body>
+
+</html>
