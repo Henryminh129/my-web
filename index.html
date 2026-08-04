@@ -1708,34 +1708,6 @@
       </blockquote>
 
       <div class="work-grid">
-        <div class="case reveal" onclick="openCaseStudy('vstn')">
-          <img class="case-cover vstn-cover" loading="lazy" src="images/vstn-podcast.png"
-            alt="Vì Sao Thế Nhỉ — National Flag Viral">
-          <div class="case-tag">Conterine</div>
-          <div class="case-play"><svg width="14" height="14" viewBox="0 0 24 24">
-              <path d="M8 5L19 12L8 19V5Z" fill="#FBF8F1" />
-            </svg></div>
-          <div class="case-info">
-            <div class="stat">9.2M Traffic</div>
-            <div class="name">Vì Sao Thế Nhỉ</div>
-            <div class="role">Top #1 Education Podcast, Vietnam</div>
-          </div>
-        </div>
-
-        <div class="case reveal" onclick="openCaseStudy('micky')">
-          <img class="case-cover" loading="lazy" src="images/micky-dollimore.png"
-            alt="Micky Dollimore — Nomadic Software Developer">
-          <div class="case-tag">Conterine</div>
-          <div class="case-play"><svg width="14" height="14" viewBox="0 0 24 24">
-              <path d="M8 5L19 12L8 19V5Z" fill="#FBF8F1" />
-            </svg></div>
-          <div class="case-info">
-            <div class="stat">+183% Growth</div>
-            <div class="name">Micky Dollimore</div>
-            <div class="role">Real-Estate Web Developer</div>
-          </div>
-        </div>
-
         <div class="case reveal" onclick="openCaseStudy('aliena')">
           <img class="case-cover" loading="lazy" src="images/aliena-cai.png" alt="Aliena Cai — Figma to Wix Studio">
           <div class="case-tag">Conterine</div>
@@ -1760,6 +1732,34 @@
             <div class="stat">+150% / 2 Months</div>
             <div class="name">Finn Dollimore</div>
             <div class="role">Professional Web Designer</div>
+          </div>
+        </div>
+
+        <div class="case reveal" onclick="openCaseStudy('micky')">
+          <img class="case-cover" loading="lazy" src="images/micky-dollimore.png"
+            alt="Micky Dollimore — Nomadic Software Developer">
+          <div class="case-tag">Conterine</div>
+          <div class="case-play"><svg width="14" height="14" viewBox="0 0 24 24">
+              <path d="M8 5L19 12L8 19V5Z" fill="#FBF8F1" />
+            </svg></div>
+          <div class="case-info">
+            <div class="stat">+183% Growth</div>
+            <div class="name">Micky Dollimore</div>
+            <div class="role">Real-Estate Web Developer</div>
+          </div>
+        </div>
+
+        <div class="case reveal" onclick="openCaseStudy('vstn')">
+          <img class="case-cover vstn-cover" loading="lazy" src="images/vstn-podcast.png"
+            alt="Vì Sao Thế Nhỉ — National Flag Viral">
+          <div class="case-tag">Conterine</div>
+          <div class="case-play"><svg width="14" height="14" viewBox="0 0 24 24">
+              <path d="M8 5L19 12L8 19V5Z" fill="#FBF8F1" />
+            </svg></div>
+          <div class="case-info">
+            <div class="stat">9.2M Traffic</div>
+            <div class="name">Vì Sao Thế Nhỉ</div>
+            <div class="role">Top #1 Education Podcast, Vietnam</div>
           </div>
         </div>
       </div>
@@ -1977,8 +1977,8 @@
     // ticker content
     const tickerItems = [
       ['Aliena Cai', '+112% performance'],
-      ['Micky Dollimore', '+183% growth'],
       ['Finn Dollimore', '+150% in 2 months'],
+      ['Micky Dollimore', '+183% growth'],
       ['Vì Sao Thế Nhỉ', '9.2M lifetime traffic'],
     ];
     const ticker = document.getElementById('ticker');
@@ -2050,6 +2050,19 @@
           // 👉 add Aliena's new videos here
         ]
       },
+      finn: {
+        name: 'Finn Dollimore',
+        role: 'Professional Web Designer',
+        results: ['+150% Growth in 2 Months', 'New Visual Brand Identity', 'Consistent Video Systems'],
+        videos: [
+          {
+            id: 'AFINAGPfgPM', title: 'How I use Figma Components', stat: '+40% Retention · 2x Watch Time',
+            challenge: 'Finn has deep expertise but his videos weren\'t holding attention past 30 seconds. High-value content was being wasted due to poor retention.',
+            architecture: 'Working inside Finn\'s existing brand line, we pushed the edit toward more creative territory: B-roll changes every 3–5 seconds, strategic zooms on key actions, a progress bar showing where you are in the tutorial, and a pattern interrupt inserted every 90 seconds that creative enough to stand out, disciplined enough to still feel like his brand. Retention grew 40%, watch time doubled.'
+          }
+          // 👉 add Finn's new videos here
+        ]
+      },
       micky: {
         name: 'Micky Dollimore',
         role: 'Real-Estate Web Developer',
@@ -2091,19 +2104,6 @@
             architecture: 'We designed the visual brand line from the ground up: consistent framing, color and on-screen style. Micky wrote his own script throughout; our role was to shape, test how it looked and felt, not put words in his mouth.'
           }
           // 👉 add Micky's new videos here
-        ]
-      },
-      finn: {
-        name: 'Finn Dollimore',
-        role: 'Professional Web Designer',
-        results: ['+150% Growth in 2 Months', 'New Visual Brand Identity', 'Consistent Video Systems'],
-        videos: [
-          {
-            id: 'AFINAGPfgPM', title: 'How I use Figma Components', stat: '+40% Retention · 2x Watch Time',
-            challenge: 'Finn has deep expertise but his videos weren\'t holding attention past 30 seconds. High-value content was being wasted due to poor retention.',
-            architecture: 'Working inside Finn\'s existing brand line, we pushed the edit toward more creative territory: B-roll changes every 3–5 seconds, strategic zooms on key actions, a progress bar showing where you are in the tutorial, and a pattern interrupt inserted every 90 seconds that creative enough to stand out, disciplined enough to still feel like his brand. Retention grew 40%, watch time doubled.'
-          }
-          // 👉 add Finn's new videos here
         ]
       },
       vstn: {
