@@ -964,40 +964,121 @@
       border-color: var(--line);
     }
 
-    .about-video-frame {
-      aspect-ratio: 16/9;
+    .about-carousel {
+      aspect-ratio: 4/3;
       border-radius: 20px;
       overflow: hidden;
       background: var(--bg-dark);
+      position: relative;
+      isolation: isolate;
+    }
+
+    .about-carousel-track {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%;
+      height: 100%;
+      transition: transform .6s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .about-carousel-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
       position: relative;
     }
 
-    .about-video-frame iframe {
+    .about-carousel-slide img {
       width: 100%;
       height: 100%;
-      border: none;
+      object-fit: cover;
       display: block;
     }
 
-    .about-video-placeholder {
-      color: rgba(251, 248, 241, .55);
-      text-align: center;
-      padding: 32px;
-      font-family: 'IBM Plex Mono';
-      font-size: 12px;
-      line-height: 1.7;
+    .about-carousel-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(16, 14, 12, 0) 45%, rgba(16, 14, 12, .82) 100%);
+      pointer-events: none;
     }
 
-    .about-video-placeholder strong {
-      display: block;
+    .about-carousel-caption {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 18px;
+      z-index: 2;
       color: var(--paper);
+    }
+
+    .about-carousel-caption .cap-title {
       font-family: 'Bricolage Grotesque';
-      font-size: 17px;
-      margin-bottom: 10px;
       font-weight: 700;
+      font-size: 16.5px;
+      margin-bottom: 3px;
+    }
+
+    .about-carousel-caption .cap-sub {
+      font-family: 'IBM Plex Mono';
+      font-size: 11px;
+      letter-spacing: .03em;
+      color: rgba(251, 248, 241, .65);
+    }
+
+    .about-carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(16, 14, 12, .55);
+      border: 1px solid rgba(251, 248, 241, .35);
+      color: var(--paper);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .3s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .about-carousel-arrow:hover {
+      background: var(--red);
+      color: var(--ink);
+    }
+
+    .about-carousel-arrow.prev {
+      left: 14px;
+    }
+
+    .about-carousel-arrow.next {
+      right: 14px;
+    }
+
+    .about-carousel-dots {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 3;
+      display: flex;
+      gap: 6px;
+    }
+
+    .about-carousel-dots .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(251, 248, 241, .4);
+      cursor: pointer;
+      transition: background .3s cubic-bezier(.16, 1, .3, 1), width .3s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .about-carousel-dots .dot.active {
+      background: var(--red);
+      width: 18px;
+      border-radius: 4px;
     }
 
     /* ---------- BOOK A CALL / CALENDLY ---------- */
@@ -1858,7 +1939,38 @@
           <a href="#contact" class="btn btn-outline-light" style="margin-top:28px;">Book A Call With Me →</a>
         </div>
         <div class="about-me-video reveal">
-          <div class="about-video-frame" id="about-video-frame"></div>
+          <div class="about-carousel" id="about-carousel">
+            <div class="about-carousel-track" id="about-carousel-track">
+              <div class="about-carousel-slide">
+                <img src="images/about-henry.jpg" alt="Henry Marques">
+                <div class="about-carousel-caption">
+                  <div class="cap-title">This Is Me - Henry Marques</div>
+                  <div class="cap-sub">Behind The Brands You See In My Work</div>
+                </div>
+              </div>
+              <div class="about-carousel-slide">
+                <img src="images/about-conterine-team.jpg" alt="The Conterine team">
+                <div class="about-carousel-caption">
+                  <div class="cap-title">Conterine (Startup Production-House)</div>
+                  <div class="cap-sub">Where I Started My Career</div>
+                </div>
+              </div>
+              <div class="about-carousel-slide">
+                <img src="images/about-working.png" alt="Henry's first editing setup">
+                <div class="about-carousel-caption">
+                  <div class="cap-title">My First Setup Workspace</div>
+                  <div class="cap-sub">Where It All Actually Began</div>
+                </div>
+              </div>
+            </div>
+            <button class="about-carousel-arrow prev" onclick="changeAboutSlide(-1)" aria-label="Previous">‹</button>
+            <button class="about-carousel-arrow next" onclick="changeAboutSlide(1)" aria-label="Next">›</button>
+            <div class="about-carousel-dots" id="about-carousel-dots">
+              <span class="dot active" onclick="goToAboutSlide(0)"></span>
+              <span class="dot" onclick="goToAboutSlide(1)"></span>
+              <span class="dot" onclick="goToAboutSlide(2)"></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1971,7 +2083,6 @@
     // ⚙️ CONFIG — just fill in the 3 lines below, nothing else to touch
     // ═══════════════════════════════════════════════════════════════
     const CALENDLY_URL = 'https://calendly.com/phucly190/30min';     // 👉 paste your real Calendly link here, e.g. 'https://calendly.com/your-name/30min'
-    const ABOUT_VIDEO_ID = '';   // 👉 paste the YouTube video ID of your intro video here
     const WEB3FORMS_KEY = '';    // 👉 get a free Access Key at https://web3forms.com to receive newsletter signups
 
     // ticker content
@@ -2241,16 +2352,27 @@
       if (e.key === 'Escape') closeCaseStudy();
     });
 
-    // about-me intro video — falls back to a friendly placeholder until ABOUT_VIDEO_ID is set
-    function renderAboutVideo() {
-      const wrap = document.getElementById('about-video-frame');
-      if (ABOUT_VIDEO_ID) {
-        wrap.innerHTML = `<iframe src="https://www.youtube.com/embed/${ABOUT_VIDEO_ID}" title="Intro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-      } else {
-        wrap.innerHTML = `<div class="about-video-placeholder"><strong></strong>Coming soon...</div>`;
-      }
+    // about-me carousel — click through 3 photos with captions
+    let aboutSlideIndex = 0;
+    const aboutSlideCount = 3;
+
+    function updateAboutCarousel() {
+      const track = document.getElementById('about-carousel-track');
+      track.style.transform = `translateX(-${aboutSlideIndex * 100}%)`;
+      document.querySelectorAll('#about-carousel-dots .dot').forEach((d, i) => {
+        d.classList.toggle('active', i === aboutSlideIndex);
+      });
     }
-    renderAboutVideo();
+
+    function changeAboutSlide(dir) {
+      aboutSlideIndex = (aboutSlideIndex + dir + aboutSlideCount) % aboutSlideCount;
+      updateAboutCarousel();
+    }
+
+    function goToAboutSlide(i) {
+      aboutSlideIndex = i;
+      updateAboutCarousel();
+    }
 
     // Calendly booking widget — falls back to a placeholder + disabled button until CALENDLY_URL is set
     function renderCalendly() {
